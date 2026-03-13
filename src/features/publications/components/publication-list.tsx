@@ -20,13 +20,9 @@ export function PublicationList({
       viewport={{ once: true, amount: 0.12 }}
       variants={staggerContainerVariants}
     >
-      <div className="divide-y divide-slate-200/80">
+      <div className="divide-y divide-slate-100">
         {publications.map((publication) => (
-          <motion.div
-            key={publication.id}
-            variants={fadeUpVariants}
-            className="hover:bg-white/50"
-          >
+          <motion.div key={publication.id} variants={fadeUpVariants}>
             <PublicationListItem publication={publication} />
           </motion.div>
         ))}

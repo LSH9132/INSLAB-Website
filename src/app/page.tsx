@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-white text-foreground">
       <SiteHeader currentPath="/" />
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-20 lg:px-10">
         <section className="grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
@@ -23,7 +23,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="rounded-[2rem] border border-border bg-white p-8 shadow-[0_20px_80px_rgba(15,23,42,0.06)]">
+          <div className="rounded-[2rem] border border-border bg-slate-50 p-8 shadow-[0_20px_80px_rgba(15,23,42,0.05)]">
             <p className="text-sm font-medium text-slate-500">
               Current build focus
             </p>

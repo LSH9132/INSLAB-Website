@@ -14,7 +14,7 @@ export function PublicationListItem({
   publication: Publication;
 }) {
   return (
-    <article className="group -mx-4 rounded-3xl px-4 py-8 md:py-10">
+    <article className="group -mx-4 rounded-sm px-4 py-8 md:py-10 hover:bg-slate-50/60">
       <div className="flex flex-col gap-5 md:flex-row md:gap-8">
         <div className="hidden w-24 shrink-0 flex-col pt-1 md:flex">
           <span className="text-3xl font-light text-slate-300 group-hover:text-slate-900">
@@ -40,15 +40,15 @@ export function PublicationListItem({
             </span>
           </div>
 
-          <h2 className="max-w-3xl text-2xl leading-tight font-medium tracking-tight text-slate-950 font-serif md:text-[2rem]">
+          <h2 className="max-w-3xl text-2xl leading-tight font-medium tracking-tight text-slate-900 font-serif group-hover:text-accent md:text-[2rem]">
             {publication.title}
           </h2>
 
-          <p className="max-w-3xl text-base leading-7 text-slate-500">
-            <span className="font-medium text-slate-900">
+          <p className="max-w-3xl text-base leading-7 font-light text-slate-600">
+            <span className="font-normal text-slate-900">
               {publication.authors.join(", ")}
             </span>
-            <span className="mx-2 text-slate-300">{"//"}</span>
+            <span className="mx-2 text-slate-400">{"//"}</span>
             <span className="italic">{publication.venue}</span>
             {publication.details ? `, ${publication.details}` : null}
           </p>
@@ -57,7 +57,7 @@ export function PublicationListItem({
             {publication.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-500 ring-1 ring-slate-200"
+                className="rounded-sm bg-slate-100 px-2 py-1 text-xs font-medium text-slate-500"
               >
                 {tag}
               </span>

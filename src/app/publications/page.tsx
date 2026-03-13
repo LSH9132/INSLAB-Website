@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function PublicationsPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-white text-foreground">
       <SiteHeader currentPath="/publications" />
       <main className="mx-auto flex w-full max-w-6xl flex-col px-6 py-12 lg:px-10 lg:py-20">
         <PublicationsHero />

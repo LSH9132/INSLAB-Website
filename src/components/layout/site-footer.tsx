@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-12 md:grid-cols-[1.5fr_1fr_1fr] lg:px-10">
+    <footer className="mt-20 border-t border-border bg-surface-soft">
+      <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-14 md:grid-cols-[1.5fr_1fr_1fr] lg:px-10">
         <div className="space-y-4">
           <Image
             src="/images/logo-inslab-black-transparent-v1.png"

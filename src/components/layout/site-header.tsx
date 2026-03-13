@@ -12,7 +12,7 @@ const navigationItems = [
 
 export function SiteHeader({ currentPath }: SiteHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border bg-surface backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5 lg:px-10">
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -35,7 +35,7 @@ export function SiteHeader({ currentPath }: SiteHeaderProps) {
                 href={item.href}
                 className={`text-sm ${
                   isActive
-                    ? "font-semibold text-slate-950"
+                    ? "border-b-2 border-slate-900 pb-0.5 font-semibold text-slate-900"
                     : "font-medium text-slate-500 hover:text-slate-900"
                 }`}
               >
@@ -46,7 +46,7 @@ export function SiteHeader({ currentPath }: SiteHeaderProps) {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <div className="rounded-full border border-border bg-white px-4 py-2 text-xs font-medium tracking-[0.18em] text-slate-500 uppercase">
+          <div className="rounded-sm border border-border bg-slate-50 px-4 py-2 text-xs font-medium tracking-[0.18em] text-slate-500 uppercase">
             Research Lab
           </div>
         </div>

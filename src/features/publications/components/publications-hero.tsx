@@ -19,10 +19,10 @@ export function PublicationsHero() {
         <span className="h-px w-8 bg-slate-300" />
         Academic Output
       </div>
-      <h1 className="max-w-4xl text-5xl leading-none font-medium tracking-tight text-slate-950 font-serif italic md:text-7xl">
+      <h1 className="max-w-4xl text-5xl leading-none font-medium tracking-tight text-slate-900 font-serif italic md:text-7xl">
         Selected Publications
       </h1>
-      <p className="max-w-2xl text-base leading-8 text-slate-500 md:text-xl">
+      <p className="max-w-2xl text-lg leading-8 font-light text-slate-500 md:text-xl">
         Our research spans artificial intelligence, network systems, and
         cybersecurity. Explore representative papers and the themes shaping
         INSLAB&apos;s recent academic output.
