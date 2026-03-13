@@ -28,6 +28,12 @@ const meshLinks = [
   { id: "m10", from: [386, 286], to: [492, 188] },
 ];
 
+const meshPackets = meshLinks.map((link, index) => ({
+  ...link,
+  delay: index * 0.35,
+  duration: 3.2 + (index % 3) * 0.4,
+}));
+
 const signalLayers = [
   "LEO Mesh Relay",
   "Autonomous Routing",
@@ -204,9 +210,9 @@ export function HomeHero() {
                   strokeDasharray="5 9"
                 />
 
-                <g opacity="0.62">
+                <g opacity="0.42">
                   {meshLinks.map((link) => (
-                    <motion.line
+                    <line
                       key={link.id}
                       x1={link.from[0]}
                       y1={link.from[1]}
@@ -215,26 +221,53 @@ export function HomeHero() {
                       stroke="url(#mesh-line)"
                       strokeWidth="1.7"
                       strokeLinecap="round"
-                      initial={
-                        shouldReduceMotion
-                          ? undefined
-                          : { pathLength: 0, opacity: 0.16 }
-                      }
-                      animate={
-                        shouldReduceMotion
-                          ? undefined
-                          : { pathLength: 1, opacity: [0.16, 0.82, 0.16] }
-                      }
-                      transition={{
-                        duration: 4.2,
-                        delay: 0.15,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut",
-                      }}
                     />
                   ))}
                 </g>
+
+                {!shouldReduceMotion && (
+                  <g>
+                    {meshPackets.map((packet) => (
+                      <g key={`${packet.id}-packet`}>
+                        <motion.circle
+                          cx={packet.from[0]}
+                          cy={packet.from[1]}
+                          r="8"
+                          fill="rgba(125,211,252,0.18)"
+                          animate={{
+                            cx: [packet.from[0], packet.to[0]],
+                            cy: [packet.from[1], packet.to[1]],
+                            opacity: [0, 0.7, 0],
+                            scale: [0.8, 1.2, 0.8],
+                          }}
+                          transition={{
+                            duration: packet.duration,
+                            delay: packet.delay,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        />
+                        <motion.circle
+                          cx={packet.from[0]}
+                          cy={packet.from[1]}
+                          r="3.2"
+                          fill="#e0f2fe"
+                          animate={{
+                            cx: [packet.from[0], packet.to[0]],
+                            cy: [packet.from[1], packet.to[1]],
+                            opacity: [0, 1, 0],
+                          }}
+                          transition={{
+                            duration: packet.duration,
+                            delay: packet.delay,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        />
+                      </g>
+                    ))}
+                  </g>
+                )}
 
                 {satelliteNodes.map((satellite) => (
                   <g key={satellite.id}>
