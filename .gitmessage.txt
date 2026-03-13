@@ -1,0 +1,28 @@
+# Format:
+# type(scope): subject
+#
+# Types:
+# feat, fix, docs, refactor, style, test, chore, perf, build, ci
+#
+# Example:
+# feat(home): add animated research hero
+#
+# Why:
+# - Why is this change needed?
+#
+# What:
+# - What changed?
+#
+# Notes:
+# - Follow-up, migration, or review notes
+
+type(scope): subject
+
+Why:
+- 
+
+What:
+- 
+
+Notes:
+- 
