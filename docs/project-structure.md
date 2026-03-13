@@ -19,6 +19,13 @@
 ```text
 .
 ├── docs/
+├── resources/
+│   ├── design/
+│   │   ├── psd/
+│   │   ├── png/
+│   │   ├── svg/
+│   │   └── reference/
+│   └── copy/
 ├── public/
 │   ├── images/
 │   ├── icons/
@@ -102,10 +109,46 @@
 - 정적 파일만 둔다.
 - 이미지, 아이콘, 다운로드 파일처럼 URL로 직접 제공할 리소스를 저장한다.
 
+### `resources`
+
+- PSD, PNG, SVG, PDF 같은 디자인 원본과 작업 자료를 둔다.
+- 서비스에 직접 배포되지 않는 원본 리소스 보관 디렉토리다.
+- 이 폴더의 파일은 기준본으로 보관하고, 실제 구현에 쓸 때는 필요한 파일만 복사해서 사용한다.
+- 런타임에서 실제로 쓰는 파일은 검토 후 `public/`로 복사하거나 최적화해서 옮긴다.
+
 ### `docs`
 
 - 구조, 규칙, 결정사항, 작업 가이드를 둔다.
 - 구현이 바뀌면 문서도 함께 업데이트한다.
+
+## 디자인 리소스 규칙
+
+`resources`는 작업 원본을, `public`은 배포용 파일을 관리한다.
+
+권장 구조:
+
+```text
+resources/
+├── design/
+│   ├── psd/
+│   ├── png/
+│   ├── svg/
+│   └── reference/
+└── copy/
+```
+
+규칙:
+
+- PSD, PNG, 벡터 원본, 참고 스크린샷은 `resources/design` 아래에 둔다.
+- 콘텐츠 원고나 섹션 카피 초안은 `resources/copy`에 둔다.
+- `resources`의 파일은 직접 import하거나 서비스 경로로 바로 연결하지 않는다.
+- 최종 서비스용 이미지, 아이콘, 폰트는 `resources`에서 선별해 `public/`로 복사한 뒤 사용한다.
+- 일회성 다운로드 산출물은 `.stitch/`처럼 별도 작업 폴더를 사용하고 Git 추적 대상에서 제외할 수 있다.
+- 고용량 원본 파일을 커밋할 때는 팀 저장소 용량을 고려한다.
+- 파일명은 자산 종류와 용도가 드러나게 작성한다.
+  - 예: `logo-inslab-primary-light-v1.svg`
+  - 예: `bg-home-hero-light-v1.png`
+  - 예: `page-publications-list-desktop-v2.png`
 
 ## App Router 규칙
 
