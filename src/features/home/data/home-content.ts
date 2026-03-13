@@ -51,6 +51,3 @@ export const recentNews = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAcpUkyAbUtSv-P5m6MiW7L7t6VkNzv96ZX6dLfbR_hp0_M3xY5Aa3B_ZCXbxSRPwIXagkCFEyHphib-SY69fAtmaQfQZWLE5fXzVEGtG2WxFL4WiThycuOQZgwvIRODMzVEf24BDGkhXa99XibhWKQy13SA5U0IUmc4JEXE5ksDLnAohJPBLhKkDVuRt0ZNuPKVfifNy_K9FYZ2OksBDZm3G3qPL8pSspE3-3I4qvL9Og8FwkxFjAXUWz4Ats4ynGel38MLSQ3XoQx",
   },
 ];
-
-export const heroImageUrl =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuC77WihV5ehV9oQ6fsWpE55ddcdVA0EibsVL8f7IrgjOh3phhl0cjJ5WKwTxWwiobBOmPV_FH4mMDEvz7y2fZY9oxC6Pvu0iz0FAZhQ8Vo-fA6QmXvfWSsC9NrHhC2LlC8-KNy6S0yEraI-x2-CUPr4WDnsJtu_VOo2PRDEHRYPxX7iC63kk8SJ8JpxON3wYQtxI6niX9Q-swLzi4-G4j4qpEusABGCXvA8AGyD-EQnZM2dmr3vVPtdpaV30aToKZL8JLHrNWgKXWOt";
