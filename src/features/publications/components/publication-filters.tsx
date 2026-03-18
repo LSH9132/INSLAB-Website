@@ -1,9 +1,20 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+
 const filterItems = ["Year", "Research Area", "Type"];
 
 export function PublicationFilters({ total }: { total: number }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section className="sticky top-[77px] z-40 mb-4 border-b border-slate-100 bg-white/90 py-4 backdrop-blur">
-      <div className="flex flex-wrap items-center justify-between gap-5">
+      <motion.div
+        initial={shouldReduceMotion ? false : { opacity: 0 }}
+        animate={shouldReduceMotion ? undefined : { opacity: 1 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="flex flex-wrap items-center justify-between gap-5"
+      >
         <div className="flex flex-wrap gap-3">
           {filterItems.map((label) => (
             <button
@@ -21,10 +32,15 @@ export function PublicationFilters({ total }: { total: number }) {
             Reset Filters
           </button>
         </div>
-        <p className="font-serif text-sm italic text-slate-400">
+        <motion.p
+          initial={shouldReduceMotion ? false : { opacity: 0, x: 18 }}
+          animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          className="font-serif text-sm italic text-slate-400"
+        >
           Displaying {total} papers
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </section>
   );
 }
