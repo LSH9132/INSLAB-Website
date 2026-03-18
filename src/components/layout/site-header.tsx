@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+
+import { SiteUtilityBar } from "@/components/layout/site-utility-bar";
 
 type SiteHeaderProps = {
   currentPath?: string;
@@ -266,165 +268,200 @@ const navigationItems: NavigationItem[] = [
 
 export function SiteHeader({ currentPath }: SiteHeaderProps) {
   const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
+  const [shouldShowUtilityBar, setShouldShowUtilityBar] = useState(true);
+  const lastScrollYRef = useRef(0);
 
   const activeMenu =
     navigationItems.find((item) => item.id === activeMenuId) ?? null;
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 16) {
+        setShouldShowUtilityBar(true);
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
+
+      setShouldShowUtilityBar(currentScrollY < lastScrollYRef.current);
+      lastScrollYRef.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header
-      className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-sm"
-      onMouseLeave={() => setActiveMenuId(null)}
-    >
-      <div className="relative mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/images/logo-inslab-black-transparent-v1.png"
-            alt="INSLAB logo"
-            width={132}
-            height={40}
-            className="h-8 w-auto"
-            priority
-          />
-        </Link>
+    <header className="sticky top-0 z-50 w-full" onMouseLeave={() => setActiveMenuId(null)}>
+      <motion.div
+        initial={false}
+        animate={
+          shouldShowUtilityBar
+            ? { height: 28, opacity: 1 }
+            : { height: 0, opacity: 0 }
+        }
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="overflow-hidden"
+      >
+        <SiteUtilityBar />
+      </motion.div>
 
-        <div className="hidden flex-1 items-center justify-end gap-10 lg:flex">
-          <nav className="flex items-center gap-8">
-            {navigationItems.map((item) => {
-              const isActive =
-                item.activePaths?.includes(currentPath ?? "") ?? false;
-              const isOpen = activeMenuId === item.id;
+      <div className="border-b border-slate-100 bg-white/92 backdrop-blur-sm">
+        <div className="relative mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/images/logo-inslab-black-transparent-v1.png"
+              alt="INSLAB logo"
+              width={132}
+              height={40}
+              className="h-8 w-auto"
+              priority
+            />
+          </Link>
 
-              return (
-                <Link
-                  key={item.id}
-                  href={item.href}
-                  onMouseEnter={() => setActiveMenuId(item.id)}
-                  onFocus={() => setActiveMenuId(item.id)}
-                  className={`text-sm transition-colors ${
-                    isActive
-                      ? "border-b-2 border-slate-900 pb-0.5 font-semibold text-slate-900"
-                      : isOpen
-                        ? "font-semibold text-slate-900"
-                        : "font-medium text-slate-500 hover:text-slate-900"
-                  }`}
+          <div className="hidden flex-1 items-center justify-end gap-10 lg:flex">
+            <nav className="flex items-center gap-8">
+              {navigationItems.map((item) => {
+                const isActive =
+                  item.activePaths?.includes(currentPath ?? "") ?? false;
+                const isOpen = activeMenuId === item.id;
+
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    onMouseEnter={() => setActiveMenuId(item.id)}
+                    onFocus={() => setActiveMenuId(item.id)}
+                    className={`text-sm transition-colors ${
+                      isActive
+                        ? "border-b-2 border-slate-900 pb-0.5 font-semibold text-slate-900"
+                        : isOpen
+                          ? "font-semibold text-slate-900"
+                          : "font-medium text-slate-500 hover:text-slate-900"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <div className="relative">
+              <div className="flex w-64 items-center rounded-sm border border-gray-200 bg-gray-50 px-3 py-1.5 transition-all focus-within:border-slate-900 focus-within:ring-1 focus-within:ring-slate-900">
+                <svg
+                  className="h-[18px] w-[18px] text-gray-400"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  aria-hidden="true"
                 >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          <div className="relative">
-            <div className="flex w-64 items-center rounded-sm border border-gray-200 bg-gray-50 px-3 py-1.5 transition-all focus-within:border-slate-900 focus-within:ring-1 focus-within:ring-slate-900">
-              <svg
-                className="h-[18px] w-[18px] text-gray-400"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                aria-hidden="true"
-              >
-                <circle cx="11" cy="11" r="7" />
-                <path d="m20 20-3.5-3.5" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Search publications..."
-                className="w-full border-none bg-transparent px-2 text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none"
-              />
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-3.5-3.5" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Search publications..."
+                  className="w-full border-none bg-transparent px-2 text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none"
+                />
+              </div>
             </div>
+
+            <button
+              type="button"
+              className="flex h-9 min-w-[80px] items-center justify-center overflow-hidden rounded-sm bg-slate-900 px-5 text-sm font-medium text-white transition-colors hover:bg-slate-800"
+            >
+              <span className="truncate">Login</span>
+            </button>
           </div>
 
           <button
             type="button"
-            className="flex h-9 min-w-[80px] items-center justify-center overflow-hidden rounded-sm bg-slate-900 px-5 text-sm font-medium text-white transition-colors hover:bg-slate-800"
+            className="p-2 text-slate-900 lg:hidden"
+            aria-label="Open navigation menu"
           >
-            <span className="truncate">Login</span>
-          </button>
-        </div>
-
-        <button
-          type="button"
-          className="p-2 text-slate-900 lg:hidden"
-          aria-label="Open navigation menu"
-        >
-          <svg
-            className="h-6 w-6"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            aria-hidden="true"
-          >
-            <path d="M4 7h16" />
-            <path d="M4 12h16" />
-            <path d="M4 17h16" />
-          </svg>
-        </button>
-
-        <AnimatePresence>
-          {activeMenu ? (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute top-full right-0 left-0 hidden pt-4 lg:block"
+            <svg
+              className="h-6 w-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
             >
-              <div className="overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
-                <div className="grid grid-cols-[1.4fr_0.9fr] gap-10 px-6 py-8 lg:px-8">
-                  <div className="grid gap-8 md:grid-cols-2">
-                    {activeMenu.sections.map((section) => (
-                      <div key={section.title}>
-                        <h2 className="mb-4 text-[11px] font-semibold tracking-[0.2em] text-slate-400 uppercase">
-                          {section.title}
-                        </h2>
-                        <div className="space-y-4">
-                          {section.links.map((link) => (
-                            <Link
-                              key={link.label}
-                              href={link.href}
-                              className="block rounded-xl px-3 py-2 transition-colors hover:bg-slate-50"
-                            >
-                              <p className="text-sm font-semibold text-slate-900 hover:text-accent">
-                                {link.label}
-                              </p>
-                              <p className="mt-1 text-sm leading-6 text-slate-500">
-                                {link.description}
-                              </p>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+              <path d="M4 7h16" />
+              <path d="M4 12h16" />
+              <path d="M4 17h16" />
+            </svg>
+          </button>
 
-                  <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
-                    <p className="text-[11px] font-semibold tracking-[0.2em] text-accent uppercase">
-                      {activeMenu.feature.eyebrow}
-                    </p>
-                    <h2 className="mt-3 text-2xl leading-tight font-semibold text-slate-900">
-                      {activeMenu.feature.title}
-                    </h2>
-                    <p className="mt-4 text-sm leading-7 text-slate-500">
-                      {activeMenu.feature.description}
-                    </p>
-                    <p className="mt-6 text-sm font-medium text-slate-400">
-                      {activeMenu.summary}
-                    </p>
-                    <Link
-                      href={activeMenu.feature.href}
-                      className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-accent"
-                    >
-                      Open Section
-                      <span>→</span>
-                    </Link>
+          <AnimatePresence>
+            {activeMenu ? (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
+                className="absolute top-full right-0 left-0 hidden pt-4 lg:block"
+              >
+                <div className="overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
+                  <div className="grid grid-cols-[1.4fr_0.9fr] gap-10 px-6 py-8 lg:px-8">
+                    <div className="grid gap-8 md:grid-cols-2">
+                      {activeMenu.sections.map((section) => (
+                        <div key={section.title}>
+                          <h2 className="mb-4 text-[11px] font-semibold tracking-[0.2em] text-slate-400 uppercase">
+                            {section.title}
+                          </h2>
+                          <div className="space-y-4">
+                            {section.links.map((link) => (
+                              <Link
+                                key={link.label}
+                                href={link.href}
+                                className="block rounded-xl px-3 py-2 transition-colors hover:bg-slate-50"
+                              >
+                                <p className="text-sm font-semibold text-slate-900 hover:text-accent">
+                                  {link.label}
+                                </p>
+                                <p className="mt-1 text-sm leading-6 text-slate-500">
+                                  {link.description}
+                                </p>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
+                      <p className="text-[11px] font-semibold tracking-[0.2em] text-accent uppercase">
+                        {activeMenu.feature.eyebrow}
+                      </p>
+                      <h2 className="mt-3 text-2xl leading-tight font-semibold text-slate-900">
+                        {activeMenu.feature.title}
+                      </h2>
+                      <p className="mt-4 text-sm leading-7 text-slate-500">
+                        {activeMenu.feature.description}
+                      </p>
+                      <p className="mt-6 text-sm font-medium text-slate-400">
+                        {activeMenu.summary}
+                      </p>
+                      <Link
+                        href={activeMenu.feature.href}
+                        className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-accent"
+                      >
+                        Open Section
+                        <span>→</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </div>
       </div>
     </header>
   );
