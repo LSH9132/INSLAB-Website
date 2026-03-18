@@ -6,12 +6,12 @@ import { motion, useReducedMotion } from "motion/react";
 import { staggerContainerVariants } from "@/lib/motion/fade-up";
 
 const heroEyebrowVariants: Variants = {
-  hidden: { opacity: 0, y: 14 },
+  hidden: { opacity: 0, x: -18 },
   visible: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
-      duration: 0.45,
+      duration: 0.75,
       ease: [0.22, 1, 0.36, 1],
     },
   },
