@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { SiteUtilityBar } from "@/components/layout/site-utility-bar";
+import { SiteUtilityBar } from "./site-utility-bar";
 
 type SiteHeaderProps = {
   currentPath?: string;

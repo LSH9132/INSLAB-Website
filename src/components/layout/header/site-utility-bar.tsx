@@ -1,4 +1,4 @@
-import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { LanguageSwitcher } from "./language-switcher";
 
 export function SiteUtilityBar() {
   return (
