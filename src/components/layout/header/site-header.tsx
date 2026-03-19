@@ -312,15 +312,28 @@ export function SiteHeader({ currentPath }: SiteHeaderProps) {
 
       <div className="border-b border-slate-100 bg-white/92 backdrop-blur-sm">
         <div className="relative mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/images/logo-inslab-black-transparent-v1.png"
               alt="INSLAB logo"
-              width={132}
+              width={40}
               height={40}
               className="h-8 w-auto"
               priority
             />
+            <div className="flex flex-col justify-center gap-[5px] py-1">
+              <span className="text-[1.1rem] font-black tracking-wider text-slate-900 group-hover:text-slate-700 transition-colors leading-none">
+                INSLAB
+              </span>
+              <span className="text-[0.575rem] font-light tracking-[0.22em] text-slate-600 group-hover:text-slate-500 transition-colors leading-none flex items-center gap-[4px]">
+                <span>Intelligence</span>
+                <span>Network</span>
+                <span className="text-slate-500">&</span>
+                <span>System</span>
+                <span className="text-slate-500">.</span>
+                <span>Lab</span>
+              </span>
+            </div>
           </Link>
 
           <div className="hidden flex-1 items-center justify-end gap-10 lg:flex">
