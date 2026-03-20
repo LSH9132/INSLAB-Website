@@ -1,6 +1,8 @@
-import { homeStats } from "@/features/home/data/home-content";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-export function HomeMission() {
+type MissionDictionary = Dictionary["home"]["mission"];
+
+export function HomeMission({ mission }: { mission: MissionDictionary }) {
   return (
     <section
       id="mission"
@@ -10,21 +12,18 @@ export function HomeMission() {
         <div className="lg:flex lg:items-start lg:justify-between lg:gap-16">
           <div className="mb-10 lg:mb-0 lg:w-1/3">
             <h2 className="mb-3 text-sm font-bold tracking-[0.2em] text-accent uppercase">
-              Our Mission
+              {mission.eyebrow}
             </h2>
             <h3 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Advancing the intersection of AI &amp; Network Systems
+              {mission.title}
             </h3>
           </div>
           <div className="lg:w-2/3">
             <p className="mb-8 text-lg leading-relaxed font-light text-slate-600">
-              INSLAB is dedicated to creating scalable, secure, and intelligent
-              solutions for next-generation connectivity. We don&apos;t just
-              research. We build the architectural foundations for 6G and
-              beyond.
+              {mission.body}
             </p>
             <div className="grid grid-cols-2 gap-8 border-t border-slate-100 pt-8 md:grid-cols-4">
-              {homeStats.map((stat) => (
+              {mission.stats.map((stat) => (
                 <div key={stat.label}>
                   <div className="mb-1 text-3xl font-bold text-slate-900">
                     {stat.value}

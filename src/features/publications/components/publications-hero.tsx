@@ -4,6 +4,9 @@ import type { Variants } from "motion/react";
 import { motion, useReducedMotion } from "motion/react";
 
 import { staggerContainerVariants } from "@/lib/motion/fade-up";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
+
+type HeroDictionary = Dictionary["publications"]["hero"];
 
 const heroEyebrowVariants: Variants = {
   hidden: { opacity: 0, x: -18 },
@@ -41,7 +44,7 @@ const heroBodyVariants: Variants = {
   },
 };
 
-export function PublicationsHero() {
+export function PublicationsHero({ hero }: { hero: HeroDictionary }) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -63,21 +66,19 @@ export function PublicationsHero() {
           viewport={{ once: true, amount: 0.45 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         />
-        Academic Output
+        {hero.eyebrow}
       </motion.div>
       <motion.h1
         className="max-w-4xl text-5xl leading-none font-medium tracking-tight text-slate-900 font-serif italic md:text-7xl"
         variants={heroTitleVariants}
       >
-        Selected Publications
+        {hero.title}
       </motion.h1>
       <motion.p
         className="max-w-2xl text-lg leading-8 font-light text-slate-500 md:text-xl"
         variants={heroBodyVariants}
       >
-        Our research spans artificial intelligence, network systems, and
-        cybersecurity. Explore representative papers and the themes shaping
-        INSLAB&apos;s recent academic output.
+        {hero.body}
       </motion.p>
     </motion.section>
   );

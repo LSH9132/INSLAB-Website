@@ -1,11 +1,19 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-const filterItems = ["Year", "Research Area", "Type"];
+type FiltersDictionary = Dictionary["publications"]["filters"];
 
-export function PublicationFilters({ total }: { total: number }) {
+export function PublicationFilters({
+  total,
+  filters,
+}: {
+  total: number;
+  filters: FiltersDictionary;
+}) {
   const shouldReduceMotion = useReducedMotion();
+  const displayingText = filters.displaying.replace("{total}", String(total));
 
   return (
     <section className="sticky top-[77px] z-40 mb-4 border-b border-slate-100 bg-white/90 py-4 backdrop-blur">
@@ -16,7 +24,7 @@ export function PublicationFilters({ total }: { total: number }) {
         className="flex flex-wrap items-center justify-between gap-5"
       >
         <div className="flex flex-wrap gap-3">
-          {filterItems.map((label) => (
+          {filters.items.map((label) => (
             <button
               key={label}
               type="button"
@@ -29,7 +37,7 @@ export function PublicationFilters({ total }: { total: number }) {
             type="button"
             className="ml-2 rounded-sm border border-slate-200 bg-white px-4 py-2 text-[11px] font-medium tracking-[0.18em] text-slate-400 uppercase hover:border-slate-300 hover:text-slate-700"
           >
-            Reset Filters
+            {filters.reset}
           </button>
         </div>
         <motion.p
@@ -38,7 +46,7 @@ export function PublicationFilters({ total }: { total: number }) {
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           className="font-serif text-sm italic text-slate-400"
         >
-          Displaying {total} papers
+          {displayingText}
         </motion.p>
       </motion.div>
     </section>

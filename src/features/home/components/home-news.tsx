@@ -1,16 +1,18 @@
-import { recentNews } from "@/features/home/data/home-content";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-export function HomeNews() {
+type NewsDictionary = Dictionary["home"]["news"];
+
+export function HomeNews({ news }: { news: NewsDictionary }) {
   return (
     <section className="border-t border-slate-100 bg-white py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 className="mb-12 flex items-center gap-3 text-2xl font-bold tracking-tight text-slate-900">
           <span className="h-8 w-2 rounded-full bg-accent" />
-          Recent Impact &amp; News
+          {news.title}
         </h2>
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-          {recentNews.map((item) => (
+          {news.items.map((item) => (
             <article
               key={item.id}
               className="group flex cursor-pointer flex-col gap-6 sm:flex-row"
@@ -47,7 +49,7 @@ export function HomeNews() {
             href="#"
             className="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-accent"
           >
-            View News Archive
+            {news.viewArchive}
             <span className="ml-1">›</span>
           </a>
         </div>
