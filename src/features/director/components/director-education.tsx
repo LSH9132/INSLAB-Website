@@ -2,10 +2,16 @@
 
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { educationData, careerData } from "../data/director-data";
+import type { Education, Career } from "@/lib/content";
 import { GraduationCap, Briefcase } from "lucide-react";
 
-export function DirectorEducation() {
+export function DirectorEducation({
+  education: educationData,
+  career: careerData,
+}: {
+  education: Education[];
+  career: Career[];
+}) {
   const t = useTranslations("Director");
 
   const containerVariants = {

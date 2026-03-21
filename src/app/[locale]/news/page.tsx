@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { PageShell } from "@/components/layout";
 import { NewsHero } from "@/features/news/components/news-hero";
 import { NewsList } from "@/features/news/components/news-list";
-import { newsItems } from "@/features/news/data/news-items";
+import { getNewsItems } from "@/lib/content";
 import { routing } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -46,7 +46,7 @@ export default async function NewsPage({
     >
       <NewsHero hero={messages.news.hero} />
       <NewsList
-        items={newsItems}
+        items={getNewsItems()}
         locale={locale}
         dict={messages.news.filters}
       />

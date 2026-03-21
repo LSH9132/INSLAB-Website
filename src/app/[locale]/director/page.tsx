@@ -6,6 +6,13 @@ import { DirectorPublications } from "@/features/director/components/director-pu
 import { DirectorPatents } from "@/features/director/components/director-patents";
 import { DirectorProjects } from "@/features/director/components/director-projects";
 import { FadeInUp } from "@/components/shared/animations/fade-in-up";
+import {
+  getDirectorEducation,
+  getDirectorCareer,
+  getDirectorProjects,
+  getDirectorPatents,
+  getDirectorPublications,
+} from "@/lib/content";
 
 export default async function DirectorPage({
   params,
@@ -15,16 +22,22 @@ export default async function DirectorPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const education = getDirectorEducation();
+  const career = getDirectorCareer();
+  const projects = getDirectorProjects();
+  const patents = getDirectorPatents();
+  const publications = getDirectorPublications();
+
   return (
     <div className="flex flex-col min-h-screen pt-20">
       <FadeInUp>
         <DirectorHero />
       </FadeInUp>
-      <DirectorEducation />
+      <DirectorEducation education={education} career={career} />
       <DirectorResearch />
-      <DirectorPublications />
-      <DirectorPatents />
-      <DirectorProjects />
+      <DirectorPublications publications={publications} />
+      <DirectorPatents patents={patents} />
+      <DirectorProjects projects={projects} />
     </div>
   );
 }

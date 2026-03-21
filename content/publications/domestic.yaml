@@ -1,0 +1,344 @@
+- id: d-2025-kim-yeseo
+  year: 2025
+  type: Domestic
+  title: "AutoEncoder 기반 웹 로그 데이터 이상 탐지 시스템"
+  authors:
+    - 김예서
+    - 장재원
+    - 이소연
+    - 최정욱
+    - 박수범
+    - 김대영
+  venue: "Journal of Platform Technology (KCI)"
+  details: "Vol. 13, No. 2, pp. 40-50"
+  tags:
+    - AutoEncoder
+    - Anomaly Detection
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2022-park
+  year: 2022
+  type: Domestic
+  title: "비콘을 활용한 청각장애인용 화재 대피 시스템의 구현"
+  authors:
+    - 박지훈
+    - 이소연
+    - 정민우
+    - 김대영
+  venue: "한국통신학회 논문지 (KCI)"
+  details: "제47권, 제2호, pp. 319-330"
+  tags:
+    - Beacon
+    - Fire Safety
+    - Accessibility
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2021-lee-audio
+  year: 2021
+  type: Domestic
+  title: "음향 데이터를 활용한 딥러닝 기반 긴급차량 우선 신호 시스템"
+  authors:
+    - 이소연
+    - 장재원
+    - 김대영
+  venue: "Journal of Platform Technology (KCI)"
+  details: "제9권, 제3호, pp. 44-51"
+  tags:
+    - Deep Learning
+    - Emergency Vehicle
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2020-jung-lidar
+  year: 2020
+  type: Domestic
+  title: "라이다 임베디드 프로세서를 위한 동적 객체인식 아키텍처 구현"
+  authors:
+    - 정민우
+    - 이상훈
+    - 김대영
+  venue: "Journal of Platform Technology (KCI)"
+  details: "제8권, 제4호, pp. 11-19"
+  tags:
+    - LiDAR
+    - Object Recognition
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2020-shin
+  year: 2020
+  type: Domestic
+  title: "공공WiFi지역을 경유하는 경로 찾기 시스템 구현"
+  authors:
+    - 신상원
+    - 이영찬
+    - 김대영
+  venue: "Journal of Platform Technology (KCI)"
+  details: "제8권, 제2호, pp. 10-21"
+  tags:
+    - WiFi
+    - Path Finding
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2019-lee-nn
+  year: 2019
+  type: Domestic
+  title: "사물인터넷을 위한 신경망 기반의 지능형 액세스 포인트 시스템의 구현"
+  authors:
+    - 이영찬
+    - 이소연
+    - 김대영
+  venue: "인터넷정보학회논문지 JICS (KCI)"
+  details: "제20권, 제5호, pp. 95-104"
+  tags:
+    - IoT
+    - Neural Network
+    - AP
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2018-kim-ahrs
+  year: 2018
+  type: Domestic
+  title: "AHRS 알고리즘을 이용한 영유아 모니터링 시스템 개발"
+  authors:
+    - 김은
+    - 김석훈
+    - 김대영
+  venue: "Journal of Platform Technology (KCI)"
+  details: "제6권, 제4호, pp. 41-48"
+  tags:
+    - AHRS
+    - Infant Monitoring
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2016-bkim-channel
+  year: 2016
+  type: Domestic
+  title: "A Channel Allocation Scheme based on Coloring Algorithm for Interference Mitigation in Coexisting WBANs"
+  authors:
+    - BeomSeok Kim
+    - Dae-Young Kim
+  venue: "Journal of Platform Technology (KCI)"
+  details: "제4권, 제3호, pp. 2-7"
+  tags:
+    - WBAN
+    - Channel Allocation
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2016-cheon
+  year: 2016
+  type: Domestic
+  title: "대규모 공중무인기를 이용한 가상력 기반 재난 감시 네트워크"
+  authors:
+    - 천정명
+    - 윤석훈
+    - 김대영
+  venue: "한국인터넷방송통신학회논문지"
+  details: "제16권, 제4호, pp. 97-108"
+  tags:
+    - UAV
+    - Disaster Monitoring
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2015-kim-channel
+  year: 2015
+  type: Domestic
+  title: "클러스터 기반 센서 네트워크에서의 네트워크 특성 정보를 고려한 무선 채널 선택 기법"
+  authors:
+    - 김대영
+    - 김범석
+    - 조진성
+  venue: "한국인터넷정보학회논문지"
+  details: "제16권, 제2호"
+  tags:
+    - WSN
+    - Channel Selection
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2013-jin-cluster
+  year: 2013
+  type: Domestic
+  title: "계층적 센서네트워크에서 에너지 효율성을 위한 최적의 클러스터 비율 분석"
+  authors:
+    - 김자룡
+    - 김대영
+    - 조진성
+  venue: "한국통신학회논문지 (네트워크 및 서비스)"
+  details: "제38B권, 제6호, pp. 446-453"
+  tags:
+    - WSN
+    - Clustering
+    - Energy
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2012-kim-cognitive
+  year: 2012
+  type: Domestic
+  title: "인지 전술 무선망에서 QoS 보장을 위한 정책기반 동적 채널 선택"
+  authors:
+    - 김종연
+    - 김보성
+    - 권세훈
+    - 노병희
+    - 김대영
+    - 박수범
+  venue: "정보과학회논문지: 정보통신"
+  details: "제39권, 제6호, pp. 468-478"
+  tags:
+    - Cognitive Radio
+    - QoS
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2012-kim-manet
+  year: 2012
+  type: Domestic
+  title: "K-WNW MANET의 기간망 연동 프레임워크"
+  authors:
+    - 김대영
+    - 박수범
+    - 최항준
+    - 박성복
+  venue: "국방과학연구소 제 13차 통신전자 학술대회"
+  details: ""
+  tags:
+    - MANET
+    - Military
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2011-seo-dfmac
+  year: 2011
+  type: Domestic
+  title: "DF(Dynamic and Flexible)-MAC: WBAN을 위한 유연한 MAC 프로토콜"
+  authors:
+    - 서영선
+    - 김대영
+    - 김범석
+    - 조진성
+  venue: "한국통신학회논문지 (무선통신)"
+  details: "제36권, 제8호, pp. 712-722"
+  tags:
+    - WBAN
+    - MAC
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2011-kim-wban-routing
+  year: 2011
+  type: Domestic
+  title: "에너지량에 기반한 환경 적응 WBAN 라우팅 알고리즘"
+  authors:
+    - 김의연
+    - 김대영
+    - 신상배
+    - 조진성
+  venue: "한국컴퓨터정보학회논문지"
+  details: "제16권, 제1호"
+  tags:
+    - WBAN
+    - Routing
+    - Energy
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2010-kim-event
+  year: 2010
+  type: Domestic
+  title: "센서 네트워크에서 Event-driven 데이터의 신뢰성 있는 전송 및 버퍼 관리 기법"
+  authors:
+    - 김대영
+    - 조진성
+  venue: "한국통신학회 논문지 (네트워크 및 융합 서비스)"
+  details: "제35권, 제6호, pp. 867-874"
+  tags:
+    - WSN
+    - Event-driven
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2009-kim-medinet
+  year: 2009
+  type: Domestic
+  title: "m-MediNet: WBAN기반 u-Healthcare System 응용을 위한 소프트웨어 플랫폼의 설계"
+  authors:
+    - 김의연
+    - 김대영
+    - 조진성
+  venue: "한국정보과학회 Korea Computer Congress"
+  details: ""
+  tags:
+    - WBAN
+    - Healthcare
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2008-kim-wimax
+  year: 2008
+  type: Domestic
+  title: "Fast Uplink Radio Resource Allocation in Mobile WiMAX"
+  authors:
+    - 김대영
+    - 장홍성
+    - 조진성
+  venue: "한국정보과학회 Summer Workshop on Computer Communications (SWCC)"
+  details: ""
+  tags:
+    - WiMAX
+    - Resource Allocation
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2008-kim-sink
+  year: 2008
+  type: Domestic
+  title: "무선 센서 네트워크를 위한 계층적 라우팅에서의 이동 싱크 노드 지원 방안"
+  authors:
+    - 김대영
+    - 조진성
+  venue: "한국통신학회 논문지 (네트워크 및 서비스)"
+  details: "제33권, 제1호, pp. 48-57"
+  tags:
+    - WSN
+    - Mobile Sink
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2006-kim-routing
+  year: 2006
+  type: Domestic
+  title: "무선 센서 네트워크를 위한 계층적 라우팅 알고리즘"
+  authors:
+    - 김대영
+    - 조진성
+  venue: "한국통신학회 하계종합학술대회"
+  details: ""
+  tags:
+    - WSN
+    - Routing
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: d-2005-kim-cluster
+  year: 2005
+  type: Domestic
+  title: "계층적 센서 네트워크에서 트래픽 부하와 에너지를 고려한 클러스트 헤드 선정 알고리즘"
+  authors:
+    - 김대영
+    - 조진성
+  venue: "한국정보과학회 종합학술대회"
+  details: ""
+  tags:
+    - WSN
+    - Cluster Head
+  pdfUrl: ""
+  doiUrl: ""

@@ -1,0 +1,77 @@
+- id: best-paper-icc-2024
+  category: Awards
+  date: "2024-06-15"
+  title:
+    en: INSLAB Wins Best Paper Award at ICC 2024
+    ko: INSLAB, ICC 2024 최우수 논문상 수상
+  description:
+    en: >-
+      Our team's research on "Federated Learning Optimization for Edge Networks"
+      was recognized for its contribution to efficient edge AI processing.
+    ko: >-
+      "엣지 네트워크를 위한 연합 학습 최적화" 연구가 효율적인 엣지 AI 처리 분야에서의
+      기여로 인정받았습니다.
+  imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuA-DXbdzE3ELGUrVCcq1YBG_CmW2aQU_7Rpi1DNnCKRE7qu22qcPOR9stgPi105dxeWIMgoWGsom86fuO1Q_R3PK9Dx0PhT8IbSNMYLePUU65HFoPwE1090ABafZEznUc63JnUt6Fn34d0lYHif96psrM8_XfajwTZoXcpjxmzHSlEYOW2TFCU8SqjSjxa84EVqKc0qFq83od1eylYt0JRzC0LZ0ZHLqg5OdsjoU67S7Gtpr_BHiTceN9tHKyRP93kWi2DAckG0HK2j"
+
+- id: spring-ai-security-workshop
+  category: Events
+  date: "2024-05-02"
+  title:
+    en: Spring 2024 Workshop on AI Security
+    ko: 2024년 봄학기 AI 보안 워크숍
+  description:
+    en: >-
+      INSLAB hosted a workshop bringing together industry experts from Google and
+      Microsoft to discuss robust AI model security practices.
+    ko: >-
+      INSLAB이 Google, Microsoft 업계 전문가들을 초청하여 강건한 AI 모델 보안
+      방법론을 논의하는 워크숍을 개최했습니다.
+  imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuAcpUkyAbUtSv-P5m6MiW7L7t6VkNzv96ZX6dLfbR_hp0_M3xY5Aa3B_ZCXbxSRPwIXagkCFEyHphib-SY69fAtmaQfQZWLE5fXzVEGtG2WxFL4WiThycuOQZgwvIRODMzVEf24BDGkhXa99XibhWKQy13SA5U0IUmc4JEXE5ksDLnAohJPBLhKkDVuRt0ZNuPKVfifNy_K9FYZ2OksBDZm3G3qPL8pSspE3-3I4qvL9Og8FwkxFjAXUWz4Ats4ynGel38MLSQ3XoQx"
+
+- id: ieee-tnsm-6g-paper
+  category: Papers
+  date: "2025-01-10"
+  title:
+    en: New Paper on 6G Intelligent Networking Accepted at IEEE TNSM
+    ko: 6G 지능형 네트워킹 논문 IEEE TNSM 게재 확정
+  description:
+    en: >-
+      Our latest research on intent-based autonomous networking for 6G systems
+      has been accepted for publication in IEEE Transactions on Network and
+      Service Management.
+    ko: >-
+      6G 시스템을 위한 인텐트 기반 자율 네트워킹에 관한 최신 연구가 IEEE
+      Transactions on Network and Service Management에 게재 확정되었습니다.
+  imageUrl: ""
+
+- id: fall-2025-recruitment
+  category: Notices
+  date: "2025-03-01"
+  title:
+    en: Graduate Student Applications Open for Fall 2025
+    ko: 2025년 가을학기 대학원생 모집 안내
+  description:
+    en: >-
+      INSLAB is now accepting applications for M.S. and Ph.D. candidates for the
+      Fall 2025 semester. We are looking for motivated students interested in AI,
+      networking, and IoT security.
+    ko: >-
+      INSLAB에서 2025년 가을학기 석사 및 박사과정 지원자를 모집합니다. AI,
+      네트워킹, IoT 보안에 관심 있는 의욕적인 학생을 찾고 있습니다.
+  imageUrl: ""
+
+- id: arci-2025-presentation
+  category: Events
+  date: "2025-06-20"
+  title:
+    en: INSLAB Presents at ARCI 2025, Granada
+    ko: INSLAB, ARCI 2025 학회 발표 (그라나다)
+  description:
+    en: >-
+      Team members presented two papers at the International Conference on
+      Advanced Research in Computing and Informatics (ARCI 2025) held in
+      Granada, Spain.
+    ko: >-
+      연구원들이 스페인 그라나다에서 개최된 ARCI 2025 국제 학회에서 2편의 논문을
+      발표했습니다.
+  imageUrl: ""

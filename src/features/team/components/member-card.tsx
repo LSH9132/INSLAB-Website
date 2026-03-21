@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import type { Member } from "../data/members";
+import type { Member } from "@/lib/content";
 
 const avatarColors = [
   "bg-blue-600",

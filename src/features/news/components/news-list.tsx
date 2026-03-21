@@ -6,8 +6,8 @@ import {
   fadeUpVariants,
   staggerContainerVariants,
 } from "@/lib/motion/fade-up";
-import type { NewsItem, NewsCategory } from "../data/news-items";
-import { categoryOrder } from "../data/news-items";
+import type { NewsItem, NewsCategory } from "@/lib/content/schemas";
+import { categoryOrder } from "@/lib/content/constants";
 
 type NewsListDictionary = {
   all: string;

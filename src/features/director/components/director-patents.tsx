@@ -2,14 +2,14 @@
 
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { patentData } from "../data/director-data";
+import type { Patent } from "@/lib/content";
 import { ShieldCheck, FileCheck, FileClock } from "lucide-react";
 
-export function DirectorPatents() {
+export function DirectorPatents({ patents }: { patents: Patent[] }) {
   const t = useTranslations("Director");
 
-  const registered = patentData.filter((p) => p.status === "Registered");
-  const filed = patentData.filter((p) => p.status === "Filed");
+  const registered = patents.filter((p) => p.status === "Registered");
+  const filed = patents.filter((p) => p.status === "Filed");
 
   return (
     <section className="w-full py-16">

@@ -2,14 +2,14 @@
 
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { projectData } from "../data/director-data";
+import type { Project } from "@/lib/content";
 import { FolderGit2, CheckCircle2, Clock } from "lucide-react";
 
-export function DirectorProjects() {
+export function DirectorProjects({ projects }: { projects: Project[] }) {
   const t = useTranslations("Director");
 
-  const ongoingProjects = projectData.filter(p => p.status === "Ongoing");
-  const pastProjects = projectData.filter(p => p.status === "Past");
+  const ongoingProjects = projects.filter(p => p.status === "Ongoing");
+  const pastProjects = projects.filter(p => p.status === "Past");
 
   return (
     <section className="w-full py-16 bg-muted/10">
