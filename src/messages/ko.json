@@ -241,13 +241,22 @@
       "body": "인공지능, 네트워크 시스템, 사이버 보안에 걸친 연구를 탐색하세요. INSLAB의 최근 학문적 성과를 형성하는 주요 논문과 주제를 확인하실 수 있습니다."
     },
     "filters": {
-      "items": ["연도", "연구 분야", "유형"],
+      "items": ["전체", "저널", "학회", "국내"],
       "reset": "필터 초기화",
-      "displaying": "{total}편 논문 표시 중"
+      "displaying": "{total}편 논문 표시 중",
+      "allYears": "전체 연도"
     },
     "metadata": {
       "title": "논문",
       "description": "AI, 네트워크 시스템, 보안 분야의 INSLAB 선별 논문."
     }
+  },
+  "Director": {
+    "education": "학력 및 경력",
+    "career": "경력",
+    "researchArea": "연구 분야",
+    "publications": "주요 논문",
+    "projects": "연구 과제",
+    "patents": "특허"
   }
 }

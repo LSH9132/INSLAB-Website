@@ -241,13 +241,22 @@
       "body": "Our research spans artificial intelligence, network systems, and cybersecurity. Explore representative papers and the themes shaping INSLAB's recent academic output."
     },
     "filters": {
-      "items": ["Year", "Research Area", "Type"],
+      "items": ["All", "Journal", "Conference", "Domestic"],
       "reset": "Reset Filters",
-      "displaying": "Displaying {total} papers"
+      "displaying": "Displaying {total} papers",
+      "allYears": "All Years"
     },
     "metadata": {
       "title": "Publications",
       "description": "Selected INSLAB publications across AI, network systems, and security."
     }
+  },
+  "Director": {
+    "education": "Education & Career",
+    "career": "Career",
+    "researchArea": "Research Areas",
+    "publications": "Selected Publications",
+    "projects": "Research Projects",
+    "patents": "Patents"
   }
 }

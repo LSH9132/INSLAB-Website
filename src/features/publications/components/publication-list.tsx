@@ -17,7 +17,7 @@ export function PublicationList({
     <motion.section
       initial={shouldReduceMotion ? false : "hidden"}
       whileInView={shouldReduceMotion ? undefined : "visible"}
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={{ once: true, amount: 0 }}
       variants={staggerContainerVariants}
     >
       <div className="divide-y divide-slate-100">

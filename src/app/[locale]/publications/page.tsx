@@ -4,10 +4,9 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { notFound } from "next/navigation";
 
 import { PageShell } from "@/components/layout";
-import { PublicationFilters } from "@/features/publications/components/publication-filters";
-import { PublicationList } from "@/features/publications/components/publication-list";
 import { PublicationsHero } from "@/features/publications/components/publications-hero";
-import { publications } from "@/features/publications/data/publications";
+import { PublicationsContent } from "@/features/publications/components/publications-content";
+import { publications } from "@/features/publications/data";
 import { routing } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -46,8 +45,10 @@ export default async function PublicationsPage({
       mainClassName="mx-auto flex w-full max-w-6xl flex-col px-6 py-12 lg:px-10 lg:py-20"
     >
       <PublicationsHero hero={messages.publications.hero} />
-      <PublicationFilters total={publications.length} filters={messages.publications.filters} />
-      <PublicationList publications={publications} />
+      <PublicationsContent
+        publications={publications}
+        filters={messages.publications.filters}
+      />
     </PageShell>
   );
 }
