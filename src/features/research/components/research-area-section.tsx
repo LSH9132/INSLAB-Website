@@ -10,43 +10,42 @@ import type { ResearchArea } from "../data/areas";
 type ResearchAreaSectionProps = {
   area: ResearchArea;
   locale: string;
+  index: number;
   dict: {
     keywords: string;
     representativePapers: string;
   };
 };
 
-const eyebrowMap: Record<string, string> = {
-  "intelligent-networking": "IN",
-  "distributed-ai": "DA",
-  "cyber-physical-systems": "CS",
-};
-
-const colorMap: Record<string, { badge: string; border: string }> = {
+const colorMap: Record<string, { badge: string; border: string; stripe: string }> = {
   "intelligent-networking": {
     badge: "bg-blue-50 text-blue-700",
     border: "border-blue-200",
+    stripe: "border-blue-400",
   },
   "distributed-ai": {
     badge: "bg-teal-50 text-teal-700",
     border: "border-teal-200",
+    stripe: "border-teal-400",
   },
   "cyber-physical-systems": {
     badge: "bg-violet-50 text-violet-700",
     border: "border-violet-200",
+    stripe: "border-violet-400",
   },
 };
 
 export function ResearchAreaSection({
   area,
   locale,
+  index,
   dict,
 }: ResearchAreaSectionProps) {
   const title = locale === "ko" ? area.title.ko : area.title.en;
   const description = locale === "ko" ? area.description.ko : area.description.en;
   const paragraphs = description.split("\n\n");
-  const eyebrow = eyebrowMap[area.id] ?? "";
-  const colors = colorMap[area.id] ?? { badge: "bg-slate-50 text-slate-700", border: "border-slate-200" };
+  const colors = colorMap[area.id] ?? { badge: "bg-slate-50 text-slate-700", border: "border-slate-200", stripe: "border-slate-400" };
+  const number = String(index + 1).padStart(2, "0");
 
   return (
     <motion.section
@@ -58,16 +57,16 @@ export function ResearchAreaSection({
       viewport={{ once: true, amount: 0.15 }}
     >
       <motion.div
-        className={`rounded-2xl border ${colors.border} bg-white p-8 shadow-sm lg:p-10`}
+        className={`relative rounded-2xl border ${colors.border} border-l-4 ${colors.stripe} bg-white p-8 shadow-sm lg:p-10`}
         variants={fadeUpVariants}
       >
+        {/* Large number watermark */}
+        <span className="pointer-events-none absolute top-6 right-8 text-6xl font-light text-slate-200 font-serif select-none lg:text-7xl">
+          {number}
+        </span>
+
         {/* Header */}
-        <div className="mb-6 flex items-center gap-4">
-          <div
-            className={`flex h-12 w-12 items-center justify-center rounded-lg ${colors.badge} text-sm font-bold`}
-          >
-            {eyebrow}
-          </div>
+        <div className="mb-6">
           <h2 className="text-2xl font-bold text-slate-900 lg:text-3xl">
             {title}
           </h2>
@@ -91,7 +90,7 @@ export function ResearchAreaSection({
             {area.keywords.map((kw) => (
               <span
                 key={kw}
-                className={`rounded-full px-3 py-1 text-xs font-medium ${colors.badge}`}
+                className={`rounded-sm px-3 py-1 text-xs font-medium ${colors.badge}`}
               >
                 {kw}
               </span>
@@ -114,7 +113,7 @@ export function ResearchAreaSection({
                   {i + 1}
                 </span>
                 <div>
-                  <p className="text-sm font-medium text-slate-800">
+                  <p className="text-sm font-medium text-slate-800 font-serif italic">
                     {paper.title}
                   </p>
                   <p className="mt-0.5 text-xs text-slate-500">

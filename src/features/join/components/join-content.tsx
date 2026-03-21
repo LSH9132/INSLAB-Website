@@ -21,18 +21,23 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
       <button
         type="button"
         onClick={() => setIsOpen((v) => !v)}
-        className="flex w-full items-center justify-between py-4 text-left"
+        className="flex w-full items-center gap-3 py-4 text-left"
       >
-        <span className="text-sm font-semibold text-slate-800">
+        <span className="mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+        <span className="flex-1 text-sm font-semibold text-slate-800">
           {question}
         </span>
-        <motion.span
-          animate={{ rotate: isOpen ? 45 : 0 }}
+        <motion.svg
+          animate={{ rotate: isOpen ? 90 : 0 }}
           transition={{ duration: 0.2 }}
-          className="flex-shrink-0 text-lg text-slate-400"
+          className="h-4 w-4 flex-shrink-0 text-slate-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
         >
-          +
-        </motion.span>
+          <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </motion.svg>
       </button>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -43,7 +48,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <p className="pb-4 text-sm leading-relaxed text-slate-500">
+            <p className="pb-4 pl-[18px] text-sm leading-relaxed text-slate-500">
               {answer}
             </p>
           </motion.div>
@@ -64,10 +69,9 @@ export function JoinContent({ dict }: JoinContentProps) {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="mb-8 flex items-center gap-3 text-xl font-bold text-slate-900"
+          className="mb-8 text-xl font-bold text-slate-900"
           variants={fadeUpVariants}
         >
-          <span className="h-6 w-1.5 rounded-full bg-accent" />
           {dict.why.title}
         </motion.h2>
         <motion.div
@@ -78,8 +82,11 @@ export function JoinContent({ dict }: JoinContentProps) {
             (point: { title: string; description: string }, i: number) => (
               <div
                 key={i}
-                className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm"
+                className="relative rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:border-emerald-200"
               >
+                <span className="pointer-events-none absolute top-4 right-5 text-4xl font-bold text-emerald-200/60 select-none">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <h3 className="mb-2 font-bold text-slate-900">{point.title}</h3>
                 <p className="text-sm leading-relaxed text-slate-500">
                   {point.description}
@@ -98,10 +105,9 @@ export function JoinContent({ dict }: JoinContentProps) {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="mb-8 flex items-center gap-3 text-xl font-bold text-slate-900"
+          className="mb-8 text-xl font-bold text-slate-900"
           variants={fadeUpVariants}
         >
-          <span className="h-6 w-1.5 rounded-full bg-teal-500" />
           {dict.recruitment.title}
         </motion.h2>
         <motion.div
@@ -119,7 +125,7 @@ export function JoinContent({ dict }: JoinContentProps) {
             ) => (
               <div
                 key={i}
-                className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm"
+                className="rounded-2xl border border-slate-100 border-l-4 border-l-emerald-400 bg-white p-6 shadow-sm"
               >
                 <h3 className="mb-4 text-lg font-bold text-slate-900">
                   {track.degree}
@@ -130,7 +136,7 @@ export function JoinContent({ dict }: JoinContentProps) {
                       key={ri}
                       className="flex items-start gap-2 text-sm text-slate-600"
                     >
-                      <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                      <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
                       {req}
                     </li>
                   ))}
@@ -150,10 +156,9 @@ export function JoinContent({ dict }: JoinContentProps) {
         viewport={{ once: true }}
       >
         <motion.h2
-          className="mb-8 flex items-center gap-3 text-xl font-bold text-slate-900"
+          className="mb-8 text-xl font-bold text-slate-900"
           variants={fadeUpVariants}
         >
-          <span className="h-6 w-1.5 rounded-full bg-violet-500" />
           {dict.faq.title}
         </motion.h2>
         <motion.div
@@ -168,49 +173,43 @@ export function JoinContent({ dict }: JoinContentProps) {
         </motion.div>
       </motion.section>
 
-      {/* How to Apply */}
+      {/* How to Apply — inverted CTA */}
       <motion.section
         variants={staggerContainerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <motion.h2
-          className="mb-8 flex items-center gap-3 text-xl font-bold text-slate-900"
-          variants={fadeUpVariants}
-        >
-          <span className="h-6 w-1.5 rounded-full bg-amber-500" />
-          {dict.apply.title}
-        </motion.h2>
         <motion.div
-          className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm"
+          className="rounded-2xl bg-emerald-600 p-8 text-white shadow-sm lg:p-10"
           variants={fadeUpVariants}
         >
-          <p className="mb-4 text-sm leading-relaxed text-slate-600">
+          <h2 className="mb-4 text-xl font-bold">{dict.apply.title}</h2>
+          <p className="mb-6 text-sm leading-relaxed text-emerald-100">
             {dict.apply.description}
           </p>
-          <div className="mb-4 rounded-lg bg-slate-50 p-4">
-            <p className="text-sm font-medium text-slate-700">
+          <div className="mb-6">
+            <p className="text-sm font-medium text-emerald-100">
               {dict.apply.emailLabel}
             </p>
             <a
               href="mailto:dyoung.kim@sch.ac.kr"
-              className="text-sm text-accent hover:underline"
+              className="text-sm font-semibold text-emerald-200 hover:text-white hover:underline"
             >
               dyoung.kim@sch.ac.kr
             </a>
           </div>
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200">
               {dict.apply.documentsLabel}
             </p>
             <ul className="space-y-1.5">
               {dict.apply.documents.map((doc: string, i: number) => (
                 <li
                   key={i}
-                  className="flex items-start gap-2 text-sm text-slate-600"
+                  className="flex items-start gap-2 text-sm text-emerald-100"
                 >
-                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-slate-300" />
+                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-300" />
                   {doc}
                 </li>
               ))}

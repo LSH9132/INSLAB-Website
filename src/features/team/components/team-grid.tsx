@@ -44,10 +44,9 @@ export function TeamGrid({
         viewport={{ once: true }}
       >
         <motion.h2
-          className="mb-8 flex items-center gap-3 text-xl font-bold text-slate-900"
+          className="mb-8 border-l-2 border-teal-400 pl-4 text-xl font-bold text-slate-900"
           variants={fadeUpVariants}
         >
-          <span className="h-6 w-1.5 rounded-full bg-accent" />
           {dict.sections.director}
         </motion.h2>
         <motion.div className="max-w-2xl" variants={fadeUpVariants}>
@@ -70,10 +69,9 @@ export function TeamGrid({
           viewport={{ once: true }}
         >
           <motion.h2
-            className="mb-8 flex items-center gap-3 text-xl font-bold text-slate-900"
+            className="mb-8 border-l-2 border-teal-400 pl-4 text-xl font-bold text-slate-900"
             variants={fadeUpVariants}
           >
-            <span className="h-6 w-1.5 rounded-full bg-teal-500" />
             {dict.sections.graduate}
           </motion.h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -99,10 +97,9 @@ export function TeamGrid({
           viewport={{ once: true }}
         >
           <motion.h2
-            className="mb-8 flex items-center gap-3 text-xl font-bold text-slate-900"
+            className="mb-8 border-l-2 border-teal-400 pl-4 text-xl font-bold text-slate-900"
             variants={fadeUpVariants}
           >
-            <span className="h-6 w-1.5 rounded-full bg-violet-500" />
             {dict.sections.undergraduate}
           </motion.h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

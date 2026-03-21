@@ -51,13 +51,13 @@ export function MemberCard({
 
   const card = (
     <div
-      className={`group relative flex flex-col items-center rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
-        large ? "p-8 sm:flex-row sm:items-start sm:gap-8" : ""
+      className={`group relative flex flex-col items-center rounded-2xl border border-slate-100 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal-200 hover:shadow-lg ${
+        large ? "bg-stone-50 p-8 sm:flex-row sm:items-start sm:gap-8" : "bg-white"
       }`}
     >
       {/* Avatar */}
       <div
-        className={`relative flex-shrink-0 overflow-hidden rounded-full ${
+        className={`relative flex-shrink-0 overflow-hidden rounded-full ring-2 ring-white ring-offset-2 ${
           large ? "mb-4 h-28 w-28 sm:mb-0 sm:h-36 sm:w-36" : "mb-4 h-20 w-20"
         }`}
       >
