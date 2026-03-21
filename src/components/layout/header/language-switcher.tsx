@@ -1,35 +1,31 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import { motion } from "motion/react";
 
-import type { Locale } from "@/lib/i18n/i18n-config";
+import { Link, usePathname } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 
-type LanguageSwitcherProps = {
-  locale: Locale;
-  currentPath?: string;
-};
+type Locale = (typeof routing.locales)[number];
 
 const localeLabels: Record<Locale, { code: string; label: string; nativeLabel: string }> = {
   en: { code: "EN", label: "English", nativeLabel: "English" },
   ko: { code: "KO", label: "Korean", nativeLabel: "한국어" },
 };
 
-const localeOrder: Locale[] = ["en", "ko"];
+export function LanguageSwitcher() {
+  const currentLocale = useLocale() as Locale;
+  const pathname = usePathname();
 
-function buildLocalePath(locale: Locale, currentPath?: string): string {
-  const path = currentPath ?? "/";
-  if (locale === "en") {
-    return path.startsWith("/ko") ? path.slice(3) || "/" : path;
-  }
-  if (path.startsWith("/ko")) return path;
-  return `/ko${path === "/" ? "" : path}`;
-}
+  const nextLocale: Locale = currentLocale === "en" ? "ko" : "en";
+  const nextInfo = localeLabels[nextLocale];
 
-export function LanguageSwitcher({ locale, currentPath }: LanguageSwitcherProps) {
   return (
-    <div
-      className="relative inline-flex items-center gap-1.5 text-[10px] text-slate-400"
-      aria-label="Available site languages"
+    <Link
+      href={pathname}
+      locale={nextLocale}
+      className="relative inline-flex items-center gap-1.5 text-[10px] text-slate-400 transition-colors hover:text-slate-600"
+      aria-label={`Switch to ${nextInfo.label} (${nextInfo.nativeLabel})`}
     >
       {/* Globe icon */}
       <span className="flex h-4 w-4 items-center justify-center text-slate-300">
@@ -47,25 +43,18 @@ export function LanguageSwitcher({ locale, currentPath }: LanguageSwitcherProps)
         </svg>
       </span>
 
-      {/* Locale buttons with sliding underline */}
+      {/* EN | KO display — whole thing is one clickable link */}
       <div className="relative flex items-center divide-x divide-slate-200">
-        {localeOrder.map((loc) => {
+        {routing.locales.map((loc) => {
           const info = localeLabels[loc];
-          const isActive = loc === locale;
-          const href = buildLocalePath(loc, currentPath);
+          const isActive = loc === currentLocale;
 
           return (
             <div key={loc} className="relative px-1.5">
-              <motion.a
-                href={href}
-                className={`relative block py-0.5 font-medium tracking-[0.18em] uppercase transition-colors ${
-                  isActive ? "text-slate-700" : "text-slate-400 hover:text-slate-600"
+              <span
+                className={`relative block py-0.5 font-medium tracking-[0.18em] uppercase ${
+                  isActive ? "text-slate-700" : "text-slate-400"
                 }`}
-                aria-current={isActive ? "true" : undefined}
-                aria-label={`${info.label} (${info.nativeLabel})`}
-                whileHover={{ y: -0.5 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 500, damping: 25 }}
               >
                 {info.code}
                 {/* Active underline */}
@@ -76,11 +65,11 @@ export function LanguageSwitcher({ locale, currentPath }: LanguageSwitcherProps)
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
-              </motion.a>
+              </span>
             </div>
           );
         })}
       </div>
-    </div>
+    </Link>
   );
 }

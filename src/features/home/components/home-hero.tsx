@@ -1,15 +1,22 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import {
   motion,
   useMotionValue,
   useReducedMotion,
 } from "motion/react";
-import type { Dictionary } from "@/lib/i18n/dictionaries";
+import { Link } from "@/i18n/navigation";
 
-type HeroDictionary = Dictionary["home"]["hero"];
+type HeroDictionary = {
+  eyebrow: string;
+  headlineLines: string[][];
+  accentWords: string[];
+  subCopy: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  stats: { value: string; label: string }[];
+};
 
 /* ------------------------------------------------------------------ */
 /* Pipeline topology (unchanged — purely visual)                        */

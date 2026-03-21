@@ -4,9 +4,11 @@ import type { Variants } from "motion/react";
 import { motion, useReducedMotion } from "motion/react";
 
 import { staggerContainerVariants } from "@/lib/motion/fade-up";
-import type { Dictionary } from "@/lib/i18n/dictionaries";
-
-type HeroDictionary = Dictionary["publications"]["hero"];
+type HeroDictionary = {
+  eyebrow: string;
+  title: string;
+  body: string;
+};
 
 const heroEyebrowVariants: Variants = {
   hidden: { opacity: 0, x: -18 },

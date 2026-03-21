@@ -1,9 +1,11 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import type { Dictionary } from "@/lib/i18n/dictionaries";
-
-type FiltersDictionary = Dictionary["publications"]["filters"];
+type FiltersDictionary = {
+  items: string[];
+  reset: string;
+  displaying: string;
+};
 
 export function PublicationFilters({
   total,

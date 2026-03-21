@@ -1,6 +1,17 @@
-import type { Dictionary } from "@/lib/i18n/dictionaries";
+type NewsItem = {
+  id: string;
+  category: string;
+  date: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+};
 
-type NewsDictionary = Dictionary["home"]["news"];
+type NewsDictionary = {
+  title: string;
+  viewArchive: string;
+  items: NewsItem[];
+};
 
 export function HomeNews({ news }: { news: NewsDictionary }) {
   return (

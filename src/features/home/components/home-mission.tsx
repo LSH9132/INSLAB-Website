@@ -1,6 +1,9 @@
-import type { Dictionary } from "@/lib/i18n/dictionaries";
-
-type MissionDictionary = Dictionary["home"]["mission"];
+type MissionDictionary = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  stats: { value: string; label: string }[];
+};
 
 export function HomeMission({ mission }: { mission: MissionDictionary }) {
   return (

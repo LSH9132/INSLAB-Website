@@ -1,7 +1,17 @@
-import Link from "next/link";
-import type { Dictionary } from "@/lib/i18n/dictionaries";
+import { Link } from "@/i18n/navigation";
 
-type ResearchAreasDictionary = Dictionary["home"]["researchAreas"];
+type ResearchAreasDictionary = {
+  title: string;
+  subtitle: string;
+  allResearch: string;
+  exploreArea: string;
+  areas: {
+    id: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+  }[];
+};
 
 export function HomeResearchAreas({ researchAreas }: { researchAreas: ResearchAreasDictionary }) {
   return (

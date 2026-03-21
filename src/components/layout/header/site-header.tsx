@@ -4,18 +4,17 @@ import { useEffect, useRef, useState } from "react";
 
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
-import Link from "next/link";
 
-import type { Dictionary } from "@/lib/i18n/dictionaries";
-import type { Locale } from "@/lib/i18n/i18n-config";
+import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./language-switcher";
 import { SiteUtilityBar } from "./site-utility-bar";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type SiteHeaderProps = {
   currentPath?: string;
-  locale: Locale;
-  nav: Dictionary["nav"];
+  nav: any;
 };
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 type NavKey = "home" | "research" | "publications" | "team" | "contact";
 
@@ -57,13 +56,6 @@ const sectionHrefs: Record<NavKey, string[][]> = {
   ],
 };
 
-function prefixLocale(href: string, locale: Locale): string {
-  if (locale === "en") return href;
-  if (href.startsWith("/ko")) return href;
-  if (href === "/") return `/ko`;
-  return `/ko${href}`;
-}
-
 /** Animated hamburger / close icon */
 function MenuToggleIcon({ isOpen }: { isOpen: boolean }) {
   return (
@@ -92,40 +84,50 @@ function MenuToggleIcon({ isOpen }: { isOpen: boolean }) {
   );
 }
 
-export function SiteHeader({ currentPath, locale, nav }: SiteHeaderProps) {
+export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
   const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
   const [shouldShowUtilityBar, setShouldShowUtilityBar] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const lastScrollYRef = useRef(0);
   const navBarRef = useRef<HTMLDivElement>(null);
 
-  const normalizedPath = currentPath?.startsWith("/ko")
-    ? currentPath.slice(3) || "/"
-    : currentPath;
+  const normalizedPath = currentPath;
 
   const activeMenu = activeMenuId
     ? navOrder.find((key) => key === activeMenuId) ?? null
     : null;
 
   useEffect(() => {
+    let lastScrollY = 0;
+    let ticking = false;
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      if (ticking) return;
+      ticking = true;
 
-      // Directly mutate boxShadow — no React re-render needed
-      if (navBarRef.current) {
-        navBarRef.current.style.boxShadow =
-          currentScrollY > 8 ? "0 4px 24px rgba(15,23,42,0.08)" : "none";
-      }
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY;
 
-      if (currentScrollY <= 16) {
-        setShouldShowUtilityBar(true);
-        lastScrollYRef.current = currentScrollY;
-        return;
-      }
+        if (navBarRef.current) {
+          navBarRef.current.style.boxShadow =
+            currentScrollY > 8 ? "0 4px 24px rgba(15,23,42,0.08)" : "none";
+        }
 
-      setShouldShowUtilityBar(currentScrollY < lastScrollYRef.current);
-      lastScrollYRef.current = currentScrollY;
+        if (currentScrollY <= 16) {
+          setShouldShowUtilityBar(true);
+        } else if (delta > 4) {
+          // Scrolling down past deadzone → hide
+          setShouldShowUtilityBar(false);
+        } else if (delta < -4) {
+          // Scrolling up past deadzone → show
+          setShouldShowUtilityBar(true);
+        }
+        // Within ±4px deadzone → do nothing (prevents jitter)
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -151,11 +153,7 @@ export function SiteHeader({ currentPath, locale, nav }: SiteHeaderProps) {
         transition={{ duration: 0.22, ease: "easeOut" }}
         className="overflow-hidden"
       >
-        <SiteUtilityBar
-          locale={locale}
-          currentPath={currentPath}
-          announcements={nav.announcements}
-        />
+        <SiteUtilityBar announcements={nav.announcements} />
       </motion.div>
 
       {/* Main nav bar — CSS shadow via ref, no motion re-render on scroll */}
@@ -170,7 +168,7 @@ export function SiteHeader({ currentPath, locale, nav }: SiteHeaderProps) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
           >
-            <Link href={prefixLocale("/", locale)} className="group flex items-center gap-3">
+            <Link href="/" className="group flex items-center gap-3">
               <Image
                 src="/images/logo-inslab-black-transparent-v1.png"
                 alt="INSLAB logo"
@@ -216,7 +214,7 @@ export function SiteHeader({ currentPath, locale, nav }: SiteHeaderProps) {
                     className="relative"
                   >
                     <Link
-                      href={prefixLocale(navHrefs[key], locale)}
+                      href={navHrefs[key]}
                       onMouseEnter={() => setActiveMenuId(key)}
                       onFocus={() => setActiveMenuId(key)}
                       className={`relative rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
@@ -337,19 +335,16 @@ export function SiteHeader({ currentPath, locale, nav }: SiteHeaderProps) {
                 <div className="overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
                   <div className="grid grid-cols-[1.4fr_0.9fr] gap-10 px-6 py-8 lg:px-8">
                     <div className="grid gap-8 md:grid-cols-2">
-                      {nav[activeMenu].sections.map((section, si) => (
+                      {nav[activeMenu].sections.map((section: { title: string; links: { label: string; description: string }[] }, si: number) => (
                         <div key={section.title}>
                           <h2 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
                             {section.title}
                           </h2>
                           <div className="space-y-4">
-                            {section.links.map((link, li) => (
+                            {section.links.map((link: { label: string; description: string }, li: number) => (
                               <Link
                                 key={link.label}
-                                href={prefixLocale(
-                                  sectionHrefs[activeMenu][si]?.[li] ?? "/",
-                                  locale,
-                                )}
+                                href={sectionHrefs[activeMenu][si]?.[li] ?? "/"}
                                 className="block rounded-xl px-3 py-2 transition-colors hover:bg-slate-50"
                               >
                                 <p className="text-sm font-semibold text-slate-900 hover:text-accent">
@@ -379,7 +374,7 @@ export function SiteHeader({ currentPath, locale, nav }: SiteHeaderProps) {
                         {nav[activeMenu].summary}
                       </p>
                       <Link
-                        href={prefixLocale(navHrefs[activeMenu], locale)}
+                        href={navHrefs[activeMenu]}
                         className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-700"
                       >
                         {nav.openSection}
@@ -421,7 +416,7 @@ export function SiteHeader({ currentPath, locale, nav }: SiteHeaderProps) {
               {/* Drawer header */}
               <div className="flex h-20 flex-shrink-0 items-center justify-between px-6">
                 <Link
-                  href={prefixLocale("/", locale)}
+                  href="/"
                   className="flex items-center gap-3"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -483,7 +478,7 @@ export function SiteHeader({ currentPath, locale, nav }: SiteHeaderProps) {
                         }}
                       >
                         <Link
-                          href={prefixLocale(navHrefs[key], locale)}
+                          href={navHrefs[key]}
                           onClick={() => setIsMenuOpen(false)}
                           className={`group flex items-center justify-between rounded-xl px-4 py-3 text-base transition-colors ${
                             isActive
@@ -532,7 +527,7 @@ export function SiteHeader({ currentPath, locale, nav }: SiteHeaderProps) {
               {/* Drawer footer */}
               <div className="flex-shrink-0 border-t border-slate-100 px-6 py-5">
                 <div className="flex items-center justify-between">
-                  <LanguageSwitcher locale={locale} currentPath={currentPath} />
+                  <LanguageSwitcher />
                   <motion.button
                     type="button"
                     whileHover={{ scale: 1.03 }}

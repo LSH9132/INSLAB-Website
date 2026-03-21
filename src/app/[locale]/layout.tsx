@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+
+import { routing } from "@/i18n/routing";
 import "../globals.css";
-
-
-import { defaultLocale, isValidLocale, locales } from "@/lib/i18n/i18n-config";
-import type { Locale } from "@/lib/i18n/i18n-config";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({
@@ -37,15 +38,19 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  const { locale: rawLocale } = await params;
-  const locale: Locale = isValidLocale(rawLocale) ? rawLocale : defaultLocale;
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
-        {/* Pass dict and locale down via data attributes isn't ideal —
-            children receive them as props from the page layer instead. */}
-        {children}
+        <NextIntlClientProvider>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

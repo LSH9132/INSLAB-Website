@@ -4,14 +4,10 @@ import { useEffect, useState } from "react";
 
 import { AnimatePresence, motion } from "motion/react";
 
-import type { Dictionary } from "@/lib/i18n/dictionaries";
-import type { Locale } from "@/lib/i18n/i18n-config";
 import { LanguageSwitcher } from "./language-switcher";
 
 type SiteUtilityBarProps = {
-  locale: Locale;
-  currentPath?: string;
-  announcements: Dictionary["nav"]["announcements"];
+  announcements: string[];
 };
 
 /** Icon: GitHub mark */
@@ -118,11 +114,7 @@ function AnnouncementTicker({
   );
 }
 
-export function SiteUtilityBar({
-  locale,
-  currentPath,
-  announcements,
-}: SiteUtilityBarProps) {
+export function SiteUtilityBar({ announcements }: SiteUtilityBarProps) {
   return (
     <div className="border-b border-slate-100/80 bg-slate-50/90 backdrop-blur-sm">
       <div className="mx-auto flex h-7 max-w-7xl items-center gap-4 px-6 lg:px-8">
@@ -157,7 +149,7 @@ export function SiteUtilityBar({
           <span className="hidden h-3 w-px bg-slate-200 sm:block" />
 
           {/* Language switcher */}
-          <LanguageSwitcher locale={locale} currentPath={currentPath} />
+          <LanguageSwitcher />
         </div>
       </div>
     </div>

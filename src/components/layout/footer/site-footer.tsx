@@ -1,21 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
-import type { Dictionary } from "@/lib/i18n/dictionaries";
-import type { Locale } from "@/lib/i18n/i18n-config";
 
+import { Link } from "@/i18n/navigation";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type SiteFooterProps = {
-  locale: Locale;
-  footer: Dictionary["footer"];
+  footer: any;
 };
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
-function prefixLocale(href: string, locale: Locale): string {
-  if (locale === "en") return href;
-  if (href.startsWith("/ko")) return href;
-  if (href === "/") return `/ko`;
-  return `/ko${href}`;
-}
-
-export function SiteFooter({ locale, footer }: SiteFooterProps) {
+export function SiteFooter({ footer }: SiteFooterProps) {
   const [addressLine1, addressLine2] = footer.sections.contact.address.split("\n");
   const [tagLine1, tagLine2] = footer.tagline.split("\n");
 
@@ -25,13 +18,28 @@ export function SiteFooter({ locale, footer }: SiteFooterProps) {
         <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <Image
-                src="/images/logo-inslab-black-transparent-v1.png"
-                alt="INSLAB logo"
-                width={132}
-                height={40}
-                className="h-8 w-auto"
-              />
+              <Link href="/" className="group inline-flex items-center gap-3">
+                <Image
+                  src="/images/logo-inslab-black-transparent-v1.png"
+                  alt="INSLAB logo"
+                  width={40}
+                  height={40}
+                  className="h-8 w-auto transition-transform duration-200 group-hover:scale-105"
+                />
+                <div className="flex flex-col justify-center gap-[5px] py-1">
+                  <span className="text-[1.1rem] font-black leading-none tracking-wider text-slate-900 transition-colors group-hover:text-slate-700">
+                    INSLAB
+                  </span>
+                  <span className="flex items-center gap-[4px] text-[0.575rem] font-light leading-none tracking-[0.22em] text-slate-600 transition-colors group-hover:text-slate-500">
+                    <span>Intelligence</span>
+                    <span>Network</span>
+                    <span className="text-slate-500">&</span>
+                    <span>System</span>
+                    <span className="text-slate-500">.</span>
+                    <span>Lab</span>
+                  </span>
+                </div>
+              </Link>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-slate-500">
               {tagLine1}
@@ -75,7 +83,7 @@ export function SiteFooter({ locale, footer }: SiteFooterProps) {
               {footer.sections.research.title}
             </h2>
             <ul className="space-y-4">
-              {footer.sections.research.links.map((link) => (
+              {footer.sections.research.links.map((link: string) => (
                 <li key={link}>
                   <a href="#" className="text-sm text-slate-500 hover:text-accent">
                     {link}
@@ -92,13 +100,13 @@ export function SiteFooter({ locale, footer }: SiteFooterProps) {
             <ul className="space-y-4">
               <li>
                 <Link
-                  href={prefixLocale("/publications", locale)}
+                  href="/publications"
                   className="text-sm text-slate-500 hover:text-accent"
                 >
                   {footer.sections.lab.links[0]}
                 </Link>
               </li>
-              {footer.sections.lab.links.slice(1).map((link) => (
+              {footer.sections.lab.links.slice(1).map((link: string) => (
                 <li key={link}>
                   <a href="#" className="text-sm text-slate-500 hover:text-accent">
                     {link}
