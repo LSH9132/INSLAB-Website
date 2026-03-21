@@ -243,8 +243,13 @@
     "filters": {
       "items": ["전체", "저널", "학회", "국내"],
       "reset": "필터 초기화",
-      "displaying": "{total}편 논문 표시 중",
-      "allYears": "전체 연도"
+      "displaying": "{total}편 중 {count}편 표시 중",
+      "allYears": "전체 연도",
+      "topics": "주제",
+      "noResults": "선택한 필터와 일치하는 논문이 없습니다.",
+      "prev": "이전",
+      "next": "다음",
+      "page": "페이지"
     },
     "metadata": {
       "title": "논문",

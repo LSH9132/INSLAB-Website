@@ -243,8 +243,13 @@
     "filters": {
       "items": ["All", "Journal", "Conference", "Domestic"],
       "reset": "Reset Filters",
-      "displaying": "Displaying {total} papers",
-      "allYears": "All Years"
+      "displaying": "Displaying {count} of {total} papers",
+      "allYears": "All Years",
+      "topics": "Topics",
+      "noResults": "No publications match the selected filters.",
+      "prev": "Prev",
+      "next": "Next",
+      "page": "Page"
     },
     "metadata": {
       "title": "Publications",
