@@ -14,7 +14,7 @@ type JoinContentProps = {
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="border-b border-slate-100">
