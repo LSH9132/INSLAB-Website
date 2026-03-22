@@ -53,16 +53,85 @@ for (let row = 0; row < 8; row++) {
 const brushstrokePath =
   "M 0 8 C 8 3, 16 12, 24 7 S 40 2, 48 8 S 64 14, 72 7 S 88 2, 96 8";
 
-/* Floating particles — drifting upward */
-const particles = [
-  { cx: 15, cy: 80, r: 0.6, dur: 12, delay: 0 },
-  { cx: 30, cy: 90, r: 0.4, dur: 10, delay: 2 },
-  { cx: 50, cy: 85, r: 0.5, dur: 14, delay: 4 },
-  { cx: 70, cy: 92, r: 0.35, dur: 11, delay: 1 },
-  { cx: 85, cy: 78, r: 0.55, dur: 13, delay: 3 },
-  { cx: 42, cy: 95, r: 0.3, dur: 9, delay: 5 },
-  { cx: 62, cy: 88, r: 0.45, dur: 15, delay: 2.5 },
+/* Floating shapes — each shape = a unique personality */
+type Shape = "circle" | "fourStar" | "diamond" | "triangle" | "cross" | "ring";
+type FloatingShape = {
+  x: number;
+  cy: number;
+  size: number;
+  dur: number;
+  delay: number;
+  shape: Shape;
+  color: string;
+  spin?: number; // rotation duration (0 = no spin)
+};
+
+const floatingShapes: FloatingShape[] = [
+  // Circles — soft, collaborative
+  { x: 12, cy: 82, size: 0.7, dur: 13, delay: 0,   shape: "circle",   color: "#3b82f6" },
+  { x: 88, cy: 76, size: 0.5, dur: 11, delay: 3,   shape: "circle",   color: "#8b5cf6" },
+  // Four-pointed stars — creative sparks
+  { x: 25, cy: 90, size: 1.2, dur: 15, delay: 1,   shape: "fourStar", color: "#3b82f6", spin: 8 },
+  { x: 72, cy: 88, size: 0.9, dur: 12, delay: 4.5, shape: "fourStar", color: "#06b6d4", spin: 10 },
+  { x: 48, cy: 95, size: 0.7, dur: 10, delay: 7,   shape: "fourStar", color: "#8b5cf6", spin: 12 },
+  // Diamonds — precision, analytical
+  { x: 38, cy: 86, size: 0.9, dur: 14, delay: 2,   shape: "diamond",  color: "#06b6d4", spin: 16 },
+  { x: 82, cy: 92, size: 0.6, dur: 9,  delay: 5.5, shape: "diamond",  color: "#3b82f6", spin: 20 },
+  // Triangles — direction, ambition
+  { x: 58, cy: 80, size: 0.8, dur: 12, delay: 3.5, shape: "triangle", color: "#8b5cf6", spin: 14 },
+  { x: 8,  cy: 94, size: 0.6, dur: 11, delay: 6,   shape: "triangle", color: "#06b6d4", spin: 18 },
+  // Crosses — interdisciplinary
+  { x: 45, cy: 88, size: 0.8, dur: 16, delay: 1.5, shape: "cross",    color: "#3b82f6", spin: 12 },
+  { x: 92, cy: 84, size: 0.6, dur: 10, delay: 4,   shape: "cross",    color: "#8b5cf6", spin: 15 },
+  // Rings — openness, connection
+  { x: 20, cy: 96, size: 0.9, dur: 13, delay: 5,   shape: "ring",     color: "#06b6d4" },
+  { x: 65, cy: 92, size: 0.55, dur: 11, delay: 2.5, shape: "ring",    color: "#3b82f6" },
 ];
+
+/* SVG path/element for each shape type */
+function renderShape(s: FloatingShape) {
+  const sz = s.size;
+  switch (s.shape) {
+    case "circle":
+      return <circle r={sz * 0.5} fill={s.color} />;
+    case "fourStar": {
+      // 4-pointed star
+      const a = sz * 0.5;
+      const b = sz * 0.15;
+      const d = `M0,${-a} L${b},${-b} L${a},0 L${b},${b} L0,${a} L${-b},${b} L${-a},0 L${-b},${-b}Z`;
+      return <path d={d} fill={s.color} />;
+    }
+    case "diamond": {
+      const h = sz * 0.5;
+      const w = sz * 0.3;
+      return <path d={`M0,${-h} L${w},0 L0,${h} L${-w},0Z`} fill={s.color} />;
+    }
+    case "triangle": {
+      const h = sz * 0.5;
+      const w = sz * 0.4;
+      return <path d={`M0,${-h} L${w},${h} L${-w},${h}Z`} fill={s.color} />;
+    }
+    case "cross": {
+      const a = sz * 0.5;
+      const t = sz * 0.12;
+      return (
+        <path
+          d={`M${-t},${-a} L${t},${-a} L${t},${-t} L${a},${-t} L${a},${t} L${t},${t} L${t},${a} L${-t},${a} L${-t},${t} L${-a},${t} L${-a},${-t} L${-t},${-t}Z`}
+          fill={s.color}
+        />
+      );
+    }
+    case "ring":
+      return (
+        <circle
+          r={sz * 0.4}
+          fill="none"
+          stroke={s.color}
+          strokeWidth={sz * 0.1}
+        />
+      );
+  }
+}
 
 /* Smooth easing */
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -156,26 +225,47 @@ export function TeamHero({ hero, stats }: TeamHeroProps) {
             ))}
           </motion.g>
 
-          {/* Floating particles — drift upward */}
+          {/* Floating shapes — diverse personalities drifting upward */}
           {!rm &&
-            particles.map((p, i) => (
-              <motion.circle
-                key={`pt${i}`}
-                cx={p.cx}
-                r={p.r}
-                fill="#3b82f6"
-                initial={{ cy: p.cy, opacity: 0 }}
+            floatingShapes.map((s, i) => (
+              <motion.g
+                key={`fs${i}`}
+                initial={{ opacity: 0 }}
                 animate={{
-                  cy: [p.cy, p.cy - 70],
-                  opacity: [0, 0.12, 0.12, 0],
+                  opacity: [0, 0.14, 0.14, 0],
                 }}
                 transition={{
-                  duration: p.dur,
-                  delay: p.delay,
+                  duration: s.dur,
+                  delay: s.delay,
                   repeat: Infinity,
                   ease: "linear",
                 }}
-              />
+              >
+                <motion.g
+                  animate={{
+                    translateX: s.x,
+                    translateY: [s.cy, s.cy - 65],
+                    ...(s.spin ? { rotate: [0, 360] } : {}),
+                  }}
+                  transition={{
+                    translateY: {
+                      duration: s.dur,
+                      delay: s.delay,
+                      repeat: Infinity,
+                      ease: "linear",
+                    },
+                    rotate: s.spin
+                      ? {
+                          duration: s.spin,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }
+                      : undefined,
+                  }}
+                >
+                  {renderShape(s)}
+                </motion.g>
+              </motion.g>
             ))}
         </svg>
       </div>
