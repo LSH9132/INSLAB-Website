@@ -60,12 +60,12 @@ export function SiteFooter({ footer }: SiteFooterProps) {
   );
 
   return (
-    <footer id="site-footer" className="border-t border-slate-200 bg-white pt-12 pb-10">
+    <footer id="site-footer" className="border-t border-slate-200 bg-white pt-14 pb-8">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Top: Logo (left) | Link columns (middle) | CTA (right) */}
-        <div className="mb-10 grid grid-cols-1 gap-10 lg:grid-cols-12">
+        {/* Top: Logo (left) | Link columns + CTA (right) */}
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
           {/* Logo + tagline + social */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <div className="mb-5">
               <Link href="/" className="group inline-flex items-center gap-3">
                 <Image
@@ -111,79 +111,59 @@ export function SiteFooter({ footer }: SiteFooterProps) {
             </div>
           </div>
 
-          {/* Link columns */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-5">
-            {columns.map((col) => (
-              <div key={col.title}>
-                <h2 className="mb-4 text-xs font-semibold tracking-wider text-slate-900 uppercase">
-                  {col.title}
-                </h2>
-                <ul className="space-y-3">
-                  {col.links.map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="text-sm text-slate-500 transition-colors hover:text-accent"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          {/* Link columns + CTA */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+              {columns.map((col) => (
+                <div key={col.title}>
+                  <h2 className="mb-4 text-xs font-semibold tracking-wider text-slate-900 uppercase">
+                    {col.title}
+                  </h2>
+                  <ul className="space-y-3">
+                    {col.links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="text-sm text-slate-500 transition-colors hover:text-accent"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
 
-          {/* CTA */}
-          <div className="flex flex-col items-start gap-4 lg:col-span-4 lg:items-end lg:justify-center">
-            <p className="text-sm font-semibold text-slate-900 lg:text-right">
-              {footer.cta.title}
-            </p>
-            <div className="flex flex-col gap-2.5 sm:flex-row lg:flex-col">
-              <Link
-                href="/join"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/35"
-              >
-                {footer.cta.primary}
-                <span aria-hidden="true">→</span>
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-semibold text-slate-600 transition-colors hover:border-slate-300 hover:text-slate-900"
-              >
-                {footer.cta.secondary}
-              </Link>
+            {/* CTA — below link columns, right-aligned */}
+            <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-end">
+              <p className="text-sm font-semibold text-slate-900">
+                {footer.cta.title}
+              </p>
+              <div className="flex gap-2.5">
+                <Link
+                  href="/join"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/35"
+                >
+                  {footer.cta.primary}
+                  <span aria-hidden="true">→</span>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-semibold text-slate-600 transition-colors hover:border-slate-300 hover:text-slate-900"
+                >
+                  {footer.cta.secondary}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Middle: Contact info bar */}
-        <div className="flex flex-col gap-4 border-t border-slate-100 py-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-2 text-sm text-slate-500">
-            <span className="text-slate-400">&#9678;</span>
-            <span>{footer.contact.address}</span>
-          </div>
-          <a
-            href={`mailto:${footer.contact.email}`}
-            className="text-sm text-slate-500 transition-colors hover:text-accent"
-          >
-            {footer.contact.email}
-          </a>
-        </div>
-
-        {/* Bottom: Copyright + legal links */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-100 pt-6 md:flex-row">
+        {/* Bottom: Copyright only */}
+        <div className="mt-10 border-t border-slate-100 pt-6">
           <p className="text-xs text-slate-400">
             {footer.copyright}
           </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-xs text-slate-400 hover:text-slate-900">
-              {footer.privacy}
-            </a>
-            <a href="#" className="text-xs text-slate-400 hover:text-slate-900">
-              {footer.terms}
-            </a>
-          </div>
         </div>
       </div>
     </footer>
