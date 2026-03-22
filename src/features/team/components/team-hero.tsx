@@ -187,25 +187,6 @@ export function TeamHero({ hero, stats }: TeamHeroProps) {
             ))}
           </motion.g>
 
-          {/* Diagonal cross — subtle pulse */}
-          <motion.g
-            animate={rm ? undefined : { opacity: [0.05, 0.09, 0.05] }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <line
-              x1="20" y1="15" x2="80" y2="85"
-              stroke="#94a3b8" strokeWidth="0.12"
-            />
-            <line
-              x1="80" y1="15" x2="20" y2="85"
-              stroke="#94a3b8" strokeWidth="0.12"
-            />
-          </motion.g>
-
           {/* Halftone screentone — breathing opacity */}
           <motion.g
             animate={rm ? undefined : { opacity: [1, 1.6, 1] }}
