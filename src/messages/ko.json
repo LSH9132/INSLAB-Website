@@ -182,74 +182,39 @@
         ["AI와", "연결된", "시스템의"],
         ["최전선에서", "연구합니다"]
       ],
-      "accentWords": ["AI와", "최전선에서"],
-      "subCopy": "INSLAB은 적응형 AI 시스템, AIoT 아키텍처, MLOps 파이프라인을 구축합니다 — 지능형 네트워크 전반의 연구와 실세계 배포를 연결합니다.",
+      "title": "AI와 네트워크 시스템 연구",
+      "subtitle": "지능형 시스템과 현실 배포가 만나는 곳",
+      "body": "INSLAB은 시스템이 서비스의 의도를 파악하고, 자원을 자율적으로 구성하여, 지능형 네트워크 전반에서 AI 서비스 품질을 유지하는 기술을 연구합니다.",
       "ctaPrimary": "연구 탐색",
-      "ctaSecondary": "연구실 소개",
-      "stats": [
-        { "value": "97.8%", "label": "모델 정확도" },
-        { "value": "128+", "label": "AIoT 엔드포인트" },
-        { "value": "3×", "label": "배포 속도" }
-      ]
-    },
-    "mission": {
-      "eyebrow": "우리의 미션",
-      "title": "AI와 네트워크 시스템의 교차점을 발전시킵니다",
-      "body": "INSLAB은 차세대 연결성을 위한 확장 가능하고 안전하며 지능적인 솔루션 개발에 헌신합니다. 우리는 단순한 연구를 넘어 6G 및 그 이후를 위한 아키텍처 기반을 구축합니다.",
-      "stats": [
-        { "value": "45+", "label": "논문" },
-        { "value": "12", "label": "프로젝트" },
-        { "value": "28", "label": "구성원" },
-        { "value": "5", "label": "특허" }
-      ]
+      "ctaSecondary": "팀 소개"
     },
     "researchAreas": {
-      "title": "핵심 연구 분야",
-      "subtitle": "INSLAB의 과학적 탐구 기둥.",
+      "title": "연구 분야",
+      "subtitle": "연구 방향을 이끄는 세 가지 축.",
       "allResearch": "전체 연구",
-      "exploreArea": "분야 탐색 →",
-      "areas": [
-        {
-          "id": "intelligent-networking",
-          "eyebrow": "SYS",
-          "title": "지능형 네트워크 시스템",
-          "description": "AI 기술을 핵심 동력으로 지능형 네트워크 및 시스템을 구현합니다. Edge AI, 자율 적응형 네트워크, Intent 기반 시스템 설계에 집중합니다."
-        },
-        {
-          "id": "distributed-ai",
-          "eyebrow": "DATA",
-          "title": "데이터 지능",
-          "description": "다양한 환경에서의 데이터 수집 및 정제 프로세스를 구축합니다. 네트워크 데이터 분석, 패턴 인식, 이상 탐지를 연구합니다."
-        },
-        {
-          "id": "cyber-physical-systems",
-          "eyebrow": "SVC",
-          "title": "지능형 서비스",
-          "description": "사용자 중심의 지능형 응용 서비스를 개발합니다. IoT 응용, 스마트 시티, 모바일 서비스 등 실생활 AI 솔루션을 구현합니다."
-        }
-      ]
+      "exploreArea": "분야 탐색"
+    },
+    "publications": {
+      "title": "최근 논문",
+      "subtitle": "전체 {total}편 중 {count}편",
+      "viewAll": "전체 논문 보기",
+      "labels": {
+        "Journal": "저널",
+        "Conference": "학회",
+        "Domestic": "국내"
+      }
     },
     "news": {
-      "title": "최근 성과 & 뉴스",
-      "viewArchive": "뉴스 아카이브 보기",
-      "items": [
-        {
-          "id": "best-paper-icc-2024",
-          "category": "수상",
-          "date": "2024년 6월 15일",
-          "title": "INSLAB, ICC 2024 최우수 논문상 수상",
-          "description": "\"엣지 네트워크를 위한 연합 학습 최적화\" 연구가 효율적인 엣지 AI 처리 분야에서의 기여로 인정받았습니다.",
-          "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuA-DXbdzE3ELGUrVCcq1YBG_CmW2aQU_7Rpi1DNnCKRE7qu22qcPOR9stgPi105dxeWIMgoWGsom86fuO1Q_R3PK9Dx0PhT8IbSNMYLePUU65HFoPwE1090ABafZEznUc63JnUt6Fn34d0lYHif96psrM8_XfajwTZoXcpjxmzHSlEYOW2TFCU8SqjSjxa84EVqKc0qFq83od1eylYt0JRzC0LZ0ZHLqg5OdsjoU67S7Gtpr_BHiTceN9tHKyRP93kWi2DAckG0HK2j"
-        },
-        {
-          "id": "spring-ai-security-workshop",
-          "category": "행사",
-          "date": "2024년 5월 2일",
-          "title": "2024년 봄학기 AI 보안 워크숍",
-          "description": "INSLAB이 Google, Microsoft 업계 전문가들을 초청하여 강건한 AI 모델 보안 방법론을 논의하는 워크숍을 개최했습니다.",
-          "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuAcpUkyAbUtSv-P5m6MiW7L7t6VkNzv96ZX6dLfbR_hp0_M3xY5Aa3B_ZCXbxSRPwIXagkCFEyHphib-SY69fAtmaQfQZWLE5fXzVEGtG2WxFL4WiThycuOQZgwvIRODMzVEf24BDGkhXa99XibhWKQy13SA5U0IUmc4JEXE5ksDLnAohJPBLhKkDVuRt0ZNuPKVfifNy_K9FYZ2OksBDZm3G3qPL8pSspE3-3I4qvL9Og8FwkxFjAXUWz4Ats4ynGel38MLSQ3XoQx"
-        }
-      ]
+      "title": "뉴스 & 소식",
+      "viewAll": "전체 뉴스 보기"
+    },
+    "joinCta": {
+      "title": "함께 연구하기",
+      "body": "AI와 네트워크 시스템의 경계를 함께 넓혀갈 열정적인 연구자를 찾고 있습니다.",
+      "ctaPrimary": "INSLAB 합류",
+      "ctaSecondary": "연락하기",
+      "location": "순천향대학교 멀티미디어관 M511",
+      "email": "inslab@sch.ac.kr"
     }
   },
   "publications": {
@@ -294,9 +259,10 @@
   },
   "team": {
     "hero": {
-      "eyebrow": "구성원 소개",
-      "title": "연구실 구성원",
-      "body": "INSLAB은 호기심과 지능형 네트워크 시스템 발전에 대한 헌신으로 뭉친 다양한 연구자들로 구성되어 있습니다."
+      "eyebrow": "INSLAB",
+      "title": "Our Team",
+      "body": "INSLAB은 지능형 네트워크 시스템의 미래를 함께 설계하는 연구자들로 구성되어 있습니다. 데이터, 시스템, 서비스 세 축을 넘나들며 각자의 전문성을 연결합니다.",
+      "bodySecond": "호기심에서 출발해 실제 문제를 해결하는 기술로 이어지는 과정 — 그 모든 단계를 함께하는 사람들입니다."
     },
     "sections": {
       "director": "지도교수",
