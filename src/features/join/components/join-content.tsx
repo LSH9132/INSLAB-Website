@@ -13,6 +13,29 @@ type JoinContentProps = {
 };
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
+/* ── Anime-numbered section header ── */
+function SectionHeader({
+  number,
+  title,
+}: {
+  number: string;
+  title: string;
+}) {
+  return (
+    <motion.div
+      className="mb-8 flex items-center gap-3"
+      variants={fadeUpVariants}
+    >
+      <span className="font-mono text-[10px] font-bold text-blue-400">
+        {number}
+      </span>
+      <span className="h-px w-8 bg-blue-400/40" />
+      <h2 className="text-xl font-bold text-slate-900">{title}</h2>
+    </motion.div>
+  );
+}
+
+/* ── FAQ accordion item ── */
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -23,7 +46,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         onClick={() => setIsOpen((v) => !v)}
         className="flex w-full items-center gap-3 py-4 text-left"
       >
-        <span className="mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+        <span className="mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-400" />
         <span className="flex-1 text-sm font-semibold text-slate-800">
           {question}
         </span>
@@ -36,7 +59,11 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
           strokeWidth={2}
           stroke="currentColor"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m8.25 4.5 7.5 7.5-7.5 7.5"
+          />
         </motion.svg>
       </button>
       <AnimatePresence initial={false}>
@@ -58,22 +85,21 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/* Component                                                            */
+/* ------------------------------------------------------------------ */
+
 export function JoinContent({ dict }: JoinContentProps) {
   return (
     <div className="space-y-16">
-      {/* Why INSLAB */}
+      {/* ── Why INSLAB ── */}
       <motion.section
         variants={staggerContainerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <motion.h2
-          className="mb-8 text-xl font-bold text-slate-900"
-          variants={fadeUpVariants}
-        >
-          {dict.why.title}
-        </motion.h2>
+        <SectionHeader number="01" title={dict.why.title} />
         <motion.div
           className="grid grid-cols-1 gap-6 md:grid-cols-3"
           variants={fadeUpVariants}
@@ -82,9 +108,9 @@ export function JoinContent({ dict }: JoinContentProps) {
             (point: { title: string; description: string }, i: number) => (
               <div
                 key={i}
-                className="relative rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:border-emerald-200"
+                className="relative rounded-lg border border-slate-200 bg-white p-6 transition-all duration-300 hover:border-blue-300"
               >
-                <span className="pointer-events-none absolute top-4 right-5 text-4xl font-bold text-emerald-200/60 select-none">
+                <span className="pointer-events-none absolute top-4 right-5 font-mono text-4xl font-bold text-blue-200/50 select-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mb-2 font-bold text-slate-900">{point.title}</h3>
@@ -92,24 +118,19 @@ export function JoinContent({ dict }: JoinContentProps) {
                   {point.description}
                 </p>
               </div>
-            )
+            ),
           )}
         </motion.div>
       </motion.section>
 
-      {/* Recruitment Info */}
+      {/* ── Recruitment ── */}
       <motion.section
         variants={staggerContainerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <motion.h2
-          className="mb-8 text-xl font-bold text-slate-900"
-          variants={fadeUpVariants}
-        >
-          {dict.recruitment.title}
-        </motion.h2>
+        <SectionHeader number="02" title={dict.recruitment.title} />
 
         {/* Research Fields */}
         <motion.div
@@ -120,24 +141,23 @@ export function JoinContent({ dict }: JoinContentProps) {
             (field: { name: string; description: string }, i: number) => (
               <div
                 key={i}
-                className="rounded-2xl border border-slate-100 border-l-4 border-l-emerald-400 bg-white p-5 shadow-sm"
+                className="rounded-lg border border-slate-200 border-l-4 border-l-blue-400 bg-white p-5"
               >
-                <h3 className="mb-1 text-sm font-bold text-emerald-600">
+                <h3 className="mb-1 text-sm font-bold text-blue-500">
                   {field.name}
                 </h3>
                 <p className="text-sm text-slate-600">{field.description}</p>
               </div>
-            )
+            ),
           )}
         </motion.div>
 
-        {/* Qualifications, Benefits, Process */}
+        {/* Qualifications, Benefits, Ideal Candidate */}
         <motion.div
           className="grid grid-cols-1 gap-6 md:grid-cols-3"
           variants={fadeUpVariants}
         >
-          {/* Ideal Candidate */}
-          <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+          <div className="rounded-lg border border-slate-200 bg-white p-6">
             <h3 className="mb-4 text-lg font-bold text-slate-900">
               {dict.recruitment.idealCandidate.title}
             </h3>
@@ -148,16 +168,15 @@ export function JoinContent({ dict }: JoinContentProps) {
                     key={i}
                     className="flex items-start gap-2 text-sm text-slate-600"
                   >
-                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-400" />
                     {point}
                   </li>
-                )
+                ),
               )}
             </ul>
           </div>
 
-          {/* Qualifications */}
-          <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+          <div className="rounded-lg border border-slate-200 bg-white p-6">
             <h3 className="mb-4 text-lg font-bold text-slate-900">
               {dict.recruitment.qualifications.title}
             </h3>
@@ -168,16 +187,15 @@ export function JoinContent({ dict }: JoinContentProps) {
                     key={i}
                     className="flex items-start gap-2 text-sm text-slate-600"
                   >
-                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-400" />
                     {point}
                   </li>
-                )
+                ),
               )}
             </ul>
           </div>
 
-          {/* Benefits */}
-          <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+          <div className="rounded-lg border border-slate-200 bg-white p-6">
             <h3 className="mb-4 text-lg font-bold text-slate-900">
               {dict.recruitment.benefits.title}
             </h3>
@@ -188,10 +206,10 @@ export function JoinContent({ dict }: JoinContentProps) {
                     key={i}
                     className="flex items-start gap-2 text-sm text-slate-600"
                   >
-                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-400" />
                     {point}
                   </li>
-                )
+                ),
               )}
             </ul>
           </div>
@@ -206,8 +224,8 @@ export function JoinContent({ dict }: JoinContentProps) {
             {dict.recruitment.process.steps.map(
               (step: string, i: number) => (
                 <div key={i} className="flex items-center gap-3">
-                  <div className="flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-xs font-bold text-white">
+                  <div className="flex items-center gap-2 rounded-lg bg-blue-50 px-4 py-2">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-md bg-blue-500 font-mono text-xs font-bold text-white">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="text-sm font-medium text-slate-700">
@@ -230,74 +248,69 @@ export function JoinContent({ dict }: JoinContentProps) {
                     </svg>
                   )}
                 </div>
-              )
+              ),
             )}
           </div>
         </motion.div>
       </motion.section>
 
-      {/* FAQ */}
+      {/* ── FAQ ── */}
       <motion.section
         variants={staggerContainerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <motion.h2
-          className="mb-8 text-xl font-bold text-slate-900"
-          variants={fadeUpVariants}
-        >
-          {dict.faq.title}
-        </motion.h2>
+        <SectionHeader number="03" title={dict.faq.title} />
         <motion.div
-          className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm"
+          className="rounded-lg border border-slate-200 bg-white p-6"
           variants={fadeUpVariants}
         >
           {dict.faq.items.map(
             (item: { question: string; answer: string }, i: number) => (
               <FAQItem key={i} question={item.question} answer={item.answer} />
-            )
+            ),
           )}
         </motion.div>
       </motion.section>
 
-      {/* How to Apply — inverted CTA */}
+      {/* ── Apply CTA ── */}
       <motion.section
         variants={staggerContainerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
+        <SectionHeader number="04" title={dict.apply.title} />
         <motion.div
-          className="rounded-2xl bg-emerald-600 p-8 text-white shadow-sm lg:p-10"
+          className="rounded-lg bg-slate-900 p-8 text-white lg:p-10"
           variants={fadeUpVariants}
         >
-          <h2 className="mb-4 text-xl font-bold">{dict.apply.title}</h2>
-          <p className="mb-6 text-sm leading-relaxed text-emerald-100">
+          <p className="mb-6 text-sm leading-relaxed text-slate-300">
             {dict.apply.description}
           </p>
           <div className="mb-6">
-            <p className="text-sm font-medium text-emerald-100">
+            <p className="text-sm font-medium text-slate-400">
               {dict.apply.emailLabel}
             </p>
             <a
               href="mailto:dyoung.kim@sch.ac.kr"
-              className="text-sm font-semibold text-emerald-200 hover:text-white hover:underline"
+              className="font-mono text-sm font-semibold text-blue-400 hover:text-blue-300 hover:underline"
             >
               dyoung.kim@sch.ac.kr
             </a>
           </div>
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-200">
+            <p className="mb-2 text-[10px] font-semibold tracking-widest text-blue-400 uppercase">
               {dict.apply.documentsLabel}
             </p>
             <ul className="space-y-1.5">
               {dict.apply.documents.map((doc: string, i: number) => (
                 <li
                   key={i}
-                  className="flex items-start gap-2 text-sm text-emerald-100"
+                  className="flex items-start gap-2 text-sm text-slate-300"
                 >
-                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-300" />
+                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-blue-400" />
                   {doc}
                 </li>
               ))}

@@ -3,11 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import type { Member } from "@/lib/content";
 import { MemberCard } from "./member-card";
-import {
-  sectionTitleVariants,
-  teamStaggerContainer,
-  gradientLineVariants,
-} from "@/lib/motion/team-variants";
+import { teamStaggerContainer } from "@/lib/motion/team-variants";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type TeamGridDictionary = any;
@@ -20,103 +16,215 @@ type TeamGridProps = {
   dict: TeamGridDictionary;
 };
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
+/* ── Floating shapes (shared with hero/director-spotlight) ───── */
+type Shape = "fourStar" | "diamond" | "ring" | "triangle";
+type FloatingShape = {
+  x: number;
+  cy: number;
+  size: number;
+  dur: number;
+  delay: number;
+  shape: Shape;
+  color: string;
+  spin?: number;
+};
+
+function renderShape(s: FloatingShape) {
+  const sz = s.size;
+  switch (s.shape) {
+    case "fourStar": {
+      const a = sz * 0.5;
+      const b = sz * 0.15;
+      return (
+        <path
+          d={`M0,${-a} L${b},${-b} L${a},0 L${b},${b} L0,${a} L${-b},${b} L${-a},0 L${-b},${-b}Z`}
+          fill={s.color}
+        />
+      );
+    }
+    case "diamond": {
+      const h = sz * 0.5;
+      const w = sz * 0.3;
+      return <path d={`M0,${-h} L${w},0 L0,${h} L${-w},0Z`} fill={s.color} />;
+    }
+    case "triangle": {
+      const h = sz * 0.5;
+      const w = sz * 0.4;
+      return <path d={`M0,${-h} L${w},${h} L${-w},${h}Z`} fill={s.color} />;
+    }
+    case "ring":
+      return (
+        <circle
+          r={sz * 0.4}
+          fill="none"
+          stroke={s.color}
+          strokeWidth={sz * 0.1}
+        />
+      );
+  }
+}
+
+/* ── Section component ─────────────────────────────────────── */
+
 function MemberSection({
   members,
   title,
+  sectionNum,
   bgClass,
   locale,
   roleLabels,
-  variant,
+  shapes,
 }: {
   members: Member[];
   title: string;
+  sectionNum: string;
   bgClass: string;
   locale: string;
   roleLabels: Record<string, string>;
-  variant: "grid" | "dots";
+  shapes: FloatingShape[];
 }) {
-  const shouldReduceMotion = useReducedMotion();
+  const rm = useReducedMotion();
 
   if (members.length === 0) return null;
 
-  const patternStyle =
-    variant === "grid"
-      ? {
-          backgroundImage:
-            "linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }
-      : {
-          backgroundImage:
-            "radial-gradient(circle, rgba(148,163,184,0.10) 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        };
-
-  const gradientColors =
-    variant === "grid"
-      ? "from-teal-400 via-blue-400 to-violet-400"
-      : "from-violet-400 via-blue-400 to-teal-400";
-
   return (
-    <section className={`relative overflow-hidden ${bgClass} py-24 sm:py-32`}>
-      {/* Pattern background */}
+    <section className={`relative isolate overflow-hidden ${bgClass} py-24 sm:py-32`}>
+      {/* ── Background — floating shapes ── */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10"
+        className="pointer-events-none absolute inset-0 -z-10 select-none"
         aria-hidden
-        style={patternStyle}
-      />
-
-      {/* Gradient blob */}
-      <div className="pointer-events-none absolute inset-0 -z-20" aria-hidden>
-        {variant === "grid" ? (
-          <div className="absolute top-1/3 right-[10%] h-[350px] w-[350px] rounded-full bg-teal-200/12 blur-[100px]" />
-        ) : (
-          <div className="absolute bottom-1/4 left-[10%] h-[320px] w-[320px] rounded-full bg-violet-200/12 blur-[100px]" />
-        )}
+      >
+        <svg
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid slice"
+          className="absolute inset-0 h-full w-full"
+          fill="none"
+        >
+          {!rm &&
+            shapes.map((s, i) => (
+              <motion.g
+                key={`fs${i}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.12, 0.12, 0] }}
+                transition={{
+                  duration: s.dur,
+                  delay: s.delay,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              >
+                <motion.g
+                  animate={{
+                    translateX: s.x,
+                    translateY: [s.cy, s.cy - 50],
+                    ...(s.spin ? { rotate: [0, 360] } : {}),
+                  }}
+                  transition={{
+                    translateY: {
+                      duration: s.dur,
+                      delay: s.delay,
+                      repeat: Infinity,
+                      ease: "linear",
+                    },
+                    rotate: s.spin
+                      ? { duration: s.spin, repeat: Infinity, ease: "linear" }
+                      : undefined,
+                  }}
+                >
+                  {renderShape(s)}
+                </motion.g>
+              </motion.g>
+            ))}
+        </svg>
       </div>
 
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
-        {/* Section header */}
+        {/* ── Section header — anime numbered ── */}
         <motion.div
-          className="mb-14 flex items-center gap-6"
-          initial={shouldReduceMotion ? false : "hidden"}
-          whileInView={shouldReduceMotion ? undefined : "visible"}
+          className="mb-14 flex items-center gap-3"
+          initial={rm ? false : { opacity: 0, x: -20 }}
+          whileInView={rm ? undefined : { opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          variants={teamStaggerContainer}
+          transition={{ duration: 0.5, ease }}
         >
-          <motion.div
-            className={`h-px w-16 origin-left bg-gradient-to-r ${gradientColors}`}
-            variants={gradientLineVariants}
-          />
-          <motion.h2
-            className="font-serif text-2xl font-medium tracking-tight text-slate-700 italic md:text-3xl"
-            variants={sectionTitleVariants}
-          >
+          <span className="font-mono text-[10px] font-bold text-blue-400">
+            {sectionNum}
+          </span>
+          <span className="h-px w-8 bg-blue-400/40" />
+          <span className="text-sm font-semibold tracking-widest text-slate-400 uppercase">
             {title}
-          </motion.h2>
+          </span>
         </motion.div>
 
-        {/* Card grid */}
-        <motion.div
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          initial={shouldReduceMotion ? false : "hidden"}
-          whileInView={shouldReduceMotion ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.1 }}
-          variants={teamStaggerContainer}
-        >
-          {members.map((member) => (
-            <MemberCard
-              key={member.id}
-              member={member}
-              locale={locale}
-              roleLabel={roleLabels[member.role]}
-            />
-          ))}
-        </motion.div>
+        {/* ── Card grid with corner marks ── */}
+        <div className="relative">
+          {/* Corner marks — double lines */}
+          <motion.span
+            className="absolute -top-3 -left-3"
+            initial={rm ? false : { opacity: 0 }}
+            whileInView={rm ? undefined : { opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2, ease }}
+            aria-hidden
+          >
+            <span className="absolute top-0 left-0 h-5 w-5 border-t-[3px] border-l-[3px] border-blue-500/15 sm:h-6 sm:w-6" />
+            <span className="absolute top-1.5 left-1.5 h-3 w-3 border-t-[2px] border-l-[2px] border-blue-500/8 sm:h-4 sm:w-4" />
+          </motion.span>
+          <motion.span
+            className="absolute -right-3 -bottom-3"
+            initial={rm ? false : { opacity: 0 }}
+            whileInView={rm ? undefined : { opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.3, ease }}
+            aria-hidden
+          >
+            <span className="absolute right-0 bottom-0 h-5 w-5 border-r-[3px] border-b-[3px] border-blue-500/15 sm:h-6 sm:w-6" />
+            <span className="absolute right-1.5 bottom-1.5 h-3 w-3 border-r-[2px] border-b-[2px] border-blue-500/8 sm:h-4 sm:w-4" />
+          </motion.span>
+
+          <motion.div
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            initial={rm ? false : "hidden"}
+            whileInView={rm ? undefined : "visible"}
+            viewport={{ once: true, amount: 0.1 }}
+            variants={teamStaggerContainer}
+          >
+            {members.map((member) => (
+              <MemberCard
+                key={member.id}
+                member={member}
+                locale={locale}
+                roleLabel={roleLabels[member.role]}
+              />
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+
+/* ── Floating shapes per section ───────────────────────────── */
+
+const graduateShapes: FloatingShape[] = [
+  { x: 15, cy: 85, size: 0.8, dur: 14, delay: 0,   shape: "fourStar", color: "#3b82f6", spin: 10 },
+  { x: 85, cy: 78, size: 0.6, dur: 11, delay: 2,   shape: "diamond",  color: "#06b6d4", spin: 16 },
+  { x: 50, cy: 90, size: 0.5, dur: 12, delay: 4,   shape: "ring",     color: "#8b5cf6" },
+  { x: 30, cy: 88, size: 0.7, dur: 13, delay: 1.5, shape: "triangle", color: "#06b6d4", spin: 14 },
+  { x: 70, cy: 82, size: 0.5, dur: 10, delay: 5,   shape: "fourStar", color: "#8b5cf6", spin: 12 },
+];
+
+const undergradShapes: FloatingShape[] = [
+  { x: 20, cy: 82, size: 0.7, dur: 12, delay: 1,   shape: "diamond",  color: "#8b5cf6", spin: 18 },
+  { x: 80, cy: 88, size: 0.6, dur: 14, delay: 0,   shape: "fourStar", color: "#3b82f6", spin: 10 },
+  { x: 45, cy: 92, size: 0.5, dur: 11, delay: 3,   shape: "triangle", color: "#06b6d4", spin: 15 },
+  { x: 65, cy: 80, size: 0.6, dur: 13, delay: 2.5, shape: "ring",     color: "#3b82f6" },
+  { x: 10, cy: 90, size: 0.5, dur: 10, delay: 5,   shape: "diamond",  color: "#06b6d4", spin: 20 },
+];
+
+/* ── Main export ───────────────────────────────────────────── */
 
 export function TeamGrid({
   graduate,
@@ -136,18 +244,20 @@ export function TeamGrid({
       <MemberSection
         members={graduate}
         title={dict.sections.graduate}
+        sectionNum="03"
         bgClass="bg-white"
         locale={locale}
         roleLabels={roleLabels}
-        variant="grid"
+        shapes={graduateShapes}
       />
       <MemberSection
         members={undergraduate}
         title={dict.sections.undergraduate}
-        bgClass="bg-slate-50/40"
+        sectionNum="04"
+        bgClass="bg-white"
         locale={locale}
         roleLabels={roleLabels}
-        variant="dots"
+        shapes={undergradShapes}
       />
     </>
   );

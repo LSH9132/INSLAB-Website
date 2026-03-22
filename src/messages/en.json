@@ -185,9 +185,9 @@
   "home": {
     "hero": {
       "eyebrow": "Intelligence Network System Lab",
-      "title": "AI and Network Systems Research",
-      "subtitle": "Where intelligent systems meet real-world deployment",
-      "body": "INSLAB researches technologies where systems understand service intent, autonomously configure resources, and maintain AI service quality across intelligent networks.",
+      "title": "INSLAB —",
+      "titleAccent": "AI & Network Systems Research",
+      "body": "We research technologies where systems understand service intent, autonomously configure resources, and maintain AI service quality across intelligent networks.",
       "ctaPrimary": "Explore Research",
       "ctaSecondary": "Meet the Team"
     },
@@ -361,7 +361,7 @@
       "title": "How to Find Us",
       "placeholder": "Campus map will be displayed here",
       "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511",
-      "openInKakaoMap": "Open in Kakao Map"
+      "openInMap": "Open in Google Maps"
     },
     "metadata": {
       "title": "Contact",
@@ -393,7 +393,8 @@
     "hero": {
       "eyebrow": "Opportunities",
       "title": "Join INSLAB",
-      "body": "We are always looking for passionate and curious minds to join our team. Explore opportunities for graduate and undergraduate research positions."
+      "body": "From curiosity to technology, from ideas to systems — we're looking for researchers to build with us.",
+      "bodySecond": "Explore opportunities for graduate and undergraduate research positions."
     },
     "why": {
       "title": "Why INSLAB?",
