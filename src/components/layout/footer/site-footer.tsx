@@ -60,13 +60,38 @@ export function SiteFooter({ footer }: SiteFooterProps) {
   );
 
   return (
-    <footer id="site-footer" className="border-t border-slate-200 bg-white pt-16 pb-12">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <footer id="site-footer" className="border-t border-slate-200 bg-white">
+      {/* CTA Section */}
+      <div className="border-b border-slate-100 py-12">
+        <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
+          <p className="text-lg font-semibold tracking-tight text-slate-900">
+            {footer.cta.title}
+          </p>
+          <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <Link
+              href="/join"
+              className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/35"
+            >
+              {footer.cta.primary}
+              <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-semibold text-slate-600 transition-colors hover:border-slate-300 hover:text-slate-900"
+            >
+              {footer.cta.secondary}
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Main footer content */}
+      <div className="mx-auto max-w-7xl px-6 pt-12 pb-10 lg:px-8">
         {/* Top: Logo + tagline (left) | Link columns (right) */}
-        <div className="mb-12 grid grid-cols-1 gap-12 lg:grid-cols-12">
+        <div className="mb-10 grid grid-cols-1 gap-10 lg:grid-cols-12">
           {/* Logo + tagline + social */}
           <div className="lg:col-span-4">
-            <div className="mb-6">
+            <div className="mb-5">
               <Link href="/" className="group inline-flex items-center gap-3">
                 <Image
                   src="/images/logo-inslab-black-transparent-v1.png"
@@ -90,7 +115,7 @@ export function SiteFooter({ footer }: SiteFooterProps) {
                 </div>
               </Link>
             </div>
-            <p className="mb-6 text-sm leading-relaxed text-slate-500">
+            <p className="mb-5 text-sm leading-relaxed text-slate-500">
               {tagLine1}
               <br />
               {tagLine2}
