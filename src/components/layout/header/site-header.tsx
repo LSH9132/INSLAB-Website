@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
@@ -61,6 +61,37 @@ const sectionHrefs: Record<NavKey, string[][]> = {
     ["/contact", "/contact"],
     ["/publications", "/"],
   ],
+};
+
+/* ── Animation constants (Linear/Vercel style) ── */
+
+const dropdownSpring = {
+  type: "spring" as const,
+  stiffness: 500,
+  damping: 32,
+  mass: 0.8,
+};
+
+const layoutSpring = {
+  type: "spring" as const,
+  stiffness: 400,
+  damping: 30,
+};
+
+const sectionContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.035, delayChildren: 0.04 },
+  },
+};
+
+const sectionItemVariants = {
+  hidden: { opacity: 0, y: 6 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.2, ease: "easeOut" as const },
+  },
 };
 
 /** Animated hamburger / close icon */
@@ -152,6 +183,21 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
     };
   }, [isMenuOpen]);
 
+  // Close dropdown on Escape key
+  const handleEscape = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveMenuId(null);
+    },
+    [],
+  );
+
+  useEffect(() => {
+    if (activeMenuId) {
+      window.addEventListener("keydown", handleEscape);
+      return () => window.removeEventListener("keydown", handleEscape);
+    }
+  }, [activeMenuId, handleEscape]);
+
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Utility bar — animates height so no blank space is left when hidden */}
@@ -207,50 +253,47 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
           {/* Desktop nav + utilities */}
           <div className="hidden flex-1 items-center justify-end gap-8 lg:flex">
             {/* Nav links */}
-            <nav className="relative flex items-center gap-1">
-              {navOrder.map((key, i) => {
-                const item = nav[key];
-                const isActive = navActivePaths[key]?.includes(normalizedPath ?? "") ?? false;
-                const isOpen = activeMenuId === key;
+            <LayoutGroup>
+              <nav className="relative flex items-center gap-1">
+                {navOrder.map((key, i) => {
+                  const item = nav[key];
+                  const isActive = navActivePaths[key]?.includes(normalizedPath ?? "") ?? false;
+                  const isOpen = activeMenuId === key;
 
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.05 + i * 0.05, ease: "easeOut" }}
-                    className="relative"
-                  >
-                    <Link
-                      href={navHrefs[key]}
-                      onMouseEnter={() => setActiveMenuId(key)}
-                      onFocus={() => setActiveMenuId(key)}
-                      className={`relative rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
-                        isActive
-                          ? "text-slate-900"
-                          : isOpen
+                  return (
+                    <motion.div
+                      key={key}
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.05 + i * 0.05, ease: "easeOut" }}
+                      className="relative"
+                    >
+                      <Link
+                        href={navHrefs[key]}
+                        onMouseEnter={() => setActiveMenuId(key)}
+                        onFocus={() => setActiveMenuId(key)}
+                        className={`relative rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+                          isActive || isOpen
                             ? "text-slate-900"
                             : "text-slate-500 hover:text-slate-900"
-                      }`}
-                    >
-                      {/* Always-mounted background pill — avoids layoutId mount/unmount jitter */}
-                      <motion.span
-                        aria-hidden="true"
-                        animate={{
-                          opacity: isOpen || isActive ? 1 : 0,
-                          scale: isOpen || isActive ? 1 : 0.92,
-                        }}
-                        transition={{ duration: 0.15, ease: "easeOut" }}
-                        className={`absolute inset-0 rounded-md ${
-                          isActive ? "bg-slate-100" : "bg-slate-50"
                         }`}
-                      />
-                      <span className="relative">{item.label}</span>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </nav>
+                      >
+                        <span className="relative">{item.label}</span>
+                        {/* Sliding underline indicator */}
+                        {(isOpen || isActive) && (
+                          <motion.span
+                            layoutId="nav-underline"
+                            aria-hidden="true"
+                            className="absolute inset-x-1 -bottom-1 h-[2px] rounded-full bg-slate-900"
+                            transition={{ type: "spring", stiffness: 400, damping: 28 }}
+                          />
+                        )}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </nav>
+            </LayoutGroup>
 
             {/* Search box with expand animation */}
             <motion.div
@@ -331,68 +374,135 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
             <MenuToggleIcon isOpen={isMenuOpen} />
           </motion.button>
 
-          {/* Desktop mega menu dropdown */}
+          {/* Desktop mega menu dropdown — Linear/Vercel style */}
           <AnimatePresence>
             {activeMenu ? (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.18, ease: "easeOut" }}
-                className="absolute top-full right-0 left-0 hidden pt-4 lg:block"
-              >
-                <div className="overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
-                  <div className="grid grid-cols-[1.4fr_0.9fr] gap-10 px-6 py-8 lg:px-8">
-                    <div className="grid gap-8 md:grid-cols-2">
-                      {nav[activeMenu].sections.map((section: { title: string; links: { label: string; description: string }[] }, si: number) => (
-                        <div key={section.title}>
-                          <h2 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
-                            {section.title}
-                          </h2>
-                          <div className="space-y-4">
-                            {section.links.map((link: { label: string; description: string }, li: number) => (
-                              <Link
-                                key={link.label}
-                                href={sectionHrefs[activeMenu][si]?.[li] ?? "/"}
-                                className="block rounded-xl px-3 py-2 transition-colors hover:bg-slate-50"
-                              >
-                                <p className="text-sm font-semibold text-slate-900 hover:text-accent">
-                                  {link.label}
-                                </p>
-                                <p className="mt-1 text-sm leading-6 text-slate-500">
-                                  {link.description}
-                                </p>
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+              <>
+                {/* Subtle backdrop overlay */}
+                <motion.div
+                  key="dropdown-backdrop"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="pointer-events-none fixed inset-x-0 top-0 z-30 hidden h-screen bg-black/[0.03] lg:block"
+                  aria-hidden="true"
+                />
 
-                    <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">
-                        {nav[activeMenu].feature.eyebrow}
-                      </p>
-                      <h2 className="mt-3 text-2xl font-semibold leading-tight text-slate-900">
-                        {nav[activeMenu].feature.title}
-                      </h2>
-                      <p className="mt-4 text-sm leading-7 text-slate-500">
-                        {nav[activeMenu].feature.description}
-                      </p>
-                      <p className="mt-6 text-sm font-medium text-slate-400">
-                        {nav[activeMenu].summary}
-                      </p>
-                      <Link
-                        href={navHrefs[activeMenu]}
-                        className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-700"
+                {/* Dropdown panel */}
+                <motion.div
+                  initial={{ opacity: 0, y: 4, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 4, scale: 0.97 }}
+                  transition={dropdownSpring}
+                  className="absolute top-full right-0 left-0 z-50 hidden origin-top pt-2 lg:block"
+                >
+                  <motion.div
+                    layout
+                    transition={{ layout: layoutSpring }}
+                    className="overflow-hidden rounded-xl border border-slate-200/60 bg-white/98 shadow-[0_8px_30px_rgba(0,0,0,0.08),0_1px_3px_rgba(0,0,0,0.05)] backdrop-blur-xl"
+                  >
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeMenuId}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.12 }}
                       >
-                        {nav.openSection}
-                        <span aria-hidden="true">→</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+                        <div className="grid grid-cols-[1fr_0.45fr] gap-6 p-5 lg:p-6">
+                          {/* Left: Sections with stagger */}
+                          <motion.div
+                            className="grid gap-6 md:grid-cols-2"
+                            variants={sectionContainerVariants}
+                            initial="hidden"
+                            animate="visible"
+                          >
+                            {nav[activeMenu].sections.map(
+                              (
+                                section: {
+                                  title: string;
+                                  links: { label: string; description: string }[];
+                                },
+                                si: number,
+                              ) => (
+                                <div key={section.title}>
+                                  <h2 className="mb-2.5 text-xs font-medium text-slate-400">
+                                    {section.title}
+                                  </h2>
+                                  <div className="space-y-1">
+                                    {section.links.map(
+                                      (
+                                        link: { label: string; description: string },
+                                        li: number,
+                                      ) => (
+                                        <motion.div
+                                          key={link.label}
+                                          variants={sectionItemVariants}
+                                        >
+                                          <Link
+                                            href={
+                                              sectionHrefs[activeMenu][si]?.[li] ?? "/"
+                                            }
+                                            className="group -mx-2 block rounded-lg px-2 py-2 transition-colors duration-150 hover:bg-slate-50/80"
+                                          >
+                                            <p className="text-[13px] font-medium text-slate-800 group-hover:text-slate-950">
+                                              {link.label}
+                                            </p>
+                                            <p className="mt-0.5 text-[12px] leading-[1.4] text-slate-400 group-hover:text-slate-500">
+                                              {link.description}
+                                            </p>
+                                          </Link>
+                                        </motion.div>
+                                      ),
+                                    )}
+                                  </div>
+                                </div>
+                              ),
+                            )}
+                          </motion.div>
+
+                          {/* Right: Feature box */}
+                          <motion.div
+                            initial={{ opacity: 0, x: 8 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.25, delay: 0.08, ease: "easeOut" }}
+                            className="flex flex-col justify-between rounded-xl border border-slate-100/80 bg-gradient-to-b from-slate-50/50 to-slate-50/80 p-5"
+                          >
+                            <div>
+                              <p className="text-[11px] font-medium uppercase tracking-widest text-accent/70">
+                                {nav[activeMenu].feature.eyebrow}
+                              </p>
+                              <h2 className="mt-2.5 text-base font-semibold leading-snug text-slate-800">
+                                {nav[activeMenu].feature.title}
+                              </h2>
+                              <p className="mt-2 text-[12.5px] leading-[1.55] text-slate-400">
+                                {nav[activeMenu].feature.description}
+                              </p>
+                            </div>
+                            <Link
+                              href={navHrefs[activeMenu]}
+                              className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-lg bg-slate-900 px-3.5 py-2 text-[13px] font-medium text-white transition-all duration-150 hover:bg-slate-800 hover:shadow-sm"
+                            >
+                              {nav.openSection}
+                              <svg
+                                className="h-3.5 w-3.5"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                aria-hidden="true"
+                              >
+                                <path d="M6 4l4 4-4 4" />
+                              </svg>
+                            </Link>
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </motion.div>
+                </motion.div>
+              </>
             ) : null}
           </AnimatePresence>
         </div>
