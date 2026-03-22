@@ -6,8 +6,7 @@ import { notFound } from "next/navigation";
 import { PageShell } from "@/components/layout";
 import { ResearchHero } from "@/features/research/components/research-hero";
 import { ResearchAreaSection } from "@/features/research/components/research-area-section";
-import { researchAreas } from "@/features/research/data/areas";
-import { projectData } from "@/features/director/data/director-data";
+import { getResearchAreas, getDirectorProjects } from "@/lib/content";
 import { routing } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -38,7 +37,8 @@ export default async function ResearchPage({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const messages = (await getMessages()) as any;
 
-  const ongoingProjects = projectData.filter((p) => p.status === "Ongoing");
+  const researchAreas = getResearchAreas();
+  const ongoingProjects = getDirectorProjects().filter((p) => p.status === "Ongoing");
 
   return (
     <PageShell

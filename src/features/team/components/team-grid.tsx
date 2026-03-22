@@ -5,7 +5,7 @@ import {
   fadeUpVariants,
   staggerContainerVariants,
 } from "@/lib/motion/fade-up";
-import type { Member } from "../data/members";
+import type { Member } from "@/lib/content";
 import { MemberCard } from "./member-card";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

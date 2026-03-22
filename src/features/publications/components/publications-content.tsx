@@ -3,7 +3,7 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import { Pagination, PublicationFilters } from "./publication-filters";
 import { PublicationList } from "./publication-list";
-import type { Publication, PublicationType } from "../types";
+import type { Publication, PublicationType } from "@/lib/content";
 
 const ITEMS_PER_PAGE = 20;
 

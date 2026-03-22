@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { PageShell } from "@/components/layout";
 import { TeamHero } from "@/features/team/components/team-hero";
 import { TeamGrid } from "@/features/team/components/team-grid";
-import { members } from "@/features/team/data/members";
+import { getMembers } from "@/lib/content";
 import { routing } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -37,6 +37,7 @@ export default async function TeamPage({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const messages = (await getMessages()) as any;
 
+  const members = getMembers();
   const professor = members.find((m) => m.role === "Professor")!;
   const graduate = members.filter((m) => m.role === "PhD" || m.role === "MS");
   const undergraduate = members.filter((m) => m.role === "BS");

@@ -5,7 +5,7 @@ import {
   fadeUpVariants,
   staggerContainerVariants,
 } from "@/lib/motion/fade-up";
-import type { ResearchArea } from "../data/areas";
+import type { ResearchArea } from "@/lib/content";
 
 type ResearchAreaSectionProps = {
   area: ResearchArea;
