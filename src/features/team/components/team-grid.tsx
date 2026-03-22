@@ -6,6 +6,7 @@ import { MemberCard } from "./member-card";
 import {
   sectionTitleVariants,
   teamStaggerContainer,
+  gradientLineVariants,
 } from "@/lib/motion/team-variants";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -25,19 +26,55 @@ function MemberSection({
   bgClass,
   locale,
   roleLabels,
+  variant,
 }: {
   members: Member[];
   title: string;
   bgClass: string;
   locale: string;
   roleLabels: Record<string, string>;
+  variant: "grid" | "dots";
 }) {
   const shouldReduceMotion = useReducedMotion();
 
   if (members.length === 0) return null;
 
+  const patternStyle =
+    variant === "grid"
+      ? {
+          backgroundImage:
+            "linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }
+      : {
+          backgroundImage:
+            "radial-gradient(circle, rgba(148,163,184,0.10) 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
+        };
+
+  const gradientColors =
+    variant === "grid"
+      ? "from-teal-400 via-blue-400 to-violet-400"
+      : "from-violet-400 via-blue-400 to-teal-400";
+
   return (
     <section className={`relative overflow-hidden ${bgClass} py-24 sm:py-32`}>
+      {/* Pattern background */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        aria-hidden
+        style={patternStyle}
+      />
+
+      {/* Gradient blob */}
+      <div className="pointer-events-none absolute inset-0 -z-20" aria-hidden>
+        {variant === "grid" ? (
+          <div className="absolute top-1/3 right-[10%] h-[350px] w-[350px] rounded-full bg-teal-200/12 blur-[100px]" />
+        ) : (
+          <div className="absolute bottom-1/4 left-[10%] h-[320px] w-[320px] rounded-full bg-violet-200/12 blur-[100px]" />
+        )}
+      </div>
+
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         {/* Section header */}
         <motion.div
@@ -47,7 +84,10 @@ function MemberSection({
           viewport={{ once: true }}
           variants={teamStaggerContainer}
         >
-          <div className="h-px w-16 bg-slate-300" />
+          <motion.div
+            className={`h-px w-16 origin-left bg-gradient-to-r ${gradientColors}`}
+            variants={gradientLineVariants}
+          />
           <motion.h2
             className="font-serif text-2xl font-medium tracking-tight text-slate-700 italic md:text-3xl"
             variants={sectionTitleVariants}
@@ -99,6 +139,7 @@ export function TeamGrid({
         bgClass="bg-white"
         locale={locale}
         roleLabels={roleLabels}
+        variant="grid"
       />
       <MemberSection
         members={undergraduate}
@@ -106,6 +147,7 @@ export function TeamGrid({
         bgClass="bg-slate-50/40"
         locale={locale}
         roleLabels={roleLabels}
+        variant="dots"
       />
     </>
   );
