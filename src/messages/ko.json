@@ -145,7 +145,42 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 INSLAB. All rights reserved."
+    "tagline": "인공지능 네트워크 시스템 연구실.\n가능성의 경계에서 혁신합니다.",
+    "columns": {
+      "research": {
+        "title": "연구",
+        "links": [
+          { "label": "지능형 네트워킹", "href": "/research#intelligent-networking" },
+          { "label": "분산 AI", "href": "/research#distributed-ai" },
+          { "label": "사이버-물리 시스템", "href": "/research#cyber-physical-systems" }
+        ]
+      },
+      "team": {
+        "title": "구성원",
+        "links": [
+          { "label": "연구실 구성원", "href": "/team" },
+          { "label": "지도교수", "href": "/director" },
+          { "label": "지원하기", "href": "/join" },
+          { "label": "뉴스 & 소식", "href": "/news" }
+        ]
+      },
+      "quickLinks": {
+        "title": "바로가기",
+        "links": [
+          { "label": "논문", "href": "/publications" },
+          { "label": "뉴스", "href": "/news" },
+          { "label": "연락처", "href": "/contact" }
+        ]
+      }
+    },
+    "contact": {
+      "title": "연락처",
+      "address": "충청남도 아산시 신창면 순천향로 22, 멀티미디어관 M511",
+      "email": "dyoung.kim@sch.ac.kr"
+    },
+    "copyright": "© 2025 INSLAB. All rights reserved.",
+    "privacy": "개인정보 처리방침",
+    "terms": "이용약관"
   },
   "home": {
     "hero": {
