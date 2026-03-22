@@ -6,8 +6,13 @@ import { AnimatePresence, motion } from "motion/react";
 
 import { LanguageSwitcher } from "./language-switcher";
 
+type AnnouncementItem = {
+  text: string;
+  href?: string;
+};
+
 type SiteUtilityBarProps = {
-  announcements: string[];
+  announcements: AnnouncementItem[];
 };
 
 /** Icon: GitHub mark */
@@ -77,7 +82,7 @@ const socialLinks = [
 function AnnouncementTicker({
   announcements,
 }: {
-  announcements: string[];
+  announcements: AnnouncementItem[];
 }) {
   const [index, setIndex] = useState(0);
 
@@ -87,6 +92,8 @@ function AnnouncementTicker({
     }, 4500);
     return () => clearInterval(id);
   }, [announcements.length]);
+
+  const current = announcements[index];
 
   return (
     <div className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden">
@@ -98,16 +105,29 @@ function AnnouncementTicker({
 
       <div className="relative h-4 min-w-0 flex-1 overflow-hidden">
         <AnimatePresence mode="wait">
-          <motion.p
+          <motion.div
             key={index}
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="absolute inset-0 truncate text-[10.5px] font-medium tracking-wide text-slate-600"
+            className="absolute inset-0"
           >
-            {announcements[index]}
-          </motion.p>
+            {current.href ? (
+              <a
+                href={current.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block truncate text-[10.5px] font-medium tracking-wide text-slate-600 transition-colors hover:text-slate-900"
+              >
+                {current.text}
+              </a>
+            ) : (
+              <p className="truncate text-[10.5px] font-medium tracking-wide text-slate-600">
+                {current.text}
+              </p>
+            )}
+          </motion.div>
         </AnimatePresence>
       </div>
     </div>

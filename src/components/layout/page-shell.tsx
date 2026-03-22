@@ -22,9 +22,10 @@ export function PageShell({
   nav,
   footer,
 }: PageShellProps) {
-  const announcements = getAnnouncements().map(
-    (a) => a[locale as "ko" | "en"],
-  );
+  const announcements = getAnnouncements().map((a) => ({
+    text: a[locale as "ko" | "en"],
+    href: a.href,
+  }));
   const navWithAnnouncements = { ...nav, announcements };
 
   return (
