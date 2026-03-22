@@ -53,6 +53,17 @@ for (let row = 0; row < 8; row++) {
 const brushstrokePath =
   "M 0 8 C 8 3, 16 12, 24 7 S 40 2, 48 8 S 64 14, 72 7 S 88 2, 96 8";
 
+/* Floating particles — drifting upward */
+const particles = [
+  { cx: 15, cy: 80, r: 0.6, dur: 12, delay: 0 },
+  { cx: 30, cy: 90, r: 0.4, dur: 10, delay: 2 },
+  { cx: 50, cy: 85, r: 0.5, dur: 14, delay: 4 },
+  { cx: 70, cy: 92, r: 0.35, dur: 11, delay: 1 },
+  { cx: 85, cy: 78, r: 0.55, dur: 13, delay: 3 },
+  { cx: 42, cy: 95, r: 0.3, dur: 9, delay: 5 },
+  { cx: 62, cy: 88, r: 0.45, dur: 15, delay: 2.5 },
+];
+
 /* Smooth easing */
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -71,61 +82,101 @@ export function TeamHero({ hero, stats }: TeamHeroProps) {
         className="pointer-events-none absolute inset-0 -z-10 select-none"
         aria-hidden
       >
-        {/* Speed lines + halftone + diagonal cross */}
+        {/* Speed lines + halftone + diagonal cross + particles */}
         <svg
           viewBox="0 0 100 100"
           preserveAspectRatio="xMidYMid slice"
           className="absolute inset-0 h-full w-full"
           fill="none"
         >
-          {/* Radial speed lines */}
-          {speedLines.map((l, i) => (
-            <motion.line
-              key={`sp${i}`}
-              x1={l.x1}
-              y1={l.y1}
-              x2={l.x2}
-              y2={l.y2}
-              stroke="#94a3b8"
-              strokeWidth={i % 3 === 0 ? 0.15 : 0.08}
-              opacity={0.04}
-              initial={rm ? undefined : { pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.2, delay: i * 0.02, ease: "easeOut" }}
-            />
-          ))}
+          {/* Radial speed lines — slow continuous rotation */}
+          <motion.g
+            style={{ originX: "50px", originY: "50px" }}
+            animate={rm ? undefined : { rotate: 360 }}
+            transition={{
+              duration: 80,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {speedLines.map((l, i) => (
+              <motion.line
+                key={`sp${i}`}
+                x1={l.x1}
+                y1={l.y1}
+                x2={l.x2}
+                y2={l.y2}
+                stroke="#94a3b8"
+                strokeWidth={i % 3 === 0 ? 0.15 : 0.08}
+                initial={rm ? { opacity: 0.04 } : { pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 0.04 }}
+                transition={{
+                  pathLength: { duration: 1.2, delay: i * 0.02, ease: "easeOut" },
+                  opacity: { duration: 0.6, delay: i * 0.02 },
+                }}
+              />
+            ))}
+          </motion.g>
 
-          {/* Diagonal cross behind title */}
-          <line
-            x1="20"
-            y1="15"
-            x2="80"
-            y2="85"
-            stroke="#94a3b8"
-            strokeWidth="0.12"
-            opacity={0.05}
-          />
-          <line
-            x1="80"
-            y1="15"
-            x2="20"
-            y2="85"
-            stroke="#94a3b8"
-            strokeWidth="0.12"
-            opacity={0.05}
-          />
-
-          {/* Halftone screentone */}
-          {halftoneDots.map((d, i) => (
-            <circle
-              key={`ht${i}`}
-              cx={d.cx}
-              cy={d.cy}
-              r={d.r}
-              fill="#94a3b8"
-              opacity={0.035}
+          {/* Diagonal cross — subtle pulse */}
+          <motion.g
+            animate={rm ? undefined : { opacity: [0.05, 0.09, 0.05] }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <line
+              x1="20" y1="15" x2="80" y2="85"
+              stroke="#94a3b8" strokeWidth="0.12"
             />
-          ))}
+            <line
+              x1="80" y1="15" x2="20" y2="85"
+              stroke="#94a3b8" strokeWidth="0.12"
+            />
+          </motion.g>
+
+          {/* Halftone screentone — breathing opacity */}
+          <motion.g
+            animate={rm ? undefined : { opacity: [1, 1.6, 1] }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            {halftoneDots.map((d, i) => (
+              <circle
+                key={`ht${i}`}
+                cx={d.cx} cy={d.cy} r={d.r}
+                fill="#94a3b8"
+                opacity={0.035}
+              />
+            ))}
+          </motion.g>
+
+          {/* Floating particles — drift upward */}
+          {!rm &&
+            particles.map((p, i) => (
+              <motion.circle
+                key={`pt${i}`}
+                cx={p.cx}
+                r={p.r}
+                fill="#3b82f6"
+                initial={{ cy: p.cy, opacity: 0 }}
+                animate={{
+                  cy: [p.cy, p.cy - 70],
+                  opacity: [0, 0.12, 0.12, 0],
+                }}
+                transition={{
+                  duration: p.dur,
+                  delay: p.delay,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            ))}
         </svg>
       </div>
 
