@@ -126,10 +126,23 @@
       }
     },
     "searchPlaceholder": "Search publications...",
-    "login": "Login",
+    "joinUs": "Join Us",
     "openSection": "Open Section",
     "openMenu": "Open navigation menu",
     "closeMenu": "Close navigation menu",
+    "mobileSubLinks": {
+      "team": [
+        { "label": "Lab Members", "href": "/team" },
+        { "label": "Director", "href": "/director" },
+        { "label": "Join Us", "href": "/join" },
+        { "label": "News & Updates", "href": "/news" }
+      ],
+      "research": [
+        { "label": "Intelligent Networking", "href": "/research#intelligent-networking" },
+        { "label": "Distributed AI", "href": "/research#distributed-ai" },
+        { "label": "Cyber-Physical Systems", "href": "/research#cyber-physical-systems" }
+      ]
+    },
     "announcements": [
       "🏆 ICC 2024 Best Paper Award — Federated Learning for Edge Networks",
       "📅 Spring AI Security Workshop — Recap now available on the site",
@@ -142,15 +155,26 @@
     "sections": {
       "research": {
         "title": "Research",
-        "links": ["Intelligent Networking", "Distributed AI", "Cyber-Physical Security", "Edge Computing"]
+        "links": [
+          { "label": "Intelligent Networking", "href": "/research#intelligent-networking" },
+          { "label": "Distributed AI", "href": "/research#distributed-ai" },
+          { "label": "Cyber-Physical Systems", "href": "/research#cyber-physical-systems" },
+          { "label": "Edge Computing", "href": "/research" }
+        ]
       },
       "lab": {
         "title": "Lab",
-        "links": ["Publications", "Members", "Join Us", "News"]
+        "links": [
+          { "label": "Publications", "href": "/publications" },
+          { "label": "Members", "href": "/team" },
+          { "label": "Director", "href": "/director" },
+          { "label": "Join Us", "href": "/join" },
+          { "label": "News", "href": "/news" }
+        ]
       },
       "contact": {
         "title": "Contact",
-        "address": "Engineering Building 2, Room 405\nSoonchunhyang University"
+        "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si\nMultimedia Bldg. M511"
       }
     },
     "copyright": "© 2025 INSLAB. All rights reserved.",
@@ -281,6 +305,11 @@
       "ms": "M.S. Student",
       "bs": "Undergraduate Researcher"
     },
+    "stats": [
+      { "value": "9", "label": "Members" },
+      { "value": "3", "label": "Research Areas" },
+      { "value": "5+", "label": "Active Projects" }
+    ],
     "viewProfile": "View Profile",
     "metadata": {
       "title": "Team",
@@ -324,8 +353,8 @@
       "title": "Contact Information",
       "address": {
         "label": "Address",
-        "line1": "Engineering Building 2, Room 405",
-        "line2": "Soonchunhyang University, Asan, South Korea"
+        "line1": "Multimedia Bldg. M511",
+        "line2": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511"
       },
       "email": {
         "label": "Email"
@@ -358,7 +387,7 @@
     "directions": {
       "title": "How to Find Us",
       "placeholder": "Campus map will be displayed here",
-      "address": "Soonchunhyang University, 22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do"
+      "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511"
     },
     "metadata": {
       "title": "Contact",

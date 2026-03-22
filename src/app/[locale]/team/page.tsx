@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { PageShell } from "@/components/layout";
 import { TeamHero } from "@/features/team/components/team-hero";
+import { DirectorSpotlight } from "@/features/team/components/director-spotlight";
 import { TeamGrid } from "@/features/team/components/team-grid";
 import { getMembers } from "@/lib/content";
 import { routing } from "@/i18n/routing";
@@ -47,11 +48,17 @@ export default async function TeamPage({
       currentPath="/team"
       nav={messages.nav}
       footer={messages.footer}
-      mainClassName="mx-auto flex w-full max-w-6xl flex-col px-6 py-12 lg:px-10 lg:py-20"
+      mainClassName="flex-1"
     >
-      <TeamHero hero={messages.team.hero} />
+      <TeamHero hero={messages.team.hero} stats={messages.team.stats} />
+      <DirectorSpotlight
+        member={professor}
+        locale={locale}
+        sectionTitle={messages.team.sections.director}
+        roleLabel={messages.team.roles.professor}
+        viewProfileLabel={messages.team.viewProfile}
+      />
       <TeamGrid
-        professor={professor}
         graduate={graduate}
         undergraduate={undergraduate}
         locale={locale}

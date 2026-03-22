@@ -126,10 +126,23 @@
       }
     },
     "searchPlaceholder": "논문 검색...",
-    "login": "로그인",
+    "joinUs": "합류하기",
     "openSection": "섹션 열기",
     "openMenu": "내비게이션 메뉴 열기",
     "closeMenu": "내비게이션 메뉴 닫기",
+    "mobileSubLinks": {
+      "team": [
+        { "label": "연구실 구성원", "href": "/team" },
+        { "label": "지도교수", "href": "/director" },
+        { "label": "합류하기", "href": "/join" },
+        { "label": "뉴스 & 소식", "href": "/news" }
+      ],
+      "research": [
+        { "label": "지능형 네트워킹", "href": "/research#intelligent-networking" },
+        { "label": "분산 AI", "href": "/research#distributed-ai" },
+        { "label": "사이버-물리 시스템", "href": "/research#cyber-physical-systems" }
+      ]
+    },
     "announcements": [
       "🏆 ICC 2024 최우수 논문상 수상 — 엣지 네트워크 연합 학습 최적화",
       "📅 2024 봄학기 AI 보안 워크숍 — 결과 리캡 게시됨",
@@ -142,15 +155,26 @@
     "sections": {
       "research": {
         "title": "연구",
-        "links": ["지능형 네트워킹", "분산 AI", "사이버-물리 보안", "엣지 컴퓨팅"]
+        "links": [
+          { "label": "지능형 네트워킹", "href": "/research#intelligent-networking" },
+          { "label": "분산 AI", "href": "/research#distributed-ai" },
+          { "label": "사이버-물리 보안", "href": "/research#cyber-physical-systems" },
+          { "label": "엣지 컴퓨팅", "href": "/research" }
+        ]
       },
       "lab": {
         "title": "연구실",
-        "links": ["논문", "구성원", "합류하기", "뉴스"]
+        "links": [
+          { "label": "논문", "href": "/publications" },
+          { "label": "구성원", "href": "/team" },
+          { "label": "지도교수", "href": "/director" },
+          { "label": "합류하기", "href": "/join" },
+          { "label": "뉴스", "href": "/news" }
+        ]
       },
       "contact": {
         "title": "연락처",
-        "address": "공학관 2, 405호\n순천향대학교"
+        "address": "충청남도 아산시 신창면 순천향로 22\n멀티미디어관 M511"
       }
     },
     "copyright": "© 2025 INSLAB. All rights reserved.",
@@ -281,6 +305,11 @@
       "ms": "석사과정",
       "bs": "학부 연구생"
     },
+    "stats": [
+      { "value": "9", "label": "구성원" },
+      { "value": "3", "label": "연구 분야" },
+      { "value": "5+", "label": "진행 과제" }
+    ],
     "viewProfile": "프로필 보기",
     "metadata": {
       "title": "구성원",
@@ -324,8 +353,8 @@
       "title": "연락처 정보",
       "address": {
         "label": "주소",
-        "line1": "공학관 2, 405호",
-        "line2": "충남 아산시 순천향대학교"
+        "line1": "멀티미디어관 M511",
+        "line2": "충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511"
       },
       "email": {
         "label": "이메일"
@@ -358,7 +387,7 @@
     "directions": {
       "title": "찾아오는 길",
       "placeholder": "캠퍼스 약도가 여기에 표시됩니다",
-      "address": "충남 아산시 신창면 순천향로 22 순천향대학교"
+      "address": "충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511"
     },
     "metadata": {
       "title": "연락처",

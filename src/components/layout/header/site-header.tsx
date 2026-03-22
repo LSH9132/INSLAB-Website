@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { AnimatePresence, motion } from "motion/react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 import { Link } from "@/i18n/navigation";
@@ -32,9 +33,12 @@ const navActivePaths: Partial<Record<NavKey, string[]>> = {
   home: ["/"],
   research: ["/research"],
   publications: ["/publications"],
-  team: ["/team"],
+  team: ["/team", "/director", "/join", "/news"],
   contact: ["/contact"],
 };
+
+/** Nav keys that have expandable sub-links in the mobile menu */
+const navKeysWithSubLinks: NavKey[] = ["research", "team"];
 
 const sectionHrefs: Record<NavKey, string[][]> = {
   home: [
@@ -92,6 +96,7 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
   const [shouldShowUtilityBar, setShouldShowUtilityBar] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [expandedMobileKey, setExpandedMobileKey] = useState<NavKey | null>(null);
   const navBarRef = useRef<HTMLDivElement>(null);
 
   const normalizedPath = currentPath;
@@ -164,7 +169,10 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
         ref={navBarRef}
         className="border-b border-slate-100 bg-white/95 backdrop-blur-sm transition-shadow duration-300"
       >
-        <div className="relative mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+        <div
+          className="relative mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8"
+          onMouseLeave={() => setActiveMenuId(null)}
+        >
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -14 }}
@@ -199,10 +207,7 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
           {/* Desktop nav + utilities */}
           <div className="hidden flex-1 items-center justify-end gap-8 lg:flex">
             {/* Nav links */}
-            <nav
-              className="relative flex items-center gap-1"
-              onMouseLeave={() => setActiveMenuId(null)}
-            >
+            <nav className="relative flex items-center gap-1">
               {navOrder.map((key, i) => {
                 const item = nav[key];
                 const isActive = navActivePaths[key]?.includes(normalizedPath ?? "") ?? false;
@@ -298,18 +303,19 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
               </motion.div>
             </motion.div>
 
-            {/* Login button */}
-            <motion.button
-              type="button"
+            {/* Join Us CTA */}
+            <motion.div
               initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="flex h-9 min-w-[80px] items-center justify-center overflow-hidden rounded-md bg-slate-900 px-5 text-sm font-medium text-white transition-colors hover:bg-slate-700"
             >
-              <span className="truncate">{nav.login}</span>
-            </motion.button>
+              <Link
+                href="/join"
+                className="flex h-9 min-w-[80px] items-center justify-center overflow-hidden rounded-md bg-slate-900 px-5 text-sm font-medium text-white transition-colors hover:bg-slate-700"
+              >
+                <span className="truncate">{nav.joinUs}</span>
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile menu toggle */}
@@ -471,6 +477,10 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
                     const item = nav[key];
                     const isActive =
                       navActivePaths[key]?.includes(normalizedPath ?? "") ?? false;
+                    const hasSubLinks = navKeysWithSubLinks.includes(key);
+                    const isExpanded = expandedMobileKey === key;
+                    const subLinks: { label: string; href: string }[] | undefined =
+                      nav.mobileSubLinks?.[key];
 
                     return (
                       <motion.li
@@ -480,24 +490,76 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
                           visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } },
                         }}
                       >
-                        <Link
-                          href={navHrefs[key]}
-                          onClick={() => setIsMenuOpen(false)}
-                          className={`group flex items-center justify-between rounded-xl px-4 py-3 text-base transition-colors ${
-                            isActive
-                              ? "bg-slate-100 font-semibold text-slate-900"
-                              : "font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                          }`}
-                        >
-                          {item.label}
-                          <motion.span
-                            className="text-slate-400 opacity-0 transition-opacity group-hover:opacity-100"
-                            aria-hidden="true"
-                            animate={isActive ? { opacity: 1 } : {}}
+                        {hasSubLinks && subLinks ? (
+                          <>
+                            {/* Accordion trigger */}
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setExpandedMobileKey(isExpanded ? null : key)
+                              }
+                              className={`group flex w-full items-center justify-between rounded-xl px-4 py-3 text-base transition-colors ${
+                                isActive
+                                  ? "bg-slate-100 font-semibold text-slate-900"
+                                  : "font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                              }`}
+                              aria-expanded={isExpanded}
+                            >
+                              <span>{item.label}</span>
+                              <motion.span
+                                animate={{ rotate: isExpanded ? 180 : 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="text-slate-400"
+                              >
+                                <ChevronDown className="h-4 w-4" />
+                              </motion.span>
+                            </button>
+
+                            {/* Accordion content */}
+                            <AnimatePresence initial={false}>
+                              {isExpanded && (
+                                <motion.ul
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.2, ease: "easeOut" }}
+                                  className="overflow-hidden"
+                                >
+                                  {subLinks.map((sub) => (
+                                    <li key={sub.href}>
+                                      <Link
+                                        href={sub.href}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="block rounded-lg py-2 pl-10 pr-4 text-sm font-medium text-slate-500 transition-colors hover:bg-slate-50 hover:text-slate-900"
+                                      >
+                                        {sub.label}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </motion.ul>
+                              )}
+                            </AnimatePresence>
+                          </>
+                        ) : (
+                          <Link
+                            href={navHrefs[key]}
+                            onClick={() => setIsMenuOpen(false)}
+                            className={`group flex items-center justify-between rounded-xl px-4 py-3 text-base transition-colors ${
+                              isActive
+                                ? "bg-slate-100 font-semibold text-slate-900"
+                                : "font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                            }`}
                           >
-                            →
-                          </motion.span>
-                        </Link>
+                            {item.label}
+                            <motion.span
+                              className="text-slate-400 opacity-0 transition-opacity group-hover:opacity-100"
+                              aria-hidden="true"
+                              animate={isActive ? { opacity: 1 } : {}}
+                            >
+                              →
+                            </motion.span>
+                          </Link>
+                        )}
                       </motion.li>
                     );
                   })}
@@ -531,14 +593,13 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
               <div className="flex-shrink-0 border-t border-slate-100 px-6 py-5">
                 <div className="flex items-center justify-between">
                   <LanguageSwitcher />
-                  <motion.button
-                    type="button"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
+                  <Link
+                    href="/join"
+                    onClick={() => setIsMenuOpen(false)}
                     className="rounded-md bg-slate-900 px-5 py-2 text-sm font-medium text-white hover:bg-slate-700"
                   >
-                    {nav.login}
-                  </motion.button>
+                    {nav.joinUs}
+                  </Link>
                 </div>
               </div>
             </motion.div>

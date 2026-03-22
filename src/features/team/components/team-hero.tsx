@@ -1,9 +1,16 @@
 "use client";
 
-import type { Variants } from "motion/react";
-import { motion, useReducedMotion } from "motion/react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import {
+  heroTitleVariants,
+  heroSubtitleVariants,
+  statVariants,
+  teamStaggerContainer,
+} from "@/lib/motion/team-variants";
+import { FloatingShapes } from "./floating-shapes";
 
-import { staggerContainerVariants } from "@/lib/motion/fade-up";
+type Stat = { value: string; label: string };
 
 type TeamHeroDictionary = {
   eyebrow: string;
@@ -11,137 +18,105 @@ type TeamHeroDictionary = {
   body: string;
 };
 
-const heroTitleVariants: Variants = {
-  hidden: { opacity: 0, y: 22 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
+type TeamHeroProps = {
+  hero: TeamHeroDictionary;
+  stats: Stat[];
 };
 
-const heroBodyVariants: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.62, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-/* ── Static data for floating circles (no Math.random) ── */
-const CIRCLES = [
-  { cx: 80, cy: 60, r: 30, dur: 22, dx: 20, dy: 15 },
-  { cx: 200, cy: 120, r: 18, dur: 26, dx: -15, dy: 20 },
-  { cx: 350, cy: 80, r: 40, dur: 20, dx: 25, dy: -18 },
-  { cx: 500, cy: 180, r: 14, dur: 28, dx: -20, dy: 12 },
-  { cx: 620, cy: 60, r: 25, dur: 24, dx: 18, dy: 22 },
-  { cx: 720, cy: 200, r: 20, dur: 30, dx: -12, dy: -16 },
-  { cx: 150, cy: 300, r: 35, dur: 23, dx: 22, dy: -20 },
-  { cx: 400, cy: 320, r: 16, dur: 27, dx: -18, dy: 15 },
-  { cx: 560, cy: 280, r: 22, dur: 21, dx: 15, dy: -14 },
-  { cx: 680, cy: 340, r: 12, dur: 25, dx: -10, dy: 18 },
-];
-
-const LINES = [
-  [0, 2],
-  [1, 3],
-  [2, 4],
-  [3, 5],
-  [4, 5],
-  [6, 7],
-  [7, 8],
-  [8, 9],
-];
-
-export function TeamHero({ hero }: { hero: TeamHeroDictionary }) {
+export function TeamHero({ hero, stats }: TeamHeroProps) {
   const shouldReduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   return (
-    <section className="relative isolate mb-14 overflow-hidden rounded-3xl bg-slate-50">
-      {/* ── Floating network background ── */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 select-none"
-        aria-hidden
-      >
-        <svg
-          viewBox="0 0 800 400"
-          preserveAspectRatio="xMidYMid slice"
-          className="absolute inset-0 h-full w-full"
-          fill="none"
-        >
-          {/* Static connection lines */}
-          {LINES.map(([a, b], i) => (
-            <line
-              key={`line-${i}`}
-              x1={CIRCLES[a].cx}
-              y1={CIRCLES[a].cy}
-              x2={CIRCLES[b].cx}
-              y2={CIRCLES[b].cy}
-              stroke="#0d9488"
-              strokeWidth={1}
-              opacity={0.05}
-            />
-          ))}
-          {/* Floating circles */}
-          {!shouldReduceMotion
-            ? CIRCLES.map((c, i) => (
-                <motion.circle
-                  key={`circle-${i}`}
-                  cx={c.cx}
-                  cy={c.cy}
-                  r={c.r}
-                  fill="#0d9488"
-                  opacity={0.08 + (i % 3) * 0.02}
-                  animate={{
-                    cx: [c.cx, c.cx + c.dx, c.cx - c.dx * 0.5, c.cx],
-                    cy: [c.cy, c.cy + c.dy, c.cy - c.dy * 0.5, c.cy],
-                  }}
-                  transition={{
-                    duration: c.dur,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                  }}
-                />
-              ))
-            : CIRCLES.map((c, i) => (
-                <circle
-                  key={`circle-${i}`}
-                  cx={c.cx}
-                  cy={c.cy}
-                  r={c.r}
-                  fill="#0d9488"
-                  opacity={0.08 + (i % 3) * 0.02}
-                />
-              ))}
-        </svg>
-        {/* Blurred teal gradient blob */}
-        <div className="absolute top-1/4 left-1/3 h-64 w-64 rounded-full bg-teal-300/10 blur-3xl" />
-      </div>
+    <section
+      ref={sectionRef}
+      className="relative isolate flex min-h-[70vh] items-center justify-center overflow-hidden"
+    >
+      {/* Floating background shapes */}
+      <FloatingShapes />
 
-      {/* ── Text content ── */}
-      <div className="relative z-10 py-20 sm:py-28">
+      {/* Content with parallax */}
+      <motion.div
+        className="relative z-10 mx-auto max-w-4xl px-6 py-24 text-center sm:py-32"
+        style={shouldReduceMotion ? undefined : { y: contentY }}
+      >
         <motion.div
-          className="flex flex-col items-center gap-6 text-center"
           initial={shouldReduceMotion ? false : "hidden"}
           whileInView={shouldReduceMotion ? undefined : "visible"}
-          viewport={{ once: true, amount: 0.45 }}
-          variants={staggerContainerVariants}
+          viewport={{ once: true, amount: 0.3 }}
+          variants={teamStaggerContainer}
+          className="flex flex-col items-center gap-8"
         >
+          {/* Eyebrow pill */}
+          <motion.span
+            className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-xs font-semibold tracking-wide text-slate-500"
+            variants={heroSubtitleVariants}
+          >
+            {hero.eyebrow}
+          </motion.span>
+
+          {/* Title */}
           <motion.h1
-            className="max-w-4xl text-5xl leading-none font-extralight tracking-tight text-slate-800 md:text-7xl"
+            className="text-5xl leading-[1.05] font-extralight tracking-tight text-slate-900 md:text-8xl"
             variants={heroTitleVariants}
           >
             {hero.title}
           </motion.h1>
+
+          {/* Body */}
           <motion.p
-            className="mx-auto max-w-xl text-lg leading-8 font-light text-slate-500 md:text-xl"
-            variants={heroBodyVariants}
+            className="mx-auto max-w-xl text-lg leading-relaxed font-light text-slate-500 md:text-xl"
+            variants={heroSubtitleVariants}
           >
             {hero.body}
           </motion.p>
+
+          {/* Stats */}
+          {stats.length > 0 && (
+            <motion.div
+              className="mt-4 flex flex-wrap justify-center gap-10 sm:gap-16"
+              variants={teamStaggerContainer}
+            >
+              {stats.map((stat) => (
+                <motion.div
+                  key={stat.label}
+                  className="flex flex-col items-center"
+                  variants={statVariants}
+                >
+                  <span className="text-3xl font-bold text-slate-900 sm:text-4xl">
+                    {stat.value}
+                  </span>
+                  <span className="mt-1 text-sm font-medium text-slate-400">
+                    {stat.label}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </motion.div>
-      </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="mt-16 flex flex-col items-center gap-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+        >
+          <div className="h-10 w-px bg-gradient-to-b from-transparent to-slate-300" />
+          <motion.div
+            className="h-1.5 w-1.5 rounded-full bg-slate-400"
+            animate={shouldReduceMotion ? undefined : { y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
