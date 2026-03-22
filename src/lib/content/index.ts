@@ -1,5 +1,6 @@
 import { loadContent } from "./loader";
 import {
+  AnnouncementsSchema,
   MembersSchema,
   NewsItemsSchema,
   PublicationsSchema,
@@ -8,6 +9,7 @@ import {
 } from "./schemas";
 import type { MemberRole } from "./schemas";
 export type {
+  Announcement,
   Member,
   MemberRole,
   NewsItem,
@@ -22,6 +24,12 @@ export type {
 } from "./schemas";
 
 export { roleOrder, categoryOrder } from "./constants";
+
+// ── Announcements ───────────────────────────────────────────────────
+
+export function getAnnouncements() {
+  return loadContent("announcements/announcements.yaml", AnnouncementsSchema);
+}
 
 // ── Team ─────────────────────────────────────────────────────────────
 

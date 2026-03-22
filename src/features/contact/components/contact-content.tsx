@@ -137,7 +137,7 @@ export function ContactContent({ dict }: ContactContentProps) {
         </motion.div>
       </motion.section>
 
-      {/* Campus Map Placeholder */}
+      {/* Campus Map */}
       <motion.section
         variants={staggerContainerVariants}
         initial="hidden"
@@ -151,17 +151,32 @@ export function ContactContent({ dict }: ContactContentProps) {
           {dict.directions.title}
         </motion.h2>
         <motion.div
-          className="flex h-64 items-center justify-center rounded-2xl border border-stone-200 bg-stone-100 md:h-80"
+          className="overflow-hidden rounded-2xl border border-stone-200"
           variants={fadeUpVariants}
         >
-          <div className="text-center">
-            <p className="text-sm font-medium text-stone-400">
-              {dict.directions.placeholder}
-            </p>
-            <p className="mt-2 text-xs text-stone-400">
-              {dict.directions.address}
-            </p>
-          </div>
+          <iframe
+            src="https://map.kakao.com/?urlX=485252&urlY=876498&itemId=8598737&q=%EC%88%9C%EC%B2%9C%ED%96%A5%EB%8C%80%ED%95%99%EA%B5%90&srcid=8598737&map_type=TYPE_MAP"
+            className="h-80 w-full md:h-96"
+            loading="lazy"
+            allowFullScreen
+            title="순천향대학교 위치"
+          />
+        </motion.div>
+        <motion.div
+          className="mt-4 flex items-center justify-between"
+          variants={fadeUpVariants}
+        >
+          <p className="text-sm text-stone-500">
+            {dict.directions.address}
+          </p>
+          <a
+            href="https://map.kakao.com/link/map/순천향대학교,36.7726,126.9534"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-stone-600 underline underline-offset-4 transition-colors hover:text-stone-900"
+          >
+            {dict.directions.openInKakaoMap}
+          </a>
         </motion.div>
       </motion.section>
     </div>
