@@ -145,42 +145,7 @@
     }
   },
   "footer": {
-    "tagline": "Artificial Intelligence Network Systems Laboratory.\nInnovating at the edge of possibility.",
-    "columns": {
-      "research": {
-        "title": "Research",
-        "links": [
-          { "label": "Intelligent Networking", "href": "/research#intelligent-networking" },
-          { "label": "Distributed AI", "href": "/research#distributed-ai" },
-          { "label": "Cyber-Physical Systems", "href": "/research#cyber-physical-systems" }
-        ]
-      },
-      "team": {
-        "title": "Team",
-        "links": [
-          { "label": "Lab Members", "href": "/team" },
-          { "label": "Director", "href": "/director" },
-          { "label": "Join Us", "href": "/join" },
-          { "label": "News & Updates", "href": "/news" }
-        ]
-      },
-      "quickLinks": {
-        "title": "Quick Links",
-        "links": [
-          { "label": "Publications", "href": "/publications" },
-          { "label": "News", "href": "/news" },
-          { "label": "Contact", "href": "/contact" }
-        ]
-      }
-    },
-    "contact": {
-      "title": "Contact",
-      "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Multimedia Bldg. M511",
-      "email": "dyoung.kim@sch.ac.kr"
-    },
-    "copyright": "© 2025 INSLAB. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Use"
+    "copyright": "© 2025 INSLAB. All rights reserved."
   },
   "home": {
     "hero": {
