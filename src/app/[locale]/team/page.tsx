@@ -46,6 +46,7 @@ export default async function TeamPage({
   return (
     <PageShell
       currentPath="/team"
+      locale={locale}
       nav={messages.nav}
       footer={messages.footer}
       mainClassName="flex-1"

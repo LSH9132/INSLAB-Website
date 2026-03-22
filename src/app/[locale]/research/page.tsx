@@ -46,6 +46,7 @@ export default async function ResearchPage({
   return (
     <PageShell
       currentPath="/research"
+      locale={locale}
       nav={messages.nav}
       footer={messages.footer}
       mainClassName="flex-1"

@@ -40,6 +40,7 @@ export default async function PublicationsPage({
   return (
     <PageShell
       currentPath="/publications"
+      locale={locale}
       nav={messages.nav}
       footer={messages.footer}
       mainClassName="mx-auto flex w-full max-w-6xl flex-col px-6 py-12 lg:px-10 lg:py-20"

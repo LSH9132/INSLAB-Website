@@ -142,13 +142,7 @@
         { "label": "분산 AI", "href": "/research#distributed-ai" },
         { "label": "사이버-물리 시스템", "href": "/research#cyber-physical-systems" }
       ]
-    },
-    "announcements": [
-      "🏆 ICC 2024 최우수 논문상 수상 — 엣지 네트워크 연합 학습 최적화",
-      "📅 2024 봄학기 AI 보안 워크숍 — 결과 리캡 게시됨",
-      "🔬 6G 지능형 네트워킹 논문 IEEE TNSM 게재 확정",
-      "🤝 2025년 가을학기 대학원생 모집을 시작합니다"
-    ]
+    }
   },
   "footer": {
     "tagline": "인공지능 네트워크 시스템 연구실.\n가능성의 경계에서 혁신합니다.",
@@ -397,7 +391,8 @@
     "directions": {
       "title": "찾아오는 길",
       "placeholder": "캠퍼스 약도가 여기에 표시됩니다",
-      "address": "충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511"
+      "address": "충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511",
+      "openInKakaoMap": "카카오맵에서 보기"
     },
     "metadata": {
       "title": "연락처",
