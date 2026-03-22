@@ -289,9 +289,21 @@
   },
   "research": {
     "hero": {
-      "eyebrow": "Research Vision",
-      "title": "Research Areas",
-      "body": "INSLAB pursues cutting-edge research at the intersection of artificial intelligence and network systems, from intelligent networking protocols to distributed AI frameworks and cyber-physical security."
+      "eyebrow": "Foundational Inquiry",
+      "title": "Defining the Architectural Standards of",
+      "titleAccent": "AI Networks",
+      "body": "INSLAB explores the intersection of intelligence and connectivity, developing rigorous frameworks for the next generation of resilient, autonomous infrastructures."
+    },
+    "framework": {
+      "title": "Core Research Framework",
+      "body": "Our methodology integrates hardware-aware algorithms with distributed network logic to ensure seamless intelligence propagation.",
+      "points": ["Empirical Rigor", "Scalability-First Design", "Security as Foundation"]
+    },
+    "connectivity": {
+      "title": "Structural Connectivity",
+      "body": "At INSLAB, no research area exists in isolation. Our structural approach represents the cross-pollination of data and methodology between research domains. An advancement in intelligent networking directly influences our distributed AI coordination protocols.",
+      "cta": "View Publications",
+      "ctaSecondary": "Our Methodology"
     },
     "keywords": "Keywords",
     "representativePapers": "Representative Papers",
