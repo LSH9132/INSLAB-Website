@@ -60,37 +60,12 @@ export function SiteFooter({ footer }: SiteFooterProps) {
   );
 
   return (
-    <footer id="site-footer" className="border-t border-slate-200 bg-white">
-      {/* CTA Section */}
-      <div className="border-b border-slate-100 py-12">
-        <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
-          <p className="text-lg font-semibold tracking-tight text-slate-900">
-            {footer.cta.title}
-          </p>
-          <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link
-              href="/join"
-              className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/35"
-            >
-              {footer.cta.primary}
-              <span aria-hidden="true">→</span>
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-semibold text-slate-600 transition-colors hover:border-slate-300 hover:text-slate-900"
-            >
-              {footer.cta.secondary}
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Main footer content */}
-      <div className="mx-auto max-w-7xl px-6 pt-12 pb-10 lg:px-8">
-        {/* Top: Logo + tagline (left) | Link columns (right) */}
+    <footer id="site-footer" className="border-t border-slate-200 bg-white pt-12 pb-10">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Top: Logo (left) | Link columns (middle) | CTA (right) */}
         <div className="mb-10 grid grid-cols-1 gap-10 lg:grid-cols-12">
           {/* Logo + tagline + social */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <div className="mb-5">
               <Link href="/" className="group inline-flex items-center gap-3">
                 <Image
@@ -137,7 +112,7 @@ export function SiteFooter({ footer }: SiteFooterProps) {
           </div>
 
           {/* Link columns */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-8">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-5">
             {columns.map((col) => (
               <div key={col.title}>
                 <h2 className="mb-4 text-xs font-semibold tracking-wider text-slate-900 uppercase">
@@ -157,6 +132,28 @@ export function SiteFooter({ footer }: SiteFooterProps) {
                 </ul>
               </div>
             ))}
+          </div>
+
+          {/* CTA */}
+          <div className="flex flex-col items-start gap-4 lg:col-span-4 lg:items-end lg:justify-center">
+            <p className="text-sm font-semibold text-slate-900 lg:text-right">
+              {footer.cta.title}
+            </p>
+            <div className="flex flex-col gap-2.5 sm:flex-row lg:flex-col">
+              <Link
+                href="/join"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/35"
+              >
+                {footer.cta.primary}
+                <span aria-hidden="true">→</span>
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-semibold text-slate-600 transition-colors hover:border-slate-300 hover:text-slate-900"
+              >
+                {footer.cta.secondary}
+              </Link>
+            </div>
           </div>
         </div>
 
