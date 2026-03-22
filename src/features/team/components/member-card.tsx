@@ -70,9 +70,9 @@ export function MemberCard({
 
       {/* Info */}
       <div className="flex flex-col items-center text-center">
-        <h3 className="text-base font-bold text-slate-900">{displayName}</h3>
+        <h3 className="font-serif text-lg font-semibold tracking-tight text-slate-900">{displayName}</h3>
         <span
-          className="mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-[11px] font-semibold bg-slate-100 text-slate-500"
+          className="mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold tracking-widest bg-slate-100 text-slate-500 uppercase"
         >
           {roleLabel}
         </span>

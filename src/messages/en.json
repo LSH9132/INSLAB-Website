@@ -270,6 +270,8 @@
       "displaying": "Displaying {count} of {total} papers",
       "allYears": "All Years",
       "topics": "Topics",
+      "newestFirst": "Newest",
+      "oldestFirst": "Oldest",
       "noResults": "No publications match the selected filters.",
       "prev": "Prev",
       "next": "Next",
@@ -286,7 +288,15 @@
     "researchArea": "Research Areas",
     "publications": "Selected Publications",
     "projects": "Research Projects",
-    "patents": "Patents"
+    "patents": "Patents",
+    "filters": {
+      "all": "All",
+      "journal": "Journal",
+      "conference": "Conference",
+      "newestFirst": "Newest",
+      "oldestFirst": "Oldest",
+      "noResults": "No publications match the selected filter."
+    }
   },
   "team": {
     "hero": {

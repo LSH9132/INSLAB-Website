@@ -64,7 +64,7 @@ export function TeamHero({ hero, stats }: TeamHeroProps) {
 
           {/* Title */}
           <motion.h1
-            className="text-5xl leading-[1.05] font-extralight tracking-tight text-slate-900 md:text-8xl"
+            className="max-w-3xl font-serif text-5xl leading-[1.08] font-light tracking-tight text-slate-900 italic md:text-8xl"
             variants={heroTitleVariants}
           >
             {hero.title}
@@ -90,10 +90,10 @@ export function TeamHero({ hero, stats }: TeamHeroProps) {
                   className="flex flex-col items-center"
                   variants={statVariants}
                 >
-                  <span className="text-3xl font-bold text-slate-900 sm:text-4xl">
+                  <span className="font-serif text-3xl font-semibold text-slate-900 sm:text-4xl">
                     {stat.value}
                   </span>
-                  <span className="mt-1 text-sm font-medium text-slate-400">
+                  <span className="mt-1 text-xs font-semibold tracking-widest text-slate-400 uppercase">
                     {stat.label}
                   </span>
                 </motion.div>

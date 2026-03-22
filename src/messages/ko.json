@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": {
-      "label": "홈",
+      "label": "소개",
       "summary": "연구실 개요, 미션, 최신 성과.",
       "sections": [
         {
@@ -26,7 +26,7 @@
       }
     },
     "research": {
-      "label": "연구",
+      "label": "연구활동",
       "summary": "연구 주제, 연구실 방향, 분야 하이라이트.",
       "sections": [
         {
@@ -76,7 +76,7 @@
       }
     },
     "team": {
-      "label": "팀",
+      "label": "구성원",
       "summary": "사람, 문화, 협업, 합류 기회.",
       "sections": [
         {
@@ -89,7 +89,7 @@
         {
           "title": "기회",
           "links": [
-            { "label": "합류하기", "description": "대학원생 또는 학부 연구생으로 합류하는 방법." },
+            { "label": "지원하기", "description": "대학원생 또는 학부 연구생으로 지원하는 방법." },
             { "label": "뉴스 & 소식", "description": "INSLAB의 최신 성과를 확인하세요." }
           ]
         }
@@ -101,7 +101,7 @@
       }
     },
     "contact": {
-      "label": "연락",
+      "label": "연락처",
       "summary": "협업 또는 입학 문의를 위한 연락 방법.",
       "sections": [
         {
@@ -126,7 +126,7 @@
       }
     },
     "searchPlaceholder": "논문 검색...",
-    "joinUs": "합류하기",
+    "joinUs": "지원하기",
     "openSection": "섹션 열기",
     "openMenu": "내비게이션 메뉴 열기",
     "closeMenu": "내비게이션 메뉴 닫기",
@@ -134,7 +134,7 @@
       "team": [
         { "label": "연구실 구성원", "href": "/team" },
         { "label": "지도교수", "href": "/director" },
-        { "label": "합류하기", "href": "/join" },
+        { "label": "지원하기", "href": "/join" },
         { "label": "뉴스 & 소식", "href": "/news" }
       ],
       "research": [
@@ -168,7 +168,7 @@
           { "label": "논문", "href": "/publications" },
           { "label": "구성원", "href": "/team" },
           { "label": "지도교수", "href": "/director" },
-          { "label": "합류하기", "href": "/join" },
+          { "label": "지원하기", "href": "/join" },
           { "label": "뉴스", "href": "/news" }
         ]
       },
@@ -270,6 +270,8 @@
       "displaying": "{total}편 중 {count}편 표시 중",
       "allYears": "전체 연도",
       "topics": "주제",
+      "newestFirst": "최신순",
+      "oldestFirst": "오래된순",
       "noResults": "선택한 필터와 일치하는 논문이 없습니다.",
       "prev": "이전",
       "next": "다음",
@@ -286,7 +288,15 @@
     "researchArea": "연구 분야",
     "publications": "주요 논문",
     "projects": "연구 과제",
-    "patents": "특허"
+    "patents": "특허",
+    "filters": {
+      "all": "전체",
+      "journal": "저널",
+      "conference": "학회",
+      "newestFirst": "최신순",
+      "oldestFirst": "오래된순",
+      "noResults": "선택한 필터와 일치하는 논문이 없습니다."
+    }
   },
   "team": {
     "hero": {

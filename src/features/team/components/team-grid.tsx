@@ -41,15 +41,15 @@ function MemberSection({
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         {/* Section header */}
         <motion.div
-          className="mb-14 flex items-center gap-4"
+          className="mb-14 flex items-center gap-6"
           initial={shouldReduceMotion ? false : "hidden"}
           whileInView={shouldReduceMotion ? undefined : "visible"}
           viewport={{ once: true }}
           variants={teamStaggerContainer}
         >
-          <div className="h-px w-12 bg-slate-200" />
+          <div className="h-px w-16 bg-slate-300" />
           <motion.h2
-            className="text-sm font-semibold tracking-widest text-slate-400 uppercase"
+            className="font-serif text-2xl font-medium tracking-tight text-slate-700 italic md:text-3xl"
             variants={sectionTitleVariants}
           >
             {title}

@@ -14,6 +14,7 @@ export const PublicationSchema = z.object({
   authors: z.array(z.string()),
   venue: z.string(),
   details: z.string(),
+  date: z.string().optional(),
   tags: z.array(z.string()),
   pdfUrl: z.string(),
   doiUrl: z.string(),

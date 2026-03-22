@@ -80,11 +80,11 @@ export function DirectorSpotlight({
 
           {/* Info */}
           <motion.div className="flex flex-col" variants={directorInfoVariants}>
-            <span className="mb-3 inline-block w-fit rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
+            <span className="mb-3 inline-block w-fit rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold tracking-widest text-slate-500 uppercase">
               {roleLabel}
             </span>
 
-            <h3 className="text-4xl font-bold tracking-tight text-slate-900 lg:text-6xl">
+            <h3 className="font-serif text-4xl font-medium tracking-tight text-slate-900 lg:text-6xl">
               {displayName}
             </h3>
 

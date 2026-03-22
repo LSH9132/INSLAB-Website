@@ -17,6 +17,7 @@
 
 - id: dir-j-2026-sadriddinov
   year: 2026
+  date: "2026-01-15"
   type: Journal
   title: "Optimizations in Enumerating Maximal Balanced Bicliques: Pruning and Vertex Sorting"
   authors:
@@ -37,6 +38,7 @@
 
 - id: dir-c-2025-lee
   year: 2025
+  date: "2025-02-19"
   type: Conference
   title: Improve the Reliability of Data Collected from IoT Devices by Allowing Redundancy of Data Transmissions in LPWAN
   authors:
@@ -52,6 +54,7 @@
 
 - id: dir-j-2025-peng
   year: 2025
+  date: "2025-04-16"
   type: Journal
   title: Integration of Federated Learning and Graph Convolutional Networks for Movie Recommendation Systems
   authors:
@@ -71,6 +74,7 @@
 
 - id: dir-j-2025-sadriddinov
   year: 2025
+  date: "2025-02-27"
   type: Journal
   title: Algorithm for Mining Maximal Balanced Bicliques using Formal Concept Analysis
   authors:

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { ArrowUpDown } from "lucide-react";
 import type { PublicationType } from "@/lib/content";
 import type { FiltersDictionary } from "./publications-content";
 
@@ -119,6 +120,8 @@ export function PublicationFilters({
   allYears,
   availableTags,
   hasActiveFilters,
+  sortOrder,
+  onSortToggle,
   currentPage,
   totalPages,
   onTypeChange,
@@ -136,6 +139,8 @@ export function PublicationFilters({
   allYears: number[];
   availableTags: { tag: string; count: number }[];
   hasActiveFilters: boolean;
+  sortOrder: "newest" | "oldest";
+  onSortToggle: () => void;
   currentPage: number;
   totalPages: number;
   onTypeChange: (type: PublicationType | "All") => void;
@@ -235,6 +240,17 @@ export function PublicationFilters({
               </span>
             )}
             <Chevron open={openPanel === "topics"} />
+          </button>
+
+          {/* sort toggle */}
+          <span className="mx-1 hidden h-6 w-px bg-slate-200 sm:block" />
+          <button
+            type="button"
+            onClick={onSortToggle}
+            className="flex items-center gap-1.5 rounded-sm bg-slate-100 px-4 py-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-slate-700 transition-colors hover:bg-slate-200"
+          >
+            <ArrowUpDown className="h-3 w-3" />
+            {sortOrder === "newest" ? filters.newestFirst : filters.oldestFirst}
           </button>
 
           {/* reset */}

@@ -40,7 +40,7 @@ export function DirectorHero({ locale }: { locale: string }) {
               {/* Glow effect behind photo */}
               <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-teal-200/40 to-blue-200/40 blur-2xl transition-all duration-500 group-hover:from-teal-300/50 group-hover:to-blue-300/50" />
               <Image
-                src="/images/director/dk2022.jpg"
+                src="/images/director/kimdy.png"
                 alt="Director Dae-Young Kim"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

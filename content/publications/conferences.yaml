@@ -1,5 +1,6 @@
 - id: c-2025-lee-arci
   year: 2025
+  date: "2025-02-19"
   type: Conference
   title: "Improve the Reliability of Data Collected from IoT Devices by Allowing Redundancy of Data Transmissions in LPWAN"
   authors:
@@ -15,6 +16,7 @@
 
 - id: c-2024-jang
   year: 2024
+  date: "2024-12-18"
   type: Conference
   title: "Comparison of LSTM and Transformer model performance for network delay prediction"
   authors:
@@ -33,6 +35,7 @@
 
 - id: c-2024-lee-icmic
   year: 2024
+  date: "2024-08-07"
   type: Conference
   title: "Intent Inference Method for an Intent-based System in Military Communications"
   authors:
@@ -50,6 +53,7 @@
 
 - id: c-2023-kim-icicpe
   year: 2023
+  date: "2023-12-27"
   type: Conference
   title: "Multiple Network Interfaces Control for High-Speed Data Transfer"
   authors:
@@ -66,6 +70,7 @@
 
 - id: c-2023-mkim
   year: 2023
+  date: "2023-12-18"
   type: Conference
   title: "Automatic Personal Information Vulnerability Detection and an Encryption System Using a DNN Model"
   authors:
@@ -84,6 +89,7 @@
 
 - id: c-2023-lee-imis
   year: 2023
+  date: "2023-07-05"
   type: Conference
   title: "Hyperparameter Tuning and Comparison Analysis of the DNN Model to Predict Wireless Network Conditions of Live Video Services"
   authors:
@@ -99,6 +105,7 @@
 
 - id: c-2022-lee-icicpe
   year: 2022
+  date: "2022-12-26"
   type: Conference
   title: "Data Construction Method for Smart Live Video Streaming Service"
   authors:
@@ -116,6 +123,7 @@
 
 - id: c-2022-lee-apic
   year: 2022
+  date: "2022-06-01"
   type: Conference
   title: "Dataset Construction Method for Network Intelligence"
   authors:
@@ -134,6 +142,7 @@
 
 - id: c-2021-kim-iconi
   year: 2021
+  date: "2021-12-01"
   type: Conference
   title: "RSU-based Urgent Data Traffic Transmission in Vehicular Networks"
   authors:
@@ -150,6 +159,7 @@
 
 - id: c-2021-park
   year: 2021
+  date: "2021-06-01"
   type: Conference
   title: "A Testbed System Design to Predict Network Conditions of Multiple Network Interfaces"
   authors:
@@ -167,6 +177,7 @@
 
 - id: c-2020-lee
   year: 2020
+  date: "2020-12-01"
   type: Conference
   title: "Efficient Object Counting Method for Object Detection and Tracking Services"
   authors:
@@ -184,6 +195,7 @@
 
 - id: c-2019-kim-iconi
   year: 2019
+  date: "2019-12-01"
   type: Conference
   title: "Multicast Uplink Data Transmission in LPWA Networks"
   authors:
@@ -199,6 +211,7 @@
 
 - id: c-2019-kim-apic
   year: 2019
+  date: "2019-06-01"
   type: Conference
   title: "A Framework for LPWAN Data Transmission to Support Industrial IoT Services"
   authors:
@@ -214,6 +227,7 @@
 
 - id: c-2019-sa
   year: 2019
+  date: "2019-01-01"
   type: Conference
   title: "SDN-based Management in 5G Access-networks"
   authors:
@@ -232,6 +246,7 @@
 
 - id: c-2019-kim-vanet
   year: 2019
+  date: "2019-01-01"
   type: Conference
   title: "VANET System to Reduce Broadcast Storm using Transportation System Characteristics"
   authors:
@@ -247,6 +262,7 @@
 
 - id: c-2018-kim-iconi
   year: 2018
+  date: "2018-12-01"
   type: Conference
   title: "Traffic Management Considering Fronthaul Network Conditions in 5G Mobile Networks"
   authors:
@@ -262,6 +278,7 @@
 
 - id: c-2018-lee-apic
   year: 2018
+  date: "2018-06-01"
   type: Conference
   title: "Avoiding Congestion Channel in LPWA for Delay-Tolerant IoT Devices"
   authors:
@@ -278,6 +295,7 @@
 
 - id: c-2018-kim-gw
   year: 2018
+  date: "2018-01-01"
   type: Conference
   title: "Load balanced Gateway Selection in LPWAN-based IoT Networking"
   authors:
@@ -293,6 +311,7 @@
 
 - id: c-2018-kim-enc
   year: 2018
+  date: "2018-01-01"
   type: Conference
   title: "Status data encryption in LPWA transmission"
   authors:
@@ -308,6 +327,7 @@
 
 - id: c-2017-kim-classifier
   year: 2017
+  date: "2017-12-01"
   type: Conference
   title: "Traffic Classifier for Long Range IoT Networking to Reduce Processing Loads"
   authors:
@@ -323,6 +343,7 @@
 
 - id: c-2017-kim-access
   year: 2017
+  date: "2017-12-01"
   type: Conference
   title: "Intelligent Access Control in Access Points of Wireless Sensor Networks"
   authors:
@@ -338,6 +359,7 @@
 
 - id: c-2017-kim-sleep
   year: 2017
+  date: "2017-08-01"
   type: Conference
   title: "Sleep Scheduling to Reduce Energy Consumption in Low Power Wide Area Networks"
   authors:
@@ -353,6 +375,7 @@
 
 - id: c-2017-kim-emergency
   year: 2017
+  date: "2017-06-01"
   type: Conference
   title: "An Emergency Alarm Transmission in IoT Systems Integrated with the LPWAN"
   authors:
@@ -369,6 +392,7 @@
 
 - id: c-2017-kim-feedback
   year: 2017
+  date: "2017-06-01"
   type: Conference
   title: "A Feedback Message Transmission Method in IoT Systems Integrated with the LPWAN"
   authors:
@@ -384,6 +408,7 @@
 
 - id: c-2017-kim-emergent
   year: 2017
+  date: "2017-01-01"
   type: Conference
   title: "An Emergent Data Transmission in LPWAN-based Industrial IoT"
   authors:
@@ -399,6 +424,7 @@
 
 - id: c-2017-kim-fire
   year: 2017
+  date: "2017-01-01"
   type: Conference
   title: "A Fire Response System in a Smart Building"
   authors:
@@ -415,6 +441,7 @@
 
 - id: c-2017-kim-tourism
   year: 2017
+  date: "2017-01-01"
   type: Conference
   title: "Clients Classification for VIP Services in ICT-based Tourism"
   authors:
@@ -431,6 +458,7 @@
 
 - id: c-2016-kim-backoff
   year: 2016
+  date: "2016-10-01"
   type: Conference
   title: "Backoff Control System by Learning in LPWAN"
   authors:
@@ -446,6 +474,7 @@
 
 - id: c-2016-kim-activation
   year: 2016
+  date: "2016-07-01"
   type: Conference
   title: "Network activation control according to traffic characteristics in sensor networks for IoT"
   authors:
@@ -462,6 +491,7 @@
 
 - id: c-2016-kim-dtn
   year: 2016
+  date: "2016-01-01"
   type: Conference
   title: "Data Forwarding in Delay-Tolerant Wireless Sensor Networks with Disaster Scenarios"
   authors:
@@ -477,6 +507,7 @@
 
 - id: c-2016-bkim
   year: 2016
+  date: "2016-01-01"
   type: Conference
   title: "ACESS: Adaptive Channel Estimation and Selection Scheme for Coexistence Mitigation in WBANs"
   authors:
@@ -494,6 +525,7 @@
 
 - id: c-2011-kim-route
   year: 2011
+  date: "2011-09-01"
   type: Conference
   title: "Adaptive Route Discovery for Wireless Sensor Networks"
   authors:
@@ -511,6 +543,7 @@
 
 - id: c-2011-jin
   year: 2011
+  date: "2011-02-01"
   type: Conference
   title: "On the Optimal Number of Relay Stations in Two-hop Relay Cooperative Cellular Networks"
   authors:
@@ -528,6 +561,7 @@
 
 - id: c-2010-kim-ear
   year: 2010
+  date: "2010-03-01"
   type: Conference
   title: "EAR: An Environment-Adaptive Routing Algorithm for WBANs"
   authors:
@@ -545,6 +579,7 @@
 
 - id: c-2010-seo
   year: 2010
+  date: "2010-01-01"
   type: Conference
   title: "OCDP: A WBAN MAC Protocol for Contention-based Medical and CE applications"
   authors:
@@ -562,6 +597,7 @@
 
 - id: c-2009-kim-wban
   year: 2009
+  date: "2009-09-01"
   type: Conference
   title: "WBAN meets WBAN: Smart Mobile Space over Wireless Body Area Networks"
   authors:
@@ -577,6 +613,7 @@
 
 - id: c-2008-kim-routing
   year: 2008
+  date: "2008-01-01"
   type: Conference
   title: "A Regional Cell Routing in Wireless Sensor Networks"
   authors:
