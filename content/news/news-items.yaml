@@ -1,3 +1,40 @@
+# ============================================================
+# 뉴스 항목 (News Items)
+# 스키마: src/lib/content/schemas/news.ts
+# ============================================================
+# 뉴스 페이지에 표시되는 항목 목록. 카테고리별 필터링 지원.
+#
+# 각 항목의 필드 설명:
+#
+#   id:          (필수, 문자열) 고유 식별자. 예: "best-paper-icc-2024"
+#   category:    (필수, 문자열) 카테고리. 허용값: "Awards" | "Papers" | "Events" | "Notices"
+#                               → UI에서 카테고리별 색상 배지로 표시됨
+#   date:        (필수, 문자열) 날짜. ISO 형식 "YYYY-MM-DD". 예: "2024-06-15"
+#   title:       (필수, 객체)  제목
+#     ko:        (필수, 문자열) 한국어 제목
+#     en:        (필수, 문자열) 영어 제목
+#   description: (필수, 객체)  설명
+#     ko:        (필수, 문자열) 한국어 설명. 여러 줄은 >- 사용
+#     en:        (필수, 문자열) 영어 설명
+#   imageUrl:    (필수, 문자열) 이미지 URL. 외부 URL 또는 로컬 경로
+#                               → 빈 문자열("")이면 이미지 미표시
+#
+# ── 예시 ──
+# - id: example-news
+#   category: Awards
+#   date: "2025-01-15"
+#   title:
+#     ko: INSLAB 연구팀 우수 논문상 수상
+#     en: INSLAB Research Team Wins Best Paper Award
+#   description:
+#     en: >-
+#       Our research on edge AI optimization was recognized
+#       at the international conference.
+#     ko: >-
+#       엣지 AI 최적화 연구가 국제 학회에서 인정받았습니다.
+#   imageUrl: "/images/news/award.jpg"
+# ============================================================
+
 - id: best-paper-icc-2024
   category: Awards
   date: "2024-06-15"

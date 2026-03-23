@@ -58,19 +58,12 @@ export interface FooterColumn {
 export interface FooterData {
   tagline: string;
   columns: Record<string, FooterColumn>;
-  contact: {
-    title: string;
-    address: string;
-    email: string;
-  };
   cta: {
     title: string;
-    primary: string;
-    secondary: string;
+    description: string;
+    linkText: string;
   };
   copyright: string;
-  privacy: string;
-  terms: string;
 }
 
 export interface ContactDict {

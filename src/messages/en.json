@@ -83,7 +83,7 @@
           "title": "People",
           "links": [
             { "label": "Lab Members", "description": "Meet our faculty, graduate students, and undergraduate researchers." },
-            { "label": "Director", "description": "Learn about Prof. Daeyoung Kim's research and career." }
+            { "label": "Director", "description": "Learn about Prof. Dae-Young Kim's research and career." }
           ]
         },
         {
@@ -174,9 +174,9 @@
       }
     },
     "cta": {
-      "title": "Interested in joining our research?",
-      "primary": "Join INSLAB",
-      "secondary": "Contact Us"
+      "title": "Join Us",
+      "description": "We're looking for researchers passionate about AI and network systems.",
+      "linkText": "Learn more"
     },
     "copyright": "© 2025 INSLAB. All rights reserved."
   },
@@ -511,7 +511,7 @@
     },
     "apply": {
       "title": "How to Apply",
-      "description": "To express your interest in joining INSLAB, please send an email to Prof. Daeyoung Kim with the following documents attached.",
+      "description": "To express your interest in joining INSLAB, please send an email to Prof. Dae-Young Kim with the following documents attached.",
       "emailLabel": "Send your application to:",
       "documentsLabel": "Required Documents",
       "documents": [

@@ -32,7 +32,8 @@ export function MemberCard({
   roleLabel,
 }: MemberCardProps) {
   const rm = useReducedMotion();
-  const displayName = locale === "ko" ? member.name.ko : member.name.en;
+  const primaryName = locale === "ko" ? member.name.ko : member.name.en;
+  const secondaryName = locale === "ko" ? member.name.en : member.name.ko;
   const initials = getInitials(member.name.en);
 
   return (
@@ -57,7 +58,7 @@ export function MemberCard({
         {member.photo ? (
           <Image
             src={member.photo}
-            alt={displayName}
+            alt={primaryName}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -78,7 +79,12 @@ export function MemberCard({
       <div className="flex flex-col p-5">
         {/* Name */}
         <h3 className="text-lg font-bold tracking-tight text-slate-900">
-          {displayName}
+          {primaryName}
+          {secondaryName && secondaryName !== primaryName && (
+            <span className="ml-1.5 text-sm font-medium text-slate-400">
+              ({secondaryName})
+            </span>
+          )}
         </h3>
 
         {member.interests.length > 0 && (

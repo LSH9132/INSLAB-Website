@@ -174,9 +174,9 @@
       }
     },
     "cta": {
-      "title": "함께 연구할 동료를 찾고 있습니다",
-      "primary": "INSLAB 합류",
-      "secondary": "연락하기"
+      "title": "합류하기",
+      "description": "AI와 네트워크 시스템에 열정을 가진 연구자를 찾고 있습니다.",
+      "linkText": "자세히 보기"
     },
     "copyright": "© 2025 INSLAB. All rights reserved."
   },

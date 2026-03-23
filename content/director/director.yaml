@@ -1,3 +1,41 @@
+# ============================================================
+# 지도교수 정보 (Director Profile)
+# 스키마: src/lib/content/schemas/director.ts
+# ============================================================
+# 4개 섹션: education, career, projects, patents
+# 각 섹션은 배열이며, 배열 순서대로 UI에 표시됨.
+
+# ── education (학력) ──
+# 각 항목의 필드:
+#   id:          (필수, 문자열) 고유 식별자. 예: "phd"
+#   period:      (필수, 문자열) 기간. 예: "2006.03 ~ 2010.08"
+#   degree:      (필수, 문자열) 학위. 예: "Ph.D. in Computer Engineering"
+#   institution: (필수, 문자열) 기관명. 예: "Kyung Hee University"
+#   details:     (선택, 문자열) 추가 정보. 예: 'Thesis: "논문 제목"'
+#
+# ── career (경력) ──
+# 각 항목의 필드:
+#   id:           (필수, 문자열) 고유 식별자. 예: "c1"
+#   period:       (필수, 문자열) 기간. 예: "2021.03 ~ Current"
+#   role:         (필수, 문자열) 직함. 예: "Assistant Professor"
+#   organization: (필수, 문자열) 소속. 예: "Dept. of CSE, Soonchunhyang University"
+#
+# ── projects (연구과제) ──
+# 각 항목의 필드:
+#   id:      (필수, 문자열) 고유 식별자. 예: "p1"
+#   period:  (필수, 문자열) 기간. 예: "2025.07 ~ 2026.02"
+#   title:   (필수, 문자열) 과제명
+#   agency:  (필수, 문자열) 지원 기관. 예: "NRF", "IITP", "Samsung"
+#   status:  (필수, 문자열) 상태. 허용값: "Ongoing" | "Past"
+#
+# ── patents (특허) ──
+# 각 항목의 필드:
+#   id:      (필수, 문자열) 고유 식별자. 예: "pat-1"
+#   title:   (필수, 문자열) 특허 제목
+#   number:  (필수, 문자열) 특허 번호. 예: "10-2724677"
+#   date:    (필수, 문자열) 날짜. 예: "2024.10.28"
+#   status:  (필수, 문자열) 상태. 허용값: "Registered" | "Filed"
+
 education:
   - id: phd
     period: "2006.03 ~ 2010.08"

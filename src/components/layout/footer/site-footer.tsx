@@ -68,7 +68,7 @@ export function SiteFooter({ footer }: SiteFooterProps) {
 
           {/* Link columns + CTA */}
           <div className="lg:col-span-8">
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
               {columns.map((col) => (
                 <div key={col.title}>
                   <h2 className="mb-4 text-xs font-semibold tracking-wider text-slate-900 uppercase">
@@ -88,27 +88,24 @@ export function SiteFooter({ footer }: SiteFooterProps) {
                   </ul>
                 </div>
               ))}
-            </div>
 
-            {/* CTA — below link columns, right-aligned */}
-            <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-end">
-              <p className="text-sm font-semibold text-slate-900">
-                {footer.cta.title}
-              </p>
-              <div className="flex gap-2.5">
-                <Link
-                  href="/join"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/35"
-                >
-                  {footer.cta.primary}
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-sm font-semibold text-slate-600 transition-colors hover:border-slate-300 hover:text-slate-900"
-                >
-                  {footer.cta.secondary}
-                </Link>
+              {/* CTA card */}
+              <div className="col-span-2 sm:col-span-1">
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                  <p className="text-xs font-semibold tracking-wider text-slate-900 uppercase mb-3">
+                    {footer.cta.title}
+                  </p>
+                  <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                    {footer.cta.description}
+                  </p>
+                  <Link
+                    href="/join"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700"
+                  >
+                    {footer.cta.linkText}
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

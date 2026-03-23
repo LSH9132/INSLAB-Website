@@ -1,7 +1,48 @@
+# ============================================================
+# 팀원 목록 (Team Members)
+# 스키마: src/lib/content/schemas/team.ts
+# ============================================================
+# 각 항목의 필드 설명:
+#
+#   id:           (필수, 문자열) 고유 식별자. 예: "hong-gildong"
+#   name:         (필수, 객체)  이름
+#     ko:         (필수, 문자열) 한국어 이름. 예: "홍길동"
+#     en:         (필수, 문자열) 영어 이름.   예: "Gildong Hong"
+#   role:         (필수, 문자열) 역할. 허용값: "Professor" | "PhD" | "MS" | "BS" | "Alumni"
+#                               → 이 순서대로 UI에 그룹화되어 표시됨
+#   photo:        (필수, 문자열) 프로필 사진 경로. 예: "/images/team/hong.png"
+#                               → 빈 문자열("")이면 영어 이름의 이니셜이 대신 표시됨
+#                               → /public/images/ 아래에 파일 배치
+#   enrollYear:   (필수, 정수)  입학/합류 연도. 예: 2024
+#   interests:    (필수, 배열)  연구 관심 분야. 최소 1개 권장
+#                               예: ["Federated Learning", "Edge AI"]
+#   email:        (선택, 문자열) 이메일 주소. 예: "hong@sch.ac.kr"
+#                               → 생략 시 카드에 이메일 미표시
+#   links:        (선택, 객체)  외부 링크
+#     scholar:    (선택, 문자열) Google Scholar 프로필 URL
+#     github:     (선택, 문자열) GitHub 프로필 URL
+#
+# ── 예시 ──
+# - id: hong-gildong
+#   name:
+#     ko: 홍길동
+#     en: Gildong Hong
+#   role: MS
+#   photo: "/images/team/hong.png"
+#   enrollYear: 2024
+#   interests:
+#     - Federated Learning
+#     - Edge AI
+#   email: hong@sch.ac.kr
+#   links:
+#     scholar: "https://scholar.google.com/citations?user=XXXXX"
+#     github: "https://github.com/username"
+# ============================================================
+
 - id: daeyoung-kim
   name:
     ko: 김대영
-    en: Daeyoung Kim
+    en: Dae-Young Kim
   role: Professor
   photo: /images/director/kimdy.png
   enrollYear: 2021
@@ -18,7 +59,7 @@
     ko: 이소연
     en: Soyeon Lee
   role: PhD
-  photo: ""
+  photo: /images/team/soyeon-lee.jpeg
   enrollYear: 2022
   interests:
     - Federated Learning
@@ -41,7 +82,7 @@
 
 - id: samia-zahid
   name:
-    ko: Samia Zahid
+    ko: 사미아
     en: Samia Zahid
   role: MS
   photo: ""
@@ -71,8 +112,8 @@
   photo: ""
   enrollYear: 2024
   interests:
-    - AIoT
-    - Embedded Systems
+    - Machine Learning
+    - Architectural Optimization
 
 - id: sunghoon-wang
   name:
@@ -82,8 +123,8 @@
   photo: ""
   enrollYear: 2024
   interests:
-    - Network Simulation
-    - LPWAN
+    - Vision AI
+    - Machine Learning
 
 - id: soochang-kim
   name:

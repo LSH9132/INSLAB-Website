@@ -165,7 +165,7 @@ export default async function ResearchPage({
               </p>
               <div className="flex gap-4">
                 <Link
-                  href={`/${locale}/publications`}
+                  href="/publications"
                   className="rounded-md bg-blue-700 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
                 >
                   {research.connectivity.cta}
