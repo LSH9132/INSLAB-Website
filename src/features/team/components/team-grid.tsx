@@ -5,9 +5,10 @@ import type { Member } from "@/lib/content";
 import { MemberCard } from "./member-card";
 import { teamStaggerContainer } from "@/lib/motion/team-variants";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type TeamGridDictionary = any;
-/* eslint-enable @typescript-eslint/no-explicit-any */
+import type { TeamDict } from "@/types/messages";
+import { type FloatingShape, renderShape, EASE_SMOOTH } from "@/lib/shapes";
+
+type TeamGridDictionary = TeamDict;
 
 type TeamGridProps = {
   graduate: Member[];
@@ -16,55 +17,7 @@ type TeamGridProps = {
   dict: TeamGridDictionary;
 };
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
-/* ── Floating shapes (shared with hero/director-spotlight) ───── */
-type Shape = "fourStar" | "diamond" | "ring" | "triangle";
-type FloatingShape = {
-  x: number;
-  cy: number;
-  size: number;
-  dur: number;
-  delay: number;
-  shape: Shape;
-  color: string;
-  spin?: number;
-};
-
-function renderShape(s: FloatingShape) {
-  const sz = s.size;
-  switch (s.shape) {
-    case "fourStar": {
-      const a = sz * 0.5;
-      const b = sz * 0.15;
-      return (
-        <path
-          d={`M0,${-a} L${b},${-b} L${a},0 L${b},${b} L0,${a} L${-b},${b} L${-a},0 L${-b},${-b}Z`}
-          fill={s.color}
-        />
-      );
-    }
-    case "diamond": {
-      const h = sz * 0.5;
-      const w = sz * 0.3;
-      return <path d={`M0,${-h} L${w},0 L0,${h} L${-w},0Z`} fill={s.color} />;
-    }
-    case "triangle": {
-      const h = sz * 0.5;
-      const w = sz * 0.4;
-      return <path d={`M0,${-h} L${w},${h} L${-w},${h}Z`} fill={s.color} />;
-    }
-    case "ring":
-      return (
-        <circle
-          r={sz * 0.4}
-          fill="none"
-          stroke={s.color}
-          strokeWidth={sz * 0.1}
-        />
-      );
-  }
-}
+const ease = EASE_SMOOTH;
 
 /* ── Section component ─────────────────────────────────────── */
 

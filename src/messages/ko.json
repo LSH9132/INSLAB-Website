@@ -181,6 +181,10 @@
     "copyright": "© 2025 INSLAB. All rights reserved."
   },
   "home": {
+    "metadata": {
+      "title": "홈",
+      "description": "INSLAB — 순천향대학교 인공지능 네트워크 시스템 연구실. AI 및 네트워크 시스템 연구."
+    },
     "hero": {
       "eyebrow": "인공지능 네트워크 시스템 연구실",
       "title": "INSLAB —",
@@ -243,12 +247,32 @@
     }
   },
   "Director": {
+    "metadata": {
+      "title": "지도교수",
+      "description": "김대영 교수 — 순천향대학교 INSLAB 연구실 책임교수."
+    },
+    "hero": {
+      "badge": "연구실 책임교수 (PI)",
+      "degree": "공학박사",
+      "department": "컴퓨터소프트웨어공학과",
+      "university": "순천향대학교",
+      "address": "충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511",
+      "lectureLabel": "강의 2026-1",
+      "whosWho": "Marquis Who's Who in the World 2016 등재"
+    },
     "education": "학력 및 경력",
+    "careerHeading": "경력",
+    "educationHeading": "학력",
     "career": "경력",
     "researchArea": "연구 분야",
     "publications": "주요 논문",
     "projects": "연구 과제",
+    "ongoingProjects": "진행 중인 과제",
+    "pastProjects": "완료 과제",
+    "agencyLabel": "지원기관:",
     "patents": "특허",
+    "registered": "등록",
+    "filed": "출원",
     "filters": {
       "all": "전체",
       "journal": "저널",
@@ -328,7 +352,8 @@
         "line2": "충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511"
       },
       "email": {
-        "label": "이메일"
+        "label": "이메일",
+        "value": "dyoung.kim@sch.ac.kr"
       },
       "phone": {
         "label": "전화",

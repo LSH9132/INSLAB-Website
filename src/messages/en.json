@@ -181,6 +181,10 @@
     "copyright": "© 2025 INSLAB. All rights reserved."
   },
   "home": {
+    "metadata": {
+      "title": "Home",
+      "description": "INSLAB — Intelligence Network System Lab at Soonchunhyang University. AI and network systems research."
+    },
     "hero": {
       "eyebrow": "Intelligence Network System Lab",
       "title": "INSLAB —",
@@ -243,12 +247,32 @@
     }
   },
   "Director": {
+    "metadata": {
+      "title": "Director",
+      "description": "Prof. Dae-Young Kim — Lab Director of INSLAB at Soonchunhyang University."
+    },
+    "hero": {
+      "badge": "Lab Director (PI)",
+      "degree": "Doctor of Philosophy",
+      "department": "Dept. of Computer Software Engineering",
+      "university": "Soonchunhyang University",
+      "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511",
+      "lectureLabel": "Lecture 2026-1",
+      "whosWho": "Recorded in \"Marquis Who's Who in the World 2016\""
+    },
     "education": "Education & Career",
+    "careerHeading": "Career",
+    "educationHeading": "Education",
     "career": "Career",
     "researchArea": "Research Areas",
     "publications": "Selected Publications",
     "projects": "Research Projects",
+    "ongoingProjects": "Ongoing Projects",
+    "pastProjects": "Past Projects",
+    "agencyLabel": "Agency:",
     "patents": "Patents",
+    "registered": "Registered",
+    "filed": "Filed",
     "filters": {
       "all": "All",
       "journal": "Journal",
@@ -328,7 +352,8 @@
         "line2": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511"
       },
       "email": {
-        "label": "Email"
+        "label": "Email",
+        "value": "dyoung.kim@sch.ac.kr"
       },
       "phone": {
         "label": "Phone",

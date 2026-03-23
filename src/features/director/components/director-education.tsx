@@ -40,7 +40,7 @@ export function DirectorEducation({
               <div className="rounded-lg bg-teal-50 p-2 text-teal-600">
                 <Briefcase className="h-6 w-6" />
               </div>
-              <h3 className="text-2xl font-semibold text-slate-900">Career</h3>
+              <h3 className="text-2xl font-semibold text-slate-900">{t("careerHeading")}</h3>
             </div>
 
             <motion.div
@@ -84,7 +84,7 @@ export function DirectorEducation({
                 <GraduationCap className="h-6 w-6" />
               </div>
               <h3 className="text-2xl font-semibold text-slate-900">
-                Education
+                {t("educationHeading")}
               </h3>
             </div>
 

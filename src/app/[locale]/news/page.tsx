@@ -8,6 +8,7 @@ import { NewsHero } from "@/features/news/components/news-hero";
 import { NewsList } from "@/features/news/components/news-list";
 import { getNewsItems } from "@/lib/content";
 import { routing } from "@/i18n/routing";
+import type { Messages } from "@/types/messages";
 
 export async function generateMetadata({
   params,
@@ -34,8 +35,7 @@ export default async function NewsPage({
   }
   setRequestLocale(locale);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const messages = (await getMessages()) as any;
+  const messages = (await getMessages()) as Messages;
 
   return (
     <PageShell

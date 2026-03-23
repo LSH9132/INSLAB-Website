@@ -8,6 +8,7 @@ import { PublicationsHero } from "@/features/publications/components/publication
 import { PublicationsContent } from "@/features/publications/components/publications-content";
 import { getPublications } from "@/lib/content";
 import { routing } from "@/i18n/routing";
+import type { Messages } from "@/types/messages";
 
 export async function generateMetadata({
   params,
@@ -34,8 +35,7 @@ export default async function PublicationsPage({
   }
   setRequestLocale(locale);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const messages = (await getMessages()) as any;
+  const messages = (await getMessages()) as Messages;
 
   return (
     <PageShell

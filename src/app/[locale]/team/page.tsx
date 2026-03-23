@@ -9,6 +9,7 @@ import { DirectorSpotlight } from "@/features/team/components/director-spotlight
 import { TeamGrid } from "@/features/team/components/team-grid";
 import { getMembers } from "@/lib/content";
 import { routing } from "@/i18n/routing";
+import type { Messages } from "@/types/messages";
 
 export async function generateMetadata({
   params,
@@ -35,8 +36,7 @@ export default async function TeamPage({
   }
   setRequestLocale(locale);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const messages = (await getMessages()) as any;
+  const messages = (await getMessages()) as Messages;
 
   const members = getMembers();
   const professor = members.find((m) => m.role === "Professor")!;

@@ -1,7 +1,10 @@
 import { hasLocale } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import type { Messages } from "@/types/messages";
 import { PageShell } from "@/components/layout";
 import { DirectorHero } from "@/features/director/components/director-hero";
 import { DirectorEducation } from "@/features/director/components/director-education";
@@ -17,6 +20,20 @@ import {
   getDirectorPublications,
 } from "@/lib/content";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Director.metadata" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
 export default async function DirectorPage({
   params,
 }: {
@@ -28,8 +45,7 @@ export default async function DirectorPage({
   }
   setRequestLocale(locale);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const messages = (await getMessages()) as any;
+  const messages = (await getMessages()) as Messages;
 
   const education = getDirectorEducation();
   const career = getDirectorCareer();

@@ -46,7 +46,7 @@ export function DirectorProjects({ projects }: { projects: Project[] }) {
           {ongoingProjects.length > 0 && (
             <div className="space-y-6">
               <h3 className="flex items-center gap-2 text-xl font-bold text-teal-600">
-                <Clock className="h-5 w-5" /> Ongoing Projects
+                <Clock className="h-5 w-5" /> {t("ongoingProjects")}
               </h3>
               <motion.div
                 className="grid gap-4 sm:grid-cols-2"
@@ -69,7 +69,7 @@ export function DirectorProjects({ projects }: { projects: Project[] }) {
                         {project.title}
                       </h4>
                       <p className="text-sm font-medium text-slate-500">
-                        Agency: {project.agency}
+                        {t("agencyLabel")} {project.agency}
                       </p>
                     </div>
                   </motion.div>
@@ -81,7 +81,7 @@ export function DirectorProjects({ projects }: { projects: Project[] }) {
           {pastProjects.length > 0 && (
             <div className="space-y-6">
               <h3 className="flex items-center gap-2 text-xl font-bold text-slate-500">
-                <CheckCircle2 className="h-5 w-5" /> Past Projects
+                <CheckCircle2 className="h-5 w-5" /> {t("pastProjects")}
               </h3>
               <motion.div
                 className="grid gap-4 sm:grid-cols-2"
@@ -104,7 +104,7 @@ export function DirectorProjects({ projects }: { projects: Project[] }) {
                         {project.title}
                       </h4>
                       <p className="text-sm text-slate-500">
-                        Agency: {project.agency}
+                        {t("agencyLabel")} {project.agency}
                       </p>
                     </div>
                   </motion.div>
