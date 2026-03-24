@@ -16,6 +16,12 @@ export async function deleteMember(id: string) {
   revalidatePath("/team");
 }
 
+export async function bulkDeleteMembers(ids: string[]) {
+  const members = getAll().filter((m) => !ids.includes(m.id));
+  writeYaml(FILE, members);
+  revalidatePath("/team");
+}
+
 export async function saveMember(formData: FormData) {
   const members = getAll();
   const entry = {

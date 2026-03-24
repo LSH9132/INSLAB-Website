@@ -15,6 +15,11 @@ export async function deleteResearchArea(id: string) {
   revalidatePath("/research");
 }
 
+export async function bulkDeleteResearchAreas(ids: string[]) {
+  writeYaml(FILE, getAll().filter((a) => !ids.includes(a.id)));
+  revalidatePath("/research");
+}
+
 export async function saveResearchArea(formData: FormData) {
   const areas = getAll();
   const entry = {

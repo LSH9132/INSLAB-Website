@@ -15,6 +15,11 @@ export async function deleteNewsItem(id: string) {
   revalidatePath("/news");
 }
 
+export async function bulkDeleteNewsItems(ids: string[]) {
+  writeYaml(FILE, getAll().filter((n) => !ids.includes(n.id)));
+  revalidatePath("/news");
+}
+
 export async function saveNewsItem(formData: FormData) {
   const items = getAll();
   const entry = {

@@ -1,8 +1,8 @@
 import { readYaml } from "@/lib/content-io";
 import { AnnouncementsSchema } from "@inslab/content-schemas";
 import { saveAnnouncement, deleteAnnouncement } from "./actions";
-import { ConfirmDeleteButton } from "@/components/confirm-delete-button";
 import { redirect } from "next/navigation";
+import { AnnouncementCard } from "./announcement-card";
 
 export const dynamic = "force-dynamic";
 
@@ -13,13 +13,12 @@ export default function AnnouncementsPage() {
     "use server";
     formData.set("index", "-1");
     await saveAnnouncement(formData);
-    redirect("/announcements");
+    redirect("/announcements?toast=saved");
   }
 
   async function handleDelete(formData: FormData) {
     "use server";
     await deleteAnnouncement(Number(formData.get("index")));
-    redirect("/announcements");
   }
 
   return (
@@ -28,17 +27,13 @@ export default function AnnouncementsPage() {
 
       <div className="space-y-3 mb-8">
         {items.map((item, i) => (
-          <div key={i} className="bg-white border border-gray-200 rounded-lg p-4 flex items-start justify-between gap-4">
-            <div className="flex-1 text-sm">
-              <p className="font-medium">{item.ko}</p>
-              <p className="text-gray-500">{item.en}</p>
-              {item.href && <p className="text-blue-600 text-xs mt-1">{item.href}</p>}
-            </div>
-            <form action={handleDelete}>
-              <input type="hidden" name="index" value={i} />
-              <ConfirmDeleteButton />
-            </form>
-          </div>
+          <AnnouncementCard
+            key={i}
+            item={item}
+            index={i}
+            saveAction={saveAnnouncement}
+            deleteAction={handleDelete}
+          />
         ))}
         {items.length === 0 && <p className="text-gray-400 text-sm">No announcements.</p>}
       </div>

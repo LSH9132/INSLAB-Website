@@ -12,6 +12,8 @@ const NAV_ITEMS = [
   { href: "/director", label: "Director" },
   { href: "/announcements", label: "Announcements" },
   { href: "/messages", label: "i18n Messages" },
+  { href: "/deploys", label: "Deploys" },
+  { href: "/preview", label: "Preview" },
 ];
 
 export function Sidebar() {

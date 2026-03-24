@@ -1,7 +1,7 @@
 import { readYaml } from "@/lib/content-io";
 import { PublicationsSchema } from "@inslab/content-schemas";
 import { ContentTable, type DisplayRow } from "@/components/content-table";
-import { deletePublication } from "./actions";
+import { deletePublication, bulkDeletePublications } from "./actions";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
@@ -39,7 +39,14 @@ export default function PublicationsPage() {
           Add Publication
         </Link>
       </div>
-      <ContentTable rows={rows} columns={columns} deleteAction={deletePublication} />
+      <ContentTable
+        rows={rows}
+        columns={columns}
+        deleteAction={deletePublication}
+        bulkDeleteAction={bulkDeletePublications}
+        searchable
+        filter={{ column: "type", options: ["Journal", "Conference", "Domestic"] }}
+      />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { readYaml } from "@/lib/content-io";
 import { MembersSchema } from "@inslab/content-schemas";
 import { ContentTable, type DisplayRow } from "@/components/content-table";
-import { deleteMember } from "./actions";
+import { deleteMember, bulkDeleteMembers } from "./actions";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
@@ -10,6 +10,7 @@ export default function TeamPage() {
   const members = readYaml("team/members.yaml", MembersSchema);
 
   const columns = [
+    { key: "photo", label: "", type: "thumbnail" as const },
     { key: "name", label: "Name" },
     { key: "role", label: "Role" },
     { key: "enrollYear", label: "Year" },
@@ -19,6 +20,7 @@ export default function TeamPage() {
   const rows: DisplayRow[] = members.map((m) => ({
     id: m.id,
     editHref: `/team/${m.id}`,
+    photo: m.photo || undefined,
     name: `${m.name.ko} (${m.name.en})`,
     role: m.role,
     enrollYear: String(m.enrollYear),
@@ -36,7 +38,7 @@ export default function TeamPage() {
           Add Member
         </Link>
       </div>
-      <ContentTable rows={rows} columns={columns} deleteAction={deleteMember} />
+      <ContentTable rows={rows} columns={columns} deleteAction={deleteMember} bulkDeleteAction={bulkDeleteMembers} searchable />
     </div>
   );
 }

@@ -26,6 +26,15 @@ export async function deletePublication(id: string) {
   revalidatePath("/publications");
 }
 
+export async function bulkDeletePublications(ids: string[]) {
+  const idSet = new Set(ids);
+  for (const [type, file] of Object.entries(FILES)) {
+    const pubs = getAll(type).filter((p) => !idSet.has(p.id));
+    writeYaml(file, pubs);
+  }
+  revalidatePath("/publications");
+}
+
 export async function savePublication(formData: FormData) {
   const entry = {
     id: formData.get("id") as string,

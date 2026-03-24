@@ -14,7 +14,7 @@ export default function DirectorPage() {
   async function handleSave(formData: FormData) {
     "use server";
     await saveDirectorData(formData);
-    redirect("/director");
+    redirect("/director?toast=saved");
   }
 
   const pubColumns = [

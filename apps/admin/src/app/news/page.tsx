@@ -1,7 +1,7 @@
 import { readYaml } from "@/lib/content-io";
 import { NewsItemsSchema } from "@inslab/content-schemas";
 import { ContentTable, type DisplayRow } from "@/components/content-table";
-import { deleteNewsItem } from "./actions";
+import { deleteNewsItem, bulkDeleteNewsItems } from "./actions";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
@@ -31,7 +31,14 @@ export default function NewsPage() {
           Add News
         </Link>
       </div>
-      <ContentTable rows={rows} columns={columns} deleteAction={deleteNewsItem} />
+      <ContentTable
+        rows={rows}
+        columns={columns}
+        deleteAction={deleteNewsItem}
+        bulkDeleteAction={bulkDeleteNewsItems}
+        searchable
+        filter={{ column: "category", options: ["Awards", "Papers", "Events", "Notices"] }}
+      />
     </div>
   );
 }

@@ -16,8 +16,15 @@ echo "[build] Running next build..."
 cd "$APP_DIR"
 npx next build
 
-echo "[build] Deploying to $OUT_DIR..."
-# Use rsync to update the volume mount in-place (mv fails on Docker volumes)
-rsync -a --delete "$APP_DIR/out/" "$OUT_DIR/"
-
-echo "[build] Deploy complete."
+# Determine deploy target
+if [ "$PREVIEW" = "1" ]; then
+  DEPLOY_DIR="$OUT_DIR/preview"
+  echo "[build] Deploying preview to $DEPLOY_DIR..."
+  mkdir -p "$DEPLOY_DIR"
+  rsync -a --delete "$APP_DIR/out/" "$DEPLOY_DIR/"
+  echo "[build] Preview deploy complete."
+else
+  echo "[build] Deploying to $OUT_DIR..."
+  rsync -a --delete "$APP_DIR/out/" "$OUT_DIR/"
+  echo "[build] Deploy complete."
+fi

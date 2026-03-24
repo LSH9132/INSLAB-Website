@@ -1,7 +1,7 @@
 import { readYaml } from "@/lib/content-io";
 import { ResearchAreasSchema } from "@inslab/content-schemas";
 import { ContentTable, type DisplayRow } from "@/components/content-table";
-import { deleteResearchArea } from "./actions";
+import { deleteResearchArea, bulkDeleteResearchAreas } from "./actions";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
@@ -33,7 +33,7 @@ export default function ResearchPage() {
           Add Area
         </Link>
       </div>
-      <ContentTable rows={rows} columns={columns} deleteAction={deleteResearchArea} />
+      <ContentTable rows={rows} columns={columns} deleteAction={deleteResearchArea} bulkDeleteAction={bulkDeleteResearchAreas} searchable />
     </div>
   );
 }
