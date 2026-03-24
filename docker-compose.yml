@@ -1,0 +1,61 @@
+services:
+  # ── Admin (internal network only) ──────────────────────────────────
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - content-data:/data
+    networks:
+      - internal
+      - external
+    environment:
+      - BUILDER_URL=http://builder:4000
+      - DATA_DIR=/data
+    restart: unless-stopped
+    depends_on:
+      builder:
+        condition: service_started
+
+  # ── Builder (internal, builds SSG on demand) ───────────────────────
+  builder:
+    build:
+      context: .
+      dockerfile: services/builder/Dockerfile
+    volumes:
+      - content-data:/data
+      - out-data:/out
+    networks:
+      - internal
+      - external
+    environment:
+      - DATA_DIR=/data
+      - OUT_DIR=/out
+    restart: unless-stopped
+
+  # ── Nginx (external, serves static files) ──────────────────────────
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - out-data:/usr/share/nginx/html:ro
+      - content-data:/data:ro
+      - ./services/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - external
+    restart: unless-stopped
+    depends_on:
+      builder:
+        condition: service_started
+
+volumes:
+  content-data:
+  out-data:
+
+networks:
+  internal:
+    internal: true
+  external:
