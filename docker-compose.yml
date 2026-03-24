@@ -14,6 +14,8 @@ services:
     environment:
       - BUILDER_URL=http://builder:4000
       - DATA_DIR=/data
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - SESSION_SECRET=${SESSION_SECRET:-inslab-prod-secret-change-me}
     restart: unless-stopped
     depends_on:
       builder:
