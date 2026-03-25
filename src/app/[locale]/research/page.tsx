@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 import { PageShell } from "@/components/layout";
 import { ResearchHero } from "@/features/research/components/research-hero";
@@ -10,6 +10,7 @@ import { ResearchAreaSection } from "@/features/research/components/research-are
 import { NetworkConstellation } from "@/features/research/components/network-constellation";
 import { getResearchAreas, getDirectorProjects } from "@/lib/content";
 import { routing } from "@/i18n/routing";
+import type { Messages } from "@/types/messages";
 
 export async function generateMetadata({
   params,
@@ -36,8 +37,7 @@ export default async function ResearchPage({
   }
   setRequestLocale(locale);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const messages = (await getMessages()) as any;
+  const messages = (await getMessages()) as Messages;
 
   const researchAreas = getResearchAreas();
   const ongoingProjects = getDirectorProjects().filter((p) => p.status === "Ongoing");
@@ -109,7 +109,7 @@ export default async function ResearchPage({
                 area={area}
                 locale={locale}
                 index={index}
-                dict={research}
+                dict={research as { keywords: string; representativePapers: string }}
                 className={
                   index < 2
                     ? "md:col-span-6 lg:col-span-4"
@@ -165,7 +165,7 @@ export default async function ResearchPage({
               </p>
               <div className="flex gap-4">
                 <Link
-                  href={`/${locale}/publications`}
+                  href="/publications"
                   className="rounded-md bg-blue-700 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-800"
                 >
                   {research.connectivity.cta}

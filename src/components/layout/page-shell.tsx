@@ -3,15 +3,15 @@ import { SiteFooter } from "@/components/layout/footer";
 import { SiteHeader } from "@/components/layout/header";
 import { getAnnouncements } from "@/lib/content";
 
+import type { NavData, FooterData } from "@/types/messages";
+
 type PageShellProps = {
   children: ReactNode;
   locale: string;
   currentPath?: string;
   mainClassName?: string;
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  nav: any;
-  footer: any;
-  /* eslint-enable @typescript-eslint/no-explicit-any */
+  nav: NavData;
+  footer: FooterData;
 };
 
 export function PageShell({
@@ -31,7 +31,7 @@ export function PageShell({
   return (
     <div className="min-h-screen bg-white text-foreground">
       <SiteHeader currentPath={currentPath} nav={navWithAnnouncements} />
-      <main className={mainClassName ?? "flex-1"}>{children}</main>
+      <main id="main-content" className={mainClassName ?? "flex-1"}>{children}</main>
       <SiteFooter footer={footer} />
     </div>
   );

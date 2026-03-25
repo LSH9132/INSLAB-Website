@@ -1,3 +1,57 @@
+# ============================================================
+# 연구 분야 (Research Areas)
+# 스키마: src/lib/content/schemas/research.ts
+# ============================================================
+# 연구 페이지에 카드 형태로 표시. 배열 순서대로 01, 02, 03... 번호 부여.
+#
+# 각 항목의 필드 설명:
+#
+#   id:          (필수, 문자열) 고유 식별자.
+#                → 현재 아이콘/색상 매핑된 id:
+#                  "intelligent-networking"    → 네트워크 아이콘, 파란색
+#                  "distributed-ai"           → 칩 아이콘, 청록색
+#                  "cyber-physical-systems"    → 방패 아이콘, 보라색
+#                → 그 외 id는 기본 회색 스타일 적용
+#                → 새 id 추가 시 src/features/research/components/research-area-section.tsx에서
+#                  colorMap, iconComponents에 추가 필요
+#   title:       (필수, 객체)  제목
+#     ko:        (필수, 문자열) 한국어 제목
+#     en:        (필수, 문자열) 영어 제목
+#   description: (필수, 객체)  설명 (여러 단락 가능, |- 사용)
+#     ko:        (필수, 문자열) 한국어 설명
+#     en:        (필수, 문자열) 영어 설명
+#                → UI에서는 첫 번째 단락만 표시됨 (\n\n 기준으로 분리)
+#   keywords:    (필수, 배열)  키워드 목록.
+#                → UI에서 최대 5개까지만 배지로 표시됨
+#   papers:      (필수, 배열)  대표 논문 목록
+#     - title:   (필수, 문자열) 논문 제목
+#       venue:   (필수, 문자열) 학회/저널명. 예: "IEEE TNSM"
+#       year:    (필수, 정수)  발표 연도
+#
+# ── 예시 ──
+# - id: new-research-area
+#   title:
+#     ko: 새로운 연구 분야
+#     en: New Research Area
+#   description:
+#     en: |-
+#       First paragraph shown in the UI card.
+#
+#       Second paragraph is hidden but stored for future use.
+#     ko: |-
+#       UI 카드에 표시되는 첫 번째 단락.
+#
+#       두 번째 단락은 저장되지만 현재 UI에서는 숨김.
+#   keywords:
+#     - Keyword 1
+#     - Keyword 2
+#     - Keyword 3
+#   papers:
+#     - title: "Example Paper Title"
+#       venue: "IEEE Access"
+#       year: 2025
+# ============================================================
+
 - id: intelligent-networking
   title:
     en: Intelligent Network Systems

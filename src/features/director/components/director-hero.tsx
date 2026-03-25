@@ -53,7 +53,7 @@ export function DirectorHero({ locale }: { locale: string }) {
           {/* Info */}
           <motion.div className="flex flex-col" variants={directorInfoVariants}>
             <span className="mb-3 inline-block w-fit rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
-              Lab Director (PI)
+              {t("hero.badge")}
             </span>
 
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 lg:text-6xl">
@@ -64,7 +64,7 @@ export function DirectorHero({ locale }: { locale: string }) {
             </h1>
 
             <p className="mt-2 text-xl font-medium text-slate-500">
-              Doctor of Philosophy
+              {t("hero.degree")}
             </p>
 
             <div className="mt-8 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2 md:text-base">
@@ -76,7 +76,7 @@ export function DirectorHero({ locale }: { locale: string }) {
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-teal-600"
                 >
-                  Dept. of Computer Software Engineering
+                  {t("hero.department")}
                 </a>
               </div>
               <div className="flex items-center space-x-3 text-slate-500">
@@ -87,13 +87,13 @@ export function DirectorHero({ locale }: { locale: string }) {
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-teal-600"
                 >
-                  Soonchunhyang University
+                  {t("hero.university")}
                 </a>
               </div>
               <div className="flex items-start space-x-3 text-slate-500 sm:col-span-2">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" />
                 <span>
-                  충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511
+                  {t("hero.address")}
                 </span>
               </div>
               <div className="flex items-center space-x-3 text-slate-500">
@@ -113,13 +113,13 @@ export function DirectorHero({ locale }: { locale: string }) {
                   rel="noopener noreferrer"
                   className="font-medium transition-colors hover:text-teal-600"
                 >
-                  Lecture 2026-1
+                  {t("hero.lectureLabel")}
                 </a>
               </div>
             </div>
 
             <div className="mt-8 w-fit border-t border-slate-200 pt-4 text-sm italic text-slate-400">
-              Recorded in &quot;Marquis Who&apos;s Who in the World 2016&quot;
+              {t("hero.whosWho")}
             </div>
           </motion.div>
         </motion.div>

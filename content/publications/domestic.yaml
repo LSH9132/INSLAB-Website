@@ -1,3 +1,52 @@
+# ============================================================
+# 논문 목록 (Publications)
+# 스키마: src/lib/content/schemas/publication.ts
+# ============================================================
+# 날짜 내림차순으로 자동 정렬되어 표시됨.
+# journals.yaml + conferences.yaml + domestic.yaml은 병합 후 정렬.
+# director/publications.yaml은 지도교수 페이지에서 별도 표시.
+#
+# 각 항목의 필드 설명:
+#
+#   id:       (필수, 문자열) 고유 식별자. 예: "j-2025-kim-edge"
+#                           → 권장 형식: "{type약자}-{year}-{1저자성}-{키워드}"
+#   year:     (필수, 정수)  발행 연도. 예: 2025
+#   type:     (필수, 문자열) 논문 유형. 허용값: "Journal" | "Conference" | "Domestic"
+#                           → UI에서 색상 배지로 구분 표시됨
+#   title:    (필수, 문자열) 논문 제목
+#   authors:  (필수, 배열)  저자 목록 (순서대로)
+#                           예: ["Hong Gildong", "Dae-Young Kim"]
+#   venue:    (필수, 문자열) 게재 학회/저널명. 예: "IEEE Access (SCIE)"
+#   details:  (필수, 문자열) 상세 정보. 예: "Vol. 13, pp. 35113-35123"
+#                           → 미정이면 "Submitted", "Accepted" 등 기입
+#   date:     (선택, 문자열) 정확한 발행일. ISO 형식 "YYYY-MM-DD"
+#                           → 생략 시 해당 year의 12월 31일로 간주 (정렬용)
+#                           → 정확한 날짜를 알면 기입하는 것을 권장
+#   tags:     (필수, 배열)  태그 목록. 예: ["IoT", "Edge AI", "GNN"]
+#                           → UI에서 배지로 표시됨
+#   pdfUrl:   (필수, 문자열) PDF 다운로드 URL
+#                           → 없으면 빈 문자열 "" (다운로드 버튼 미표시)
+#   doiUrl:   (필수, 문자열) DOI URL. 예: "https://doi.org/10.1109/..."
+#                           → 없으면 빈 문자열 "" (DOI 링크 미표시)
+#
+# ── 예시 ──
+# - id: j-2025-hong-example
+#   year: 2025
+#   date: "2025-03-15"
+#   type: Journal
+#   title: "Example Paper Title for Demonstration"
+#   authors:
+#     - Gildong Hong
+#     - Dae-Young Kim
+#   venue: "IEEE Access (SCIE)"
+#   details: "Vol. 13, pp. 1234-1245"
+#   tags:
+#     - IoT
+#     - Edge AI
+#   pdfUrl: "https://example.com/paper.pdf"
+#   doiUrl: "https://doi.org/10.1109/ACCESS.2025.XXXXX"
+# ============================================================
+
 - id: d-2025-kim-yeseo
   year: 2025
   date: "2025-04-01"

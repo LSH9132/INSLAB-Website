@@ -7,11 +7,11 @@ import {
   staggerContainerVariants,
 } from "@/lib/motion/fade-up";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { JoinDict } from "@/types/messages";
+
 type JoinContentProps = {
-  dict: any;
+  dict: JoinDict;
 };
-/* eslint-enable @typescript-eslint/no-explicit-any */
 
 /* ── Anime-numbered section header ── */
 function SectionHeader({

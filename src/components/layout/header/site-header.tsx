@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { AnimatePresence, LayoutGroup, motion } from "motion/react";
+import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
@@ -10,12 +10,12 @@ import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./language-switcher";
 import { SiteUtilityBar } from "./site-utility-bar";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { NavData } from "@/types/messages";
+
 type SiteHeaderProps = {
   currentPath?: string;
-  nav: any;
+  nav: NavData;
 };
-/* eslint-enable @typescript-eslint/no-explicit-any */
 
 type NavKey = "home" | "research" | "publications" | "team" | "contact";
 
@@ -123,6 +123,7 @@ function MenuToggleIcon({ isOpen }: { isOpen: boolean }) {
 }
 
 export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
+  const shouldReduceMotion = useReducedMotion();
   const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
   const [shouldShowUtilityBar, setShouldShowUtilityBar] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -207,7 +208,7 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
         transition={{ duration: 0.22, ease: "easeOut" }}
         className="overflow-hidden"
       >
-        <SiteUtilityBar announcements={nav.announcements} />
+        <SiteUtilityBar announcements={nav.announcements ?? []} />
       </motion.div>
 
       {/* Main nav bar — CSS shadow via ref, no motion re-render on scroll */}
@@ -221,7 +222,7 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
         >
           {/* Logo */}
           <motion.div
-            initial={{ opacity: 0, x: -14 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, x: -14 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
           >
@@ -263,7 +264,7 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
                   return (
                     <motion.div
                       key={key}
-                      initial={{ opacity: 0, y: -8 }}
+                      initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 0.05 + i * 0.05, ease: "easeOut" }}
                       className="relative"
@@ -326,6 +327,7 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
                 <input
                   type="text"
                   placeholder={nav.searchPlaceholder}
+                  aria-label={nav.searchPlaceholder}
                   onFocus={() => setIsSearchFocused(true)}
                   onBlur={() => setIsSearchFocused(false)}
                   className="w-full border-none bg-transparent px-2 text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none"
@@ -348,7 +350,7 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
 
             {/* Join Us CTA */}
             <motion.div
-              initial={{ opacity: 0, x: 12 }}
+              initial={shouldReduceMotion ? false : { opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
             >
@@ -530,6 +532,8 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
               animate={{ x: "0%" }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 340, damping: 36 }}
+              role="dialog"
+              aria-modal="true"
               className="fixed top-0 right-0 z-50 flex h-full w-[min(340px,100vw)] flex-col bg-white shadow-2xl lg:hidden"
             >
               {/* Drawer header */}
@@ -694,6 +698,7 @@ export function SiteHeader({ currentPath, nav }: SiteHeaderProps) {
                   <input
                     type="text"
                     placeholder={nav.searchPlaceholder}
+                    aria-label={nav.searchPlaceholder}
                     className="w-full bg-transparent text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none"
                   />
                 </div>

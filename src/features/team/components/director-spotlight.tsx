@@ -10,6 +10,12 @@ import {
   sectionTitleVariants,
   teamStaggerContainer,
 } from "@/lib/motion/team-variants";
+import {
+  type FloatingShape,
+  renderShape,
+  generateHalftoneDots,
+  EASE_SMOOTH,
+} from "@/lib/shapes";
 
 type DirectorSpotlightProps = {
   member: Member;
@@ -23,19 +29,6 @@ type DirectorSpotlightProps = {
 const brushstrokePath =
   "M 0 6 C 6 2, 12 10, 18 5 S 30 1, 36 6 S 48 11, 54 5 S 66 1, 72 6";
 
-/* Floating shapes for background (subset of hero shapes) */
-type Shape = "fourStar" | "diamond" | "ring" | "triangle";
-type FloatingShape = {
-  x: number;
-  cy: number;
-  size: number;
-  dur: number;
-  delay: number;
-  shape: Shape;
-  color: string;
-  spin?: number;
-};
-
 const floatingShapes: FloatingShape[] = [
   { x: 10, cy: 85, size: 0.9, dur: 14, delay: 0,   shape: "fourStar", color: "#3b82f6", spin: 10 },
   { x: 90, cy: 78, size: 0.7, dur: 12, delay: 3,   shape: "diamond",  color: "#06b6d4", spin: 18 },
@@ -43,57 +36,11 @@ const floatingShapes: FloatingShape[] = [
   { x: 75, cy: 88, size: 0.5, dur: 13, delay: 1.5, shape: "triangle", color: "#3b82f6", spin: 15 },
 ];
 
-function renderShape(s: FloatingShape) {
-  const sz = s.size;
-  switch (s.shape) {
-    case "fourStar": {
-      const a = sz * 0.5;
-      const b = sz * 0.15;
-      return (
-        <path
-          d={`M0,${-a} L${b},${-b} L${a},0 L${b},${b} L0,${a} L${-b},${b} L${-a},0 L${-b},${-b}Z`}
-          fill={s.color}
-        />
-      );
-    }
-    case "diamond": {
-      const h = sz * 0.5;
-      const w = sz * 0.3;
-      return <path d={`M0,${-h} L${w},0 L0,${h} L${-w},0Z`} fill={s.color} />;
-    }
-    case "triangle": {
-      const h = sz * 0.5;
-      const w = sz * 0.4;
-      return <path d={`M0,${-h} L${w},${h} L${-w},${h}Z`} fill={s.color} />;
-    }
-    case "ring":
-      return (
-        <circle
-          r={sz * 0.4}
-          fill="none"
-          stroke={s.color}
-          strokeWidth={sz * 0.1}
-        />
-      );
-  }
-}
+const halftoneDots = generateHalftoneDots({
+  rows: 6, cols: 8, startCx: 5, startCy: 70, spacing: 3.5, maxFade: 0.55, baseRadius: 0.4,
+});
 
-/* Halftone dots — bottom-left subtle */
-const halftoneDots: { cx: number; cy: number; r: number }[] = [];
-for (let row = 0; row < 6; row++) {
-  for (let col = 0; col < 8; col++) {
-    const fade = (row + col) / 12;
-    if (fade < 0.55) {
-      halftoneDots.push({
-        cx: 5 + col * 3.5,
-        cy: 70 + row * 3.5,
-        r: 0.4 * (1 - fade),
-      });
-    }
-  }
-}
-
-const ease = [0.22, 1, 0.36, 1] as const;
+const ease = EASE_SMOOTH;
 
 /* ------------------------------------------------------------------ */
 /* Component                                                            */

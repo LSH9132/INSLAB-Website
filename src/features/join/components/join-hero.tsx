@@ -1,6 +1,13 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import {
+  type FloatingShape,
+  renderShape,
+  generateHalftoneDots,
+  generateSpeedLines,
+  EASE_SMOOTH,
+} from "@/lib/shapes";
 
 type JoinHeroDictionary = {
   eyebrow: string;
@@ -13,102 +20,31 @@ type JoinHeroDictionary = {
 /* Anime-style decorative SVG data                                      */
 /* ------------------------------------------------------------------ */
 
-const speedLines = Array.from({ length: 36 }, (_, i) => {
-  const angle = i * 10;
-  const rad = (angle * Math.PI) / 180;
-  const inner = 8;
-  const outer = 48;
-  return {
-    x1: 50 + Math.cos(rad) * inner,
-    y1: 50 + Math.sin(rad) * inner,
-    x2: 50 + Math.cos(rad) * outer,
-    y2: 50 + Math.sin(rad) * outer,
-  };
-});
+const speedLines = generateSpeedLines(36, 8, 48);
 
-const halftoneDots: { cx: number; cy: number; r: number }[] = [];
-for (let row = 0; row < 8; row++) {
-  for (let col = 0; col < 10; col++) {
-    const fade = (row + col) / 16;
-    if (fade < 0.6) {
-      halftoneDots.push({
-        cx: 62 + col * 3.5,
-        cy: 65 + row * 3.5,
-        r: 0.45 * (1 - fade),
-      });
-    }
-  }
-}
+const halftoneDots = generateHalftoneDots({
+  rows: 8, cols: 10, startCx: 62, startCy: 65, spacing: 3.5, maxFade: 0.6, baseRadius: 0.45,
+});
 
 const brushstrokePath =
   "M 0 8 C 8 3, 16 12, 24 7 S 40 2, 48 8 S 64 14, 72 7 S 88 2, 96 8";
 
-/* Floating shapes */
-type Shape = "circle" | "fourStar" | "diamond" | "triangle" | "ring";
-type FloatingShape = {
-  x: number;
-  cy: number;
-  size: number;
-  dur: number;
-  delay: number;
-  shape: Shape;
-  color: string;
-  spin?: number;
-};
-
 const floatingShapes: FloatingShape[] = [
-  // Left side
   { x: 6,  cy: 82, size: 1.4, dur: 14, delay: 0,   shape: "fourStar", color: "#3b82f6", spin: 9 },
   { x: 14, cy: 95, size: 1.0, dur: 11, delay: 3,   shape: "diamond",  color: "#06b6d4", spin: 16 },
   { x: 22, cy: 78, size: 0.8, dur: 16, delay: 6,   shape: "circle",   color: "#8b5cf6" },
-  // Center-left
   { x: 32, cy: 90, size: 1.2, dur: 13, delay: 1.5, shape: "triangle", color: "#3b82f6", spin: 14 },
   { x: 38, cy: 84, size: 0.9, dur: 10, delay: 4.5, shape: "ring",     color: "#06b6d4" },
-  // Center
   { x: 48, cy: 96, size: 1.1, dur: 15, delay: 2,   shape: "fourStar", color: "#8b5cf6", spin: 11 },
   { x: 52, cy: 80, size: 0.7, dur: 12, delay: 7,   shape: "diamond",  color: "#3b82f6", spin: 18 },
-  // Center-right
   { x: 62, cy: 88, size: 1.3, dur: 11, delay: 0.5, shape: "circle",   color: "#06b6d4" },
   { x: 68, cy: 94, size: 0.9, dur: 14, delay: 5,   shape: "triangle", color: "#8b5cf6", spin: 13 },
-  // Right side
   { x: 78, cy: 82, size: 1.1, dur: 13, delay: 3.5, shape: "fourStar", color: "#3b82f6", spin: 10 },
   { x: 85, cy: 92, size: 0.8, dur: 10, delay: 1,   shape: "ring",     color: "#06b6d4" },
   { x: 94, cy: 86, size: 1.0, dur: 16, delay: 6.5, shape: "diamond",  color: "#8b5cf6", spin: 15 },
 ];
 
-function renderShape(s: FloatingShape) {
-  const sz = s.size;
-  switch (s.shape) {
-    case "circle":
-      return <circle r={sz * 0.5} fill={s.color} />;
-    case "fourStar": {
-      const a = sz * 0.5;
-      const b = sz * 0.15;
-      return (
-        <path
-          d={`M0,${-a} L${b},${-b} L${a},0 L${b},${b} L0,${a} L${-b},${b} L${-a},0 L${-b},${-b}Z`}
-          fill={s.color}
-        />
-      );
-    }
-    case "diamond": {
-      const h = sz * 0.5;
-      const w = sz * 0.3;
-      return <path d={`M0,${-h} L${w},0 L0,${h} L${-w},0Z`} fill={s.color} />;
-    }
-    case "triangle": {
-      const h = sz * 0.5;
-      const w = sz * 0.4;
-      return <path d={`M0,${-h} L${w},${h} L${-w},${h}Z`} fill={s.color} />;
-    }
-    case "ring":
-      return (
-        <circle r={sz * 0.4} fill="none" stroke={s.color} strokeWidth={sz * 0.1} />
-      );
-  }
-}
-
-const ease = [0.22, 1, 0.36, 1] as const;
+const ease = EASE_SMOOTH;
 
 /* ------------------------------------------------------------------ */
 /* Component                                                            */

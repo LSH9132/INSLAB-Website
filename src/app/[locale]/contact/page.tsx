@@ -7,6 +7,7 @@ import { PageShell } from "@/components/layout";
 import { ContactContent } from "@/features/contact/components/contact-content";
 import { ContactHero } from "@/features/contact/components/contact-hero";
 import { routing } from "@/i18n/routing";
+import type { Messages } from "@/types/messages";
 
 export async function generateMetadata({
   params,
@@ -33,8 +34,7 @@ export default async function ContactPage({
   }
   setRequestLocale(locale);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const messages = (await getMessages()) as any;
+  const messages = (await getMessages()) as Messages;
 
   return (
     <PageShell

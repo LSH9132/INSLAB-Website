@@ -6,11 +6,11 @@ import {
   staggerContainerVariants,
 } from "@/lib/motion/fade-up";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { ContactDict } from "@/types/messages";
+
 type ContactContentProps = {
-  dict: any;
+  dict: ContactDict;
 };
-/* eslint-enable @typescript-eslint/no-explicit-any */
 
 function MapPinIcon() {
   return (
@@ -81,10 +81,10 @@ export function ContactContent({ dict }: ContactContentProps) {
               {dict.info.email.label}
             </h3>
             <a
-              href="mailto:dyoung.kim@sch.ac.kr"
+              href={`mailto:${dict.info.email.value}`}
               className="text-sm text-accent hover:underline"
             >
-              dyoung.kim@sch.ac.kr
+              {dict.info.email.value}
             </a>
           </div>
 

@@ -35,7 +35,7 @@ export function DirectorPatents({ patents }: { patents: Patent[] }) {
           {registered.length > 0 && (
             <div className="space-y-6">
               <h3 className="flex items-center gap-2 text-xl font-bold text-teal-600">
-                <FileCheck className="h-5 w-5" /> Registered (
+                <FileCheck className="h-5 w-5" /> {t("registered")} (
                 {registered.length})
               </h3>
               <motion.div
@@ -73,7 +73,7 @@ export function DirectorPatents({ patents }: { patents: Patent[] }) {
           {filed.length > 0 && (
             <div className="space-y-6">
               <h3 className="flex items-center gap-2 text-xl font-bold text-slate-500">
-                <FileClock className="h-5 w-5" /> Filed ({filed.length})
+                <FileClock className="h-5 w-5" /> {t("filed")} ({filed.length})
               </h3>
               <motion.div
                 className="grid gap-4 sm:grid-cols-2"
