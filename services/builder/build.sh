@@ -16,6 +16,12 @@ echo "[build] Running next build..."
 cd "$APP_DIR"
 npx next build
 
+# Validate build output before deploying
+if [ ! -f "$APP_DIR/out/ko/index.html" ]; then
+  echo "[build] ERROR: Build output is empty or invalid (missing ko/index.html). Aborting deploy."
+  exit 1
+fi
+
 # Determine deploy target
 if [ "$PREVIEW" = "1" ]; then
   DEPLOY_DIR="$OUT_DIR/preview"

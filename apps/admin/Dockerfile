@@ -13,7 +13,7 @@ RUN npm ci --workspace=@inslab/admin
 
 WORKDIR /app/apps/admin
 
-RUN npx next build
+RUN npx next build --webpack
 
 EXPOSE 3000
 

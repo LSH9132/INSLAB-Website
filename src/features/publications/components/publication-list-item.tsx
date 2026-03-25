@@ -22,42 +22,42 @@ export function PublicationListItem({
   publication: Publication;
 }) {
   return (
-    <article className="group -mx-4 rounded-sm px-4 py-8 md:py-10 hover:bg-slate-50/60">
-      <div className="flex flex-col gap-5 md:flex-row md:gap-8">
-        <div className="hidden w-24 shrink-0 flex-col pt-1 md:flex">
-          <span className="text-3xl font-light text-slate-300 group-hover:text-slate-900">
+    <article className="group -mx-4 rounded-sm px-4 py-6 md:py-8 hover:bg-slate-50/60">
+      <div className="flex flex-col gap-4 md:flex-row md:gap-6">
+        <div className="hidden w-20 shrink-0 flex-col pt-1 md:flex">
+          <span className="text-2xl font-light text-slate-300 group-hover:text-slate-900">
             {publication.year}
           </span>
           {publication.date && (
-            <span className="mt-0.5 text-[11px] font-medium text-slate-400">
+            <span className="mt-0.5 text-[10px] font-medium text-slate-400">
               {formatDate(publication.date)}
             </span>
           )}
           <span
-            className={`mt-1 text-xs font-semibold tracking-[0.18em] uppercase ${publicationTypeStyles[publication.type]}`}
+            className={`mt-1 text-[10px] font-semibold tracking-[0.18em] uppercase ${publicationTypeStyles[publication.type]}`}
           >
             {publication.type}
           </span>
         </div>
 
-        <div className="flex flex-1 flex-col gap-3">
+        <div className="flex flex-1 flex-col gap-2.5">
           <div className="flex items-center gap-3 md:hidden">
-            <span className="text-lg font-light text-slate-900">
+            <span className="text-base font-light text-slate-900">
               {publication.date ? formatDate(publication.date) : publication.year}
             </span>
             <span className="size-1 rounded-full bg-slate-300" />
             <span
-              className={`text-[11px] font-semibold tracking-[0.18em] uppercase ${publicationTypeStyles[publication.type]}`}
+              className={`text-[10px] font-semibold tracking-[0.18em] uppercase ${publicationTypeStyles[publication.type]}`}
             >
               {publication.type}
             </span>
           </div>
 
-          <h2 className="max-w-3xl text-2xl leading-tight font-medium tracking-tight text-slate-900 font-serif group-hover:text-accent md:text-[2rem]">
-            {publication.title}
+          <h2 className="max-w-3xl text-xl leading-tight tracking-tight text-slate-900 font-sans font-medium group-hover:text-accent md:text-[1.625rem]">
+            {publication.title} 
           </h2>
 
-          <p className="max-w-3xl text-base leading-7 font-light text-slate-600">
+          <p className="max-w-3xl text-sm leading-6 font-light text-slate-600">
             <span className="font-normal text-slate-900">
               {publication.authors.join(", ")}
             </span>
@@ -66,11 +66,11 @@ export function PublicationListItem({
             {publication.details ? `, ${publication.details}` : null}
           </p>
 
-          <div className="flex flex-wrap gap-2 pt-1">
+          <div className="flex flex-wrap gap-1.5 pt-1">
             {publication.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-sm bg-slate-100 px-2 py-1 text-xs font-medium text-slate-500"
+                className="rounded-sm bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-500"
               >
                 {tag}
               </span>
@@ -78,13 +78,13 @@ export function PublicationListItem({
           </div>
         </div>
 
-        <div className="flex shrink-0 flex-row items-start gap-4 pt-1 md:w-20 md:flex-col md:items-end">
+        <div className="flex shrink-0 flex-row items-start gap-3 pt-1 md:w-16 md:flex-col md:items-end">
           {publication.pdfUrl ? (
             <a
               href={publication.pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-slate-400 hover:text-slate-900"
+              className="text-xs font-medium text-slate-400 hover:text-slate-900"
             >
               PDF
             </a>
@@ -94,7 +94,7 @@ export function PublicationListItem({
               href={publication.doiUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-slate-400 hover:text-slate-900"
+              className="text-xs font-medium text-slate-400 hover:text-slate-900"
             >
               DOI
             </a>

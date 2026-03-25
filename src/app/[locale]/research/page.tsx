@@ -93,7 +93,7 @@ export default async function ResearchPage({
                   {research.framework.points.map((point: string) => (
                     <div key={point} className="flex items-center gap-3">
                       <div className="h-2 w-2 rounded-full bg-blue-600" />
-                      <span className="font-serif text-sm italic text-slate-600">
+                      <span className="font-serif text-sm text-slate-600">
                         {point}
                       </span>
                     </div>

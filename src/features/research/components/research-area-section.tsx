@@ -166,7 +166,7 @@ export function ResearchAreaSection({
                 {i + 1}
               </span>
               <div>
-                <p className="font-serif text-xs leading-snug font-medium italic text-slate-700">
+                <p className="font-serif text-xs leading-snug font-medium text-slate-700">
                   {paper.title}
                 </p>
                 <p className="text-[10px] text-slate-400">

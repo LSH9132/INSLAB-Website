@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { FooterData } from "@/types/messages";
 import { socialLinks } from "@/lib/social-links";
+import { FooterCta } from "./footer-cta";
 
 type SiteFooterProps = {
   footer: FooterData;
@@ -91,21 +92,11 @@ export function SiteFooter({ footer }: SiteFooterProps) {
 
               {/* CTA card */}
               <div className="col-span-2 sm:col-span-1">
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
-                  <p className="text-xs font-semibold tracking-wider text-slate-900 uppercase mb-3">
-                    {footer.cta.title}
-                  </p>
-                  <p className="text-sm text-slate-500 leading-relaxed mb-4">
-                    {footer.cta.description}
-                  </p>
-                  <Link
-                    href="/join"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700"
-                  >
-                    {footer.cta.linkText}
-                    <span aria-hidden="true">&rarr;</span>
-                  </Link>
-                </div>
+                <FooterCta
+                  title={footer.cta.title}
+                  description={footer.cta.description}
+                  linkText={footer.cta.linkText}
+                />
               </div>
             </div>
           </div>

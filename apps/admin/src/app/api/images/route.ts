@@ -5,6 +5,9 @@ import { join } from "node:path";
 
 export async function GET(req: NextRequest) {
   const subdir = req.nextUrl.searchParams.get("subdir") ?? "";
+  if (/\.\./.test(subdir)) {
+    return NextResponse.json({ error: "Invalid subdir" }, { status: 400 });
+  }
   const files = listImages(subdir);
   const baseDir = join(imagesDir(), subdir);
 
@@ -28,6 +31,10 @@ export async function GET(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
   const subdir = req.nextUrl.searchParams.get("subdir") ?? "";
   const filename = req.nextUrl.searchParams.get("filename") ?? "";
+
+  if (/\.\./.test(subdir) || /\.\./.test(filename)) {
+    return NextResponse.json({ error: "Invalid path" }, { status: 400 });
+  }
 
   if (!filename) {
     return NextResponse.json({ error: "filename required" }, { status: 400 });

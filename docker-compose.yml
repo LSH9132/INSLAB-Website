@@ -7,7 +7,7 @@ services:
     ports:
       - "127.0.0.1:3000:3000"
     volumes:
-      - content-data:/data
+      - ./docker-data/admin:/data
     networks:
       - internal
       - external
@@ -17,11 +17,16 @@ services:
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
       - SESSION_SECRET=${SESSION_SECRET:-inslab-prod-secret-change-me}
       - SITE_URL=http://localhost
-      - PREVIEW_URL=http://localhost:8080
+      - PREVIEW_URL=http://localhost:9980
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/login"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
     restart: unless-stopped
     depends_on:
       builder:
-        condition: service_started
+        condition: service_healthy
 
   # ── Builder (internal, builds SSG on demand) ───────────────────────
   builder:
@@ -29,14 +34,21 @@ services:
       context: .
       dockerfile: services/builder/Dockerfile
     volumes:
-      - content-data:/data
-      - out-data:/out
+      - ./docker-data/admin:/data
+      - ./docker-data/builder:/builder
+      - ./docker-data/site:/out
     networks:
       - internal
       - external
     environment:
       - DATA_DIR=/data
       - OUT_DIR=/out
+      - BUILDER_DIR=/builder
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:4000/api/status"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
     restart: unless-stopped
 
   # ── Nginx (external, serves static files) ──────────────────────────
@@ -45,36 +57,37 @@ services:
     ports:
       - "80:80"
     volumes:
-      - out-data:/usr/share/nginx/html:ro
-      - content-data:/data:ro
+      - ./docker-data/site:/usr/share/nginx/html:ro
+      - ./docker-data/admin/images:/data/images:ro
       - ./services/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
       - external
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:80/en/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
     restart: unless-stopped
     depends_on:
       builder:
-        condition: service_started
+        condition: service_healthy
 
   # ── Preview Nginx (internal, preview builds) ───────────────────
   preview-nginx:
     image: nginx:alpine
     ports:
-      - "127.0.0.1:8080:80"
+      - "127.0.0.1:9980:80"
     volumes:
-      - out-data:/usr/share/nginx/html:ro
-      - content-data:/data:ro
+      - ./docker-data/site:/usr/share/nginx/html:ro
+      - ./docker-data/admin/images:/data/images:ro
       - ./services/nginx/preview.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
       - internal
       - external
     restart: unless-stopped
     depends_on:
-      builder:
-        condition: service_started
-
-volumes:
-  content-data:
-  out-data:
+      nginx:
+        condition: service_healthy
 
 networks:
   internal:
