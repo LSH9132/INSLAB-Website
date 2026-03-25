@@ -24,7 +24,7 @@ export default async function Home({
   const messages = (await getMessages()) as any;
 
   return (
-    <PageShell currentPath="/" nav={messages.nav} footer={messages.footer}>
+    <PageShell currentPath="/" locale={locale} nav={messages.nav} footer={messages.footer}>
       <HomeHero hero={messages.home.hero} />
       <HomeMission mission={messages.home.mission} />
       <HomeResearchAreas researchAreas={messages.home.researchAreas} />

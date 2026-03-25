@@ -40,6 +40,7 @@ export default async function DirectorPage({
   return (
     <PageShell
       currentPath="/director"
+      locale={locale}
       nav={messages.nav}
       footer={messages.footer}
       mainClassName="flex-1"

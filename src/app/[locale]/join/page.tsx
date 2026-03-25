@@ -39,6 +39,7 @@ export default async function JoinPage({
   return (
     <PageShell
       currentPath="/join"
+      locale={locale}
       nav={messages.nav}
       footer={messages.footer}
       mainClassName="flex-1 bg-emerald-50/20"

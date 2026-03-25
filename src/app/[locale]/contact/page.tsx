@@ -39,6 +39,7 @@ export default async function ContactPage({
   return (
     <PageShell
       currentPath="/contact"
+      locale={locale}
       nav={messages.nav}
       footer={messages.footer}
       mainClassName="flex-1 bg-stone-50"
