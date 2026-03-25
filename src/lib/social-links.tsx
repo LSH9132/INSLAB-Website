@@ -16,10 +16,10 @@ export function ScholarIcon({ className = "h-4 w-4" }: { className?: string }) {
   );
 }
 
-export function ResearchGateIcon({ className = "h-4 w-4" }: { className?: string }) {
+export function ClarivateIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M19.586 0c-1.37 0-2.606.503-3.478 1.467C15.236 2.43 14.8 3.804 14.8 5.4c0 1.596.436 2.97 1.308 3.933.872.964 2.108 1.467 3.478 1.467s2.606-.503 3.478-1.467C23.936 8.37 24 6.996 24 5.4c0-1.596-.064-2.97-.936-3.933C22.192.503 20.956 0 19.586 0zM4.8 9.6H0V24h4.8V9.6zm7.2-4.8H7.2V24h4.8V4.8z" />
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H9V7h2v10zm4 0h-2V7h2v10z" />
     </svg>
   );
 }
@@ -38,9 +38,9 @@ export const socialLinks = [
     Icon: ScholarIcon,
   },
   {
-    id: "researchgate",
-    href: "https://www.researchgate.net",
-    label: "ResearchGate",
-    Icon: ResearchGateIcon,
+    id: "clarivate",
+    href: "https://jcr.clarivate.com/jcr/home",
+    label: "Clarivate JCR",
+    Icon: ClarivateIcon,
   },
 ];

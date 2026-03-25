@@ -294,7 +294,7 @@ export function HomeHero({ hero }: { hero: HeroDictionary }) {
       >
         {/* Eyebrow */}
         <motion.span
-          className="font-serif text-lg italic text-blue-600"
+          className="font-serif text-lg text-blue-600"
           variants={heroEyebrowVariants}
         >
           {hero.eyebrow}
