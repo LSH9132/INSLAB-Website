@@ -35,7 +35,7 @@ export function MemberCard({
 
   return (
     <motion.div
-      className="group relative flex flex-col items-center rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-md"
+      className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md"
       variants={cardVariants}
       whileHover={
         shouldReduceMotion
@@ -48,41 +48,44 @@ export function MemberCard({
             }
       }
     >
-      {/* Avatar */}
-      <div
-        className="relative mb-4 h-20 w-20 flex-shrink-0 overflow-hidden rounded-full ring-2 ring-slate-100"
-      >
+      {/* Top gradient accent line - fades in on hover */}
+      <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-teal-400 via-blue-400 to-violet-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+      {/* Photo */}
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
         {member.photo ? (
           <Image
             src={member.photo}
             alt={displayName}
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
-          <div
-            className="flex h-full w-full items-center justify-center text-xl font-semibold bg-slate-200 text-slate-500"
-          >
+          <div className="flex h-full w-full items-center justify-center text-3xl font-semibold bg-slate-200 text-slate-400">
             {initials}
           </div>
         )}
       </div>
 
       {/* Info */}
-      <div className="flex flex-col items-center text-center">
-        <h3 className="font-serif text-lg font-semibold tracking-tight text-slate-900">{displayName}</h3>
-        <span
-          className="mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold tracking-widest bg-slate-100 text-slate-500 uppercase"
-        >
-          {roleLabel}
-        </span>
+      <div className="flex flex-col p-5">
+        {/* Name + role on same line */}
+        <div className="flex items-center gap-2.5">
+          <h3 className="font-serif text-lg font-semibold tracking-tight text-slate-900">
+            {displayName}
+          </h3>
+          <span className="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-semibold tracking-widest text-slate-500 uppercase">
+            {roleLabel}
+          </span>
+        </div>
 
         {member.interests.length > 0 && (
-          <div className="mt-3 flex flex-wrap justify-center gap-1.5">
+          <div className="mt-2.5 flex flex-wrap gap-1.5">
             {member.interests.map((interest) => (
               <span
                 key={interest}
-                className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-medium text-slate-600"
+                className="rounded-full bg-slate-50 px-2.5 py-0.5 text-[10px] font-medium text-slate-600"
               >
                 {interest}
               </span>
@@ -93,7 +96,7 @@ export function MemberCard({
         {member.email && (
           <a
             href={`mailto:${member.email}`}
-            className="mt-3 text-xs text-slate-400 transition-colors hover:text-slate-700"
+            className="mt-2.5 text-xs text-slate-400 transition-colors hover:text-teal-600"
           >
             {member.email}
           </a>

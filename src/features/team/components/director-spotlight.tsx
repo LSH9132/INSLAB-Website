@@ -42,6 +42,36 @@ export function DirectorSpotlight({
         }}
       />
 
+      {/* Ambient gradient blobs */}
+      <div className="pointer-events-none absolute inset-0 -z-20" aria-hidden>
+        <motion.div
+          className="absolute top-1/4 left-[8%] h-[380px] w-[380px] rounded-full bg-teal-300/15 blur-[100px]"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { x: [0, 40, -20, 0], y: [0, -30, 20, 0] }
+          }
+          transition={
+            shouldReduceMotion
+              ? undefined
+              : { duration: 20, repeat: Infinity, ease: "easeInOut" }
+          }
+        />
+        <motion.div
+          className="absolute right-[12%] bottom-1/4 h-[320px] w-[320px] rounded-full bg-blue-300/12 blur-[100px]"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { x: [0, -30, 25, 0], y: [0, 25, -35, 0] }
+          }
+          transition={
+            shouldReduceMotion
+              ? undefined
+              : { duration: 24, repeat: Infinity, ease: "easeInOut" }
+          }
+        />
+      </div>
+
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         {/* Section label */}
         <motion.h2
@@ -68,11 +98,13 @@ export function DirectorSpotlight({
             variants={directorPhotoVariants}
           >
             <div className="relative aspect-[3/4] overflow-hidden rounded-3xl">
+              {/* Glow effect behind photo */}
+              <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-teal-200/30 to-blue-200/30 blur-2xl transition-all duration-500 group-hover:from-teal-300/40 group-hover:to-blue-300/40" />
               <Image
                 src={member.photo}
                 alt={displayName}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 sizes="(max-width: 1024px) 384px, 50vw"
               />
             </div>
