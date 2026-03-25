@@ -178,78 +178,39 @@
   "home": {
     "hero": {
       "eyebrow": "Intelligence Network System Lab",
-      "headlineLines": [
-        ["Research", "at", "the", "frontier"],
-        ["of", "AI", "and", "connected", "systems"]
-      ],
-      "accentWords": ["AI", "frontier", "systems"],
-      "subCopy": "INSLAB builds adaptive AI systems, AIoT architectures, and MLOps pipelines — bridging research and real-world deployment across intelligent networks.",
+      "title": "AI and Network Systems Research",
+      "subtitle": "Where intelligent systems meet real-world deployment",
+      "body": "INSLAB researches technologies where systems understand service intent, autonomously configure resources, and maintain AI service quality across intelligent networks.",
       "ctaPrimary": "Explore Research",
-      "ctaSecondary": "About the Lab",
-      "stats": [
-        { "value": "97.8%", "label": "Model Accuracy" },
-        { "value": "128+", "label": "AIoT Endpoints" },
-        { "value": "3×", "label": "Deploy Speed" }
-      ]
-    },
-    "mission": {
-      "eyebrow": "Our Mission",
-      "title": "Advancing the intersection of AI & Network Systems",
-      "body": "INSLAB is dedicated to creating scalable, secure, and intelligent solutions for next-generation connectivity. We don't just research. We build the architectural foundations for 6G and beyond.",
-      "stats": [
-        { "value": "45+", "label": "Publications" },
-        { "value": "12", "label": "Projects" },
-        { "value": "28", "label": "Members" },
-        { "value": "5", "label": "Patents" }
-      ]
+      "ctaSecondary": "Meet the Team"
     },
     "researchAreas": {
-      "title": "Core Research Areas",
-      "subtitle": "Pillars of scientific investigation at INSLAB.",
+      "title": "Research Areas",
+      "subtitle": "Three pillars driving our research direction.",
       "allResearch": "All Research",
-      "exploreArea": "Explore Area →",
-      "areas": [
-        {
-          "id": "intelligent-networking",
-          "eyebrow": "SYS",
-          "title": "Intelligent Network Systems",
-          "description": "Building intelligent networks and systems powered by AI. We focus on Edge AI, autonomous adaptive networking, and intent-based system design."
-        },
-        {
-          "id": "distributed-ai",
-          "eyebrow": "DATA",
-          "title": "Data Intelligence",
-          "description": "Building data collection and processing pipelines across diverse environments. We research network data analysis, pattern recognition, and anomaly detection."
-        },
-        {
-          "id": "cyber-physical-systems",
-          "eyebrow": "SVC",
-          "title": "Intelligent Services",
-          "description": "Developing user-centric intelligent application services. We implement real-world AI solutions including IoT applications, smart city, and mobile services."
-        }
-      ]
+      "exploreArea": "Explore Area"
+    },
+    "publications": {
+      "title": "Recent Publications",
+      "subtitle": "{count} of {total} publications",
+      "viewAll": "View All Publications",
+      "labels": {
+        "Journal": "Journal",
+        "Conference": "Conference",
+        "Domestic": "Domestic"
+      }
     },
     "news": {
-      "title": "Recent Impact & News",
-      "viewArchive": "View News Archive",
-      "items": [
-        {
-          "id": "best-paper-icc-2024",
-          "category": "Awards",
-          "date": "June 15, 2024",
-          "title": "INSLAB Wins Best Paper Award at ICC 2024",
-          "description": "Our team's research on \"Federated Learning Optimization for Edge Networks\" was recognized for its contribution to efficient edge AI processing.",
-          "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuA-DXbdzE3ELGUrVCcq1YBG_CmW2aQU_7Rpi1DNnCKRE7qu22qcPOR9stgPi105dxeWIMgoWGsom86fuO1Q_R3PK9Dx0PhT8IbSNMYLePUU65HFoPwE1090ABafZEznUc63JnUt6Fn34d0lYHif96psrM8_XfajwTZoXcpjxmzHSlEYOW2TFCU8SqjSjxa84EVqKc0qFq83od1eylYt0JRzC0LZ0ZHLqg5OdsjoU67S7Gtpr_BHiTceN9tHKyRP93kWi2DAckG0HK2j"
-        },
-        {
-          "id": "spring-ai-security-workshop",
-          "category": "Events",
-          "date": "May 02, 2024",
-          "title": "Spring 2024 Workshop on AI Security",
-          "description": "INSLAB hosted a workshop bringing together industry experts from Google and Microsoft to discuss robust AI model security practices.",
-          "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuAcpUkyAbUtSv-P5m6MiW7L7t6VkNzv96ZX6dLfbR_hp0_M3xY5Aa3B_ZCXbxSRPwIXagkCFEyHphib-SY69fAtmaQfQZWLE5fXzVEGtG2WxFL4WiThycuOQZgwvIRODMzVEf24BDGkhXa99XibhWKQy13SA5U0IUmc4JEXE5ksDLnAohJPBLhKkDVuRt0ZNuPKVfifNy_K9FYZ2OksBDZm3G3qPL8pSspE3-3I4qvL9Og8FwkxFjAXUWz4Ats4ynGel38MLSQ3XoQx"
-        }
-      ]
+      "title": "News & Updates",
+      "viewAll": "View All News"
+    },
+    "joinCta": {
+      "title": "Join Our Research",
+      "body": "We are looking for passionate researchers to push the boundaries of AI and network systems together.",
+      "ctaPrimary": "Join INSLAB",
+      "ctaSecondary": "Contact Us",
+      "location": "Soonchunhyang University, Multimedia Bldg. M511",
+      "email": "inslab@sch.ac.kr"
     }
   },
   "publications": {
@@ -294,9 +255,10 @@
   },
   "team": {
     "hero": {
-      "eyebrow": "Our People",
+      "eyebrow": "INSLAB",
       "title": "Our Team",
-      "body": "INSLAB is powered by a diverse team of researchers united by curiosity and a commitment to advancing intelligent network systems."
+      "body": "INSLAB is a group of researchers designing the future of intelligent network systems together. We connect expertise across data, systems, and services.",
+      "bodySecond": "From curiosity to real-world solutions — these are the people behind every step of that journey."
     },
     "sections": {
       "director": "Director",

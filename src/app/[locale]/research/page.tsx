@@ -7,6 +7,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout";
 import { ResearchHero } from "@/features/research/components/research-hero";
 import { ResearchAreaSection } from "@/features/research/components/research-area-section";
+import { NetworkConstellation } from "@/features/research/components/network-constellation";
 import { getResearchAreas, getDirectorProjects } from "@/lib/content";
 import { routing } from "@/i18n/routing";
 
@@ -174,42 +175,7 @@ export default async function ResearchPage({
 
             {/* Visual */}
             <div className="relative h-80 w-full overflow-hidden rounded-2xl bg-white shadow-inner md:w-1/2">
-              {/* Dot pattern inside */}
-              <div
-                className="absolute inset-0 opacity-30"
-                aria-hidden
-                style={{
-                  backgroundImage:
-                    "radial-gradient(circle, #cbd5e1 1px, transparent 1px)",
-                  backgroundSize: "20px 20px",
-                }}
-              />
-              {/* Abstract connectivity visual */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative flex h-48 w-48 animate-pulse items-center justify-center rounded-full border border-blue-200">
-                  <div className="flex h-32 w-32 items-center justify-center rounded-full border border-blue-300">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-50">
-                      <svg
-                        className="h-8 w-8 text-blue-600"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                      >
-                        <circle cx="12" cy="12" r="3" />
-                        <path d="M12 2v4m0 12v4M2 12h4m12 0h4" />
-                        <path d="M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
-                      </svg>
-                    </div>
-                  </div>
-                  {/* Floating nodes */}
-                  <div className="absolute top-0 left-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600" />
-                  <div className="absolute bottom-0 left-1/2 h-4 w-4 -translate-x-1/2 translate-y-1/2 rounded-full bg-blue-600" />
-                  <div className="absolute top-1/2 left-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600" />
-                  <div className="absolute top-1/2 right-0 h-4 w-4 -translate-y-1/2 translate-x-1/2 rounded-full bg-blue-600" />
-                </div>
-              </div>
+              <NetworkConstellation className="absolute inset-0 h-full w-full" />
             </div>
           </div>
         </section>
