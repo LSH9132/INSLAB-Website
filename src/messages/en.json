@@ -173,14 +173,12 @@
         ]
       }
     },
-    "contact": {
-      "title": "Contact",
-      "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Multimedia Bldg. M511",
-      "email": "dyoung.kim@sch.ac.kr"
+    "cta": {
+      "title": "Interested in joining our research?",
+      "primary": "Join INSLAB",
+      "secondary": "Contact Us"
     },
-    "copyright": "© 2025 INSLAB. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Use"
+    "copyright": "© 2025 INSLAB. All rights reserved."
   },
   "home": {
     "hero": {
