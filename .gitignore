@@ -38,13 +38,22 @@ yarn-error.log*
 # vercel
 .vercel
 
-# Docker bind mount data (images, builds, site output are not tracked)
-docker-data/admin/images/
-docker-data/builder/
-docker-data/site/
+# Docker bind mount data
+docker-data/
 
 # Backups
 backups/
+
+# Playwright MCP logs
+.playwright-mcp/
+
+# Screenshots / temp images
+*.png
+!public/**/*.png
+!src/**/*.png
+
+# Raw resources (source images not used directly)
+resources/
 
 # typescript
 *.tsbuildinfo
