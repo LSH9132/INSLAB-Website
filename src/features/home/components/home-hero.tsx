@@ -292,11 +292,11 @@ export function HomeHero({ hero }: { hero: HeroDictionary }) {
       </div>
 
       {/* ── Content ────────────────────────────────────────────── */}
-      <div className="relative z-10 mx-auto max-w-4xl px-6 pb-28 pt-24 text-center lg:px-8 lg:pb-36 lg:pt-36">
+      <div className="relative z-10 mx-auto max-w-4xl px-5 pb-16 pt-16 text-center sm:px-6 sm:pb-28 sm:pt-24 lg:px-8 lg:pb-36 lg:pt-36">
 
         {/* Eyebrow */}
         <motion.div
-          className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-slate-200 bg-white/85 px-5 py-2 text-[11px] font-semibold tracking-[0.25em] text-slate-500 uppercase shadow-sm backdrop-blur-sm"
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-3.5 py-1.5 text-[9px] font-semibold tracking-[0.15em] text-slate-500 uppercase shadow-sm backdrop-blur-sm sm:mb-8 sm:gap-2.5 sm:px-5 sm:py-2 sm:text-[11px] sm:tracking-[0.25em]"
           initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
@@ -313,7 +313,7 @@ export function HomeHero({ hero }: { hero: HeroDictionary }) {
 
         {/* Headline */}
         <motion.h1
-          className="text-5xl font-bold leading-[1.1] tracking-[-0.04em] text-slate-950 sm:text-6xl lg:text-[5.2rem] lg:leading-[1.06]"
+          className="text-[2rem] font-bold leading-[1.12] tracking-[-0.03em] text-slate-950 sm:text-5xl sm:leading-[1.1] sm:tracking-[-0.04em] lg:text-[5.2rem] lg:leading-[1.06]"
           variants={headVar}
           initial={shouldReduceMotion ? false : "hidden"}
           animate="visible"
@@ -336,7 +336,7 @@ export function HomeHero({ hero }: { hero: HeroDictionary }) {
 
         {/* Sub-copy */}
         <motion.p
-          className="mx-auto mt-7 max-w-xl text-base leading-8 text-slate-500 sm:text-[1.05rem]"
+          className="mx-auto mt-5 max-w-xl text-sm leading-7 text-slate-500 sm:mt-7 sm:text-base sm:leading-8"
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
         >
@@ -345,13 +345,13 @@ export function HomeHero({ hero }: { hero: HeroDictionary }) {
 
         {/* CTAs */}
         <motion.div
-          className="mt-10 flex flex-wrap justify-center gap-4"
+          className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:justify-center sm:gap-4"
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
         >
           <Link
             href="/publications"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-blue-600 px-8 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition-shadow hover:shadow-lg hover:shadow-blue-500/35"
+            className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-blue-600 px-8 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition-shadow hover:shadow-lg hover:shadow-blue-500/35 sm:w-auto"
           >
             <motion.span
               className="absolute inset-0 bg-blue-700"
@@ -364,7 +364,7 @@ export function HomeHero({ hero }: { hero: HeroDictionary }) {
           </Link>
           <a
             href="#mission"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-8 py-3.5 text-sm font-semibold text-slate-600 backdrop-blur-sm transition-colors hover:border-slate-300 hover:bg-white hover:text-slate-900"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white/85 px-8 py-3.5 text-sm font-semibold text-slate-600 backdrop-blur-sm transition-colors hover:border-slate-300 hover:bg-white hover:text-slate-900 sm:w-auto"
           >
             {hero.ctaSecondary}
           </a>
@@ -372,14 +372,14 @@ export function HomeHero({ hero }: { hero: HeroDictionary }) {
 
         {/* Divider */}
         <motion.div
-          className="mx-auto mt-16 h-px w-64 bg-gradient-to-r from-transparent via-slate-200 to-transparent"
+          className="mx-auto mt-10 h-px w-48 bg-gradient-to-r from-transparent via-slate-200 to-transparent sm:mt-16 sm:w-64"
           initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 0.9, delay: 1.2, ease: "easeInOut" }}
         />
 
         {/* Stats */}
         <motion.div
-          className="mt-10 flex justify-center gap-12 sm:gap-16"
+          className="mt-8 flex justify-center gap-8 sm:mt-10 sm:gap-12 lg:gap-16"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1.3 }}
         >
@@ -389,8 +389,8 @@ export function HomeHero({ hero }: { hero: HeroDictionary }) {
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 1.4 + i * 0.1, ease: "easeOut" }}
             >
-              <div className="text-3xl font-bold tracking-tight text-slate-900">{s.value}</div>
-              <div className="mt-1.5 text-xs font-medium tracking-wide text-slate-400">{s.label}</div>
+              <div className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{s.value}</div>
+              <div className="mt-1 text-[11px] font-medium tracking-wide text-slate-400 sm:mt-1.5 sm:text-xs">{s.label}</div>
             </motion.div>
           ))}
         </motion.div>

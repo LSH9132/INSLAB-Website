@@ -27,7 +27,7 @@ export function HomeResearchAreas({ researchAreas }: { researchAreas: ResearchAr
             </p>
           </div>
           <Link
-            href="/publications"
+            href="/research"
             className="group hidden items-center text-sm font-semibold text-accent hover:text-blue-700 sm:inline-flex"
           >
             {researchAreas.allResearch}

@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 
 import { PublicationListItem } from "@/features/publications/components/publication-list-item";
-import type { Publication } from "@/features/publications/types";
+import type { Publication } from "@/lib/content";
 import { fadeUpVariants, staggerContainerVariants } from "@/lib/motion/fade-up";
 
 export function PublicationList({

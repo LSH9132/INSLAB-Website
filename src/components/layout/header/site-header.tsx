@@ -22,36 +22,39 @@ const navOrder: NavKey[] = ["home", "research", "publications", "team", "contact
 
 const navHrefs: Record<NavKey, string> = {
   home: "/",
-  research: "/#research-areas",
+  research: "/research",
   publications: "/publications",
-  team: "/#mission",
-  contact: "/#site-footer",
+  team: "/team",
+  contact: "/contact",
 };
 
 const navActivePaths: Partial<Record<NavKey, string[]>> = {
   home: ["/"],
+  research: ["/research"],
   publications: ["/publications"],
+  team: ["/team"],
+  contact: ["/contact"],
 };
 
 const sectionHrefs: Record<NavKey, string[][]> = {
   home: [
     ["/", "/#mission"],
-    ["/#research-areas", "/#site-footer"],
+    ["/#research-areas", "/contact"],
   ],
   research: [
-    ["/#research-areas", "/#research-areas"],
-    ["/#research-areas", "/publications"],
+    ["/research#intelligent-networking", "/research#distributed-ai"],
+    ["/research#cyber-physical-systems", "/publications"],
   ],
   publications: [
     ["/publications", "/publications"],
     ["/publications", "/publications"],
   ],
   team: [
-    ["/#mission", "/#site-footer"],
-    ["/#site-footer", "/publications"],
+    ["/team", "/director"],
+    ["/join", "/news"],
   ],
   contact: [
-    ["/#site-footer", "/#site-footer"],
+    ["/contact", "/contact"],
     ["/publications", "/"],
   ],
 };

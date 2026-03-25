@@ -83,11 +83,22 @@ export function SiteFooter({ footer }: SiteFooterProps) {
               {footer.sections.research.title}
             </h2>
             <ul className="space-y-4">
-              {footer.sections.research.links.map((link: string) => (
+              {footer.sections.research.links.map((link: string, i: number) => (
                 <li key={link}>
-                  <a href="#" className="text-sm text-slate-500 hover:text-accent">
+                  <Link
+                    href={
+                      i === 0
+                        ? "/research#intelligent-networking"
+                        : i === 1
+                          ? "/research#distributed-ai"
+                          : i === 2
+                            ? "/research#cyber-physical-systems"
+                            : "/research"
+                    }
+                    className="text-sm text-slate-500 hover:text-accent"
+                  >
                     {link}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -98,19 +109,22 @@ export function SiteFooter({ footer }: SiteFooterProps) {
               {footer.sections.lab.title}
             </h2>
             <ul className="space-y-4">
-              <li>
-                <Link
-                  href="/publications"
-                  className="text-sm text-slate-500 hover:text-accent"
-                >
-                  {footer.sections.lab.links[0]}
-                </Link>
-              </li>
-              {footer.sections.lab.links.slice(1).map((link: string) => (
+              {footer.sections.lab.links.map((link: string, i: number) => (
                 <li key={link}>
-                  <a href="#" className="text-sm text-slate-500 hover:text-accent">
+                  <Link
+                    href={
+                      i === 0
+                        ? "/publications"
+                        : i === 1
+                          ? "/team"
+                          : i === 2
+                            ? "/join"
+                            : "/news"
+                    }
+                    className="text-sm text-slate-500 hover:text-accent"
+                  >
                     {link}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

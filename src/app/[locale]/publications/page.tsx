@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { PageShell } from "@/components/layout";
 import { PublicationsHero } from "@/features/publications/components/publications-hero";
 import { PublicationsContent } from "@/features/publications/components/publications-content";
-import { publications } from "@/features/publications/data";
+import { getPublications } from "@/lib/content";
 import { routing } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -46,7 +46,7 @@ export default async function PublicationsPage({
     >
       <PublicationsHero hero={messages.publications.hero} />
       <PublicationsContent
-        publications={publications}
+        publications={getPublications()}
         filters={messages.publications.filters}
       />
     </PageShell>

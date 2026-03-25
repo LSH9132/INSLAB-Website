@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import type { PublicationType } from "../types";
+import type { PublicationType } from "@/lib/content";
 import type { FiltersDictionary } from "./publications-content";
 
 const typeMap: (PublicationType | "All")[] = [

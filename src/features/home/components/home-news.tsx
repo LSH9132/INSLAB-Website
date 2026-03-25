@@ -1,3 +1,5 @@
+import { Link } from "@/i18n/navigation";
+
 type NewsItem = {
   id: string;
   category: string;
@@ -56,13 +58,13 @@ export function HomeNews({ news }: { news: NewsDictionary }) {
         </div>
 
         <div className="mt-12 text-center">
-          <a
-            href="#"
+          <Link
+            href="/news"
             className="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-accent"
           >
             {news.viewArchive}
             <span className="ml-1">›</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

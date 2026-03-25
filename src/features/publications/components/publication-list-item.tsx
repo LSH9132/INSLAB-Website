@@ -1,4 +1,4 @@
-import type { Publication } from "@/features/publications/types";
+import type { Publication } from "@/lib/content";
 
 const publicationTypeStyles: Record<Publication["type"], string> = {
   Journal: "text-blue-700",

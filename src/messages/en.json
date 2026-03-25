@@ -82,15 +82,15 @@
         {
           "title": "People",
           "links": [
-            { "label": "Lab Snapshot", "description": "Quick entry point to the team scale and lab context." },
-            { "label": "Contact the Lab", "description": "Reach out for projects, collaboration, or graduate study." }
+            { "label": "Lab Members", "description": "Meet our faculty, graduate students, and undergraduate researchers." },
+            { "label": "Director", "description": "Learn about Prof. Daeyoung Kim's research and career." }
           ]
         },
         {
           "title": "Opportunities",
           "links": [
-            { "label": "Join Us", "description": "Learn how to connect with INSLAB for future openings." },
-            { "label": "Work With Us", "description": "Review the type of work the lab is currently producing." }
+            { "label": "Join Us", "description": "Learn how to join INSLAB as a graduate or undergraduate researcher." },
+            { "label": "News & Updates", "description": "Stay up to date with INSLAB's latest achievements." }
           ]
         }
       ],
@@ -150,7 +150,7 @@
       },
       "contact": {
         "title": "Contact",
-        "address": "Engineering Building 2, Room 405\nUniversity of Technology"
+        "address": "Engineering Building 2, Room 405\nSoonchunhyang University"
       }
     },
     "copyright": "© 2025 INSLAB. All rights reserved.",
@@ -263,5 +263,213 @@
     "publications": "Selected Publications",
     "projects": "Research Projects",
     "patents": "Patents"
+  },
+  "team": {
+    "hero": {
+      "eyebrow": "Our People",
+      "title": "Our Team",
+      "body": "INSLAB is powered by a diverse team of researchers united by curiosity and a commitment to advancing intelligent network systems."
+    },
+    "sections": {
+      "director": "Director",
+      "graduate": "Graduate Students",
+      "undergraduate": "Undergraduate Researchers"
+    },
+    "roles": {
+      "professor": "Professor",
+      "phd": "Ph.D. Student",
+      "ms": "M.S. Student",
+      "bs": "Undergraduate Researcher"
+    },
+    "viewProfile": "View Profile",
+    "metadata": {
+      "title": "Team",
+      "description": "Meet the researchers and students of INSLAB."
+    }
+  },
+  "research": {
+    "hero": {
+      "eyebrow": "Foundational Inquiry",
+      "title": "Defining the Architectural Standards of",
+      "titleAccent": "AI Networks",
+      "body": "INSLAB explores the intersection of intelligence and connectivity, developing rigorous frameworks for the next generation of resilient, autonomous infrastructures."
+    },
+    "framework": {
+      "title": "Core Research Framework",
+      "body": "Our methodology integrates hardware-aware algorithms with distributed network logic to ensure seamless intelligence propagation.",
+      "points": ["Empirical Rigor", "Scalability-First Design", "Security as Foundation"]
+    },
+    "connectivity": {
+      "title": "Structural Connectivity",
+      "body": "At INSLAB, no research area exists in isolation. Our structural approach represents the cross-pollination of data and methodology between research domains. An advancement in intelligent networking directly influences our distributed AI coordination protocols.",
+      "cta": "View Publications",
+      "ctaSecondary": "Our Methodology"
+    },
+    "keywords": "Keywords",
+    "representativePapers": "Representative Papers",
+    "ongoingProjects": "Ongoing Projects",
+    "ongoing": "Ongoing",
+    "metadata": {
+      "title": "Research",
+      "description": "Explore INSLAB's core research areas in intelligent networking, distributed AI, and cyber-physical systems."
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Get in Touch",
+      "title": "Contact Us",
+      "body": "We welcome inquiries about collaboration, graduate admissions, and research partnerships. Reach out and let's build something meaningful together."
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": {
+        "label": "Address",
+        "line1": "Engineering Building 2, Room 405",
+        "line2": "Soonchunhyang University, Asan, South Korea"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "phone": {
+        "label": "Phone",
+        "value": "+82-41-530-XXXX"
+      }
+    },
+    "inquiries": {
+      "title": "Inquiry Types",
+      "types": [
+        {
+          "icon": "🎓",
+          "title": "Graduate Admissions",
+          "description": "Interested in joining as an M.S. or Ph.D. student? Contact us with your CV and research interests."
+        },
+        {
+          "icon": "🤝",
+          "title": "Research Collaboration",
+          "description": "We actively collaborate with industry and academic partners on AI, networking, and IoT projects."
+        },
+        {
+          "icon": "📬",
+          "title": "General Inquiries",
+          "description": "For other questions about the lab, publications, or events, feel free to reach out via email."
+        }
+      ]
+    },
+    "directions": {
+      "title": "How to Find Us",
+      "placeholder": "Campus map will be displayed here",
+      "address": "Soonchunhyang University, 22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do"
+    },
+    "metadata": {
+      "title": "Contact",
+      "description": "Contact INSLAB for collaboration, admissions, or general inquiries."
+    }
+  },
+  "news": {
+    "hero": {
+      "eyebrow": "Latest Updates",
+      "title": "News & Updates",
+      "body": "Stay up to date with INSLAB's latest research achievements, awards, events, and announcements."
+    },
+    "filters": {
+      "all": "All",
+      "categories": {
+        "Awards": "Awards",
+        "Papers": "Papers",
+        "Events": "Events",
+        "Notices": "Notices"
+      },
+      "noResults": "No news items match the selected category."
+    },
+    "metadata": {
+      "title": "News",
+      "description": "Latest news, awards, and updates from INSLAB."
+    }
+  },
+  "join": {
+    "hero": {
+      "eyebrow": "Opportunities",
+      "title": "Join INSLAB",
+      "body": "We are always looking for passionate and curious minds to join our team. Explore opportunities for graduate and undergraduate research positions."
+    },
+    "why": {
+      "title": "Why INSLAB?",
+      "points": [
+        {
+          "title": "Cutting-Edge Research",
+          "description": "Work on state-of-the-art problems in AI, 6G networking, federated learning, and IoT security with real-world impact."
+        },
+        {
+          "title": "Collaborative Environment",
+          "description": "Join a supportive lab culture with regular seminars, code reviews, and mentoring from experienced researchers."
+        },
+        {
+          "title": "Publication Support",
+          "description": "Receive guidance to publish at top-tier venues like IEEE ICC, TNSM, and Access with comprehensive support throughout the process."
+        }
+      ]
+    },
+    "recruitment": {
+      "title": "Open Positions",
+      "tracks": [
+        {
+          "degree": "M.S. / Ph.D. Program",
+          "requirements": [
+            "B.S. in Computer Science, Electrical Engineering, or related field",
+            "Strong programming skills (Python, C/C++)",
+            "Interest in AI, networking, or IoT research",
+            "English proficiency for reading and writing papers"
+          ],
+          "timeline": "Applications accepted for Spring and Fall semesters"
+        },
+        {
+          "degree": "Undergraduate Research",
+          "requirements": [
+            "Currently enrolled as a junior or senior",
+            "Basic understanding of machine learning or networking",
+            "Commitment of at least one semester",
+            "Willingness to participate in lab seminars"
+          ],
+          "timeline": "Rolling admissions throughout the year"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "What research topics can I work on?",
+          "answer": "INSLAB focuses on three main areas: Intelligent Networking (6G, SDN/NFV), Distributed AI (federated learning, edge AI), and Cyber-Physical Systems (IoT security, anomaly detection). You can explore topics within these areas based on your interests."
+        },
+        {
+          "question": "Is funding available for graduate students?",
+          "answer": "Yes, graduate students are supported through research project funding, university scholarships, and teaching assistantships. Details are discussed during the admission process."
+        },
+        {
+          "question": "Do I need prior research experience?",
+          "answer": "Prior experience is helpful but not required. We value motivation, curiosity, and willingness to learn. Undergraduate research experience or relevant project work is a plus."
+        },
+        {
+          "question": "What is the typical weekly schedule?",
+          "answer": "Graduate students participate in weekly lab seminars, individual research meetings with the advisor, and collaborative coding sessions. The lab encourages a balanced and productive research rhythm."
+        }
+      ]
+    },
+    "apply": {
+      "title": "How to Apply",
+      "description": "To express your interest in joining INSLAB, please send an email to Prof. Daeyoung Kim with the following documents attached.",
+      "emailLabel": "Send your application to:",
+      "documentsLabel": "Required Documents",
+      "documents": [
+        "CV / Resume",
+        "Academic transcript (unofficial is fine)",
+        "Brief statement of research interests (1 page)",
+        "Any relevant publications or project portfolios (optional)"
+      ]
+    },
+    "metadata": {
+      "title": "Join Us",
+      "description": "Join INSLAB — explore graduate and undergraduate research opportunities."
+    }
   }
 }

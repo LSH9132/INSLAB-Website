@@ -1,0 +1,107 @@
+- id: intelligent-networking
+  title:
+    en: Intelligent Networking
+    ko: 지능형 네트워킹
+  description:
+    en: |-
+      Our Intelligent Networking research focuses on optimizing network performance using advanced machine learning algorithms. We investigate 6G protocols, dynamic resource allocation, and self-healing network architectures that can autonomously adapt to changing conditions.
+
+      Key contributions include intent-based autonomous networking for multi-domain mobile IoT, AI-driven network state cognition, and intelligent traffic management for next-generation wireless systems. Our work bridges theoretical foundations with practical deployment across heterogeneous network environments.
+
+      We collaborate with industry partners to develop smart city infrastructure leveraging 5G/6G core technologies, ensuring scalable and reliable connectivity for mission-critical applications.
+    ko: |-
+      지능형 네트워킹 연구는 첨단 머신러닝 알고리즘을 활용하여 네트워크 성능을 최적화하는 데 초점을 맞추고 있습니다. 6G 프로토콜, 동적 자원 할당, 변화하는 조건에 자율적으로 적응하는 자가 치유 네트워크 아키텍처를 연구합니다.
+
+      주요 기여 분야로는 멀티도메인 모바일 사물인터넷을 위한 인텐트 기반 자율 네트워킹, AI 기반 네트워크 상태 인지, 차세대 무선 시스템을 위한 지능형 트래픽 관리 등이 있습니다. 이론적 기반과 이기종 네트워크 환경에서의 실제 배포를 연결합니다.
+
+      5G/6G 핵심 기술을 활용한 스마트시티 인프라 개발을 위해 산업체와 협력하며, 미션 크리티컬 애플리케이션을 위한 확장 가능하고 신뢰할 수 있는 연결성을 보장합니다.
+  keywords:
+    - 6G
+    - Intent-Based Networking
+    - Network Optimization
+    - SDN/NFV
+    - Resource Allocation
+    - LPWAN
+    - Smart City
+  papers:
+    - title: Intent-Based Autonomous Networking for Multi-Domain Mobile IoT
+      venue: IEEE TNSM
+      year: 2025
+    - title: Deep Reinforcement Learning for Dynamic Resource Allocation in 6G Networks
+      venue: IEEE ICC 2024
+      year: 2024
+    - title: LPWAN Framework for Industrial IoT Applications
+      venue: IEEE Access
+      year: 2023
+
+- id: distributed-ai
+  title:
+    en: Distributed AI
+    ko: 분산 AI
+  description:
+    en: |-
+      Our Distributed AI research develops decentralized intelligence frameworks for edge computing environments. We focus on federated learning optimization, privacy-preserving computation, and efficient model deployment across heterogeneous edge devices.
+
+      Recent work includes our award-winning research on federated learning for edge networks (ICC 2024 Best Paper), novel approaches to communication-efficient model aggregation, and techniques for handling non-IID data distributions in real-world federated settings.
+
+      We also investigate MLOps pipelines for continuous model training and deployment, enabling seamless integration of AI capabilities into production systems with minimal latency and maximum reliability.
+    ko: |-
+      분산 AI 연구는 엣지 컴퓨팅 환경을 위한 분산 인텔리전스 프레임워크를 개발합니다. 연합 학습 최적화, 프라이버시 보존 연산, 이기종 엣지 디바이스에서의 효율적인 모델 배포에 집중합니다.
+
+      최근 연구로는 엣지 네트워크를 위한 연합 학습(ICC 2024 최우수 논문상 수상), 통신 효율적 모델 집계를 위한 새로운 접근 방식, 실제 연합 환경에서 비독립동일분포(non-IID) 데이터 분포를 처리하는 기법 등이 있습니다.
+
+      AI 기능을 최소 지연 시간과 최대 신뢰성으로 운영 시스템에 원활하게 통합할 수 있도록 지속적 모델 학습 및 배포를 위한 MLOps 파이프라인도 연구합니다.
+  keywords:
+    - Federated Learning
+    - Edge AI
+    - MLOps
+    - Privacy-Preserving ML
+    - Model Compression
+    - Split Learning
+    - Transfer Learning
+  papers:
+    - title: Federated Learning Optimization for Edge Networks
+      venue: IEEE ICC 2024 (Best Paper)
+      year: 2024
+    - title: Communication-Efficient Federated Learning with Adaptive Aggregation
+      venue: IEEE TNSM
+      year: 2024
+    - title: Privacy-Preserving Deep Learning for IoT Data Analytics
+      venue: IEEE Access
+      year: 2023
+
+- id: cyber-physical-systems
+  title:
+    en: Cyber-Physical Systems
+    ko: 사이버-물리 시스템
+  description:
+    en: |-
+      Our Cyber-Physical Systems research secures critical infrastructure through robust AI-driven defense mechanisms. We analyze IoT vulnerabilities, develop real-time intrusion detection systems, and design resilient architectures for industrial environments.
+
+      Key areas include anomaly detection using deep learning models for smart factory environments, AI-based monitoring systems for safety-critical applications, and blockchain-integrated security protocols for IoT networks.
+
+      We work on practical deployments including wildlife monitoring systems, industrial noise analysis for predictive maintenance, and wearable devices for safety and health monitoring in industrial settings.
+    ko: |-
+      사이버-물리 시스템 연구는 강건한 AI 기반 방어 메커니즘을 통해 핵심 인프라를 보호합니다. IoT 취약점을 분석하고, 실시간 침입 탐지 시스템을 개발하며, 산업 환경을 위한 복원력 있는 아키텍처를 설계합니다.
+
+      주요 연구 영역으로는 스마트 팩토리 환경을 위한 딥러닝 기반 이상 탐지, 안전 필수 애플리케이션을 위한 AI 기반 모니터링 시스템, IoT 네트워크를 위한 블록체인 통합 보안 프로토콜 등이 있습니다.
+
+      야생동물 모니터링 시스템, 예측 정비를 위한 산업용 소음 분석, 산업 현장의 안전 및 건강 모니터링을 위한 웨어러블 디바이스 등 실용적 배포에도 힘쓰고 있습니다.
+  keywords:
+    - IoT Security
+    - Anomaly Detection
+    - Intrusion Detection
+    - Smart Factory
+    - Blockchain
+    - Digital Twin
+    - Predictive Maintenance
+  papers:
+    - title: GNN-Based Anomaly Detection for Industrial IoT Networks
+      venue: IEEE Access
+      year: 2025
+    - title: AI-Based Monitoring System for Wildlife Conservation
+      venue: Sensors
+      year: 2022
+    - title: Deep Learning Noise Analysis for Smart Factory Predictive Maintenance
+      venue: KICS
+      year: 2024

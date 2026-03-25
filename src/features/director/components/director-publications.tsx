@@ -2,11 +2,11 @@
 
 import { useTranslations } from "next-intl";
 import { PublicationList } from "../../publications/components/publication-list";
-import { directorPublications } from "../data/publications";
+import type { Publication } from "@/lib/content";
 import { FileText } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 
-export function DirectorPublications() {
+export function DirectorPublications({ publications }: { publications: Publication[] }) {
   const t = useTranslations("Director");
 
   return (
@@ -23,7 +23,7 @@ export function DirectorPublications() {
         </div>
 
         <div className="bg-background rounded-2xl border p-4 sm:p-8 shadow-sm">
-           <PublicationList publications={directorPublications} />
+           <PublicationList publications={publications} />
 
            <div className="mt-8 flex justify-center">
              <Link href="/publications" className="inline-flex items-center justify-center rounded-full border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8 text-sm font-medium transition-colors">
