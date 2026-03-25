@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { join, dirname, resolve } from "node:path";
 import { parse, stringify } from "yaml";
 import type { ZodSchema } from "zod";
 
@@ -41,10 +41,20 @@ export function writeMessages(locale: string, data: Record<string, unknown>): vo
   writeFileSync(messagesPath(locale), JSON.stringify(data, null, 2) + "\n");
 }
 
+// ── Path safety ────────────────────────────────────────────────────
+
+function safePath(base: string, ...segments: string[]): string {
+  const resolved = resolve(base, ...segments);
+  if (!resolved.startsWith(base)) {
+    throw new Error("Path traversal detected");
+  }
+  return resolved;
+}
+
 // ── Image helpers ───────────────────────────────────────────────────
 
 export function listImages(subdir: string): string[] {
-  const dir = join(imagesDir(), subdir);
+  const dir = safePath(imagesDir(), subdir);
   try {
     return readdirSync(dir).filter((f) => /\.(jpe?g|png|webp|svg)$/i.test(f));
   } catch {
@@ -53,11 +63,13 @@ export function listImages(subdir: string): string[] {
 }
 
 export function saveImage(subdir: string, filename: string, buffer: Buffer): void {
-  const dir = join(imagesDir(), subdir);
+  const dir = safePath(imagesDir(), subdir);
+  const filePath = safePath(dir, filename);
   mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, filename), buffer);
+  writeFileSync(filePath, buffer);
 }
 
 export function deleteImage(subdir: string, filename: string): void {
-  unlinkSync(join(imagesDir(), subdir, filename));
+  const filePath = safePath(imagesDir(), subdir, filename);
+  unlinkSync(filePath);
 }

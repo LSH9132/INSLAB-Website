@@ -6,6 +6,10 @@ export async function POST(req: NextRequest) {
   const file = formData.get("file") as File | null;
   const subdir = (formData.get("subdir") as string) || "";
 
+  if (subdir && /\.\./.test(subdir)) {
+    return NextResponse.json({ error: "Invalid subdir" }, { status: 400 });
+  }
+
   if (!file) {
     return NextResponse.json({ error: "No file provided" }, { status: 400 });
   }

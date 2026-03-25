@@ -1,5 +1,6 @@
 import { Sidebar } from "@/components/sidebar";
 import { BuildStatus } from "@/components/build-status";
+import { FloatingPanel } from "@/components/floating-panel";
 
 export default function DashboardLayout({
   children,
@@ -16,6 +17,7 @@ export default function DashboardLayout({
         </header>
         <main className="flex-1 p-6">{children}</main>
       </div>
+      <FloatingPanel />
     </div>
   );
 }
