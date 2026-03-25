@@ -57,8 +57,17 @@ export function ImageGalleryModal({
                   alt={img.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-black/50 text-white text-xs p-1 truncate opacity-0 group-hover:opacity-100 transition-opacity">
-                  {img.name}
+                <div className="absolute inset-x-0 bottom-0 bg-black/50 text-white text-xs p-1 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="truncate">{img.name}</span>
+                  <a
+                    href={img.path}
+                    download={img.name}
+                    onClick={(e) => e.stopPropagation()}
+                    className="shrink-0 ml-1 hover:text-blue-300"
+                    title="Download"
+                  >
+                    &#x2B07;
+                  </a>
                 </div>
               </button>
             ))}

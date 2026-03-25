@@ -114,6 +114,15 @@ export function ImageUpload({ name, subdir, defaultValue = "" }: ImageUploadProp
               Browse existing images
             </button>
             {path && (
+              <a
+                href={path}
+                download
+                className="text-xs text-gray-500 hover:underline"
+              >
+                Download
+              </a>
+            )}
+            {path && (
               <button
                 type="button"
                 onClick={() => setPath("")}
