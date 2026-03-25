@@ -155,11 +155,12 @@ export function ContactContent({ dict }: ContactContentProps) {
           variants={fadeUpVariants}
         >
           <iframe
-            src="https://map.kakao.com/?urlX=485252&urlY=876498&itemId=8598737&q=%EC%88%9C%EC%B2%9C%ED%96%A5%EB%8C%80%ED%95%99%EA%B5%90&srcid=8598737&map_type=TYPE_MAP"
-            className="h-80 w-full md:h-96"
+            src="https://maps.google.com/maps?q=충청남도+아산시+신창면+순천향로+22+멀티미디어관&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            className="h-[28rem] w-full md:h-[32rem]"
             loading="lazy"
             allowFullScreen
-            title="순천향대학교 위치"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="순천향대학교 멀티미디어관 위치"
           />
         </motion.div>
         <motion.div
@@ -170,12 +171,12 @@ export function ContactContent({ dict }: ContactContentProps) {
             {dict.directions.address}
           </p>
           <a
-            href="https://map.kakao.com/link/map/순천향대학교,36.7726,126.9534"
+            href="https://maps.google.com/maps?q=충청남도+아산시+신창면+순천향로+22+멀티미디어관"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-stone-600 underline underline-offset-4 transition-colors hover:text-stone-900"
           >
-            {dict.directions.openInKakaoMap}
+            {dict.directions.openInMap}
           </a>
         </motion.div>
       </motion.section>

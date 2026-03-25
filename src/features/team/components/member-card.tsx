@@ -24,32 +24,33 @@ type MemberCardProps = {
   roleLabel: string;
 };
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 export function MemberCard({
   member,
   locale,
   roleLabel,
 }: MemberCardProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const rm = useReducedMotion();
   const displayName = locale === "ko" ? member.name.ko : member.name.en;
   const initials = getInitials(member.name.en);
 
   return (
     <motion.div
-      className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md"
+      className="group relative overflow-hidden rounded-lg border border-slate-200/80 bg-white"
       variants={cardVariants}
       whileHover={
-        shouldReduceMotion
+        rm
           ? undefined
           : {
-              y: -2,
-              boxShadow:
-                "0 8px 24px -8px rgba(0,0,0,0.08), 0 2px 8px -2px rgba(0,0,0,0.04)",
+              y: -3,
               transition: { type: "spring", stiffness: 300, damping: 24 },
             }
       }
     >
-      {/* Top gradient accent line - fades in on hover */}
-      <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-teal-400 via-blue-400 to-violet-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      {/* Corner marks — subtle */}
+      <span className="absolute top-2 left-2 h-3 w-3 border-t-[2px] border-l-[2px] border-blue-500/15" aria-hidden />
+      <span className="absolute right-2 bottom-2 h-3 w-3 border-r-[2px] border-b-[2px] border-blue-500/15" aria-hidden />
 
       {/* Photo */}
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
@@ -58,34 +59,34 @@ export function MemberCard({
             src={member.photo}
             alt={displayName}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-3xl font-semibold bg-slate-200 text-slate-400">
+          <div className="flex h-full w-full items-center justify-center bg-slate-100 text-3xl font-semibold text-slate-300">
             {initials}
           </div>
         )}
+
+        {/* Role badge — overlaid bottom-right */}
+        <span className="absolute right-3 bottom-3 rounded border border-white/60 bg-white/90 px-2 py-0.5 text-[10px] font-semibold tracking-widest text-blue-500 uppercase backdrop-blur-sm">
+          {roleLabel}
+        </span>
       </div>
 
       {/* Info */}
       <div className="flex flex-col p-5">
-        {/* Name + role on same line */}
-        <div className="flex items-center gap-2.5">
-          <h3 className="font-serif text-lg font-semibold tracking-tight text-slate-900">
-            {displayName}
-          </h3>
-          <span className="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-semibold tracking-widest text-slate-500 uppercase">
-            {roleLabel}
-          </span>
-        </div>
+        {/* Name */}
+        <h3 className="text-lg font-bold tracking-tight text-slate-900">
+          {displayName}
+        </h3>
 
         {member.interests.length > 0 && (
           <div className="mt-2.5 flex flex-wrap gap-1.5">
             {member.interests.map((interest) => (
               <span
                 key={interest}
-                className="rounded-full bg-slate-50 px-2.5 py-0.5 text-[10px] font-medium text-slate-600"
+                className="rounded border border-slate-200 px-2 py-0.5 text-[10px] font-medium text-slate-500"
               >
                 {interest}
               </span>
@@ -96,7 +97,7 @@ export function MemberCard({
         {member.email && (
           <a
             href={`mailto:${member.email}`}
-            className="mt-2.5 text-xs text-slate-400 transition-colors hover:text-teal-600"
+            className="mt-2.5 font-mono text-xs text-slate-400 transition-colors hover:text-blue-500"
           >
             {member.email}
           </a>

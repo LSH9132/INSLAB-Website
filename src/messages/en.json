@@ -146,30 +146,37 @@
   },
   "footer": {
     "tagline": "Artificial Intelligence Network Systems Laboratory.\nInnovating at the edge of possibility.",
-    "sections": {
+    "columns": {
       "research": {
         "title": "Research",
         "links": [
           { "label": "Intelligent Networking", "href": "/research#intelligent-networking" },
           { "label": "Distributed AI", "href": "/research#distributed-ai" },
-          { "label": "Cyber-Physical Systems", "href": "/research#cyber-physical-systems" },
-          { "label": "Edge Computing", "href": "/research" }
+          { "label": "Cyber-Physical Systems", "href": "/research#cyber-physical-systems" }
         ]
       },
-      "lab": {
-        "title": "Lab",
+      "team": {
+        "title": "Team",
         "links": [
-          { "label": "Publications", "href": "/publications" },
-          { "label": "Members", "href": "/team" },
+          { "label": "Lab Members", "href": "/team" },
           { "label": "Director", "href": "/director" },
           { "label": "Join Us", "href": "/join" },
-          { "label": "News", "href": "/news" }
+          { "label": "News & Updates", "href": "/news" }
         ]
       },
-      "contact": {
-        "title": "Contact",
-        "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si\nMultimedia Bldg. M511"
+      "quickLinks": {
+        "title": "Quick Links",
+        "links": [
+          { "label": "Publications", "href": "/publications" },
+          { "label": "News", "href": "/news" },
+          { "label": "Contact", "href": "/contact" }
+        ]
       }
+    },
+    "contact": {
+      "title": "Contact",
+      "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Multimedia Bldg. M511",
+      "email": "dyoung.kim@sch.ac.kr"
     },
     "copyright": "© 2025 INSLAB. All rights reserved.",
     "privacy": "Privacy Policy",
@@ -178,9 +185,9 @@
   "home": {
     "hero": {
       "eyebrow": "Intelligence Network System Lab",
-      "title": "AI and Network Systems Research",
-      "subtitle": "Where intelligent systems meet real-world deployment",
-      "body": "INSLAB researches technologies where systems understand service intent, autonomously configure resources, and maintain AI service quality across intelligent networks.",
+      "title": "INSLAB —",
+      "titleAccent": "AI & Network Systems Research",
+      "body": "We research technologies where systems understand service intent, autonomously configure resources, and maintain AI service quality across intelligent networks.",
       "ctaPrimary": "Explore Research",
       "ctaSecondary": "Meet the Team"
     },
@@ -354,7 +361,7 @@
       "title": "How to Find Us",
       "placeholder": "Campus map will be displayed here",
       "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511",
-      "openInKakaoMap": "Open in Kakao Map"
+      "openInMap": "Open in Google Maps"
     },
     "metadata": {
       "title": "Contact",
@@ -386,7 +393,8 @@
     "hero": {
       "eyebrow": "Opportunities",
       "title": "Join INSLAB",
-      "body": "We are always looking for passionate and curious minds to join our team. Explore opportunities for graduate and undergraduate research positions."
+      "body": "From curiosity to technology, from ideas to systems — we're looking for researchers to build with us.",
+      "bodySecond": "Explore opportunities for graduate and undergraduate research positions."
     },
     "why": {
       "title": "Why INSLAB?",

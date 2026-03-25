@@ -146,30 +146,37 @@
   },
   "footer": {
     "tagline": "인공지능 네트워크 시스템 연구실.\n가능성의 경계에서 혁신합니다.",
-    "sections": {
+    "columns": {
       "research": {
         "title": "연구",
         "links": [
           { "label": "지능형 네트워킹", "href": "/research#intelligent-networking" },
           { "label": "분산 AI", "href": "/research#distributed-ai" },
-          { "label": "사이버-물리 보안", "href": "/research#cyber-physical-systems" },
-          { "label": "엣지 컴퓨팅", "href": "/research" }
+          { "label": "사이버-물리 시스템", "href": "/research#cyber-physical-systems" }
         ]
       },
-      "lab": {
-        "title": "연구실",
+      "team": {
+        "title": "구성원",
         "links": [
-          { "label": "논문", "href": "/publications" },
-          { "label": "구성원", "href": "/team" },
+          { "label": "연구실 구성원", "href": "/team" },
           { "label": "지도교수", "href": "/director" },
           { "label": "지원하기", "href": "/join" },
-          { "label": "뉴스", "href": "/news" }
+          { "label": "뉴스 & 소식", "href": "/news" }
         ]
       },
-      "contact": {
-        "title": "연락처",
-        "address": "충청남도 아산시 신창면 순천향로 22\n멀티미디어관 M511"
+      "quickLinks": {
+        "title": "바로가기",
+        "links": [
+          { "label": "논문", "href": "/publications" },
+          { "label": "뉴스", "href": "/news" },
+          { "label": "연락처", "href": "/contact" }
+        ]
       }
+    },
+    "contact": {
+      "title": "연락처",
+      "address": "충청남도 아산시 신창면 순천향로 22, 멀티미디어관 M511",
+      "email": "dyoung.kim@sch.ac.kr"
     },
     "copyright": "© 2025 INSLAB. All rights reserved.",
     "privacy": "개인정보 처리방침",
@@ -178,9 +185,9 @@
   "home": {
     "hero": {
       "eyebrow": "인공지능 네트워크 시스템 연구실",
-      "title": "AI와 네트워크 시스템 연구",
-      "subtitle": "지능형 시스템과 현실 배포가 만나는 곳",
-      "body": "INSLAB은 시스템이 서비스의 의도를 파악하고, 자원을 자율적으로 구성하여, 지능형 네트워크 전반에서 AI 서비스 품질을 유지하는 기술을 연구합니다.",
+      "title": "INSLAB —",
+      "titleAccent": "AI와 네트워크 시스템 연구",
+      "body": "시스템이 서비스의 의도를 파악하고, 자원을 자율적으로 구성하여, 지능형 네트워크 전반에서 AI 서비스 품질을 유지하는 기술을 연구합니다.",
       "ctaPrimary": "연구 탐색",
       "ctaSecondary": "팀 소개"
     },
@@ -266,7 +273,7 @@
       "undergraduate": "학부 연구생"
     },
     "roles": {
-      "professor": "교수",
+      "professor": "Professor",
       "phd": "박사과정",
       "ms": "석사과정",
       "bs": "학부 연구생"
@@ -354,7 +361,7 @@
       "title": "찾아오는 길",
       "placeholder": "캠퍼스 약도가 여기에 표시됩니다",
       "address": "충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511",
-      "openInKakaoMap": "카카오맵에서 보기"
+      "openInMap": "Google Maps에서 보기"
     },
     "metadata": {
       "title": "연락처",
@@ -386,7 +393,8 @@
     "hero": {
       "eyebrow": "합류 기회",
       "title": "INSLAB 합류하기",
-      "body": "열정과 호기심을 가진 인재를 항상 찾고 있습니다. 대학원 및 학부 연구 포지션의 기회를 살펴보세요."
+      "body": "호기심을 기술로, 아이디어를 시스템으로 — 함께 만들어갈 연구자를 찾습니다.",
+      "bodySecond": "대학원 및 학부 연구 포지션의 기회를 살펴보세요."
     },
     "why": {
       "title": "왜 INSLAB인가?",

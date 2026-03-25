@@ -42,7 +42,7 @@ export default async function JoinPage({
       locale={locale}
       nav={messages.nav}
       footer={messages.footer}
-      mainClassName="flex-1 bg-emerald-50/20"
+      mainClassName="flex-1"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col px-6 py-12 lg:px-10 lg:py-20">
         <JoinHero hero={messages.join.hero} />
