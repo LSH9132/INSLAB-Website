@@ -4,7 +4,10 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  images: { unoptimized: true },
+  trailingSlash: true,
+  transpilePackages: ["@inslab/content-schemas"],
 };
 
 export default withNextIntl(nextConfig);
