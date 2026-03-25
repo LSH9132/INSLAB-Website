@@ -16,6 +16,8 @@ services:
       - DATA_DIR=/data
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
       - SESSION_SECRET=${SESSION_SECRET:-inslab-prod-secret-change-me}
+      - SITE_URL=http://localhost
+      - PREVIEW_URL=http://localhost:8080
     restart: unless-stopped
     depends_on:
       builder:
@@ -47,6 +49,23 @@ services:
       - content-data:/data:ro
       - ./services/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
+      - external
+    restart: unless-stopped
+    depends_on:
+      builder:
+        condition: service_started
+
+  # ── Preview Nginx (internal, preview builds) ───────────────────
+  preview-nginx:
+    image: nginx:alpine
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - out-data:/usr/share/nginx/html:ro
+      - content-data:/data:ro
+      - ./services/nginx/preview.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - internal
       - external
     restart: unless-stopped
     depends_on:
