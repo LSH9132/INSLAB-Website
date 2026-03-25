@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-RUN apk add --no-cache rsync bash
+RUN apk add --no-cache rsync bash dos2unix
 
 WORKDIR /app
 
@@ -13,7 +13,8 @@ RUN npm ci
 COPY . .
 
 # Make scripts executable
-RUN chmod +x /app/services/builder/build.sh /app/services/builder/init.sh
+# Fix line endings and make scripts executable
+RUN dos2unix /app/services/builder/*.sh && chmod +x /app/services/builder/build.sh /app/services/builder/init.sh
 
 EXPOSE 4000
 

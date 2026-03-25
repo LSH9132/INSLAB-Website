@@ -1,0 +1,4 @@
+# Force LF for shell scripts (prevent CRLF issues on Windows/cross-platform)
+*.sh text eol=lf
+*.mjs text eol=lf
+Dockerfile text eol=lf
