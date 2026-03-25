@@ -1,5 +1,15 @@
 import type { Publication } from "@/lib/content";
 
+function formatDate(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  const date = new Date(y, m - 1, d);
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(date);
+}
+
 const publicationTypeStyles: Record<Publication["type"], string> = {
   Journal: "text-blue-700",
   Conference: "text-emerald-700",
@@ -18,6 +28,11 @@ export function PublicationListItem({
           <span className="text-3xl font-light text-slate-300 group-hover:text-slate-900">
             {publication.year}
           </span>
+          {publication.date && (
+            <span className="mt-0.5 text-[11px] font-medium text-slate-400">
+              {formatDate(publication.date)}
+            </span>
+          )}
           <span
             className={`mt-1 text-xs font-semibold tracking-[0.18em] uppercase ${publicationTypeStyles[publication.type]}`}
           >
@@ -28,7 +43,7 @@ export function PublicationListItem({
         <div className="flex flex-1 flex-col gap-3">
           <div className="flex items-center gap-3 md:hidden">
             <span className="text-lg font-light text-slate-900">
-              {publication.year}
+              {publication.date ? formatDate(publication.date) : publication.year}
             </span>
             <span className="size-1 rounded-full bg-slate-300" />
             <span

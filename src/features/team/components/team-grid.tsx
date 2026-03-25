@@ -1,27 +1,84 @@
 "use client";
 
-import { motion } from "motion/react";
-import {
-  fadeUpVariants,
-  staggerContainerVariants,
-} from "@/lib/motion/fade-up";
+import { motion, useReducedMotion } from "motion/react";
 import type { Member } from "@/lib/content";
 import { MemberCard } from "./member-card";
+import {
+  sectionTitleVariants,
+  teamStaggerContainer,
+} from "@/lib/motion/team-variants";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type TeamGridDictionary = any;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 type TeamGridProps = {
-  professor: Member;
   graduate: Member[];
   undergraduate: Member[];
   locale: string;
   dict: TeamGridDictionary;
 };
 
+function MemberSection({
+  members,
+  title,
+  bgClass,
+  locale,
+  roleLabels,
+}: {
+  members: Member[];
+  title: string;
+  bgClass: string;
+  locale: string;
+  roleLabels: Record<string, string>;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (members.length === 0) return null;
+
+  return (
+    <section className={`relative overflow-hidden ${bgClass} py-24 sm:py-32`}>
+      <div className="mx-auto max-w-6xl px-6 lg:px-10">
+        {/* Section header */}
+        <motion.div
+          className="mb-14 flex items-center gap-6"
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView={shouldReduceMotion ? undefined : "visible"}
+          viewport={{ once: true }}
+          variants={teamStaggerContainer}
+        >
+          <div className="h-px w-16 bg-slate-300" />
+          <motion.h2
+            className="font-serif text-2xl font-medium tracking-tight text-slate-700 italic md:text-3xl"
+            variants={sectionTitleVariants}
+          >
+            {title}
+          </motion.h2>
+        </motion.div>
+
+        {/* Card grid */}
+        <motion.div
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView={shouldReduceMotion ? undefined : "visible"}
+          viewport={{ once: true, amount: 0.1 }}
+          variants={teamStaggerContainer}
+        >
+          {members.map((member) => (
+            <MemberCard
+              key={member.id}
+              member={member}
+              locale={locale}
+              roleLabel={roleLabels[member.role]}
+            />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 export function TeamGrid({
-  professor,
   graduate,
   undergraduate,
   locale,
@@ -35,86 +92,21 @@ export function TeamGrid({
   };
 
   return (
-    <div className="space-y-16">
-      {/* Director */}
-      <motion.section
-        variants={staggerContainerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <motion.h2
-          className="mb-8 border-l-2 border-teal-400 pl-4 text-xl font-bold text-slate-900"
-          variants={fadeUpVariants}
-        >
-          {dict.sections.director}
-        </motion.h2>
-        <motion.div className="max-w-2xl" variants={fadeUpVariants}>
-          <MemberCard
-            member={professor}
-            locale={locale}
-            large
-            roleLabel={roleLabels[professor.role]}
-            directorLink={dict.viewProfile}
-          />
-        </motion.div>
-      </motion.section>
-
-      {/* Graduate Students */}
-      {graduate.length > 0 && (
-        <motion.section
-          variants={staggerContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className="mb-8 border-l-2 border-teal-400 pl-4 text-xl font-bold text-slate-900"
-            variants={fadeUpVariants}
-          >
-            {dict.sections.graduate}
-          </motion.h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {graduate.map((member) => (
-              <motion.div key={member.id} variants={fadeUpVariants}>
-                <MemberCard
-                  member={member}
-                  locale={locale}
-                  roleLabel={roleLabels[member.role]}
-                />
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-      )}
-
-      {/* Undergraduate Researchers */}
-      {undergraduate.length > 0 && (
-        <motion.section
-          variants={staggerContainerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.h2
-            className="mb-8 border-l-2 border-teal-400 pl-4 text-xl font-bold text-slate-900"
-            variants={fadeUpVariants}
-          >
-            {dict.sections.undergraduate}
-          </motion.h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {undergraduate.map((member) => (
-              <motion.div key={member.id} variants={fadeUpVariants}>
-                <MemberCard
-                  member={member}
-                  locale={locale}
-                  roleLabel={roleLabels[member.role]}
-                />
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-      )}
-    </div>
+    <>
+      <MemberSection
+        members={graduate}
+        title={dict.sections.graduate}
+        bgClass="bg-white"
+        locale={locale}
+        roleLabels={roleLabels}
+      />
+      <MemberSection
+        members={undergraduate}
+        title={dict.sections.undergraduate}
+        bgClass="bg-slate-50/40"
+        locale={locale}
+        roleLabels={roleLabels}
+      />
+    </>
   );
 }

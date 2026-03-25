@@ -3,7 +3,7 @@
     ko: 김대영
     en: Daeyoung Kim
   role: Professor
-  photo: /images/director/dk2022.jpg
+  photo: /images/director/kimdy.png
   enrollYear: 2021
   interests:
     - Intelligent Networking
@@ -39,13 +39,24 @@
     - Deep Learning
   email: jaewon@sch.ac.kr
 
+- id: samia-zahid
+  name:
+    ko: Samia Zahid
+    en: Samia Zahid
+  role: MS
+  photo: ""
+  enrollYear: 2024
+  interests:
+    - Edge AI
+    - Distributed Systems
+
 - id: hanul-kim
   name:
     ko: 김한울
     en: Hanul Kim
-  role: MS
+  role: BS
   photo: ""
-  enrollYear: 2024
+  enrollYear: 2025
   interests:
     - IoT Security
     - Anomaly Detection
@@ -84,3 +95,14 @@
   interests:
     - Machine Learning
     - Data Analysis
+
+- id: seunghee-lee
+  name:
+    ko: 이승희
+    en: Seunghee Lee
+  role: BS
+  photo: ""
+  enrollYear: 2025
+  interests:
+    - Web Development
+    - IoT Systems

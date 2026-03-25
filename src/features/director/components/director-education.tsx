@@ -1,9 +1,14 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import type { Education, Career } from "@/lib/content";
 import { GraduationCap, Briefcase } from "lucide-react";
+import {
+  sectionTitleVariants,
+  cardVariants,
+  teamStaggerContainer,
+} from "@/lib/motion/team-variants";
 
 export function DirectorEducation({
   education: educationData,
@@ -13,61 +18,58 @@ export function DirectorEducation({
   career: Career[];
 }) {
   const t = useTranslations("Director");
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="w-full py-16 bg-muted/30">
-      <div className="container px-4 md:px-6 mx-auto">
-        <motion.div
-           initial={{ opacity: 0, y: -20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           className="text-center mb-12"
+    <section className="w-full bg-white py-16">
+      <div className="mx-auto max-w-5xl px-6 lg:px-10">
+        <motion.h2
+          className="mb-12 text-center text-3xl font-bold tracking-tighter text-slate-900 sm:text-4xl md:text-5xl"
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView={shouldReduceMotion ? undefined : "visible"}
+          viewport={{ once: true }}
+          variants={sectionTitleVariants}
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{t("education")}</h2>
-        </motion.div>
+          {t("education")}
+        </motion.h2>
 
-        <div className="grid gap-12 md:grid-cols-2 max-w-5xl mx-auto">
+        <div className="grid gap-12 md:grid-cols-2">
           {/* Career Section */}
           <div className="space-y-8">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                <Briefcase className="w-6 h-6" />
+            <div className="mb-6 flex items-center space-x-3">
+              <div className="rounded-lg bg-teal-50 p-2 text-teal-600">
+                <Briefcase className="h-6 w-6" />
               </div>
-              <h3 className="text-2xl font-semibold">Career</h3>
+              <h3 className="text-2xl font-semibold text-slate-900">Career</h3>
             </div>
-            
-            <motion.div 
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="show"
+
+            <motion.div
+              initial={shouldReduceMotion ? false : "hidden"}
+              whileInView={shouldReduceMotion ? undefined : "visible"}
               viewport={{ once: true }}
-              className="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent"
+              variants={teamStaggerContainer}
+              className="relative space-y-6 before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent md:before:mx-auto md:before:translate-x-0"
             >
               {careerData.map((career) => (
-                <motion.div key={career.id} variants={itemVariants} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-background shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <motion.div
+                  key={career.id}
+                  variants={cardVariants}
+                  className="group is-active relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse"
+                >
+                  <div className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white bg-white shadow md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                    <div className="h-2 w-2 rounded-full bg-teal-500" />
                   </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border bg-card shadow-sm transition-all hover:shadow-md">
+                  <div className="w-[calc(100%-4rem)] rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition-all hover:shadow-md md:w-[calc(50%-2.5rem)]">
                     <div className="flex flex-col space-y-1">
-                      <span className="text-sm font-medium text-primary">{career.period}</span>
-                      <h4 className="font-semibold text-lg">{career.role}</h4>
-                      <p className="text-sm text-muted-foreground">{career.organization}</p>
+                      <span className="text-sm font-medium text-teal-600">
+                        {career.period}
+                      </span>
+                      <h4 className="text-lg font-semibold text-slate-900">
+                        {career.role}
+                      </h4>
+                      <p className="text-sm text-slate-500">
+                        {career.organization}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -77,30 +79,42 @@ export function DirectorEducation({
 
           {/* Education Section */}
           <div className="space-y-8">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                <GraduationCap className="w-6 h-6" />
+            <div className="mb-6 flex items-center space-x-3">
+              <div className="rounded-lg bg-teal-50 p-2 text-teal-600">
+                <GraduationCap className="h-6 w-6" />
               </div>
-              <h3 className="text-2xl font-semibold">Education</h3>
+              <h3 className="text-2xl font-semibold text-slate-900">
+                Education
+              </h3>
             </div>
-            
-            <motion.div 
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="show"
+
+            <motion.div
+              initial={shouldReduceMotion ? false : "hidden"}
+              whileInView={shouldReduceMotion ? undefined : "visible"}
               viewport={{ once: true }}
-              className="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent"
+              variants={teamStaggerContainer}
+              className="relative space-y-6 before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent md:before:mx-auto md:before:translate-x-0"
             >
               {educationData.map((edu) => (
-                <motion.div key={edu.id} variants={itemVariants} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-background shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <motion.div
+                  key={edu.id}
+                  variants={cardVariants}
+                  className="group is-active relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse"
+                >
+                  <div className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white bg-white shadow md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                    <div className="h-2 w-2 rounded-full bg-teal-500" />
                   </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border bg-card shadow-sm transition-all hover:shadow-md">
+                  <div className="w-[calc(100%-4rem)] rounded-xl border border-slate-100 bg-white p-4 shadow-sm transition-all hover:shadow-md md:w-[calc(50%-2.5rem)]">
                     <div className="flex flex-col space-y-1">
-                      <span className="text-sm font-medium text-primary">{edu.period}</span>
-                      <h4 className="font-semibold text-lg">{edu.degree}</h4>
-                      <p className="text-sm text-muted-foreground">{edu.institution}</p>
+                      <span className="text-sm font-medium text-teal-600">
+                        {edu.period}
+                      </span>
+                      <h4 className="text-lg font-semibold text-slate-900">
+                        {edu.degree}
+                      </h4>
+                      <p className="text-sm text-slate-500">
+                        {edu.institution}
+                      </p>
                     </div>
                   </div>
                 </motion.div>

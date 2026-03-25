@@ -126,10 +126,23 @@
       }
     },
     "searchPlaceholder": "Search publications...",
-    "login": "Login",
+    "joinUs": "Join Us",
     "openSection": "Open Section",
     "openMenu": "Open navigation menu",
     "closeMenu": "Close navigation menu",
+    "mobileSubLinks": {
+      "team": [
+        { "label": "Lab Members", "href": "/team" },
+        { "label": "Director", "href": "/director" },
+        { "label": "Join Us", "href": "/join" },
+        { "label": "News & Updates", "href": "/news" }
+      ],
+      "research": [
+        { "label": "Intelligent Networking", "href": "/research#intelligent-networking" },
+        { "label": "Distributed AI", "href": "/research#distributed-ai" },
+        { "label": "Cyber-Physical Systems", "href": "/research#cyber-physical-systems" }
+      ]
+    },
     "announcements": [
       "🏆 ICC 2024 Best Paper Award — Federated Learning for Edge Networks",
       "📅 Spring AI Security Workshop — Recap now available on the site",
@@ -142,15 +155,26 @@
     "sections": {
       "research": {
         "title": "Research",
-        "links": ["Intelligent Networking", "Distributed AI", "Cyber-Physical Security", "Edge Computing"]
+        "links": [
+          { "label": "Intelligent Networking", "href": "/research#intelligent-networking" },
+          { "label": "Distributed AI", "href": "/research#distributed-ai" },
+          { "label": "Cyber-Physical Systems", "href": "/research#cyber-physical-systems" },
+          { "label": "Edge Computing", "href": "/research" }
+        ]
       },
       "lab": {
         "title": "Lab",
-        "links": ["Publications", "Members", "Join Us", "News"]
+        "links": [
+          { "label": "Publications", "href": "/publications" },
+          { "label": "Members", "href": "/team" },
+          { "label": "Director", "href": "/director" },
+          { "label": "Join Us", "href": "/join" },
+          { "label": "News", "href": "/news" }
+        ]
       },
       "contact": {
         "title": "Contact",
-        "address": "Engineering Building 2, Room 405\nSoonchunhyang University"
+        "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si\nMultimedia Bldg. M511"
       }
     },
     "copyright": "© 2025 INSLAB. All rights reserved.",
@@ -193,21 +217,21 @@
       "areas": [
         {
           "id": "intelligent-networking",
-          "eyebrow": "IN",
-          "title": "Intelligent Networking",
-          "description": "Optimizing network performance using advanced machine learning algorithms. We focus on 6G protocols, dynamic resource allocation, and self-healing network architectures."
+          "eyebrow": "SYS",
+          "title": "Intelligent Network Systems",
+          "description": "Building intelligent networks and systems powered by AI. We focus on Edge AI, autonomous adaptive networking, and intent-based system design."
         },
         {
           "id": "distributed-ai",
-          "eyebrow": "DA",
-          "title": "Distributed AI",
-          "description": "Developing decentralized AI frameworks for edge computing environments. Our work includes federated learning optimization and privacy-preserving computation."
+          "eyebrow": "DATA",
+          "title": "Data Intelligence",
+          "description": "Building data collection and processing pipelines across diverse environments. We research network data analysis, pattern recognition, and anomaly detection."
         },
         {
           "id": "cyber-physical-systems",
-          "eyebrow": "CS",
-          "title": "Cyber-Physical Systems",
-          "description": "Securing critical infrastructure through robust AI-driven defense mechanisms. We analyze IoT vulnerabilities and develop real-time intrusion detection systems."
+          "eyebrow": "SVC",
+          "title": "Intelligent Services",
+          "description": "Developing user-centric intelligent application services. We implement real-world AI solutions including IoT applications, smart city, and mobile services."
         }
       ]
     },
@@ -246,6 +270,8 @@
       "displaying": "Displaying {count} of {total} papers",
       "allYears": "All Years",
       "topics": "Topics",
+      "newestFirst": "Newest",
+      "oldestFirst": "Oldest",
       "noResults": "No publications match the selected filters.",
       "prev": "Prev",
       "next": "Next",
@@ -262,7 +288,15 @@
     "researchArea": "Research Areas",
     "publications": "Selected Publications",
     "projects": "Research Projects",
-    "patents": "Patents"
+    "patents": "Patents",
+    "filters": {
+      "all": "All",
+      "journal": "Journal",
+      "conference": "Conference",
+      "newestFirst": "Newest",
+      "oldestFirst": "Oldest",
+      "noResults": "No publications match the selected filter."
+    }
   },
   "team": {
     "hero": {
@@ -281,6 +315,11 @@
       "ms": "M.S. Student",
       "bs": "Undergraduate Researcher"
     },
+    "stats": [
+      { "value": "9", "label": "Members" },
+      { "value": "3", "label": "Research Areas" },
+      { "value": "5+", "label": "Active Projects" }
+    ],
     "viewProfile": "View Profile",
     "metadata": {
       "title": "Team",
@@ -289,19 +328,19 @@
   },
   "research": {
     "hero": {
-      "eyebrow": "Foundational Inquiry",
-      "title": "Defining the Architectural Standards of",
-      "titleAccent": "AI Networks",
-      "body": "INSLAB explores the intersection of intelligence and connectivity, developing rigorous frameworks for the next generation of resilient, autonomous infrastructures."
+      "eyebrow": "Research Direction",
+      "title": "Building Environments Where AI",
+      "titleAccent": "Never Stops in Reality",
+      "body": "We research technologies where systems understand service intent, autonomously configure resources, and maintain AI service quality."
     },
     "framework": {
       "title": "Core Research Framework",
-      "body": "Our methodology integrates hardware-aware algorithms with distributed network logic to ensure seamless intelligence propagation.",
-      "points": ["Empirical Rigor", "Scalability-First Design", "Security as Foundation"]
+      "body": "We research intelligent systems where distributed AIoT devices automatically compose, deploy, and reconfigure their service functions to match user intent and maintain optimal state.",
+      "points": ["DATA — Collection & Processing", "SYSTEM — Intelligent Networks & Edge AI", "SERVICE — IoT Applications & Solutions"]
     },
     "connectivity": {
       "title": "Structural Connectivity",
-      "body": "At INSLAB, no research area exists in isolation. Our structural approach represents the cross-pollination of data and methodology between research domains. An advancement in intelligent networking directly influences our distributed AI coordination protocols.",
+      "body": "At INSLAB, no research area exists in isolation. The DATA, SYSTEM, and SERVICE pillars interact organically, with AI technology as the core driving force behind our intelligent solutions.",
       "cta": "View Publications",
       "ctaSecondary": "Our Methodology"
     },
@@ -324,8 +363,8 @@
       "title": "Contact Information",
       "address": {
         "label": "Address",
-        "line1": "Engineering Building 2, Room 405",
-        "line2": "Soonchunhyang University, Asan, South Korea"
+        "line1": "Multimedia Bldg. M511",
+        "line2": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511"
       },
       "email": {
         "label": "Email"
@@ -358,7 +397,7 @@
     "directions": {
       "title": "How to Find Us",
       "placeholder": "Campus map will be displayed here",
-      "address": "Soonchunhyang University, 22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do"
+      "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511"
     },
     "metadata": {
       "title": "Contact",
@@ -411,35 +450,62 @@
     },
     "recruitment": {
       "title": "Open Positions",
-      "tracks": [
+      "fields": [
         {
-          "degree": "M.S. / Ph.D. Program",
-          "requirements": [
-            "B.S. in Computer Science, Electrical Engineering, or related field",
-            "Strong programming skills (Python, C/C++)",
-            "Interest in AI, networking, or IoT research",
-            "English proficiency for reading and writing papers"
-          ],
-          "timeline": "Applications accepted for Spring and Fall semesters"
+          "name": "Data",
+          "description": "Data pattern recognition-based solution development"
         },
         {
-          "degree": "Undergraduate Research",
-          "requirements": [
-            "Currently enrolled as a junior or senior",
-            "Basic understanding of machine learning or networking",
-            "Commitment of at least one semester",
-            "Willingness to participate in lab seminars"
-          ],
-          "timeline": "Rolling admissions throughout the year"
+          "name": "System",
+          "description": "Edge AI-based intelligent system development"
+        },
+        {
+          "name": "Service",
+          "description": "User-centric IoT platform service development"
+        },
+        {
+          "name": "XOps",
+          "description": "End-to-end AI workflow automation environment"
         }
-      ]
+      ],
+      "idealCandidate": {
+        "title": "Ideal Candidate",
+        "points": [
+          "Passionate about learning and growth",
+          "Persistent in pursuing goals with determination",
+          "Strong communication and collaboration skills",
+          "Team-oriented with a strong sense of responsibility"
+        ]
+      },
+      "qualifications": {
+        "title": "Qualifications",
+        "points": [
+          "Sophomore or above in a related major",
+          "Programming coursework grade of A or above",
+          "Familiarity with Linux basics",
+          "Able to participate in lab activities for at least 1 year"
+        ]
+      },
+      "benefits": {
+        "title": "Benefits",
+        "points": [
+          "Book and resource funding",
+          "Domestic and international conference participation support",
+          "Personal research space and equipment",
+          "Research program participation opportunities"
+        ]
+      },
+      "process": {
+        "title": "Selection Process",
+        "steps": ["Document Review", "1st Interview", "2nd Interview", "Final Acceptance"]
+      }
     },
     "faq": {
       "title": "Frequently Asked Questions",
       "items": [
         {
           "question": "What research topics can I work on?",
-          "answer": "INSLAB focuses on three main areas: Intelligent Networking (6G, SDN/NFV), Distributed AI (federated learning, edge AI), and Cyber-Physical Systems (IoT security, anomaly detection). You can explore topics within these areas based on your interests."
+          "answer": "INSLAB focuses on three pillars: DATA (data collection and processing), SYSTEM (intelligent networks and Edge AI), and SERVICE (IoT applications and solutions). With intent-based autonomous intelligent systems as our core direction, you can explore topics across these areas based on your interests."
         },
         {
           "question": "Is funding available for graduate students?",

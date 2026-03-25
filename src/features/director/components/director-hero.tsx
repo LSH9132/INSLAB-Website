@@ -1,98 +1,128 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Mail, GraduationCap, MapPin, Building, Globe } from "lucide-react";
+import {
+  directorPhotoVariants,
+  directorInfoVariants,
+  teamStaggerContainer,
+} from "@/lib/motion/team-variants";
 
-export function DirectorHero() {
+export function DirectorHero({ locale }: { locale: string }) {
+  const shouldReduceMotion = useReducedMotion();
+  const t = useTranslations("Director");
+
   return (
-    <section className="relative w-full py-16 md:py-24 overflow-hidden">
-      <div className="container px-4 md:px-6 mx-auto">
-        <div className="grid gap-12 lg:grid-cols-[1fr_2fr] items-center">
+    <section className="relative isolate w-full overflow-hidden py-20 md:py-28">
+      {/* Ambient gradient blobs */}
+      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+        <div className="absolute top-1/4 left-[10%] h-[420px] w-[420px] rounded-full bg-teal-300/20 blur-[100px]" />
+        <div className="absolute top-1/3 right-[15%] h-[360px] w-[360px] rounded-full bg-blue-300/15 blur-[100px]" />
+        <div className="absolute bottom-1/4 left-1/2 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-violet-300/10 blur-[100px]" />
+      </div>
+
+      <div className="mx-auto max-w-6xl px-6 lg:px-10">
+        <motion.div
+          className="grid items-center gap-12 lg:grid-cols-[auto_1fr] lg:gap-20"
+          initial={shouldReduceMotion ? false : "hidden"}
+          whileInView={shouldReduceMotion ? undefined : "visible"}
+          viewport={{ once: true, amount: 0.2 }}
+          variants={teamStaggerContainer}
+        >
+          {/* Photo */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-center lg:items-end justify-center"
+            className="group relative mx-auto w-full max-w-xs lg:max-w-sm"
+            variants={directorPhotoVariants}
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+            <div className="relative aspect-square overflow-hidden rounded-3xl">
+              {/* Glow effect behind photo */}
+              <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-teal-200/40 to-blue-200/40 blur-2xl transition-all duration-500 group-hover:from-teal-300/50 group-hover:to-blue-300/50" />
               <Image
-                src="/images/director/dk2022.jpg"
+                src="/images/director/kimdy.png"
                 alt="Director Dae-Young Kim"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                sizes="(max-width: 1024px) 320px, 384px"
                 priority
               />
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col space-y-6"
-          >
-            <div className="space-y-2 text-center lg:text-left">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4 }}
-                className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium bg-secondary text-secondary-foreground mb-4"
-              >
-                Lab Director (PI)
-              </motion.div>
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground">
-                Dae-Young Kim <span className="text-muted-foreground whitespace-nowrap text-3xl sm:text-4xl md:text-5xl">(김대영)</span>
-              </h1>
-              <p className="text-xl text-muted-foreground pt-2 font-medium">
-                Doctor of Philosophy
-              </p>
-            </div>
+          {/* Info */}
+          <motion.div className="flex flex-col" variants={directorInfoVariants}>
+            <span className="mb-3 inline-block w-fit rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
+              Lab Director (PI)
+            </span>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-sm md:text-base">
-              <div className="flex items-center space-x-3 text-muted-foreground">
-                <Building className="w-5 h-5 text-primary" />
-                <a href="https://homepage.sch.ac.kr/computer" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 lg:text-6xl">
+              {locale === "ko" ? "김대영" : "Dae-Young Kim"}{" "}
+              <span className="whitespace-nowrap text-3xl text-slate-400 lg:text-5xl">
+                {locale === "ko" ? "(Dae-Young Kim)" : "(김대영)"}
+              </span>
+            </h1>
+
+            <p className="mt-2 text-xl font-medium text-slate-500">
+              Doctor of Philosophy
+            </p>
+
+            <div className="mt-8 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2 md:text-base">
+              <div className="flex items-center space-x-3 text-slate-500">
+                <Building className="h-5 w-5 shrink-0 text-teal-600" />
+                <a
+                  href="https://homepage.sch.ac.kr/computer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-teal-600"
+                >
                   Dept. of Computer Software Engineering
                 </a>
               </div>
-              <div className="flex items-center space-x-3 text-muted-foreground">
-                <GraduationCap className="w-5 h-5 text-primary" />
-                <a href="https://www.sch.ac.kr" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              <div className="flex items-center space-x-3 text-slate-500">
+                <GraduationCap className="h-5 w-5 shrink-0 text-teal-600" />
+                <a
+                  href="https://www.sch.ac.kr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-teal-600"
+                >
                   Soonchunhyang University
                 </a>
               </div>
-              <div className="flex items-start space-x-3 text-muted-foreground sm:col-span-2">
-                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <div className="flex items-start space-x-3 text-slate-500 sm:col-span-2">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" />
                 <span>
-                  Office) Room 510, 5th fl. Multimedia Bldg.<br/>
-                  22 Soonchunhyang-ro, Asan-si, Chungcheongnam-do, 31538, Rep. of KOREA
+                  충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511
                 </span>
               </div>
-              <div className="flex items-center space-x-3 text-muted-foreground">
-                <Mail className="w-5 h-5 text-primary" />
-                <a href="mailto:dyoung.kim@sch.ac.kr" className="hover:text-primary transition-colors font-medium">
+              <div className="flex items-center space-x-3 text-slate-500">
+                <Mail className="h-5 w-5 shrink-0 text-teal-600" />
+                <a
+                  href="mailto:dyoung.kim@sch.ac.kr"
+                  className="font-medium transition-colors hover:text-teal-600"
+                >
                   dyoung.kim_at_sch.ac.kr
                 </a>
               </div>
-              <div className="flex items-center space-x-3 text-muted-foreground">
-                <Globe className="w-5 h-5 text-primary" />
-                <a href="https://inslab.sch.ac.kr/~kimdy/lec/lec2026-1.html" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors font-medium">
+              <div className="flex items-center space-x-3 text-slate-500">
+                <Globe className="h-5 w-5 shrink-0 text-teal-600" />
+                <a
+                  href="https://inslab.sch.ac.kr/~kimdy/lec/lec2026-1.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium transition-colors hover:text-teal-600"
+                >
                   Lecture 2026-1
                 </a>
               </div>
             </div>
 
-            <motion.div
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               transition={{ duration: 0.6, delay: 0.8 }}
-               className="pt-4 text-sm italic text-muted-foreground border-t border-border mt-6 w-fit"
-            >
+            <div className="mt-8 w-fit border-t border-slate-200 pt-4 text-sm italic text-slate-400">
               Recorded in &quot;Marquis Who&apos;s Who in the World 2016&quot;
-            </motion.div>
+            </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

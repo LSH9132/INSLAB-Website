@@ -83,24 +83,18 @@ export function SiteFooter({ footer }: SiteFooterProps) {
               {footer.sections.research.title}
             </h2>
             <ul className="space-y-4">
-              {footer.sections.research.links.map((link: string, i: number) => (
-                <li key={link}>
-                  <Link
-                    href={
-                      i === 0
-                        ? "/research#intelligent-networking"
-                        : i === 1
-                          ? "/research#distributed-ai"
-                          : i === 2
-                            ? "/research#cyber-physical-systems"
-                            : "/research"
-                    }
-                    className="text-sm text-slate-500 hover:text-accent"
-                  >
-                    {link}
-                  </Link>
-                </li>
-              ))}
+              {footer.sections.research.links.map(
+                (link: { label: string; href: string }) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-slate-500 hover:text-accent"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -109,24 +103,18 @@ export function SiteFooter({ footer }: SiteFooterProps) {
               {footer.sections.lab.title}
             </h2>
             <ul className="space-y-4">
-              {footer.sections.lab.links.map((link: string, i: number) => (
-                <li key={link}>
-                  <Link
-                    href={
-                      i === 0
-                        ? "/publications"
-                        : i === 1
-                          ? "/team"
-                          : i === 2
-                            ? "/join"
-                            : "/news"
-                    }
-                    className="text-sm text-slate-500 hover:text-accent"
-                  >
-                    {link}
-                  </Link>
-                </li>
-              ))}
+              {footer.sections.lab.links.map(
+                (link: { label: string; href: string }) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-slate-500 hover:text-accent"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 

@@ -54,9 +54,11 @@ export function getPublications() {
     "publications/domestic.yaml",
     PublicationsSchema,
   );
-  return [...journals, ...conferences, ...domestic].sort(
-    (a, b) => b.year - a.year,
-  );
+  return [...journals, ...conferences, ...domestic].sort((a, b) => {
+    const dateA = a.date ?? `${a.year}-12-31`;
+    const dateB = b.date ?? `${b.year}-12-31`;
+    return dateB.localeCompare(dateA);
+  });
 }
 
 export function getDirectorPublications() {

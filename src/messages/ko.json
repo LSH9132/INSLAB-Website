@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": {
-      "label": "홈",
+      "label": "소개",
       "summary": "연구실 개요, 미션, 최신 성과.",
       "sections": [
         {
@@ -26,7 +26,7 @@
       }
     },
     "research": {
-      "label": "연구",
+      "label": "연구활동",
       "summary": "연구 주제, 연구실 방향, 분야 하이라이트.",
       "sections": [
         {
@@ -76,7 +76,7 @@
       }
     },
     "team": {
-      "label": "팀",
+      "label": "구성원",
       "summary": "사람, 문화, 협업, 합류 기회.",
       "sections": [
         {
@@ -89,7 +89,7 @@
         {
           "title": "기회",
           "links": [
-            { "label": "합류하기", "description": "대학원생 또는 학부 연구생으로 합류하는 방법." },
+            { "label": "지원하기", "description": "대학원생 또는 학부 연구생으로 지원하는 방법." },
             { "label": "뉴스 & 소식", "description": "INSLAB의 최신 성과를 확인하세요." }
           ]
         }
@@ -101,7 +101,7 @@
       }
     },
     "contact": {
-      "label": "연락",
+      "label": "연락처",
       "summary": "협업 또는 입학 문의를 위한 연락 방법.",
       "sections": [
         {
@@ -126,10 +126,23 @@
       }
     },
     "searchPlaceholder": "논문 검색...",
-    "login": "로그인",
+    "joinUs": "지원하기",
     "openSection": "섹션 열기",
     "openMenu": "내비게이션 메뉴 열기",
     "closeMenu": "내비게이션 메뉴 닫기",
+    "mobileSubLinks": {
+      "team": [
+        { "label": "연구실 구성원", "href": "/team" },
+        { "label": "지도교수", "href": "/director" },
+        { "label": "지원하기", "href": "/join" },
+        { "label": "뉴스 & 소식", "href": "/news" }
+      ],
+      "research": [
+        { "label": "지능형 네트워킹", "href": "/research#intelligent-networking" },
+        { "label": "분산 AI", "href": "/research#distributed-ai" },
+        { "label": "사이버-물리 시스템", "href": "/research#cyber-physical-systems" }
+      ]
+    },
     "announcements": [
       "🏆 ICC 2024 최우수 논문상 수상 — 엣지 네트워크 연합 학습 최적화",
       "📅 2024 봄학기 AI 보안 워크숍 — 결과 리캡 게시됨",
@@ -142,15 +155,26 @@
     "sections": {
       "research": {
         "title": "연구",
-        "links": ["지능형 네트워킹", "분산 AI", "사이버-물리 보안", "엣지 컴퓨팅"]
+        "links": [
+          { "label": "지능형 네트워킹", "href": "/research#intelligent-networking" },
+          { "label": "분산 AI", "href": "/research#distributed-ai" },
+          { "label": "사이버-물리 보안", "href": "/research#cyber-physical-systems" },
+          { "label": "엣지 컴퓨팅", "href": "/research" }
+        ]
       },
       "lab": {
         "title": "연구실",
-        "links": ["논문", "구성원", "합류하기", "뉴스"]
+        "links": [
+          { "label": "논문", "href": "/publications" },
+          { "label": "구성원", "href": "/team" },
+          { "label": "지도교수", "href": "/director" },
+          { "label": "지원하기", "href": "/join" },
+          { "label": "뉴스", "href": "/news" }
+        ]
       },
       "contact": {
         "title": "연락처",
-        "address": "공학관 2, 405호\n순천향대학교"
+        "address": "충청남도 아산시 신창면 순천향로 22\n멀티미디어관 M511"
       }
     },
     "copyright": "© 2025 INSLAB. All rights reserved.",
@@ -193,21 +217,21 @@
       "areas": [
         {
           "id": "intelligent-networking",
-          "eyebrow": "IN",
-          "title": "지능형 네트워킹",
-          "description": "첨단 머신러닝 알고리즘으로 네트워크 성능을 최적화합니다. 6G 프로토콜, 동적 자원 할당, 자가 치유 네트워크 아키텍처에 집중합니다."
+          "eyebrow": "SYS",
+          "title": "지능형 네트워크 시스템",
+          "description": "AI 기술을 핵심 동력으로 지능형 네트워크 및 시스템을 구현합니다. Edge AI, 자율 적응형 네트워크, Intent 기반 시스템 설계에 집중합니다."
         },
         {
           "id": "distributed-ai",
-          "eyebrow": "DA",
-          "title": "분산 AI",
-          "description": "엣지 컴퓨팅 환경을 위한 분산 AI 프레임워크를 개발합니다. 연합 학습 최적화와 프라이버시 보존 연산을 연구합니다."
+          "eyebrow": "DATA",
+          "title": "데이터 지능",
+          "description": "다양한 환경에서의 데이터 수집 및 정제 프로세스를 구축합니다. 네트워크 데이터 분석, 패턴 인식, 이상 탐지를 연구합니다."
         },
         {
           "id": "cyber-physical-systems",
-          "eyebrow": "CS",
-          "title": "사이버-물리 시스템",
-          "description": "강건한 AI 기반 방어 메커니즘으로 핵심 인프라를 보호합니다. IoT 취약점 분석 및 실시간 침입 탐지 시스템을 개발합니다."
+          "eyebrow": "SVC",
+          "title": "지능형 서비스",
+          "description": "사용자 중심의 지능형 응용 서비스를 개발합니다. IoT 응용, 스마트 시티, 모바일 서비스 등 실생활 AI 솔루션을 구현합니다."
         }
       ]
     },
@@ -246,6 +270,8 @@
       "displaying": "{total}편 중 {count}편 표시 중",
       "allYears": "전체 연도",
       "topics": "주제",
+      "newestFirst": "최신순",
+      "oldestFirst": "오래된순",
       "noResults": "선택한 필터와 일치하는 논문이 없습니다.",
       "prev": "이전",
       "next": "다음",
@@ -262,7 +288,15 @@
     "researchArea": "연구 분야",
     "publications": "주요 논문",
     "projects": "연구 과제",
-    "patents": "특허"
+    "patents": "특허",
+    "filters": {
+      "all": "전체",
+      "journal": "저널",
+      "conference": "학회",
+      "newestFirst": "최신순",
+      "oldestFirst": "오래된순",
+      "noResults": "선택한 필터와 일치하는 논문이 없습니다."
+    }
   },
   "team": {
     "hero": {
@@ -281,6 +315,11 @@
       "ms": "석사과정",
       "bs": "학부 연구생"
     },
+    "stats": [
+      { "value": "9", "label": "구성원" },
+      { "value": "3", "label": "연구 분야" },
+      { "value": "5+", "label": "진행 과제" }
+    ],
     "viewProfile": "프로필 보기",
     "metadata": {
       "title": "구성원",
@@ -289,19 +328,19 @@
   },
   "research": {
     "hero": {
-      "eyebrow": "기초 탐구",
-      "title": "AI 네트워크의 아키텍처 표준을",
-      "titleAccent": "정의합니다",
-      "body": "INSLAB은 지능과 연결성의 교차점을 탐구하며, 차세대 복원력 있는 자율 인프라를 위한 엄밀한 프레임워크를 개발합니다."
+      "eyebrow": "연구 방향",
+      "title": "AI가 현실에서 멈추지 않는",
+      "titleAccent": "환경을 만드는 연구",
+      "body": "시스템이 서비스의 의도(Intent)를 파악하고, 자원을 자율적으로 구성하여 AI 서비스 품질을 유지하는 기술을 연구합니다."
     },
     "framework": {
       "title": "핵심 연구 프레임워크",
-      "body": "하드웨어 인식 알고리즘과 분산 네트워크 로직을 통합하여 원활한 인텔리전스 전파를 보장합니다.",
-      "points": ["경험적 엄밀함", "확장성 우선 설계", "보안 기반 구축"]
+      "body": "분산된 AIoT 디바이스들이 각자 가진 서비스 기능을 사용자의 의도(Intent)에 맞춰 자동으로 조합·배치·재구성하여 최적의 상태를 유지하는 지능형 시스템을 연구합니다.",
+      "points": ["DATA — 데이터 수집·정제", "SYSTEM — 지능형 네트워크·Edge AI", "SERVICE — IoT 응용·솔루션"]
     },
     "connectivity": {
       "title": "구조적 연결성",
-      "body": "INSLAB에서는 어떤 연구 분야도 고립되어 존재하지 않습니다. 구조적 접근 방식은 연구 도메인 간 데이터와 방법론의 교차 융합을 나타냅니다. 지능형 네트워킹의 발전은 분산 AI 조율 프로토콜에 직접적인 영향을 미칩니다.",
+      "body": "INSLAB에서는 어떤 연구 분야도 고립되어 존재하지 않습니다. DATA, SYSTEM, SERVICE 세 축이 유기적으로 상호작용하며, 인공지능 기술을 핵심 동력으로 삼아 지능형 솔루션을 연구하고 개발합니다.",
       "cta": "논문 보기",
       "ctaSecondary": "연구 방법론"
     },
@@ -324,8 +363,8 @@
       "title": "연락처 정보",
       "address": {
         "label": "주소",
-        "line1": "공학관 2, 405호",
-        "line2": "충남 아산시 순천향대학교"
+        "line1": "멀티미디어관 M511",
+        "line2": "충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511"
       },
       "email": {
         "label": "이메일"
@@ -358,7 +397,7 @@
     "directions": {
       "title": "찾아오는 길",
       "placeholder": "캠퍼스 약도가 여기에 표시됩니다",
-      "address": "충남 아산시 신창면 순천향로 22 순천향대학교"
+      "address": "충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511"
     },
     "metadata": {
       "title": "연락처",
@@ -411,35 +450,62 @@
     },
     "recruitment": {
       "title": "모집 안내",
-      "tracks": [
+      "fields": [
         {
-          "degree": "석사 / 박사과정",
-          "requirements": [
-            "컴퓨터공학, 전자공학 또는 관련 학과 학사 학위",
-            "프로그래밍 능력 (Python, C/C++)",
-            "AI, 네트워킹 또는 IoT 연구에 대한 관심",
-            "논문 읽기 및 작성을 위한 영어 능력"
-          ],
-          "timeline": "봄학기 및 가을학기 지원 가능"
+          "name": "Data",
+          "description": "데이터 패턴 인식 기반 솔루션 개발"
         },
         {
-          "degree": "학부 연구생",
-          "requirements": [
-            "3학년 또는 4학년 재학 중",
-            "머신러닝 또는 네트워킹에 대한 기본 이해",
-            "최소 1학기 이상 참여 가능",
-            "연구실 세미나 참석 의지"
-          ],
-          "timeline": "연중 수시 모집"
+          "name": "System",
+          "description": "Edge AI 기반 지능형 시스템 개발"
+        },
+        {
+          "name": "Service",
+          "description": "사용자 중심 IoT 플랫폼 서비스 개발"
+        },
+        {
+          "name": "XOps",
+          "description": "AI 워크플로우 전반의 자동화 환경 구축"
         }
-      ]
+      ],
+      "idealCandidate": {
+        "title": "인재상",
+        "points": [
+          "배움에 대한 열정이 넘치는 인재",
+          "목표를 향해 끈기 있게 도전하는 인재",
+          "현재 여건과 소통 능력을 갖춘 인재",
+          "팀워크와 책임감을 갖춘 인재"
+        ]
+      },
+      "qualifications": {
+        "title": "지원 자격",
+        "points": [
+          "관련 전공 2학년 이상",
+          "프로그래밍 수업 성적 A 이상",
+          "리눅스 기초 문법 숙지자",
+          "1년 이상 연구실 활동 가능자"
+        ]
+      },
+      "benefits": {
+        "title": "혜택",
+        "points": [
+          "업무 도서 비용 지원",
+          "국내외 학술대회 참가 지원",
+          "개인 연구 공간 및 장비 지원",
+          "연구과정 참가 기회 지원"
+        ]
+      },
+      "process": {
+        "title": "전형 절차",
+        "steps": ["서류 심사", "1차 면접", "2차 면접", "최종 합격"]
+      }
     },
     "faq": {
       "title": "자주 묻는 질문",
       "items": [
         {
           "question": "어떤 연구 주제를 할 수 있나요?",
-          "answer": "INSLAB은 세 가지 주요 분야에 집중합니다: 지능형 네트워킹(6G, SDN/NFV), 분산 AI(연합 학습, 엣지 AI), 사이버-물리 시스템(IoT 보안, 이상 탐지). 관심 분야에 따라 이 영역 내에서 주제를 탐색할 수 있습니다."
+          "answer": "INSLAB은 DATA(데이터 수집·정제), SYSTEM(지능형 네트워크·Edge AI), SERVICE(IoT 응용·솔루션) 세 축으로 연구합니다. Intent 기반 자율 지능 시스템을 핵심 방향으로, 관심 분야에 따라 주제를 탐색할 수 있습니다."
         },
         {
           "question": "대학원생에게 장학금이 지원되나요?",

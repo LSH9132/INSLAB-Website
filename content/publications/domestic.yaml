@@ -1,5 +1,6 @@
 - id: d-2025-kim-yeseo
   year: 2025
+  date: "2025-04-01"
   type: Domestic
   title: "AutoEncoder 기반 웹 로그 데이터 이상 탐지 시스템"
   authors:
@@ -19,6 +20,7 @@
 
 - id: d-2022-park
   year: 2022
+  date: "2022-02-01"
   type: Domestic
   title: "비콘을 활용한 청각장애인용 화재 대피 시스템의 구현"
   authors:
@@ -37,6 +39,7 @@
 
 - id: d-2021-lee-audio
   year: 2021
+  date: "2021-09-01"
   type: Domestic
   title: "음향 데이터를 활용한 딥러닝 기반 긴급차량 우선 신호 시스템"
   authors:
@@ -53,6 +56,7 @@
 
 - id: d-2020-jung-lidar
   year: 2020
+  date: "2020-12-01"
   type: Domestic
   title: "라이다 임베디드 프로세서를 위한 동적 객체인식 아키텍처 구현"
   authors:
@@ -69,6 +73,7 @@
 
 - id: d-2020-shin
   year: 2020
+  date: "2020-06-01"
   type: Domestic
   title: "공공WiFi지역을 경유하는 경로 찾기 시스템 구현"
   authors:
@@ -85,6 +90,7 @@
 
 - id: d-2019-lee-nn
   year: 2019
+  date: "2019-10-01"
   type: Domestic
   title: "사물인터넷을 위한 신경망 기반의 지능형 액세스 포인트 시스템의 구현"
   authors:
@@ -102,6 +108,7 @@
 
 - id: d-2018-kim-ahrs
   year: 2018
+  date: "2018-12-01"
   type: Domestic
   title: "AHRS 알고리즘을 이용한 영유아 모니터링 시스템 개발"
   authors:
@@ -118,6 +125,7 @@
 
 - id: d-2016-bkim-channel
   year: 2016
+  date: "2016-09-30"
   type: Domestic
   title: "A Channel Allocation Scheme based on Coloring Algorithm for Interference Mitigation in Coexisting WBANs"
   authors:
@@ -133,6 +141,7 @@
 
 - id: d-2016-cheon
   year: 2016
+  date: "2016-08-01"
   type: Domestic
   title: "대규모 공중무인기를 이용한 가상력 기반 재난 감시 네트워크"
   authors:
@@ -149,6 +158,7 @@
 
 - id: d-2015-kim-channel
   year: 2015
+  date: "2015-04-01"
   type: Domestic
   title: "클러스터 기반 센서 네트워크에서의 네트워크 특성 정보를 고려한 무선 채널 선택 기법"
   authors:
@@ -165,6 +175,7 @@
 
 - id: d-2013-jin-cluster
   year: 2013
+  date: "2013-06-01"
   type: Domestic
   title: "계층적 센서네트워크에서 에너지 효율성을 위한 최적의 클러스터 비율 분석"
   authors:
@@ -182,6 +193,7 @@
 
 - id: d-2012-kim-cognitive
   year: 2012
+  date: "2012-12-01"
   type: Domestic
   title: "인지 전술 무선망에서 QoS 보장을 위한 정책기반 동적 채널 선택"
   authors:
@@ -201,6 +213,7 @@
 
 - id: d-2012-kim-manet
   year: 2012
+  date: "2012-11-01"
   type: Domestic
   title: "K-WNW MANET의 기간망 연동 프레임워크"
   authors:
@@ -218,6 +231,7 @@
 
 - id: d-2011-seo-dfmac
   year: 2011
+  date: "2011-08-01"
   type: Domestic
   title: "DF(Dynamic and Flexible)-MAC: WBAN을 위한 유연한 MAC 프로토콜"
   authors:
@@ -235,6 +249,7 @@
 
 - id: d-2011-kim-wban-routing
   year: 2011
+  date: "2011-01-01"
   type: Domestic
   title: "에너지량에 기반한 환경 적응 WBAN 라우팅 알고리즘"
   authors:
@@ -253,6 +268,7 @@
 
 - id: d-2010-kim-event
   year: 2010
+  date: "2010-06-01"
   type: Domestic
   title: "센서 네트워크에서 Event-driven 데이터의 신뢰성 있는 전송 및 버퍼 관리 기법"
   authors:
@@ -268,6 +284,7 @@
 
 - id: d-2009-kim-medinet
   year: 2009
+  date: "2009-07-01"
   type: Domestic
   title: "m-MediNet: WBAN기반 u-Healthcare System 응용을 위한 소프트웨어 플랫폼의 설계"
   authors:
@@ -284,6 +301,7 @@
 
 - id: d-2008-kim-wimax
   year: 2008
+  date: "2008-08-01"
   type: Domestic
   title: "Fast Uplink Radio Resource Allocation in Mobile WiMAX"
   authors:
@@ -300,6 +318,7 @@
 
 - id: d-2008-kim-sink
   year: 2008
+  date: "2008-01-01"
   type: Domestic
   title: "무선 센서 네트워크를 위한 계층적 라우팅에서의 이동 싱크 노드 지원 방안"
   authors:
@@ -315,6 +334,7 @@
 
 - id: d-2006-kim-routing
   year: 2006
+  date: "2006-07-01"
   type: Domestic
   title: "무선 센서 네트워크를 위한 계층적 라우팅 알고리즘"
   authors:
@@ -330,6 +350,7 @@
 
 - id: d-2005-kim-cluster
   year: 2005
+  date: "2005-07-01"
   type: Domestic
   title: "계층적 센서 네트워크에서 트래픽 부하와 에너지를 고려한 클러스트 헤드 선정 알고리즘"
   authors:

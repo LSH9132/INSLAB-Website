@@ -1,11 +1,14 @@
-import { setRequestLocale } from "next-intl/server";
+import { hasLocale } from "next-intl";
+import { getMessages, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { PageShell } from "@/components/layout";
 import { DirectorHero } from "@/features/director/components/director-hero";
 import { DirectorEducation } from "@/features/director/components/director-education";
 import { DirectorResearch } from "@/features/director/components/director-research";
 import { DirectorPublications } from "@/features/director/components/director-publications";
 import { DirectorPatents } from "@/features/director/components/director-patents";
 import { DirectorProjects } from "@/features/director/components/director-projects";
-import { FadeInUp } from "@/components/shared/animations/fade-in-up";
 import {
   getDirectorEducation,
   getDirectorCareer,
@@ -20,7 +23,13 @@ export default async function DirectorPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
   setRequestLocale(locale);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const messages = (await getMessages()) as any;
 
   const education = getDirectorEducation();
   const career = getDirectorCareer();
@@ -29,15 +38,18 @@ export default async function DirectorPage({
   const publications = getDirectorPublications();
 
   return (
-    <div className="flex flex-col min-h-screen pt-20">
-      <FadeInUp>
-        <DirectorHero />
-      </FadeInUp>
+    <PageShell
+      currentPath="/director"
+      nav={messages.nav}
+      footer={messages.footer}
+      mainClassName="flex-1"
+    >
+      <DirectorHero locale={locale} />
       <DirectorEducation education={education} career={career} />
       <DirectorResearch />
       <DirectorPublications publications={publications} />
-      <DirectorPatents patents={patents} />
       <DirectorProjects projects={projects} />
-    </div>
+      <DirectorPatents patents={patents} />
+    </PageShell>
   );
 }

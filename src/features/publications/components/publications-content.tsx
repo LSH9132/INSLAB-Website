@@ -13,6 +13,8 @@ export type FiltersDictionary = {
   displaying: string;
   allYears: string;
   topics: string;
+  newestFirst: string;
+  oldestFirst: string;
   noResults: string;
   prev: string;
   next: string;
@@ -29,6 +31,7 @@ export function PublicationsContent({
   const [activeType, setActiveType] = useState<PublicationType | "All">("All");
   const [activeYears, setActiveYears] = useState<Set<number>>(new Set());
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set());
+  const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const [currentPage, setCurrentPage] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -38,14 +41,21 @@ export function PublicationsContent({
   }, [publications]);
 
   const filtered = useMemo(() => {
-    return publications.filter((p) => {
+    const result = publications.filter((p) => {
       if (activeType !== "All" && p.type !== activeType) return false;
       if (activeYears.size > 0 && !activeYears.has(p.year)) return false;
       if (activeTags.size > 0 && !p.tags.some((t) => activeTags.has(t)))
         return false;
       return true;
     });
-  }, [publications, activeType, activeYears, activeTags]);
+    return [...result].sort((a, b) => {
+      const dateA = a.date ?? `${a.year}-12-31`;
+      const dateB = b.date ?? `${b.year}-12-31`;
+      return sortOrder === "newest"
+        ? dateB.localeCompare(dateA)
+        : dateA.localeCompare(dateB);
+    });
+  }, [publications, activeType, activeYears, activeTags, sortOrder]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
   const safePage = Math.min(currentPage, totalPages);
@@ -102,10 +112,16 @@ export function PublicationsContent({
     setCurrentPage(1);
   }, []);
 
+  const handleSortToggle = useCallback(() => {
+    setSortOrder((o) => (o === "newest" ? "oldest" : "newest"));
+    setCurrentPage(1);
+  }, []);
+
   const handleReset = useCallback(() => {
     setActiveType("All");
     setActiveYears(new Set());
     setActiveTags(new Set());
+    setSortOrder("newest");
     setCurrentPage(1);
   }, []);
 
@@ -132,6 +148,8 @@ export function PublicationsContent({
         allYears={allYears}
         availableTags={availableTags}
         hasActiveFilters={hasActiveFilters}
+        sortOrder={sortOrder}
+        onSortToggle={handleSortToggle}
         currentPage={safePage}
         totalPages={totalPages}
         onTypeChange={handleTypeChange}
