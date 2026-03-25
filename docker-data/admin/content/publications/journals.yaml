@@ -1,0 +1,934 @@
+# ============================================================
+# 논문 목록 (Publications)
+# 스키마: src/lib/content/schemas/publication.ts
+# ============================================================
+# 날짜 내림차순으로 자동 정렬되어 표시됨.
+# journals.yaml + conferences.yaml + domestic.yaml은 병합 후 정렬.
+# director/publications.yaml은 지도교수 페이지에서 별도 표시.
+#
+# 각 항목의 필드 설명:
+#
+#   id:       (필수, 문자열) 고유 식별자. 예: "j-2025-kim-edge"
+#                           → 권장 형식: "{type약자}-{year}-{1저자성}-{키워드}"
+#   year:     (필수, 정수)  발행 연도. 예: 2025
+#   type:     (필수, 문자열) 논문 유형. 허용값: "Journal" | "Conference" | "Domestic"
+#                           → UI에서 색상 배지로 구분 표시됨
+#   title:    (필수, 문자열) 논문 제목
+#   authors:  (필수, 배열)  저자 목록 (순서대로)
+#                           예: ["Hong Gildong", "Dae-Young Kim"]
+#   venue:    (필수, 문자열) 게재 학회/저널명. 예: "IEEE Access (SCIE)"
+#   details:  (필수, 문자열) 상세 정보. 예: "Vol. 13, pp. 35113-35123"
+#                           → 미정이면 "Submitted", "Accepted" 등 기입
+#   date:     (선택, 문자열) 정확한 발행일. ISO 형식 "YYYY-MM-DD"
+#                           → 생략 시 해당 year의 12월 31일로 간주 (정렬용)
+#                           → 정확한 날짜를 알면 기입하는 것을 권장
+#   tags:     (필수, 배열)  태그 목록. 예: ["IoT", "Edge AI", "GNN"]
+#                           → UI에서 배지로 표시됨
+#   pdfUrl:   (필수, 문자열) PDF 다운로드 URL
+#                           → 없으면 빈 문자열 "" (다운로드 버튼 미표시)
+#   doiUrl:   (필수, 문자열) DOI URL. 예: "https://doi.org/10.1109/..."
+#                           → 없으면 빈 문자열 "" (DOI 링크 미표시)
+#
+# ── 예시 ──
+# - id: j-2025-hong-example
+#   year: 2025
+#   date: "2025-03-15"
+#   type: Journal
+#   title: "Example Paper Title for Demonstration"
+#   authors:
+#     - Gildong Hong
+#     - Dae-Young Kim
+#   venue: "IEEE Access (SCIE)"
+#   details: "Vol. 13, pp. 1234-1245"
+#   tags:
+#     - IoT
+#     - Edge AI
+#   pdfUrl: "https://example.com/paper.pdf"
+#   doiUrl: "https://doi.org/10.1109/ACCESS.2025.XXXXX"
+# ============================================================
+
+- id: j-2026-zahid
+  year: 2026
+  type: Journal
+  title: "Graph Temporal Attention Self-Supervised Network for Real-Time Anomaly Detection in Industrial IoT Systems"
+  authors:
+    - Samia Zahid
+    - Zilong Jin
+    - Dae-Young Kim
+  venue: "ELSEVIER Engineering Applications of Artificial Intelligence"
+  details: "Submitted"
+  tags:
+    - IoT
+    - Anomaly Detection
+    - GNN
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2026-lee
+  year: 2026
+  type: Journal
+  title: "Feature Learning-Based Network State Recognition for Multi-Layer Tactical Network Management in Resource-Constrained Gateway Systems"
+  authors:
+    - So-Yeon Lee
+    - Jae-Won Jang
+    - Jungwook Choi
+    - Soobeom Park
+    - Dae-Young Kim
+  venue: "TECH SCIENCE PRESS Computers, Materials & Continua"
+  details: "Submitted"
+  tags:
+    - Network Intelligence
+    - Tactical Network
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2026-sadriddinov
+  year: 2026
+  date: "2026-01-15"
+  type: Journal
+  title: "Optimizations in Enumerating Maximal Balanced Bicliques: Pruning and Vertex Sorting"
+  authors:
+    - Ilkhomjon Sadriddinov
+    - Sony Peng
+    - Sophort Siet
+    - Dae-Young Kim
+    - Kyuwon Park
+    - Doo-Soon Park
+    - Gangman Yi
+  venue: "Human-centric Computing and Information Sciences (SCIE)"
+  details: "Vol. 16, ID 2"
+  tags:
+    - Algorithms
+    - Bicliques
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.22967/HCIS.2026.16.002"
+
+- id: j-2025-peng
+  year: 2025
+  date: "2025-04-16"
+  type: Journal
+  title: "Integration of Federated Learning and Graph Convolutional Networks for Movie Recommendation Systems"
+  authors:
+    - Sony Peng
+    - Sophort Siet
+    - Ilkhomjon Sadriddinov
+    - Dae-Young Kim
+    - Kyuwon Park
+    - Doo-Soon Park
+  venue: "TECH SCIENCE PRESS Computers, Materials & Continua (SCIE)"
+  details: "Vol. 83, No. 2, pp.2041-2057"
+  tags:
+    - Federated Learning
+    - GCN
+    - Recommendation
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/cmc.2025.061166"
+
+- id: j-2025-sadriddinov
+  year: 2025
+  date: "2025-02-27"
+  type: Journal
+  title: "Algorithm for Mining Maximal Balanced Bicliques using Formal Concept Analysis"
+  authors:
+    - Sadriddinov Ilkhomjon
+    - Sony Peng
+    - Sophort Siet
+    - Dae-Young Kim
+    - Doo-Soon Park
+    - Gangman Yi
+  venue: "IEEE Access (SCIE)"
+  details: "Vol. 13, pp. 35113-35123"
+  tags:
+    - Data Mining
+    - FCA
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1109/ACCESS.2024.3419838"
+
+- id: j-2024-jung-deft
+  year: 2024
+  date: "2024-12-04"
+  type: Journal
+  title: "DEFT: A Dynamic Environmental Filtering and Thresholding Algorithm for Adaptive Headlamp Control Using Ride Height Sensors"
+  authors:
+    - Minwoo Jung
+    - Dae-Young Kim
+  venue: "MDPI Electronics (SCIE)"
+  details: "Vol. 13, No. 23, ID 4788"
+  tags:
+    - Automotive
+    - Sensor
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.3390/electronics13234788"
+
+- id: j-2024-jung-hall
+  year: 2024
+  date: "2024-11-25"
+  type: Journal
+  title: "Advanced Calibration and Compensation for Nonlinearities in Ball Joint-Integrated Hall Sensors for Accurate Ride Height Measurement"
+  authors:
+    - Minwoo Jung
+    - Dae-Young Kim
+  venue: "IEEE Access (SCIE)"
+  details: "Vol. 12, pp. 176425-176439"
+  tags:
+    - Sensor Calibration
+    - Hall Sensor
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1109/ACCESS.2024.3505257"
+
+- id: j-2024-jung-agri
+  year: 2024
+  date: "2024-11-11"
+  type: Journal
+  title: "Pseudo-Labeling and Time-Series Data Analysis Model for Device Status Diagnostics in Smart Agriculture"
+  authors:
+    - Minwoo Jung
+    - Dae-Young Kim
+  venue: "MDPI Applied Sciences (SCIE)"
+  details: "Vol. 14, No. 22, ID 10371"
+  tags:
+    - Smart Agriculture
+    - Time-Series
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.3390/app142210371"
+
+- id: j-2024-akter
+  year: 2024
+  date: "2024-05-15"
+  type: Journal
+  title: "Task Offloading and Resource Allocation in UAV-aided Emergency response Operations via Soft Actor Critic"
+  authors:
+    - Shathee Akter
+    - Dat Van Anh Duong
+    - Dae-Young Kim
+    - Seokhoon Yoon
+  venue: "IEEE Access (SCIE)"
+  details: "Vol. 12, pp. 69258-69275"
+  tags:
+    - UAV
+    - MEC
+    - Reinforcement Learning
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1109/ACCESS.2024.3401115"
+
+- id: j-2024-lee-glbrf
+  year: 2024
+  date: "2024-03-13"
+  type: Journal
+  title: "GLBRF: Group-Based Lightweight Human Behavior Recognition Framework in Video Camera"
+  authors:
+    - Young-Chan Lee
+    - So-Yeon Lee
+    - Byeongchang Kim
+    - Dae-Young Kim
+  venue: "MDPI Applied Sciences (SCIE)"
+  details: "Vol. 14, No. 6, ID 2424"
+  tags:
+    - Behavior Recognition
+    - Video
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.3390/app14062424"
+
+- id: j-2024-peng-drl
+  year: 2024
+  date: "2024-01-30"
+  type: Journal
+  title: "Integration of Deep Reinforcement Learning with Collaborative Filtering for Movie Recommendation Systems"
+  authors:
+    - Sony Peng
+    - Sophort Siet
+    - Sadriddinov Ilkhomjon
+    - Dae-Young Kim
+    - Doo-Soon Park
+  venue: "MDPI Applied Sciences (SCIE)"
+  details: "Vol. 14, No. 3, ID 1155"
+  tags:
+    - DRL
+    - Recommendation
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.3390/app14031155"
+
+- id: j-2023-lee-context
+  year: 2023
+  date: "2023-08-01"
+  type: Journal
+  title: "Context Awareness by Noise-Pattern Analysis of a Smart Factory"
+  authors:
+    - So-Yeon Lee
+    - Jihoon Park
+    - Dae-Young Kim
+  venue: "TECH SCIENCE PRESS Computers, Materials & Continua (SCIE)"
+  details: "Vol. 76, No. 2, pp. 1497-1514"
+  tags:
+    - Smart Factory
+    - Context Awareness
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/cmc.2023.034914"
+
+- id: j-2023-kim-edge
+  year: 2023
+  date: "2023-07-01"
+  type: Journal
+  title: "Edge Cloud Selection in Mobile Edge Computing (MEC)-aided Applications for Industrial Internet of Things (IIoT) Services"
+  authors:
+    - Dae-Young Kim
+    - So-Yeon Lee
+    - MinSeung Kim
+    - Seokhoon Kim
+  venue: "TECH SCIENCE PRESS Computer Systems Science and Engineering (SCIE)"
+  details: "Vol. 47, No. 2, pp. 2049-2060"
+  tags:
+    - MEC
+    - IIoT
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/csse.2023.040473"
+
+- id: j-2023-lee-hyper
+  year: 2023
+  date: "2023-07-05"
+  type: Journal
+  title: "Hyperparameter Tuning and Comparison Analysis of the DNN Model to Predict Wireless Network Conditions of Live Video Services"
+  authors:
+    - So-Yeon Lee
+    - Dae-Young Kim
+  venue: "Lecture Notes on Data Engineering and Communications Technologies (LNDECT) (Scopus)"
+  details: "Vol. 177, pp. 29-37"
+  tags:
+    - DNN
+    - Network Prediction
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1007/978-3-031-35836-4_4"
+
+- id: j-2023-akter-uav
+  year: 2023
+  date: "2023-03-01"
+  type: Journal
+  title: "Task Offloading in Multi-access Edge Computing enabled UAV-aided Emergency Response Operations"
+  authors:
+    - Shathee Akter
+    - Dae-Young Kim
+    - Seokhoon Yoon
+  venue: "IEEE Access (SCIE)"
+  details: "Vol. 11, pp. 23167-23188"
+  tags:
+    - MEC
+    - UAV
+    - Emergency
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1109/ACCESS.2023.3252575"
+
+- id: j-2023-kim-lora
+  year: 2023
+  date: "2023-02-01"
+  type: Journal
+  title: "LoRa Backscatter Network Efficient Data Transmission using RF Source Range Control"
+  authors:
+    - Dae-Young Kim
+    - So-Yeon Lee
+    - Seokhoon Kim
+  venue: "TECH SCIENCE PRESS Computers, Materials & Continua (SCIE)"
+  details: "Vol. 74, No. 2, pp. 4015-4025"
+  tags:
+    - LoRa
+    - Backscatter
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/cmc.2023.027078"
+
+- id: j-2023-kim-aggr
+  year: 2023
+  date: "2023-01-01"
+  type: Journal
+  title: "Data Aggregation-based Transmission Method in Ultra-Dense Wireless Networks"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+  venue: "TECH SCIENCE PRESS Intelligent Automation & Soft Computing (SCIE)"
+  details: "Vol. 35, No. 1, pp. 727-737"
+  tags:
+    - Data Aggregation
+    - UDN
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/iasc.2023.027563"
+
+- id: j-2022-kim-backscatter
+  year: 2022
+  date: "2022-11-19"
+  type: Journal
+  title: "Data Transmission in Backscatter IoT Networks for Smart City Applications"
+  authors:
+    - Dae-Young Kim
+    - Jihoon Park
+    - Seokhoon Kim
+  venue: "Hindawi Journal of Sensors (SCIE)"
+  details: "Vol. 2022, ID 4973782"
+  tags:
+    - Backscatter IoT
+    - Smart City
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1155/2022/4973782"
+
+- id: j-2022-jung-lidar
+  year: 2022
+  date: "2022-09-20"
+  type: Journal
+  title: "A System Architecture of a Fusion System for Multiple LiDARs Image Processing"
+  authors:
+    - Minwoo Jung
+    - Dae-Young Kim
+    - Seokhoon Kim
+  venue: "MDPI Applied Sciences (SCIE)"
+  details: "Vol. 12, No. 19, ID 9421"
+  tags:
+    - LiDAR
+    - Fusion
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.3390/app12199421"
+
+- id: j-2021-kim-virt
+  year: 2021
+  date: "2021-11-30"
+  type: Journal
+  title: "Network Virtualization for Real-time Processing of Object Detection using Deep Learning"
+  authors:
+    - Dae-Young Kim
+    - Ji-Hoon Park
+    - Youngchan Lee
+    - Seokhoon Kim
+  venue: "SPRINGER Multimedia Tools and Applications (SCIE)"
+  details: "Vol. 80, No. 28-29, pp. 35851-35869"
+  tags:
+    - Network Virtualization
+    - Object Detection
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1007/s11042-020-09603-0"
+
+- id: j-2021-kim-fronthaul
+  year: 2021
+  date: "2021-11-01"
+  type: Journal
+  title: "Incoming Traffic Control of Fronthaul in 5G Mobile Network for Massive Multimedia Services"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+  venue: "SPRINGER Multimedia Tools and Applications (SCIE)"
+  details: "Vol. 80, No. 26-27, pp. 34443-34458"
+  tags:
+    - 5G
+    - Fronthaul
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1007/s11042-020-08793-x"
+
+- id: j-2021-duong
+  year: 2021
+  date: "2021-05-21"
+  type: Journal
+  title: "TSIRP: A Temporal Social Interactions-Based Routing Protocol in Opportunistic Mobile Social Networks"
+  authors:
+    - Dat Van Anh Duong
+    - Dae-Young Kim
+    - Seokhoon Yoon
+  venue: "IEEE Access (SCIE)"
+  details: "Vol. 9, pp. 72712-72729"
+  tags:
+    - Opportunistic Networks
+    - Social Routing
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1109/ACCESS.2021.3079443"
+
+- id: j-2021-kim-iov
+  year: 2021
+  date: "2021-01-01"
+  type: Journal
+  title: "An Internet of Vehicles (IoV) Access Gateway Design Considering the Efficiency of the In-Vehicle Ethernet Backbone"
+  authors:
+    - Dae-Young Kim
+    - Minwoo Jung
+    - Seokhoon Kim
+  venue: "MDPI Sensors (SCIE)"
+  details: "Vol. 21, No. 1, ID 98"
+  tags:
+    - IoV
+    - Automotive Ethernet
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.3390/s21010098"
+
+- id: j-2020-kim-steering
+  year: 2020
+  date: "2020-07-23"
+  type: Journal
+  title: "Network-Aided Intelligent Traffic Steering in 5G Mobile Networks"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+  venue: "TECH SCIENCE PRESS Computers, Materials & Continua (SCIE)"
+  details: "Vol. 65, No. 1, pp. 243-261"
+  tags:
+    - 5G
+    - Traffic Steering
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/cmc.2020.011253"
+
+- id: j-2020-kim-adaptive
+  year: 2020
+  date: "2020-05-20"
+  type: Journal
+  title: "Adaptive Data Transmission Method According to Wireless State in Long Range Wide Area Networks"
+  authors:
+    - Seokhoon Kim
+    - Dae-Young Kim
+  venue: "TECH SCIENCE PRESS Computers, Materials & Continua (SCIE)"
+  details: "Vol. 64, No. 1, pp. 1-15"
+  tags:
+    - LPWAN
+    - Adaptive Transmission
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/cmc.2020.09545"
+
+- id: j-2020-kim-p2p
+  year: 2020
+  date: "2020-03-01"
+  type: Journal
+  title: "P2P Computing for Trusted Networking of Personalized IoT Services"
+  authors:
+    - Dae-Young Kim
+    - Ahyoung Lee
+    - Seokhoon Kim
+  venue: "SPRINGER Peer-to-Peer Networking and Applications (SCIE)"
+  details: "Vol. 13, No. 2, pp. 601-609"
+  tags:
+    - P2P
+    - IoT
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1007/s12083-019-00737-z"
+
+- id: j-2020-kim-combined
+  year: 2020
+  date: "2020-01-10"
+  type: Journal
+  title: "A Combined Network Control Approach for the Edge Cloud and LPWAN-based IoT Services"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+    - Jong Hyuk Park
+  venue: "WILEY Concurrency and Computation: Practice and Experience (SCIE)"
+  details: "Vol. 32, No. 1, e4406"
+  tags:
+    - Edge Cloud
+    - LPWAN
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1002/cpe.4406"
+
+- id: j-2019-kim-dpn
+  year: 2019
+  date: "2019-07-01"
+  type: Journal
+  title: "A DPN (Delegated Proof of Node) Mechanism for Secure Data Transmission in IoT Services"
+  authors:
+    - Dae-Young Kim
+    - Se Dong Min
+    - Seokhoon Kim
+  venue: "TECH SCIENCE PRESS Computers, Materials & Continua (SCIE)"
+  details: "Vol. 60, No. 1, pp. 1-14"
+  tags:
+    - Blockchain
+    - IoT Security
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/cmc.2019.06102"
+
+- id: j-2019-han
+  year: 2019
+  date: "2019-06-01"
+  type: Journal
+  title: "Development of Cloud Based Air Pollution Information System Using Visualization"
+  authors:
+    - SangWook Han
+    - JungYeon Seo
+    - Dae-Young Kim
+    - Seokhoon Kim
+    - HwaMin Lee
+  venue: "TECH SCIENCE PRESS Computers, Materials & Continua (SCIE)"
+  details: "Vol. 59, No. 3, pp. 697-711"
+  tags:
+    - Cloud
+    - Visualization
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/cmc.2019.06071"
+
+- id: j-2019-kim-rsu
+  year: 2019
+  date: "2019-05-01"
+  type: Journal
+  title: "A Data Download Method from RSUs Using Fog Computing in Connected Vehicles"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+  venue: "TECH SCIENCE PRESS Computers, Materials & Continua (SCIE)"
+  details: "Vol. 59, No. 2, pp. 375-387"
+  tags:
+    - V2X
+    - Fog Computing
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/cmc.2019.06077"
+
+- id: j-2019-kim-gateway
+  year: 2019
+  date: "2019-03-31"
+  type: Journal
+  title: "Gateway Channel Hopping to Improve Transmission Efficiency in Long-range IoT Networks"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+  venue: "KSII Transactions on Internet and Information Systems (SCIE)"
+  details: "Vol. 13, No. 3, pp. 1599-1610"
+  tags:
+    - IoT
+    - Channel Hopping
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.3837/tiis.2019.03.027"
+
+- id: j-2019-kim-kmeans
+  year: 2019
+  date: "2019-03-01"
+  type: Journal
+  title: "Data Transmission Using K-Means Clustering in Low Power Wide Area Networks with Mobile Edge Cloud"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+  venue: "SPRINGER Wireless Personal Communications (SCIE)"
+  details: "Vol. 105, No. 2, pp. 567-581"
+  tags:
+    - K-Means
+    - LPWAN
+    - MEC
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1007/s11277-018-5742-1"
+
+- id: j-2018-kim-remote
+  year: 2018
+  date: "2018-12-01"
+  type: Journal
+  title: "Remote Software Update in Trusted Connection of Long Range IoT Networking Integrated With Mobile Edge Cloud"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+    - Jong Hyuk Park
+  venue: "IEEE Access (SCIE)"
+  details: "Vol. 6, No. 1, pp. 66831-66840"
+  tags:
+    - OTA Update
+    - IoT
+    - MEC
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1109/ACCESS.2017.2774239"
+
+- id: j-2018-kim-dtn
+  year: 2018
+  date: "2018-11-01"
+  type: Journal
+  title: "Efficient data-forwarding method in delay-tolerant P2P networking for IoT services"
+  authors:
+    - Seokhoon Kim
+    - Dae-Young Kim
+  venue: "SPRINGER Peer-to-Peer Networking and Applications (SCIE)"
+  details: "Vol. 11, No. 6, pp. 1176-1185"
+  tags:
+    - DTN
+    - P2P
+    - IoT
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1007/s12083-017-0614-0"
+
+- id: j-2018-kim-traffic
+  year: 2018
+  date: "2018-03-30"
+  type: Journal
+  title: "Traffic management in the mobile edge cloud to improve the quality of experience of mobile video"
+  authors:
+    - Seokhoon Kim
+    - Dae-Young Kim
+    - Jong Hyuk Park
+  venue: "ELSEVIER Computer Communications (SCIE)"
+  details: "Vol. 118, pp. 40-49"
+  tags:
+    - MEC
+    - QoE
+    - Mobile Video
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1016/j.comcom.2017.09.001"
+
+- id: j-2017-kim-adr
+  year: 2017
+  date: "2017-09-01"
+  type: Journal
+  title: "Adaptive Data Rate Control in Low Power Wide Area Networks for Long Range IoT Services"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+    - Houcine Hassan
+    - Jong Hyuk Park
+  venue: "ELSEVIER Journal of Computational Science (SCIE)"
+  details: "Vol. 22, pp. 171-178"
+  tags:
+    - LPWAN
+    - ADR
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1016/j.jocs.2017.04.014"
+
+- id: j-2017-kim-dual
+  year: 2017
+  date: "2017-08-23"
+  type: Journal
+  title: "Dual-Channel Medium Access Control of Low Power Wide Area Networks Considering Traffic Characteristics in IoE"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+  venue: "SPRINGER Cluster Computing (SCIE)"
+  details: "Vol. 20, No. 3, pp. 2375-2384"
+  tags:
+    - LPWAN
+    - MAC
+    - IoE
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1007/s10586-017-1023-0"
+
+- id: j-2017-kim-rrm
+  year: 2017
+  date: "2017-06-19"
+  type: Journal
+  title: "Radio Resource Management for Data Transmission in Low Power Wide Area Networks Integrated with Large Scale Cyber Physical Systems"
+  authors:
+    - Dae-Young Kim
+    - Seokhoon Kim
+    - Houcine Hassan
+    - Jong Hyuk Park
+  venue: "SPRINGER Cluster Computing (SCIE)"
+  details: "Vol. 20, No. 2, pp. 1831-1842"
+  tags:
+    - RRM
+    - LPWAN
+    - CPS
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1007/s10586-017-0841-4"
+
+- id: j-2017-kim-nac
+  year: 2017
+  date: "2017-04-23"
+  type: Journal
+  title: "Network Access Control for Location-based Mobile Services in Heterogeneous Wireless Networks"
+  authors:
+    - Dae-Young Kim
+    - Daesik Ko
+    - Seokhoon Kim
+  venue: "Hindawi Mobile Information Systems (SCIE)"
+  details: "Vol. 2017, ID 6195024"
+  tags:
+    - HetNet
+    - Access Control
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1155/2017/6195024"
+
+- id: j-2017-kim-lr
+  year: 2017
+  date: "2017-03-01"
+  type: Journal
+  title: "Data Transmission and Network Architecture in Long Range Low Power Sensor Networks for IoT"
+  authors:
+    - Dae-Young Kim
+    - Minwoo Jung
+  venue: "Wireless Personal Communications (SCIE)"
+  details: "Vol. 93, No. 1, pp. 119-129"
+  tags:
+    - LPWAN
+    - Sensor Networks
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1007/s11277-016-3482-7"
+
+- id: j-2017-kim-filter
+  year: 2017
+  date: "2017-01-20"
+  type: Journal
+  title: "Data-Filtering System to Avoid Total Data Distortion in IoT Networking"
+  authors:
+    - Dae-Young Kim
+    - Young-Sik Jeong
+    - Seokhoon Kim
+  venue: "MDPI Symmetry Journal (SCIE)"
+  details: "Vol. 9, No. 1, ID 16"
+  tags:
+    - Data Filtering
+    - IoT
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.3390/sym9010016"
+
+- id: j-2016-jung
+  year: 2016
+  date: "2016-06-01"
+  type: Journal
+  title: "Efficient Remote Software Management Method based on Dynamic Address Translation for IoT Software Execution Platform in Wireless Sensor Network"
+  authors:
+    - Minwoo Jung
+    - Dae-Young Kim
+    - Seokhoon Kim
+  venue: "Indian Journal of Science and Technology (Scopus)"
+  details: "Vol. 9, No. 24"
+  tags:
+    - IoT
+    - Software Management
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2015-kim-power
+  year: 2015
+  date: "2015-10-01"
+  type: Journal
+  title: "Transmission Power Control with the Guaranteed Communication Reliability in WSN"
+  authors:
+    - Dae-Young Kim
+    - Zilong Jin
+    - Jungwook Choi
+    - Ben Lee
+    - Jinsung Cho
+  venue: "International Journal of Distributed Sensor Networks (SCIE)"
+  details: "Vol. 2015, ID 632590"
+  tags:
+    - WSN
+    - Power Control
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2015-jin
+  year: 2015
+  date: "2015-11-01"
+  type: Journal
+  title: "An Analysis on Optimal Cluster Ratio in Cluster-based Wireless Sensor Networks"
+  authors:
+    - Zilong Jin
+    - Dae-Young Kim
+    - Jinsung Cho
+    - Ben Lee
+  venue: "IEEE Sensors Journal (SCIE)"
+  details: "Vol. 15, No. 11, pp. 6413-6423"
+  tags:
+    - WSN
+    - Clustering
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2011-bkim
+  year: 2011
+  date: "2011-09-01"
+  type: Journal
+  title: "An Emergency Handling Scheme for Superframe-Structured MAC Protocols in WBAN"
+  authors:
+    - BeomSeok Kim
+    - Jinsung Cho
+    - Dae-Young Kim
+  venue: "IEICE Transactions on Communications (SCI)"
+  details: "Vol. E94-B, No. 9, pp. 2484-2487"
+  tags:
+    - WBAN
+    - MAC
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2011-cho
+  year: 2011
+  date: "2011-06-01"
+  type: Journal
+  title: "A Combined Approach for QoS-Guaranteed and Low-Power Video Decoding"
+  authors:
+    - Jinsung Cho
+    - Ilyong Cho
+    - Dae-Young Kim
+    - Ben Lee
+  venue: "IEEE Transactions on Consumer Electronics (SCI)"
+  details: "Vol. 57, No. 2, pp. 651-657"
+  tags:
+    - QoS
+    - Video Decoding
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2010-kim-buffer
+  year: 2010
+  date: "2010-12-01"
+  type: Journal
+  title: "A Buffer Management Technique for Guaranteed Desired Communication Reliability and Low-Power in Wireless Sensor Networks"
+  authors:
+    - Dae-Young Kim
+    - Jinsung Cho
+    - Ben Lee
+  venue: "IEICE Transactions on Communications (SCI)"
+  details: "Vol. E93-B, No. 12, pp. 3522-3525"
+  tags:
+    - WSN
+    - Buffer Management
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2010-kim-cluster
+  year: 2010
+  date: "2010-06-01"
+  type: Journal
+  title: "Practical Data Transmission in Cluster-Based Sensor Networks"
+  authors:
+    - Dae-Young Kim
+    - Jinsung Cho
+    - Byeong-Soo Jeong
+  venue: "KSII Transactions on Internet and Information Systems (SCIE)"
+  details: "Vol. 4, No. 3, pp. 224-242"
+  tags:
+    - WSN
+    - Clustering
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2010-seo
+  year: 2010
+  date: "2010-04-01"
+  type: Journal
+  title: "A Dynamic CFP Allocation and Opportunity Contention-based WBAN MAC Protocol"
+  authors:
+    - Young-Sun Seo
+    - Dae-Young Kim
+    - Jinsung Cho
+  venue: "IEICE Transactions on Communications (SCI)"
+  details: "Vol. E93-B, No. 4, pp. 850-853"
+  tags:
+    - WBAN
+    - MAC
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2009-kim-active
+  year: 2009
+  date: "2009-06-01"
+  type: Journal
+  title: "Active Caching: A Transmission Method to Guarantee Desired Communication Reliability in Wireless Sensor Networks"
+  authors:
+    - Dae-Young Kim
+    - Jinsung Cho
+  venue: "IEEE Communications Letters (SCI)"
+  details: "Vol. 13, No. 6, pp. 378-380"
+  tags:
+    - WSN
+    - Reliability
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: j-2005-cho
+  year: 2005
+  date: "2005-04-01"
+  type: Journal
+  title: "Integrating WMAN with WWAN for Seamless services"
+  authors:
+    - Jinsung Cho
+    - Dae-Young Kim
+  venue: "Lecture Notes in Computer Science (SCIE)"
+  details: "Vol. 3420, pp. 374-381"
+  tags:
+    - WMAN
+    - WWAN
+    - Integration
+  pdfUrl: ""
+  doiUrl: ""

@@ -1,0 +1,3 @@
+[    7440ms] [ERROR] Error: <path> attribute d: Expected moveto path command ('M' or 'm'), "undefined". @ http://localhost/_next/static/chunks/359f69b57785823b.js:2
+[    7440ms] [ERROR] Error: <path> attribute d: Expected moveto path command ('M' or 'm'), "undefined". @ http://localhost/_next/static/chunks/359f69b57785823b.js:2
+[    7440ms] [ERROR] Error: <path> attribute d: Expected moveto path command ('M' or 'm'), "undefined". @ http://localhost/_next/static/chunks/359f69b57785823b.js:2

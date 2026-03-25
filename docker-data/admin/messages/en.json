@@ -1,0 +1,529 @@
+{
+  "nav": {
+    "home": {
+      "label": "Home",
+      "summary": "Overview of the lab, mission, and latest achievements.",
+      "sections": [
+        {
+          "title": "Overview",
+          "links": [
+            { "label": "Hero Overview", "description": "Landing section introducing INSLAB's research identity." },
+            { "label": "Mission", "description": "Lab mission, impact, and core performance metrics." }
+          ]
+        },
+        {
+          "title": "Highlights",
+          "links": [
+            { "label": "Research Areas", "description": "Key investigation pillars shaping the lab's direction." },
+            { "label": "Contact", "description": "Find collaboration and contact points for the lab." }
+          ]
+        }
+      ],
+      "feature": {
+        "eyebrow": "Start Here",
+        "title": "See how INSLAB frames research for visitors at a glance.",
+        "description": "Use the home page to anchor the lab's story before users dive into detailed publications and projects."
+      }
+    },
+    "research": {
+      "label": "Research",
+      "summary": "Research themes, lab directions, and domain highlights.",
+      "sections": [
+        {
+          "title": "Core Areas",
+          "links": [
+            { "label": "Intelligent Networking", "description": "Adaptive, autonomous networking systems and protocols." },
+            { "label": "Distributed AI", "description": "Decentralized intelligence for edge and federated systems." }
+          ]
+        },
+        {
+          "title": "Systems Focus",
+          "links": [
+            { "label": "Cyber-Physical Systems", "description": "Robust infrastructures and secure real-time environments." },
+            { "label": "Research Output", "description": "Browse papers that reflect the lab's current priorities." }
+          ]
+        }
+      ],
+      "feature": {
+        "eyebrow": "Research Focus",
+        "title": "Connect high-level themes to specific publication output.",
+        "description": "The research mega menu should help visitors jump from strategic topics to tangible results with minimal friction."
+      }
+    },
+    "publications": {
+      "label": "Publications",
+      "summary": "Selected papers, venues, filters, and academic output.",
+      "sections": [
+        {
+          "title": "Browse",
+          "links": [
+            { "label": "Selected Publications", "description": "Curated list of representative journals and conferences." },
+            { "label": "Publication Filters", "description": "Explore output by year, area, and publication type." }
+          ]
+        },
+        {
+          "title": "Use Cases",
+          "links": [
+            { "label": "Venue Highlights", "description": "See where INSLAB is publishing across focus domains." },
+            { "label": "Topic Tags", "description": "Scan themes like AI Networks, Security, and Edge AI." }
+          ]
+        }
+      ],
+      "feature": {
+        "eyebrow": "Academic Output",
+        "title": "Present research with filtering, hierarchy, and strong typography.",
+        "description": "This section turns Stitch output into a maintainable publications experience aligned with the site's design system."
+      }
+    },
+    "team": {
+      "label": "Team",
+      "summary": "People, culture, collaboration, and opportunities to join.",
+      "sections": [
+        {
+          "title": "People",
+          "links": [
+            { "label": "Lab Members", "description": "Meet our faculty, graduate students, and undergraduate researchers." },
+            { "label": "Director", "description": "Learn about Prof. Dae-Young Kim's research and career." }
+          ]
+        },
+        {
+          "title": "Opportunities",
+          "links": [
+            { "label": "Join Us", "description": "Learn how to join INSLAB as a graduate or undergraduate researcher." },
+            { "label": "News & Updates", "description": "Stay up to date with INSLAB's latest achievements." }
+          ]
+        }
+      ],
+      "feature": {
+        "eyebrow": "People & Culture",
+        "title": "Position the team as a living research environment, not just a member list.",
+        "description": "Use this space to bridge lab identity, collaboration, and recruitment before the full members page arrives."
+      }
+    },
+    "contact": {
+      "label": "Contact",
+      "summary": "Ways to reach the lab for collaboration or admissions.",
+      "sections": [
+        {
+          "title": "Reach Out",
+          "links": [
+            { "label": "Lab Contact", "description": "Primary email and location for the laboratory." },
+            { "label": "Collaboration", "description": "Use contact points for industry and academic partnerships." }
+          ]
+        },
+        {
+          "title": "Explore",
+          "links": [
+            { "label": "Recent Publications", "description": "Review recent output before initiating contact." },
+            { "label": "Lab Overview", "description": "Return to the landing page for the broader lab narrative." }
+          ]
+        }
+      ],
+      "feature": {
+        "eyebrow": "Connect",
+        "title": "Guide visitors toward the right next step with context.",
+        "description": "Whether users want to collaborate, join the lab, or cite the work, the contact menu should give them a clear direction."
+      }
+    },
+    "searchPlaceholder": "Search publications...",
+    "joinUs": "Join Us",
+    "openSection": "Open Section",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "mobileSubLinks": {
+      "team": [
+        { "label": "Lab Members", "href": "/team" },
+        { "label": "Director", "href": "/director" },
+        { "label": "Join Us", "href": "/join" },
+        { "label": "News & Updates", "href": "/news" }
+      ],
+      "research": [
+        { "label": "Intelligent Networking", "href": "/research#intelligent-networking" },
+        { "label": "Distributed AI", "href": "/research#distributed-ai" },
+        { "label": "Cyber-Physical Systems", "href": "/research#cyber-physical-systems" }
+      ]
+    }
+  },
+  "footer": {
+    "tagline": "Artificial Intelligence Network Systems Laboratory.\nInnovating at the edge of possibility.",
+    "columns": {
+      "research": {
+        "title": "Research",
+        "links": [
+          { "label": "Intelligent Networking", "href": "/research#intelligent-networking" },
+          { "label": "Distributed AI", "href": "/research#distributed-ai" },
+          { "label": "Cyber-Physical Systems", "href": "/research#cyber-physical-systems" }
+        ]
+      },
+      "team": {
+        "title": "Team",
+        "links": [
+          { "label": "Lab Members", "href": "/team" },
+          { "label": "Director", "href": "/director" },
+          { "label": "Join Us", "href": "/join" },
+          { "label": "News & Updates", "href": "/news" }
+        ]
+      },
+      "quickLinks": {
+        "title": "Quick Links",
+        "links": [
+          { "label": "Publications", "href": "/publications" },
+          { "label": "News", "href": "/news" },
+          { "label": "Contact", "href": "/contact" }
+        ]
+      }
+    },
+    "cta": {
+      "title": "Join Us",
+      "description": "We're looking for researchers passionate about AI and network systems.",
+      "linkText": "Learn more"
+    },
+    "copyright": "© 2025 INSLAB. All rights reserved."
+  },
+  "home": {
+    "metadata": {
+      "title": "Home",
+      "description": "INSLAB — Intelligence Network System Lab at Soonchunhyang University. AI and network systems research."
+    },
+    "hero": {
+      "eyebrow": "Intelligence Network System Lab",
+      "title": "INSLAB —",
+      "titleAccent": "AI & Network Systems Research",
+      "body": "We research technologies where systems understand service intent, autonomously configure resources, and maintain AI service quality across intelligent networks.",
+      "ctaPrimary": "Explore Research",
+      "ctaSecondary": "Meet the Team"
+    },
+    "researchAreas": {
+      "title": "Research Areas",
+      "subtitle": "Three pillars driving our research direction.",
+      "allResearch": "All Research",
+      "exploreArea": "Explore Area"
+    },
+    "publications": {
+      "title": "Recent Publications",
+      "subtitle": "{count} of {total} publications",
+      "viewAll": "View All Publications",
+      "labels": {
+        "Journal": "Journal",
+        "Conference": "Conference",
+        "Domestic": "Domestic"
+      }
+    },
+    "news": {
+      "title": "News & Updates",
+      "viewAll": "View All News"
+    },
+    "joinCta": {
+      "title": "Join Our Research",
+      "body": "We are looking for passionate researchers to push the boundaries of AI and network systems together.",
+      "ctaPrimary": "Join INSLAB",
+      "ctaSecondary": "Contact Us",
+      "location": "Soonchunhyang University, Multimedia Bldg. M511",
+      "email": "inslab@sch.ac.kr"
+    }
+  },
+  "publications": {
+    "hero": {
+      "eyebrow": "Academic Output",
+      "title": "Selected Publications",
+      "body": "Our research spans artificial intelligence, network systems, and cybersecurity. Explore representative papers and the themes shaping INSLAB's recent academic output."
+    },
+    "filters": {
+      "items": ["All", "Journal", "Conference", "Domestic"],
+      "reset": "Reset Filters",
+      "displaying": "Displaying {count} of {total} papers",
+      "allYears": "All Years",
+      "topics": "Topics",
+      "newestFirst": "Newest",
+      "oldestFirst": "Oldest",
+      "noResults": "No publications match the selected filters.",
+      "prev": "Prev",
+      "next": "Next",
+      "page": "Page"
+    },
+    "metadata": {
+      "title": "Publications",
+      "description": "Selected INSLAB publications across AI, network systems, and security."
+    }
+  },
+  "Director": {
+    "metadata": {
+      "title": "Director",
+      "description": "Prof. Dae-Young Kim — Lab Director of INSLAB at Soonchunhyang University."
+    },
+    "hero": {
+      "badge": "Lab Director (PI)",
+      "degree": "Doctor of Philosophy",
+      "department": "Dept. of Computer Software Engineering",
+      "university": "Soonchunhyang University",
+      "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511",
+      "lectureLabel": "Lecture 2026-1",
+      "whosWho": "Recorded in \"Marquis Who's Who in the World 2016\""
+    },
+    "education": "Education & Career",
+    "careerHeading": "Career",
+    "educationHeading": "Education",
+    "career": "Career",
+    "researchArea": "Research Areas",
+    "publications": "Selected Publications",
+    "projects": "Research Projects",
+    "ongoingProjects": "Ongoing Projects",
+    "pastProjects": "Past Projects",
+    "agencyLabel": "Agency:",
+    "patents": "Patents",
+    "registered": "Registered",
+    "filed": "Filed",
+    "filters": {
+      "all": "All",
+      "journal": "Journal",
+      "conference": "Conference",
+      "newestFirst": "Newest",
+      "oldestFirst": "Oldest",
+      "noResults": "No publications match the selected filter."
+    }
+  },
+  "team": {
+    "hero": {
+      "eyebrow": "INSLAB",
+      "title": "Our Team",
+      "body": "INSLAB is a group of researchers designing the future of intelligent network systems together. We connect expertise across data, systems, and services.",
+      "bodySecond": "From curiosity to real-world solutions — these are the people behind every step of that journey."
+    },
+    "sections": {
+      "director": "Director",
+      "graduate": "Graduate Students",
+      "undergraduate": "Undergraduate Researchers"
+    },
+    "roles": {
+      "professor": "Professor",
+      "phd": "Ph.D. Student",
+      "ms": "M.S. Student",
+      "bs": "Undergraduate Researcher"
+    },
+    "stats": [
+      { "value": "9", "label": "Members" },
+      { "value": "3", "label": "Research Areas" },
+      { "value": "5+", "label": "Active Projects" }
+    ],
+    "viewProfile": "View Profile",
+    "metadata": {
+      "title": "Team",
+      "description": "Meet the researchers and students of INSLAB."
+    }
+  },
+  "research": {
+    "hero": {
+      "eyebrow": "Research Direction",
+      "title": "Building Environments Where AI",
+      "titleAccent": "Never Stops in Reality",
+      "body": "We research technologies where systems understand service intent, autonomously configure resources, and maintain AI service quality."
+    },
+    "framework": {
+      "title": "Core Research Framework",
+      "body": "We research intelligent systems where distributed AIoT devices automatically compose, deploy, and reconfigure their service functions to match user intent and maintain optimal state.",
+      "points": ["DATA — Collection & Processing", "SYSTEM — Intelligent Networks & Edge AI", "SERVICE — IoT Applications & Solutions"]
+    },
+    "connectivity": {
+      "title": "Structural Connectivity",
+      "body": "At INSLAB, no research area exists in isolation. The DATA, SYSTEM, and SERVICE pillars interact organically, with AI technology as the core driving force behind our intelligent solutions.",
+      "cta": "View Publications",
+      "ctaSecondary": "Our Methodology"
+    },
+    "keywords": "Keywords",
+    "representativePapers": "Representative Papers",
+    "ongoingProjects": "Ongoing Projects",
+    "ongoing": "Ongoing",
+    "metadata": {
+      "title": "Research",
+      "description": "Explore INSLAB's core research areas in intelligent networking, distributed AI, and cyber-physical systems."
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Get in Touch",
+      "title": "Contact Us",
+      "body": "We welcome inquiries about collaboration, graduate admissions, and research partnerships. Reach out and let's build something meaningful together."
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": {
+        "label": "Address",
+        "line1": "Multimedia Bldg. M511",
+        "line2": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511"
+      },
+      "email": {
+        "label": "Email",
+        "value": "dyoung.kim@sch.ac.kr"
+      },
+      "phone": {
+        "label": "Phone",
+        "value": "+82-41-530-XXXX"
+      }
+    },
+    "inquiries": {
+      "title": "Inquiry Types",
+      "types": [
+        {
+          "icon": "🎓",
+          "title": "Graduate Admissions",
+          "description": "Interested in joining as an M.S. or Ph.D. student? Contact us with your CV and research interests."
+        },
+        {
+          "icon": "🤝",
+          "title": "Research Collaboration",
+          "description": "We actively collaborate with industry and academic partners on AI, networking, and IoT projects."
+        },
+        {
+          "icon": "📬",
+          "title": "General Inquiries",
+          "description": "For other questions about the lab, publications, or events, feel free to reach out via email."
+        }
+      ]
+    },
+    "directions": {
+      "title": "How to Find Us",
+      "placeholder": "Campus map will be displayed here",
+      "address": "22 Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Multimedia Bldg. M511",
+      "openInMap": "Open in Google Maps"
+    },
+    "metadata": {
+      "title": "Contact",
+      "description": "Contact INSLAB for collaboration, admissions, or general inquiries."
+    }
+  },
+  "news": {
+    "hero": {
+      "eyebrow": "Latest Updates",
+      "title": "News & Updates",
+      "body": "Stay up to date with INSLAB's latest research achievements, awards, events, and announcements."
+    },
+    "filters": {
+      "all": "All",
+      "categories": {
+        "Awards": "Awards",
+        "Papers": "Papers",
+        "Events": "Events",
+        "Notices": "Notices"
+      },
+      "noResults": "No news items match the selected category."
+    },
+    "metadata": {
+      "title": "News",
+      "description": "Latest news, awards, and updates from INSLAB."
+    }
+  },
+  "join": {
+    "hero": {
+      "eyebrow": "Opportunities",
+      "title": "Join INSLAB",
+      "body": "From curiosity to technology, from ideas to systems — we're looking for researchers to build with us.",
+      "bodySecond": "Explore opportunities for graduate and undergraduate research positions."
+    },
+    "why": {
+      "title": "Why INSLAB?",
+      "points": [
+        {
+          "title": "Cutting-Edge Research",
+          "description": "Work on state-of-the-art problems in AI, 6G networking, federated learning, and IoT security with real-world impact."
+        },
+        {
+          "title": "Collaborative Environment",
+          "description": "Join a supportive lab culture with regular seminars, code reviews, and mentoring from experienced researchers."
+        },
+        {
+          "title": "Publication Support",
+          "description": "Receive guidance to publish at top-tier venues like IEEE ICC, TNSM, and Access with comprehensive support throughout the process."
+        }
+      ]
+    },
+    "recruitment": {
+      "title": "Open Positions",
+      "fields": [
+        {
+          "name": "Data",
+          "description": "Data pattern recognition-based solution development"
+        },
+        {
+          "name": "System",
+          "description": "Edge AI-based intelligent system development"
+        },
+        {
+          "name": "Service",
+          "description": "User-centric IoT platform service development"
+        },
+        {
+          "name": "XOps",
+          "description": "End-to-end AI workflow automation environment"
+        }
+      ],
+      "idealCandidate": {
+        "title": "Ideal Candidate",
+        "points": [
+          "Passionate about learning and growth",
+          "Persistent in pursuing goals with determination",
+          "Strong communication and collaboration skills",
+          "Team-oriented with a strong sense of responsibility"
+        ]
+      },
+      "qualifications": {
+        "title": "Qualifications",
+        "points": [
+          "Sophomore or above in a related major",
+          "Programming coursework grade of A or above",
+          "Familiarity with Linux basics",
+          "Able to participate in lab activities for at least 1 year"
+        ]
+      },
+      "benefits": {
+        "title": "Benefits",
+        "points": [
+          "Book and resource funding",
+          "Domestic and international conference participation support",
+          "Personal research space and equipment",
+          "Research program participation opportunities"
+        ]
+      },
+      "process": {
+        "title": "Selection Process",
+        "steps": ["Document Review", "1st Interview", "2nd Interview", "Final Acceptance"]
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "What research topics can I work on?",
+          "answer": "INSLAB focuses on three pillars: DATA (data collection and processing), SYSTEM (intelligent networks and Edge AI), and SERVICE (IoT applications and solutions). With intent-based autonomous intelligent systems as our core direction, you can explore topics across these areas based on your interests."
+        },
+        {
+          "question": "Is funding available for graduate students?",
+          "answer": "Yes, graduate students are supported through research project funding, university scholarships, and teaching assistantships. Details are discussed during the admission process."
+        },
+        {
+          "question": "Do I need prior research experience?",
+          "answer": "Prior experience is helpful but not required. We value motivation, curiosity, and willingness to learn. Undergraduate research experience or relevant project work is a plus."
+        },
+        {
+          "question": "What is the typical weekly schedule?",
+          "answer": "Graduate students participate in weekly lab seminars, individual research meetings with the advisor, and collaborative coding sessions. The lab encourages a balanced and productive research rhythm."
+        }
+      ]
+    },
+    "apply": {
+      "title": "How to Apply",
+      "description": "To express your interest in joining INSLAB, please send an email to Prof. Dae-Young Kim with the following documents attached.",
+      "emailLabel": "Send your application to:",
+      "documentsLabel": "Required Documents",
+      "documents": [
+        "CV / Resume",
+        "Academic transcript (unofficial is fine)",
+        "Brief statement of research interests (1 page)",
+        "Any relevant publications or project portfolios (optional)"
+      ]
+    },
+    "metadata": {
+      "title": "Join Us",
+      "description": "Join INSLAB — explore graduate and undergraduate research opportunities."
+    }
+  }
+}

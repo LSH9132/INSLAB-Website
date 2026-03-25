@@ -1,5 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Project Docs
+
+- [docs/README.md](docs/README.md)
+- [docs/project-structure.md](docs/project-structure.md)
+- [docs/code-style.md](docs/code-style.md)
+- [docs/git-workflow.md](docs/git-workflow.md)
+- [docs/stitch-design-to-code.md](docs/stitch-design-to-code.md)
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+
 ## Getting Started
 
 First, run the development server:

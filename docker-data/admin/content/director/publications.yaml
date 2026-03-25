@@ -1,0 +1,142 @@
+# ============================================================
+# 논문 목록 (Publications)
+# 스키마: src/lib/content/schemas/publication.ts
+# ============================================================
+# 날짜 내림차순으로 자동 정렬되어 표시됨.
+# journals.yaml + conferences.yaml + domestic.yaml은 병합 후 정렬.
+# director/publications.yaml은 지도교수 페이지에서 별도 표시.
+#
+# 각 항목의 필드 설명:
+#
+#   id:       (필수, 문자열) 고유 식별자. 예: "j-2025-kim-edge"
+#                           → 권장 형식: "{type약자}-{year}-{1저자성}-{키워드}"
+#   year:     (필수, 정수)  발행 연도. 예: 2025
+#   type:     (필수, 문자열) 논문 유형. 허용값: "Journal" | "Conference" | "Domestic"
+#                           → UI에서 색상 배지로 구분 표시됨
+#   title:    (필수, 문자열) 논문 제목
+#   authors:  (필수, 배열)  저자 목록 (순서대로)
+#                           예: ["Hong Gildong", "Dae-Young Kim"]
+#   venue:    (필수, 문자열) 게재 학회/저널명. 예: "IEEE Access (SCIE)"
+#   details:  (필수, 문자열) 상세 정보. 예: "Vol. 13, pp. 35113-35123"
+#                           → 미정이면 "Submitted", "Accepted" 등 기입
+#   date:     (선택, 문자열) 정확한 발행일. ISO 형식 "YYYY-MM-DD"
+#                           → 생략 시 해당 year의 12월 31일로 간주 (정렬용)
+#                           → 정확한 날짜를 알면 기입하는 것을 권장
+#   tags:     (필수, 배열)  태그 목록. 예: ["IoT", "Edge AI", "GNN"]
+#                           → UI에서 배지로 표시됨
+#   pdfUrl:   (필수, 문자열) PDF 다운로드 URL
+#                           → 없으면 빈 문자열 "" (다운로드 버튼 미표시)
+#   doiUrl:   (필수, 문자열) DOI URL. 예: "https://doi.org/10.1109/..."
+#                           → 없으면 빈 문자열 "" (DOI 링크 미표시)
+#
+# ── 예시 ──
+# - id: j-2025-hong-example
+#   year: 2025
+#   date: "2025-03-15"
+#   type: Journal
+#   title: "Example Paper Title for Demonstration"
+#   authors:
+#     - Gildong Hong
+#     - Dae-Young Kim
+#   venue: "IEEE Access (SCIE)"
+#   details: "Vol. 13, pp. 1234-1245"
+#   tags:
+#     - IoT
+#     - Edge AI
+#   pdfUrl: "https://example.com/paper.pdf"
+#   doiUrl: "https://doi.org/10.1109/ACCESS.2025.XXXXX"
+# ============================================================
+
+- id: dir-j-2026-zahid
+  year: 2026
+  type: Journal
+  title: Graph Temporal Attention Self-Supervised Network for Real-Time Anomaly Detection in Industrial IoT Systems
+  authors:
+    - Samia Zahid
+    - Zilong Jin
+    - Dae-Young Kim
+  venue: ELSEVIER Engineering Applications of Artificial Intelligence
+  details: Submitted
+  tags:
+    - IoT
+    - Anomaly Detection
+    - GNN
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: dir-j-2026-sadriddinov
+  year: 2026
+  date: "2026-01-15"
+  type: Journal
+  title: "Optimizations in Enumerating Maximal Balanced Bicliques: Pruning and Vertex Sorting"
+  authors:
+    - Ilkhomjon Sadriddinov
+    - Sony Peng
+    - Sophort Siet
+    - Dae-Young Kim
+    - Kyuwon Park
+    - Doo-Soon Park
+    - Gangman Yi
+  venue: Human-centric Computing and Information Sciences (SCIE)
+  details: Vol. 16, ID 2
+  tags:
+    - Algorithms
+    - Bicliques
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.22967/HCIS.2026.16.002"
+
+- id: dir-c-2025-lee
+  year: 2025
+  date: "2025-02-19"
+  type: Conference
+  title: Improve the Reliability of Data Collected from IoT Devices by Allowing Redundancy of Data Transmissions in LPWAN
+  authors:
+    - So-Yeon Lee
+    - Dae-Young Kim
+  venue: Proc. of 5th IFSA Winter Conference on Automation, Robotics & Communications for Industry 4.0/5.0 (ARCI 2025)
+  details: Granada, Spain
+  tags:
+    - LPWAN
+    - Reliability
+  pdfUrl: ""
+  doiUrl: ""
+
+- id: dir-j-2025-peng
+  year: 2025
+  date: "2025-04-16"
+  type: Journal
+  title: Integration of Federated Learning and Graph Convolutional Networks for Movie Recommendation Systems
+  authors:
+    - Sony Peng
+    - Sophort Siet
+    - Ilkhomjon Sadriddinov
+    - Dae-Young Kim
+    - Kyuwon Park
+    - Doo-Soon Park
+  venue: TECH SCIENCE PRESS Computers, Materials & Continua (SCIE)
+  details: Vol. 83, No. 2, pp.2041-2057
+  tags:
+    - Federated Learning
+    - GCN
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.32604/cmc.2025.061166"
+
+- id: dir-j-2025-sadriddinov
+  year: 2025
+  date: "2025-02-27"
+  type: Journal
+  title: Algorithm for Mining Maximal Balanced Bicliques using Formal Concept Analysis
+  authors:
+    - Sadriddinov Ilkhomjon
+    - Sony Peng
+    - Sophort Siet
+    - Dae-Young Kim
+    - Doo-Soon Park
+    - Gangman Yi
+  venue: IEEE Access (SCIE)
+  details: Vol. 13, pp. 35113-35123
+  tags:
+    - Data Mining
+    - FCA
+  pdfUrl: ""
+  doiUrl: "https://doi.org/10.1109/ACCESS.2024.3419838"

@@ -1,0 +1,21 @@
+[   66024ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:3000/images/team:0
+[   72583ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:3000/images/team:0
+[   94117ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost/preview/ko/:0
+[  168580ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost/preview/ko/:0
+[  179228ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://127.0.0.1:3000/api/build:0
+[  321482ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost/images/team/:0
+[  880499ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  885498ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  890498ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  895498ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  900498ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  905497ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  910498ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  915498ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  920498ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  925498ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  930497ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  935498ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:3000/api/build:0
+[  940596ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://127.0.0.1:3000/api/build:0
+[  945505ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://127.0.0.1:3000/api/build:0
+[  995060ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://127.0.0.1:3000/api/build:0

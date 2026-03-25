@@ -1,0 +1,46 @@
+[     557ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[    5534ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[   10535ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[   15533ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[   20535ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[   25533ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[   30533ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[   35390ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed:  @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   35525ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[   36394ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   37396ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   38397ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   39400ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   40408ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   40521ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[   45416ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   45526ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[   50426ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   50521ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[   55443ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   55525ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[   60478ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   60521ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[   65513ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   65526ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[   70526ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[   70651ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[   75526ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[   75737ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=I5lQkU9upTryELR01jZWf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/9cc01_next_dist_client_1b0aea38._.js:10878
+[ 1202460ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[ 1207459ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[ 1212459ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/api/build:0
+[ 1217602ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1222466ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1227476ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1232468ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1237467ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1242465ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1247485ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1252467ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1257465ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1262481ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1267475ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1272466ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1277466ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
+[ 1282467ms] [ERROR] Failed to load resource: the server responded with a status of 503 (Service Unavailable) @ http://localhost:3000/api/build:0
