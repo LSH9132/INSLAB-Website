@@ -38,6 +38,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Docker bind mount data (images, builds, site output are not tracked)
+docker-data/admin/images/
+docker-data/builder/
+docker-data/site/
+
+# Backups
+backups/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

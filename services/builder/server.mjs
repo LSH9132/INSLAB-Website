@@ -5,8 +5,9 @@ import { join } from "node:path";
 
 const DATA_DIR = process.env.DATA_DIR || "/data";
 const OUT_DIR = process.env.OUT_DIR || "/out";
-const HISTORY_FILE = join(DATA_DIR, "build-history.json");
-const BUILDS_DIR = join(DATA_DIR, "builds");
+const BUILDER_DIR = process.env.BUILDER_DIR || "/builder";
+const HISTORY_FILE = join(BUILDER_DIR, "build-history.json");
+const BUILDS_DIR = join(BUILDER_DIR, "builds");
 const MAX_HISTORY = 20;
 const MAX_ARCHIVES = 5;
 
@@ -14,6 +15,11 @@ const MAX_ARCHIVES = 5;
 let history = [];
 try {
   history = JSON.parse(readFileSync(HISTORY_FILE, "utf-8"));
+  // Trim to prevent unbounded growth after restarts
+  if (history.length > MAX_HISTORY) {
+    history = history.slice(0, MAX_HISTORY);
+    writeFileSync(HISTORY_FILE, JSON.stringify(history, null, 2));
+  }
 } catch {
   // No history file yet
 }
