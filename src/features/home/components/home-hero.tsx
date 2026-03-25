@@ -1,38 +1,37 @@
 "use client";
 
 import { useRef } from "react";
-import Link from "next/link";
 import {
   motion,
   useMotionValue,
-  useSpring,
-  useTransform,
   useReducedMotion,
 } from "motion/react";
+import { Link } from "@/i18n/navigation";
+
+type HeroDictionary = {
+  eyebrow: string;
+  headlineLines: string[][];
+  accentWords: string[];
+  subCopy: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  stats: { value: string; label: string }[];
+};
 
 /* ------------------------------------------------------------------ */
-/* Pipeline topology                                                     */
-/*                                                                      */
-/*  IoT sources (left fan)                                              */
-/*    s1 ──┐                                                            */
-/*    s2 ──┤→ Edge ──→ Ingest ──→ Train ──→ Deploy ──→ d1 (prod)       */
-/*    s3 ──┤                       ↑  ↑              └──→ d2 (staging)  */
-/*    s4 ──┘                 feedback loop (MLOps)                      */
+/* Pipeline topology (unchanged — purely visual)                        */
 /* ------------------------------------------------------------------ */
 
-// All coordinates for 1400×480 viewBox
-const PIPE_Y  = 240;          // main pipeline vertical
-const FEED_Y  = 130;          // feedback arc height
+const PIPE_Y  = 240;
+const FEED_Y  = 130;
 
-// Main pipeline nodes
 const pipeNodes = [
-  { id: "edge",    x: 260,  y: PIPE_Y, label: "Edge AI",  color: "#0d9488" }, // teal
-  { id: "ingest",  x: 490,  y: PIPE_Y, label: "Ingest",   color: "#2563eb" }, // blue
-  { id: "train",   x: 720,  y: PIPE_Y, label: "Train",    color: "#7c3aed" }, // violet
-  { id: "deploy",  x: 980,  y: PIPE_Y, label: "Deploy",   color: "#059669" }, // emerald
+  { id: "edge",    x: 260,  y: PIPE_Y, label: "Edge AI",  color: "#0d9488" },
+  { id: "ingest",  x: 490,  y: PIPE_Y, label: "Ingest",   color: "#2563eb" },
+  { id: "train",   x: 720,  y: PIPE_Y, label: "Train",    color: "#7c3aed" },
+  { id: "deploy",  x: 980,  y: PIPE_Y, label: "Deploy",   color: "#059669" },
 ];
 
-// IoT sensor sources (fan into Edge)
 const sensors = [
   { id: "s1", x: 60, y: 100 },
   { id: "s2", x: 60, y: 190 },
@@ -40,67 +39,55 @@ const sensors = [
   { id: "s4", x: 60, y: 370 },
 ];
 
-// Deploy targets (fan out from Deploy)
 const targets = [
   { id: "t1", x: 1200, y: 160, label: "Production" },
   { id: "t2", x: 1200, y: 290, label: "Staging"    },
   { id: "t3", x: 1200, y: 420, label: "Edge Fleet"  },
 ];
 
-// Main horizontal paths
 const mainEdges = [
   { id: "me1", d: `M 260 ${PIPE_Y} L 490 ${PIPE_Y}`, delay: 0.8 },
   { id: "me2", d: `M 490 ${PIPE_Y} L 720 ${PIPE_Y}`, delay: 1.1 },
   { id: "me3", d: `M 720 ${PIPE_Y} L 980 ${PIPE_Y}`, delay: 1.4 },
 ];
 
-// Sensor fan edges (orthogonal path: horizontal then diagonal-ish — actually L-paths)
 const sensorEdges = sensors.map((s, i) => ({
   id: `se${i}`,
   d: `M ${s.x} ${s.y} L 140 ${s.y} L 140 ${PIPE_Y} L 260 ${PIPE_Y}`,
   delay: i * 0.18,
 }));
 
-// Deploy fan edges
 const targetEdges = targets.map((t, i) => ({
   id: `te${i}`,
   d: `M 980 ${PIPE_Y} L 1100 ${PIPE_Y} L 1100 ${t.y} L ${t.x} ${t.y}`,
   delay: 1.7 + i * 0.15,
 }));
 
-// MLOps feedback loop: Deploy → up → across → down → into Train
 const feedbackPath = {
   id: "feedback",
   d: `M 980 ${PIPE_Y} L 980 ${FEED_Y} L 720 ${FEED_Y} L 720 ${PIPE_Y}`,
   delay: 2.0,
 };
 
-// All edges for pathLength draw-on
 const allEdges = [...sensorEdges, ...mainEdges, ...targetEdges, feedbackPath];
 
-// Packets that travel continuously after draw-in
 const packets = [
-  // sensors → edge
   ...sensors.map((s, i) => ({
     id: `pk-s${i}`, delay: 2.5 + i * 0.4, dur: 1.8 + i * 0.2,
     xs: [s.x, 140, 140, 260], ys: [s.y, s.y, PIPE_Y, PIPE_Y],
   })),
-  // main pipeline
   { id: "pk-m1", delay: 3.0, dur: 1.4, xs: [260, 490],  ys: [PIPE_Y, PIPE_Y] },
   { id: "pk-m2", delay: 3.3, dur: 1.4, xs: [490, 720],  ys: [PIPE_Y, PIPE_Y] },
   { id: "pk-m3", delay: 3.6, dur: 1.4, xs: [720, 980],  ys: [PIPE_Y, PIPE_Y] },
-  // deploy → targets
   ...targets.map((t, i) => ({
     id: `pk-t${i}`, delay: 4.0 + i * 0.3, dur: 1.6,
     xs: [980, 1100, 1100, t.x], ys: [PIPE_Y, PIPE_Y, t.y, t.y],
   })),
-  // feedback loop
   { id: "pk-fb", delay: 3.8, dur: 2.0,
     xs: [980,  980,  720,  720],
     ys: [PIPE_Y, FEED_Y, FEED_Y, PIPE_Y] },
 ];
 
-// Floating log lines
 const logLines = [
   { text: "epoch 24/50  loss: 0.032", x: "30%", y: "74%", delay: 2.8 },
   { text: "✓ 128 sensors online",     x: "6%",  y: "46%", delay: 3.2 },
@@ -108,51 +95,30 @@ const logLines = [
   { text: "accuracy: 97.8%  ↑ +0.3",  x: "64%", y: "78%", delay: 4.0 },
 ];
 
-/* ------------------------------------------------------------------ */
-/* Headline stagger                                                      */
-/* ------------------------------------------------------------------ */
-
-const headlineLines = [
-  ["Research", "at", "the", "frontier"],
-  ["of", "AI", "and", "connected", "systems"],
-];
-const accentWords = new Set(["AI", "frontier", "systems"]);
-
 const wordVar = {
   hidden: { opacity: 0, y: 28, filter: "blur(4px)" },
   visible: {
     opacity: 1, y: 0, filter: "blur(0px)",
-    transition: { duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] as number[] },
+    transition: { duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] },
   },
 };
 const lineVar  = { hidden: {}, visible: { transition: { staggerChildren: 0.055 } } };
 const headVar  = { hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.25 } } };
 
-const stats = [
-  { value: "97.8%", label: "Model Accuracy" },
-  { value: "128+",  label: "AIoT Endpoints" },
-  { value: "3×",    label: "Deploy Speed"   },
-];
-
-/* ------------------------------------------------------------------ */
-/* Component                                                             */
-/* ------------------------------------------------------------------ */
-
-export function HomeHero() {
+export function HomeHero({ hero }: { hero: HeroDictionary }) {
   const shouldReduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
 
   const rawX = useMotionValue(0.5);
-  const rawY = useMotionValue(0.5);
-  const mx   = useSpring(rawX, { stiffness: 28, damping: 20 });
 
   function onMouseMove(e: React.MouseEvent<HTMLElement>) {
     if (shouldReduceMotion) return;
     const rect = sectionRef.current?.getBoundingClientRect();
     if (!rect) return;
     rawX.set((e.clientX - rect.left) / rect.width);
-    rawY.set((e.clientY - rect.top)  / rect.height);
   }
+
+  const accentSet = new Set(hero.accentWords);
 
   return (
     <section
@@ -163,7 +129,6 @@ export function HomeHero() {
       {/* ── Background ─────────────────────────────────────────── */}
       <div className="pointer-events-none absolute inset-0 -z-10 select-none" aria-hidden>
 
-        {/* Fine PCB-style cross grid */}
         <div
           className="absolute inset-0 opacity-[0.32]"
           style={{
@@ -173,25 +138,22 @@ export function HomeHero() {
           }}
         />
 
-        {/* Soft ambient tint — top-left teal, top-right violet */}
         <div className="absolute -top-40 -left-20 h-[440px] w-[440px] rounded-full bg-teal-100/70 blur-[120px]" />
         <div className="absolute -top-32 right-0 h-[380px] w-[380px] rounded-full bg-violet-100/65 blur-[110px]" />
         <div className="absolute bottom-0 left-1/2 h-[300px] w-[400px] -translate-x-1/2 rounded-full bg-blue-100/55 blur-[100px]" />
 
-        {/* Main pipeline SVG */}
         <svg
           viewBox="0 0 1400 480"
           preserveAspectRatio="xMidYMid slice"
           className="absolute inset-0 h-full w-full"
           fill="none"
         >
-          {/* Draw-on edges */}
           {allEdges.map((edge) => (
             <motion.path
               key={edge.id}
               d={edge.d}
               stroke={edge.id === "feedback" ? "#7c3aed" : "#dde6f0"}
-              strokeWidth={edge.id === "feedback" ? 1.5 : 1.5}
+              strokeWidth={1.5}
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeDasharray={edge.id === "feedback" ? "5 4" : undefined}
@@ -201,7 +163,6 @@ export function HomeHero() {
             />
           ))}
 
-          {/* Animated packets */}
           {!shouldReduceMotion &&
             packets.map((pk) => (
               <motion.circle
@@ -224,7 +185,6 @@ export function HomeHero() {
               />
             ))}
 
-          {/* Sensor source nodes — small squares */}
           {sensors.map((s, i) => (
             <g key={s.id}>
               <motion.rect
@@ -239,7 +199,6 @@ export function HomeHero() {
                 initial={{ opacity: 0 }} animate={{ opacity: 0.8 }}
                 transition={{ delay: 0.3 + i * 0.12 }}
               />
-              {/* Pulse */}
               {!shouldReduceMotion && (
                 <motion.rect
                   x={s.x - 14} y={s.y - 14} width={28} height={28} rx={6}
@@ -253,7 +212,6 @@ export function HomeHero() {
             </g>
           ))}
 
-          {/* Main pipeline nodes */}
           {pipeNodes.map((node, i) => (
             <g key={node.id}>
               {!shouldReduceMotion && (
@@ -280,7 +238,6 @@ export function HomeHero() {
             </g>
           ))}
 
-          {/* Deploy target nodes */}
           {targets.map((t, i) => (
             <g key={t.id}>
               <motion.rect
@@ -300,7 +257,6 @@ export function HomeHero() {
             </g>
           ))}
 
-          {/* Feedback loop label */}
           <motion.text
             x={852} y={FEED_Y - 8}
             textAnchor="middle" fontSize="10"
@@ -312,7 +268,6 @@ export function HomeHero() {
           </motion.text>
         </svg>
 
-        {/* Floating log snippets */}
         {!shouldReduceMotion &&
           logLines.map((line) => (
             <motion.div
@@ -333,7 +288,6 @@ export function HomeHero() {
             </motion.div>
           ))}
 
-        {/* Center vignette — keeps text readable */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_50%_50%,rgba(255,255,255,0.85)_30%,rgba(255,255,255,0.2)_100%)]" />
       </div>
 
@@ -354,7 +308,7 @@ export function HomeHero() {
             />
             <span className="relative inline-flex size-1.5 rounded-full bg-teal-500" />
           </motion.span>
-          Intelligence Network System Lab
+          {hero.eyebrow}
         </motion.div>
 
         {/* Headline */}
@@ -364,12 +318,12 @@ export function HomeHero() {
           initial={shouldReduceMotion ? false : "hidden"}
           animate="visible"
         >
-          {headlineLines.map((words, li) => (
+          {hero.headlineLines.map((words, li) => (
             <motion.span key={li} className="block" variants={lineVar}>
               {words.map((word, wi) => (
                 <motion.span
                   key={`${li}-${wi}`}
-                  className={`inline-block ${accentWords.has(word) ? "text-blue-600" : ""}`}
+                  className={`inline-block ${accentSet.has(word) ? "text-blue-600" : ""}`}
                   style={{ marginRight: wi < words.length - 1 ? "0.3em" : 0 }}
                   variants={wordVar}
                 >
@@ -386,9 +340,7 @@ export function HomeHero() {
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
         >
-          INSLAB builds adaptive AI systems, AIoT architectures, and MLOps
-          pipelines — bridging research and real-world deployment across
-          intelligent networks.
+          {hero.subCopy}
         </motion.p>
 
         {/* CTAs */}
@@ -407,14 +359,14 @@ export function HomeHero() {
               whileHover={{ x: 0 }}
               transition={{ duration: 0.28, ease: "easeOut" }}
             />
-            <span className="relative">Explore Research</span>
+            <span className="relative">{hero.ctaPrimary}</span>
             <span className="relative transition-transform group-hover:translate-x-0.5">→</span>
           </Link>
           <a
             href="#mission"
             className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/85 px-8 py-3.5 text-sm font-semibold text-slate-600 backdrop-blur-sm transition-colors hover:border-slate-300 hover:bg-white hover:text-slate-900"
           >
-            About the Lab
+            {hero.ctaSecondary}
           </a>
         </motion.div>
 
@@ -431,7 +383,7 @@ export function HomeHero() {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1.3 }}
         >
-          {stats.map((s, i) => (
+          {hero.stats.map((s, i) => (
             <motion.div
               key={s.label} className="text-center"
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}

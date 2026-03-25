@@ -1,25 +1,50 @@
 import Image from "next/image";
-import Link from "next/link";
 
-export function SiteFooter() {
+import { Link } from "@/i18n/navigation";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+type SiteFooterProps = {
+  footer: any;
+};
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
+export function SiteFooter({ footer }: SiteFooterProps) {
+  const [addressLine1, addressLine2] = footer.sections.contact.address.split("\n");
+  const [tagLine1, tagLine2] = footer.tagline.split("\n");
+
   return (
     <footer id="site-footer" className="border-t border-slate-200 bg-white pt-16 pb-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <Image
-                src="/images/logo-inslab-black-transparent-v1.png"
-                alt="INSLAB logo"
-                width={132}
-                height={40}
-                className="h-8 w-auto"
-              />
+              <Link href="/" className="group inline-flex items-center gap-3">
+                <Image
+                  src="/images/logo-inslab-black-transparent-v1.png"
+                  alt="INSLAB logo"
+                  width={40}
+                  height={40}
+                  className="h-8 w-auto transition-transform duration-200 group-hover:scale-105"
+                />
+                <div className="flex flex-col justify-center gap-[5px] py-1">
+                  <span className="text-[1.1rem] font-black leading-none tracking-wider text-slate-900 transition-colors group-hover:text-slate-700">
+                    INSLAB
+                  </span>
+                  <span className="flex items-center gap-[4px] text-[0.575rem] font-light leading-none tracking-[0.22em] text-slate-600 transition-colors group-hover:text-slate-500">
+                    <span>Intelligence</span>
+                    <span>Network</span>
+                    <span className="text-slate-500">&</span>
+                    <span>System</span>
+                    <span className="text-slate-500">.</span>
+                    <span>Lab</span>
+                  </span>
+                </div>
+              </Link>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-slate-500">
-              Artificial Intelligence Network Systems Laboratory.
+              {tagLine1}
               <br />
-              Innovating at the edge of possibility.
+              {tagLine2}
             </p>
             <div className="flex gap-4">
               <a
@@ -55,77 +80,59 @@ export function SiteFooter() {
 
           <div>
             <h2 className="mb-6 text-xs font-semibold tracking-wider text-slate-900 uppercase">
-              Research
+              {footer.sections.research.title}
             </h2>
             <ul className="space-y-4">
-              <li>
-                <a href="#" className="text-sm text-slate-500 hover:text-accent">
-                  Intelligent Networking
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-slate-500 hover:text-accent">
-                  Distributed AI
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-slate-500 hover:text-accent">
-                  Cyber-Physical Security
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-slate-500 hover:text-accent">
-                  Edge Computing
-                </a>
-              </li>
+              {footer.sections.research.links.map((link: string) => (
+                <li key={link}>
+                  <a href="#" className="text-sm text-slate-500 hover:text-accent">
+                    {link}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
             <h2 className="mb-6 text-xs font-semibold tracking-wider text-slate-900 uppercase">
-              Lab
+              {footer.sections.lab.title}
             </h2>
             <ul className="space-y-4">
               <li>
-                <Link href="/publications" className="text-sm text-slate-500 hover:text-accent">
-                  Publications
+                <Link
+                  href="/publications"
+                  className="text-sm text-slate-500 hover:text-accent"
+                >
+                  {footer.sections.lab.links[0]}
                 </Link>
               </li>
-              <li>
-                <a href="#mission" className="text-sm text-slate-500 hover:text-accent">
-                  Members
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-slate-500 hover:text-accent">
-                  Join Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-slate-500 hover:text-accent">
-                  News
-                </a>
-              </li>
+              {footer.sections.lab.links.slice(1).map((link: string) => (
+                <li key={link}>
+                  <a href="#" className="text-sm text-slate-500 hover:text-accent">
+                    {link}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
             <h2 className="mb-6 text-xs font-semibold tracking-wider text-slate-900 uppercase">
-              Contact
+              {footer.sections.contact.title}
             </h2>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <span className="mt-0.5 text-sm text-slate-400">◎</span>
                 <span className="text-sm text-slate-500">
-                  Engineering Building 2, Room 405
+                  {addressLine1}
                   <br />
-                  University of Technology
+                  {addressLine2}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <span className="text-sm text-slate-400">✉</span>
                 <a
-                  href="mailto:contact@inslab.edu"
+                  href="mailto:dyoung.kim@sch.ac.kr"
                   className="text-sm text-slate-500 hover:text-accent"
                 >
                   dyoung.kim@sch.ac.kr
@@ -137,14 +144,14 @@ export function SiteFooter() {
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-100 pt-8 md:flex-row">
           <p className="text-xs text-slate-400">
-            © 2025 INSLAB. All rights reserved.
+            {footer.copyright}
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-slate-400 hover:text-slate-900">
-              Privacy Policy
+              {footer.privacy}
             </a>
             <a href="#" className="text-xs text-slate-400 hover:text-slate-900">
-              Terms of Use
+              {footer.terms}
             </a>
           </div>
         </div>

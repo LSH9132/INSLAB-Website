@@ -1,0 +1,587 @@
+import type { Publication } from "../types";
+
+export const conferences: Publication[] = [
+  {
+    id: "c-2025-lee-arci",
+    year: 2025,
+    type: "Conference",
+    title:
+      "Improve the Reliability of Data Collected from IoT Devices by Allowing Redundancy of Data Transmissions in LPWAN",
+    authors: ["So-Yeon Lee", "Dae-Young Kim"],
+    venue:
+      "Proc. of 5th IFSA Winter Conference on Automation, Robotics & Communications for Industry 4.0/5.0 (ARCI 2025)",
+    details: "Granada, Spain, Feb. 19-21 2025",
+    tags: ["LPWAN", "Reliability"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2024-jang",
+    year: 2024,
+    type: "Conference",
+    title:
+      "Comparison of LSTM and Transformer model performance for network delay prediction",
+    authors: [
+      "Jae-Won Jang",
+      "So-Yeon Lee",
+      "Samia Zahid",
+      "Dae-Young Kim",
+    ],
+    venue:
+      "Proc. of The 16th International Conference on Computer Science and its Applications (CSA 2024)",
+    details: "Pattaya, Thailand, Dec. 18-20 2024",
+    tags: ["LSTM", "Transformer", "Network Prediction"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2024-lee-icmic",
+    year: 2024,
+    type: "Conference",
+    title:
+      "Intent Inference Method for an Intent-based System in Military Communications",
+    authors: [
+      "So-Yeon Lee",
+      "Jungwook Choi",
+      "Soobum Park",
+      "Dae-Young Kim",
+    ],
+    venue:
+      "Proc. of The 3rd International Conference on Mobile, Military, and Maritime IT Convergence (ICMIC 2024)",
+    details: "Kuala Lumpur, Malaysia, Aug. 7-9 2024",
+    tags: ["Intent-based", "Military"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2023-kim-icicpe",
+    year: 2023,
+    type: "Conference",
+    title:
+      "Multiple Network Interfaces Control for High-Speed Data Transfer",
+    authors: ["Dae-Young Kim", "So-Yeon Lee", "Min-Seung Kim"],
+    venue:
+      "Proc. of International Conference on Interdisciplinary Research on Computer Science, Psychology, and Education (ICICPE 2023)",
+    details: "Bali, Indonesia, Dec. 27-29 2023",
+    tags: ["Multi-NIC", "High-Speed"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2023-mkim",
+    year: 2023,
+    type: "Conference",
+    title:
+      "Automatic Personal Information Vulnerability Detection and an Encryption System Using a DNN Model",
+    authors: [
+      "MinSeung Kim",
+      "SeongCheol Yoon",
+      "Suhyun Kim",
+      "Dae-Young Kim",
+    ],
+    venue:
+      "Proc. of International Conference on Computer Science and its Applications (CSA 2023)",
+    details: "Nha Trang, Vietnam, Dec. 18-20 2023",
+    tags: ["Security", "DNN", "Encryption"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2023-lee-imis",
+    year: 2023,
+    type: "Conference",
+    title:
+      "Hyperparameter Tuning and Comparison Analysis of the DNN Model to Predict Wireless Network Conditions of Live Video Services",
+    authors: ["SoYeon Lee", "Dae-Young Kim"],
+    venue:
+      "Proc. of International Conference on Innovative Mobile and Internet Services in Ubiquitous Computing (IMIS 2023)",
+    details: "Toronto, Canada, Jul. 5-7 2023",
+    tags: ["DNN", "Network Prediction"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2022-lee-icicpe",
+    year: 2022,
+    type: "Conference",
+    title:
+      "Data Construction Method for Smart Live Video Streaming Service",
+    authors: [
+      "SoYeon Lee",
+      "Jihoon Park",
+      "MinSeung Kim",
+      "Dae-Young Kim",
+    ],
+    venue:
+      "Proc. of International Conference on Interdisciplinary Research on Computer Science, Psychology, and Education (ICICPE 2022)",
+    details: "Pattaya, Thailand, Dec. 26-28 2022",
+    tags: ["Video Streaming", "Data Construction"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2022-lee-apic",
+    year: 2022,
+    type: "Conference",
+    title: "Dataset Construction Method for Network Intelligence",
+    authors: [
+      "SoYeon Lee",
+      "Jihoon Park",
+      "Tae-Jun Yoon",
+      "MinJi Bae",
+      "Dae-Young Kim",
+    ],
+    venue:
+      "Proc. of Asia Pacific International Conference on Information Science and Technology (APIC-IST 2022)",
+    details: "Gangneung, Korea, Jun. 2022",
+    tags: ["Network Intelligence", "Dataset"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2021-kim-iconi",
+    year: 2021,
+    type: "Conference",
+    title:
+      "RSU-based Urgent Data Traffic Transmission in Vehicular Networks",
+    authors: ["Dae-Young Kim", "SoYeon Lee", "Ji-Hoon Park"],
+    venue:
+      "Proc. of International Conference on Internet (ICONI 2021)",
+    details: "Jeju, Korea, Dec. 2021",
+    tags: ["V2X", "RSU"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2021-park",
+    year: 2021,
+    type: "Conference",
+    title:
+      "A Testbed System Design to Predict Network Conditions of Multiple Network Interfaces",
+    authors: [
+      "Jihoon Park",
+      "SoYeon Lee",
+      "Youngchan Lee",
+      "Dae-Young Kim",
+    ],
+    venue:
+      "Proc. of Asia Pacific International Conference on Information Science and Technology (APIC-IST 2021)",
+    details: "Busan, Korea, Jun. 2021",
+    tags: ["Testbed", "Network Prediction"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2020-lee",
+    year: 2020,
+    type: "Conference",
+    title:
+      "Efficient Object Counting Method for Object Detection and Tracking Services",
+    authors: [
+      "Youngchan Lee",
+      "SoYeon Lee",
+      "Seokhoon Kim",
+      "Dae-Young Kim",
+    ],
+    venue:
+      "Proc. of International Conference on Internet (ICONI 2020)",
+    details: "Jeju, Korea, Dec. 2020",
+    tags: ["Object Detection", "Counting"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2019-kim-iconi",
+    year: 2019,
+    type: "Conference",
+    title: "Multicast Uplink Data Transmission in LPWA Networks",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Internet (ICONI 2019)",
+    details: "Hanoi, Vietnam, Dec. 2019",
+    tags: ["LPWAN", "Multicast"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2019-kim-apic",
+    year: 2019,
+    type: "Conference",
+    title:
+      "A Framework for LPWAN Data Transmission to Support Industrial IoT Services",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of Asia Pacific International Conference on Information Science and Technology (APIC-IST 2019)",
+    details: "Beijing, China, Jun. 2019",
+    tags: ["LPWAN", "IIoT"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2019-sa",
+    year: 2019,
+    type: "Conference",
+    title: "SDN-based Management in 5G Access-networks",
+    authors: [
+      "Math Sa",
+      "EunGyeong Kim",
+      "Dae-Young Kim",
+      "Jinsul Kim",
+      "Seokhoon Kim",
+    ],
+    venue:
+      "Proc. of International Research Conference on Innovation, Technology and Sustainability (IRCITS 2019)",
+    details: "Manila, Philippines, Jan. 2019",
+    tags: ["SDN", "5G"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2019-kim-vanet",
+    year: 2019,
+    type: "Conference",
+    title:
+      "VANET System to Reduce Broadcast Storm using Transportation System Characteristics",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Research Conference on Innovation, Technology and Sustainability (IRCITS 2019)",
+    details: "Manila, Philippines, Jan. 2019",
+    tags: ["VANET", "Broadcast Storm"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2018-kim-iconi",
+    year: 2018,
+    type: "Conference",
+    title:
+      "Traffic Management Considering Fronthaul Network Conditions in 5G Mobile Networks",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Internet (ICONI 2018)",
+    details: "Phnom Penh, Cambodia, Dec. 2018",
+    tags: ["5G", "Fronthaul"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2018-lee-apic",
+    year: 2018,
+    type: "Conference",
+    title:
+      "Avoiding Congestion Channel in LPWA for Delay-Tolerant IoT Devices",
+    authors: ["Ahyoung Lee", "Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of Asia Pacific International Conference on Information Science and Technology (APIC-IST 2018)",
+    details: "Nha Trang, Vietnam, Jun. 2018",
+    tags: ["LPWAN", "Congestion"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2018-kim-gw",
+    year: 2018,
+    type: "Conference",
+    title:
+      "Load balanced Gateway Selection in LPWAN-based IoT Networking",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Small & Medium Business (ICSMB 2018)",
+    details: "Manila, Philippines, Jan. 2018",
+    tags: ["LPWAN", "Load Balancing"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2018-kim-enc",
+    year: 2018,
+    type: "Conference",
+    title: "Status data encryption in LPWA transmission",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Small & Medium Business (ICSMB 2018)",
+    details: "Manila, Philippines, Jan. 2018",
+    tags: ["LPWAN", "Encryption"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2017-kim-classifier",
+    year: 2017,
+    type: "Conference",
+    title:
+      "Traffic Classifier for Long Range IoT Networking to Reduce Processing Loads",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Ubiquitous Information Technologies and Applications (CUTE 2017)",
+    details: "Taichung, Taiwan, Dec. 2017",
+    tags: ["IoT", "Traffic Classification"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2017-kim-access",
+    year: 2017,
+    type: "Conference",
+    title:
+      "Intelligent Access Control in Access Points of Wireless Sensor Networks",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Ubiquitous Information Technologies and Applications (CUTE 2017)",
+    details: "Taichung, Taiwan, Dec. 2017",
+    tags: ["WSN", "Access Control"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2017-kim-sleep",
+    year: 2017,
+    type: "Conference",
+    title:
+      "Sleep Scheduling to Reduce Energy Consumption in Low Power Wide Area Networks",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Big data, IoT, and Cloud computing (BIC 2017)",
+    details: "Jeju, Korea, Aug. 2017",
+    tags: ["LPWAN", "Energy"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2017-kim-emergency",
+    year: 2017,
+    type: "Conference",
+    title:
+      "An Emergency Alarm Transmission in IoT Systems Integrated with the LPWAN",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of Asia Pacific International Conference on Information Science and Technology (APIC-IST 2017)",
+    details: "Chiang Mai, Thailand, Jun. 2017",
+    tags: ["IoT", "LPWAN", "Emergency"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2017-kim-feedback",
+    year: 2017,
+    type: "Conference",
+    title:
+      "A Feedback Message Transmission Method in IoT Systems Integrated with the LPWAN",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of Asia Pacific International Conference on Information Science and Technology (APIC-IST 2017)",
+    details: "Chiang Mai, Thailand, Jun. 2017",
+    tags: ["IoT", "LPWAN"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2017-kim-emergent",
+    year: 2017,
+    type: "Conference",
+    title:
+      "An Emergent Data Transmission in LPWAN-based Industrial IoT",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Small & Medium Business (ICSMB 2017)",
+    details: "Okinawa, Japan, Jan. 2017",
+    tags: ["LPWAN", "IIoT"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2017-kim-fire",
+    year: 2017,
+    type: "Conference",
+    title: "A Fire Response System in a Smart Building",
+    authors: ["Dae-Young Kim", "JaiPyo Sung", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Small & Medium Business (ICSMB 2017)",
+    details: "Okinawa, Japan, Jan. 2017",
+    tags: ["Smart Building", "Fire Safety"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2017-kim-tourism",
+    year: 2017,
+    type: "Conference",
+    title:
+      "Clients Classification for VIP Services in ICT-based Tourism",
+    authors: ["Dae-Young Kim", "Sang-Jin Lee", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Small & Medium Business (ICSMB 2017)",
+    details: "Okinawa, Japan, Jan. 2017",
+    tags: ["ICT", "Tourism"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2016-kim-backoff",
+    year: 2016,
+    type: "Conference",
+    title: "Backoff Control System by Learning in LPWAN",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Future Information Technology, applications and service (IFIT 2016)",
+    details: "Seoul, Korea, Oct. 2016",
+    tags: ["LPWAN", "Learning"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2016-kim-activation",
+    year: 2016,
+    type: "Conference",
+    title:
+      "Network activation control according to traffic characteristics in sensor networks for IoT",
+    authors: [
+      "Dae-Young Kim",
+      "Young-Sik Jeong",
+      "Seokhoon Kim",
+    ],
+    venue:
+      "Proc. of International Conference on Ubiquitous Computing Application and Wireless Sensor Network (UCAWSN 2016)",
+    details: "Jeju, Korea, Jul. 2016",
+    tags: ["WSN", "IoT"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2016-kim-dtn",
+    year: 2016,
+    type: "Conference",
+    title:
+      "Data Forwarding in Delay-Tolerant Wireless Sensor Networks with Disaster Scenarios",
+    authors: ["Dae-Young Kim", "Seokhoon Kim"],
+    venue:
+      "Proc. of International Conference on Small & Medium Business (ICSMB 2016)",
+    details: "Hochiminh, Vietnam, Jan. 2016",
+    tags: ["DTN", "Disaster"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2016-bkim",
+    year: 2016,
+    type: "Conference",
+    title:
+      "ACESS: Adaptive Channel Estimation and Selection Scheme for Coexistence Mitigation in WBANs",
+    authors: [
+      "BeomSeok Kim",
+      "Jinsung Cho",
+      "Dae-Young Kim",
+      "Ben Lee",
+    ],
+    venue:
+      "Proc. of ACM International Conference on Ubiquitous Information Management and Communication (IMCOM 2016)",
+    details: "Danang, Vietnam, Jan. 2016",
+    tags: ["WBAN", "Channel Selection"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2011-kim-route",
+    year: 2011,
+    type: "Conference",
+    title:
+      "Adaptive Route Discovery for Wireless Sensor Networks",
+    authors: [
+      "Dae-Young Kim",
+      "SooBum Park",
+      "BeomSeok Kim",
+      "Jinsung Cho",
+    ],
+    venue:
+      "Proc. of IEEE International Conference on ICT Convergence (ICTC 2011)",
+    details: "Seoul, Korea, Sep. 2011",
+    tags: ["WSN", "Routing"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2011-jin",
+    year: 2011,
+    type: "Conference",
+    title:
+      "On the Optimal Number of Relay Stations in Two-hop Relay Cooperative Cellular Networks",
+    authors: [
+      "Jin Zi Long",
+      "Choongyong Shin",
+      "Dae-Young Kim",
+      "Jinsung Cho",
+    ],
+    venue:
+      "Proc. of ACM International Conference on Ubiquitous Information Management and Communication (ICUIMC 2011)",
+    details: "Seoul, Korea, Feb. 2011",
+    tags: ["Relay", "Cooperative"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2010-kim-ear",
+    year: 2010,
+    type: "Conference",
+    title:
+      "EAR: An Environment-Adaptive Routing Algorithm for WBANs",
+    authors: [
+      "Dae-Young Kim",
+      "Wee Yeon Kim",
+      "Jinsung Cho",
+      "Ben Lee",
+    ],
+    venue:
+      "Proc. of International Symposium on Medical Information and Communication Technology (ISMICT 2010)",
+    details: "Taipei, Taiwan, Mar. 2010",
+    tags: ["WBAN", "Routing"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2010-seo",
+    year: 2010,
+    type: "Conference",
+    title:
+      "OCDP: A WBAN MAC Protocol for Contention-based Medical and CE applications",
+    authors: [
+      "Young-Sun Seo",
+      "Dae-Young Kim",
+      "Jinsung Cho",
+      "Ben Lee",
+    ],
+    venue:
+      "Proc. of ACM International Conference on Ubiquitous Information Management and Communication (ICUIMC 2010)",
+    details: "Suwon, Korea, Jan. 2010",
+    tags: ["WBAN", "MAC"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2009-kim-wban",
+    year: 2009,
+    type: "Conference",
+    title:
+      "WBAN meets WBAN: Smart Mobile Space over Wireless Body Area Networks",
+    authors: ["Dae-Young Kim", "Jinsung Cho"],
+    venue:
+      "Proc. of IEEE International Workshop on Portable Information Devices (Portable 2009)",
+    details: "Anchorage, USA, Sep. 2009",
+    tags: ["WBAN", "Mobile"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+  {
+    id: "c-2008-kim-routing",
+    year: 2008,
+    type: "Conference",
+    title:
+      "A Regional Cell Routing in Wireless Sensor Networks",
+    authors: ["Dae-Young Kim", "Jinsung Cho"],
+    venue:
+      "Proc. of ACM International Conference on Ubiquitous Information Management and Communication (ICUIMC 2008)",
+    details: "Suwon, Korea, Jan. 2008, pp. 442-446",
+    tags: ["WSN", "Routing"],
+    pdfUrl: "",
+    doiUrl: "",
+  },
+];

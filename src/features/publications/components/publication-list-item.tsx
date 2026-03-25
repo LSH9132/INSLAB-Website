@@ -1,11 +1,9 @@
-import Link from "next/link";
-
 import type { Publication } from "@/features/publications/types";
 
 const publicationTypeStyles: Record<Publication["type"], string> = {
   Journal: "text-blue-700",
   Conference: "text-emerald-700",
-  Workshop: "text-orange-700",
+  Domestic: "text-amber-700",
 };
 
 export function PublicationListItem({
@@ -66,18 +64,26 @@ export function PublicationListItem({
         </div>
 
         <div className="flex shrink-0 flex-row items-start gap-4 pt-1 md:w-20 md:flex-col md:items-end">
-          <Link
-            href={publication.pdfUrl}
-            className="text-sm font-medium text-slate-400 hover:text-slate-900"
-          >
-            PDF
-          </Link>
-          <Link
-            href={publication.doiUrl}
-            className="text-sm font-medium text-slate-400 hover:text-slate-900"
-          >
-            DOI
-          </Link>
+          {publication.pdfUrl ? (
+            <a
+              href={publication.pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-slate-400 hover:text-slate-900"
+            >
+              PDF
+            </a>
+          ) : null}
+          {publication.doiUrl ? (
+            <a
+              href={publication.doiUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-slate-400 hover:text-slate-900"
+            >
+              DOI
+            </a>
+          ) : null}
         </div>
       </div>
     </article>

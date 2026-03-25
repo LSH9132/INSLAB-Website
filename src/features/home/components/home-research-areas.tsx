@@ -1,31 +1,44 @@
-import { researchAreas } from "@/features/home/data/home-content";
+import { Link } from "@/i18n/navigation";
 
-export function HomeResearchAreas() {
+type ResearchAreasDictionary = {
+  title: string;
+  subtitle: string;
+  allResearch: string;
+  exploreArea: string;
+  areas: {
+    id: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+  }[];
+};
+
+export function HomeResearchAreas({ researchAreas }: { researchAreas: ResearchAreasDictionary }) {
   return (
     <section id="research-areas" className="bg-slate-50/50 py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-16 flex items-end justify-between">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-slate-900">
-              Core Research Areas
+              {researchAreas.title}
             </h2>
             <p className="mt-2 font-light text-slate-500">
-              Pillars of scientific investigation at INSLAB.
+              {researchAreas.subtitle}
             </p>
           </div>
-          <a
+          <Link
             href="/publications"
             className="group hidden items-center text-sm font-semibold text-accent hover:text-blue-700 sm:inline-flex"
           >
-            All Research
+            {researchAreas.allResearch}
             <span className="ml-1 transition-transform group-hover:translate-x-1">
               →
             </span>
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {researchAreas.map((area) => (
+          {researchAreas.areas.map((area) => (
             <article
               key={area.id}
               className="group relative flex flex-col rounded-2xl border border-slate-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
@@ -41,7 +54,7 @@ export function HomeResearchAreas() {
               </p>
               <div className="border-t border-slate-50 pt-4">
                 <span className="text-xs font-semibold text-accent group-hover:underline">
-                  Explore Area →
+                  {researchAreas.exploreArea}
                 </span>
               </div>
             </article>

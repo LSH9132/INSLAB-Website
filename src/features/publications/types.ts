@@ -1,4 +1,4 @@
-export type PublicationType = "Journal" | "Conference" | "Workshop";
+export type PublicationType = "Journal" | "Conference" | "Domestic";
 
 export type Publication = {
   id: string;

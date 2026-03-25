@@ -1,0 +1,267 @@
+{
+  "nav": {
+    "home": {
+      "label": "Home",
+      "summary": "Overview of the lab, mission, and latest achievements.",
+      "sections": [
+        {
+          "title": "Overview",
+          "links": [
+            { "label": "Hero Overview", "description": "Landing section introducing INSLAB's research identity." },
+            { "label": "Mission", "description": "Lab mission, impact, and core performance metrics." }
+          ]
+        },
+        {
+          "title": "Highlights",
+          "links": [
+            { "label": "Research Areas", "description": "Key investigation pillars shaping the lab's direction." },
+            { "label": "Contact", "description": "Find collaboration and contact points for the lab." }
+          ]
+        }
+      ],
+      "feature": {
+        "eyebrow": "Start Here",
+        "title": "See how INSLAB frames research for visitors at a glance.",
+        "description": "Use the home page to anchor the lab's story before users dive into detailed publications and projects."
+      }
+    },
+    "research": {
+      "label": "Research",
+      "summary": "Research themes, lab directions, and domain highlights.",
+      "sections": [
+        {
+          "title": "Core Areas",
+          "links": [
+            { "label": "Intelligent Networking", "description": "Adaptive, autonomous networking systems and protocols." },
+            { "label": "Distributed AI", "description": "Decentralized intelligence for edge and federated systems." }
+          ]
+        },
+        {
+          "title": "Systems Focus",
+          "links": [
+            { "label": "Cyber-Physical Systems", "description": "Robust infrastructures and secure real-time environments." },
+            { "label": "Research Output", "description": "Browse papers that reflect the lab's current priorities." }
+          ]
+        }
+      ],
+      "feature": {
+        "eyebrow": "Research Focus",
+        "title": "Connect high-level themes to specific publication output.",
+        "description": "The research mega menu should help visitors jump from strategic topics to tangible results with minimal friction."
+      }
+    },
+    "publications": {
+      "label": "Publications",
+      "summary": "Selected papers, venues, filters, and academic output.",
+      "sections": [
+        {
+          "title": "Browse",
+          "links": [
+            { "label": "Selected Publications", "description": "Curated list of representative journals and conferences." },
+            { "label": "Publication Filters", "description": "Explore output by year, area, and publication type." }
+          ]
+        },
+        {
+          "title": "Use Cases",
+          "links": [
+            { "label": "Venue Highlights", "description": "See where INSLAB is publishing across focus domains." },
+            { "label": "Topic Tags", "description": "Scan themes like AI Networks, Security, and Edge AI." }
+          ]
+        }
+      ],
+      "feature": {
+        "eyebrow": "Academic Output",
+        "title": "Present research with filtering, hierarchy, and strong typography.",
+        "description": "This section turns Stitch output into a maintainable publications experience aligned with the site's design system."
+      }
+    },
+    "team": {
+      "label": "Team",
+      "summary": "People, culture, collaboration, and opportunities to join.",
+      "sections": [
+        {
+          "title": "People",
+          "links": [
+            { "label": "Lab Snapshot", "description": "Quick entry point to the team scale and lab context." },
+            { "label": "Contact the Lab", "description": "Reach out for projects, collaboration, or graduate study." }
+          ]
+        },
+        {
+          "title": "Opportunities",
+          "links": [
+            { "label": "Join Us", "description": "Learn how to connect with INSLAB for future openings." },
+            { "label": "Work With Us", "description": "Review the type of work the lab is currently producing." }
+          ]
+        }
+      ],
+      "feature": {
+        "eyebrow": "People & Culture",
+        "title": "Position the team as a living research environment, not just a member list.",
+        "description": "Use this space to bridge lab identity, collaboration, and recruitment before the full members page arrives."
+      }
+    },
+    "contact": {
+      "label": "Contact",
+      "summary": "Ways to reach the lab for collaboration or admissions.",
+      "sections": [
+        {
+          "title": "Reach Out",
+          "links": [
+            { "label": "Lab Contact", "description": "Primary email and location for the laboratory." },
+            { "label": "Collaboration", "description": "Use contact points for industry and academic partnerships." }
+          ]
+        },
+        {
+          "title": "Explore",
+          "links": [
+            { "label": "Recent Publications", "description": "Review recent output before initiating contact." },
+            { "label": "Lab Overview", "description": "Return to the landing page for the broader lab narrative." }
+          ]
+        }
+      ],
+      "feature": {
+        "eyebrow": "Connect",
+        "title": "Guide visitors toward the right next step with context.",
+        "description": "Whether users want to collaborate, join the lab, or cite the work, the contact menu should give them a clear direction."
+      }
+    },
+    "searchPlaceholder": "Search publications...",
+    "login": "Login",
+    "openSection": "Open Section",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "announcements": [
+      "🏆 ICC 2024 Best Paper Award — Federated Learning for Edge Networks",
+      "📅 Spring AI Security Workshop — Recap now available on the site",
+      "🔬 New paper on 6G intelligent networking accepted at IEEE TNSM",
+      "🤝 INSLAB now accepting graduate student applications for Fall 2025"
+    ]
+  },
+  "footer": {
+    "tagline": "Artificial Intelligence Network Systems Laboratory.\nInnovating at the edge of possibility.",
+    "sections": {
+      "research": {
+        "title": "Research",
+        "links": ["Intelligent Networking", "Distributed AI", "Cyber-Physical Security", "Edge Computing"]
+      },
+      "lab": {
+        "title": "Lab",
+        "links": ["Publications", "Members", "Join Us", "News"]
+      },
+      "contact": {
+        "title": "Contact",
+        "address": "Engineering Building 2, Room 405\nUniversity of Technology"
+      }
+    },
+    "copyright": "© 2025 INSLAB. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Intelligence Network System Lab",
+      "headlineLines": [
+        ["Research", "at", "the", "frontier"],
+        ["of", "AI", "and", "connected", "systems"]
+      ],
+      "accentWords": ["AI", "frontier", "systems"],
+      "subCopy": "INSLAB builds adaptive AI systems, AIoT architectures, and MLOps pipelines — bridging research and real-world deployment across intelligent networks.",
+      "ctaPrimary": "Explore Research",
+      "ctaSecondary": "About the Lab",
+      "stats": [
+        { "value": "97.8%", "label": "Model Accuracy" },
+        { "value": "128+", "label": "AIoT Endpoints" },
+        { "value": "3×", "label": "Deploy Speed" }
+      ]
+    },
+    "mission": {
+      "eyebrow": "Our Mission",
+      "title": "Advancing the intersection of AI & Network Systems",
+      "body": "INSLAB is dedicated to creating scalable, secure, and intelligent solutions for next-generation connectivity. We don't just research. We build the architectural foundations for 6G and beyond.",
+      "stats": [
+        { "value": "45+", "label": "Publications" },
+        { "value": "12", "label": "Projects" },
+        { "value": "28", "label": "Members" },
+        { "value": "5", "label": "Patents" }
+      ]
+    },
+    "researchAreas": {
+      "title": "Core Research Areas",
+      "subtitle": "Pillars of scientific investigation at INSLAB.",
+      "allResearch": "All Research",
+      "exploreArea": "Explore Area →",
+      "areas": [
+        {
+          "id": "intelligent-networking",
+          "eyebrow": "IN",
+          "title": "Intelligent Networking",
+          "description": "Optimizing network performance using advanced machine learning algorithms. We focus on 6G protocols, dynamic resource allocation, and self-healing network architectures."
+        },
+        {
+          "id": "distributed-ai",
+          "eyebrow": "DA",
+          "title": "Distributed AI",
+          "description": "Developing decentralized AI frameworks for edge computing environments. Our work includes federated learning optimization and privacy-preserving computation."
+        },
+        {
+          "id": "cyber-physical-systems",
+          "eyebrow": "CS",
+          "title": "Cyber-Physical Systems",
+          "description": "Securing critical infrastructure through robust AI-driven defense mechanisms. We analyze IoT vulnerabilities and develop real-time intrusion detection systems."
+        }
+      ]
+    },
+    "news": {
+      "title": "Recent Impact & News",
+      "viewArchive": "View News Archive",
+      "items": [
+        {
+          "id": "best-paper-icc-2024",
+          "category": "Awards",
+          "date": "June 15, 2024",
+          "title": "INSLAB Wins Best Paper Award at ICC 2024",
+          "description": "Our team's research on \"Federated Learning Optimization for Edge Networks\" was recognized for its contribution to efficient edge AI processing.",
+          "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuA-DXbdzE3ELGUrVCcq1YBG_CmW2aQU_7Rpi1DNnCKRE7qu22qcPOR9stgPi105dxeWIMgoWGsom86fuO1Q_R3PK9Dx0PhT8IbSNMYLePUU65HFoPwE1090ABafZEznUc63JnUt6Fn34d0lYHif96psrM8_XfajwTZoXcpjxmzHSlEYOW2TFCU8SqjSjxa84EVqKc0qFq83od1eylYt0JRzC0LZ0ZHLqg5OdsjoU67S7Gtpr_BHiTceN9tHKyRP93kWi2DAckG0HK2j"
+        },
+        {
+          "id": "spring-ai-security-workshop",
+          "category": "Events",
+          "date": "May 02, 2024",
+          "title": "Spring 2024 Workshop on AI Security",
+          "description": "INSLAB hosted a workshop bringing together industry experts from Google and Microsoft to discuss robust AI model security practices.",
+          "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuAcpUkyAbUtSv-P5m6MiW7L7t6VkNzv96ZX6dLfbR_hp0_M3xY5Aa3B_ZCXbxSRPwIXagkCFEyHphib-SY69fAtmaQfQZWLE5fXzVEGtG2WxFL4WiThycuOQZgwvIRODMzVEf24BDGkhXa99XibhWKQy13SA5U0IUmc4JEXE5ksDLnAohJPBLhKkDVuRt0ZNuPKVfifNy_K9FYZ2OksBDZm3G3qPL8pSspE3-3I4qvL9Og8FwkxFjAXUWz4Ats4ynGel38MLSQ3XoQx"
+        }
+      ]
+    }
+  },
+  "publications": {
+    "hero": {
+      "eyebrow": "Academic Output",
+      "title": "Selected Publications",
+      "body": "Our research spans artificial intelligence, network systems, and cybersecurity. Explore representative papers and the themes shaping INSLAB's recent academic output."
+    },
+    "filters": {
+      "items": ["All", "Journal", "Conference", "Domestic"],
+      "reset": "Reset Filters",
+      "displaying": "Displaying {count} of {total} papers",
+      "allYears": "All Years",
+      "topics": "Topics",
+      "noResults": "No publications match the selected filters.",
+      "prev": "Prev",
+      "next": "Next",
+      "page": "Page"
+    },
+    "metadata": {
+      "title": "Publications",
+      "description": "Selected INSLAB publications across AI, network systems, and security."
+    }
+  },
+  "Director": {
+    "education": "Education & Career",
+    "career": "Career",
+    "researchArea": "Research Areas",
+    "publications": "Selected Publications",
+    "projects": "Research Projects",
+    "patents": "Patents"
+  }
+}
