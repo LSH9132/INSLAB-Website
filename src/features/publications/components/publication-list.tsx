@@ -22,7 +22,7 @@ export function PublicationList({
     >
       <div className="divide-y divide-slate-100">
         {publications.map((publication) => (
-          <motion.div key={publication.id} variants={fadeUpVariants}>
+          <motion.div key={publication.id} variants={fadeUpVariants} className="hover:cursor-pointer">
             <PublicationListItem publication={publication} />
           </motion.div>
         ))}
