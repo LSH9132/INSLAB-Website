@@ -28,7 +28,7 @@ services:
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
       - SESSION_SECRET=${SESSION_SECRET:-inslab-prod-secret-change-me}
       - SITE_URL=https://${DOMAIN}
-      - PREVIEW_URL=http://localhost:9980
+      - PREVIEW_URL=http://${DOMAIN}:9980
 
   # ── Certbot: automatic certificate renewal ────────────────────────
   certbot:
