@@ -17,7 +17,7 @@ services:
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
       - SESSION_SECRET=${SESSION_SECRET:-inslab-prod-secret-change-me}
       - SITE_URL=http://localhost
-      - PREVIEW_URL=http://localhost:9980
+      - PREVIEW_URL=http://${DOMAIN:-localhost}:9980
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/login"]
       interval: 30s
@@ -76,7 +76,7 @@ services:
   preview-nginx:
     image: nginx:alpine
     ports:
-      - "127.0.0.1:9980:80"
+      - "9980:80"
     volumes:
       - ./docker-data/site:/usr/share/nginx/html:ro
       - ./docker-data/admin/images:/data/images:ro
@@ -87,6 +87,8 @@ services:
     restart: unless-stopped
     depends_on:
       nginx:
+        condition: service_healthy
+      admin:
         condition: service_healthy
 
 networks:
