@@ -21,6 +21,7 @@
   --color-accent: var(--accent);
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
 }
 
 html {
@@ -54,6 +55,10 @@ button {
 
 .font-serif {
   font-family: var(--font-serif), serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
 }
 
 .bg-dots {

@@ -1,5 +1,6 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import { motion, useReducedMotion } from "motion/react";
 import {
   type FloatingShape,
@@ -52,6 +53,7 @@ const ease = EASE_SMOOTH;
 
 export function JoinHero({ hero }: { hero: JoinHeroDictionary }) {
   const rm = useReducedMotion();
+  const locale = useLocale();
   const titleWords = hero.title.split(/\s+/);
 
   return (
@@ -207,7 +209,7 @@ export function JoinHero({ hero }: { hero: JoinHeroDictionary }) {
             {titleWords.map((word, i) => (
               <motion.span
                 key={i}
-                className="block"
+                className={`block ${i === titleWords.length - 1 && locale === "ko" ? "font-mono" : ""}`}
                 style={
                   i === titleWords.length - 1
                     ? { WebkitTextStroke: "2px #0f172a", color: "transparent" }

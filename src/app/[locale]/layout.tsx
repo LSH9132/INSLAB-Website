@@ -1,25 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import { Playfair_Display } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
-import "../globals.css";
-
-const pretendard = localFont({
-  src: "../../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2",
-  variable: "--font-sans",
-  display: "swap",
-  weight: "45 920",
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-});
+import { HtmlLangSetter } from "@/components/html-lang-setter";
 
 export const metadata: Metadata = {
   title: {
@@ -77,18 +62,20 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className={`${pretendard.variable} ${playfair.variable} antialiased`}>
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
-        >
-          Skip to main content
-        </a>
-        <NextIntlClientProvider>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.documentElement.lang="${locale}"`,
+        }}
+      />
+      <HtmlLangSetter />
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
+      >
+        Skip to main content
+      </a>
+      {children}
+    </NextIntlClientProvider>
   );
 }

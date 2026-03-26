@@ -27,7 +27,7 @@ export function ClarivateIcon({ className = "h-4 w-4" }: { className?: string })
 export const socialLinks = [
   {
     id: "github",
-    href: "https://github.com/inslab",
+    href: "https://github.com/INS-LAB",
     label: "GitHub",
     Icon: GithubIcon,
   },
