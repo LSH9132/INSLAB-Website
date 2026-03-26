@@ -14,6 +14,7 @@ if [ -f "$CERT_DIR/fullchain.pem" ] && [ -f "$CERT_DIR/privkey.pem" ]; then
   echo "[entrypoint] Existing certificate found, skipping self-signed generation."
 else
   echo "[entrypoint] No certificate found — generating temporary self-signed cert..."
+  apk add --no-cache openssl >/dev/null 2>&1
   mkdir -p "$CERT_DIR"
 
   openssl req -x509 -nodes -newkey rsa:2048 \
