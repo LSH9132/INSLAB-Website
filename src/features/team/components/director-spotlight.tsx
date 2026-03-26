@@ -238,6 +238,7 @@ export function DirectorSpotlight({
               <h3 className="text-4xl font-black tracking-tight lg:text-5xl">
                 <span className="text-slate-900">{nameParts[0]}</span>
                 <span
+                  className={locale === "ko" ? "font-mono" : ""}
                   style={{
                     WebkitTextStroke: "1.5px #0f172a",
                     color: "transparent",
