@@ -18,8 +18,9 @@ is_self_signed() {
   if [ ! -f "$CERT_DIR/fullchain.pem" ]; then
     return 1
   fi
-  ISSUER=$(openssl x509 -in "$CERT_DIR/fullchain.pem" -noout -issuer 2>/dev/null)
-  SUBJECT=$(openssl x509 -in "$CERT_DIR/fullchain.pem" -noout -subject 2>/dev/null)
+  # Extract only the value after "issuer=" / "subject=" prefix for comparison
+  ISSUER=$(openssl x509 -in "$CERT_DIR/fullchain.pem" -noout -issuer 2>/dev/null | sed 's/^issuer=//')
+  SUBJECT=$(openssl x509 -in "$CERT_DIR/fullchain.pem" -noout -subject 2>/dev/null | sed 's/^subject=//')
   [ "$ISSUER" = "$SUBJECT" ]
 }
 
