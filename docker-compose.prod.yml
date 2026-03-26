@@ -10,7 +10,7 @@ services:
       - ./services/nginx/nginx.ssl.conf:/etc/nginx/templates/default.conf.template:ro
       - ./services/nginx/docker-entrypoint.sh:/docker-entrypoint.sh:ro
       - ./docker-data/certbot/www:/var/www/certbot:ro
-      - ./docker-data/certbot/conf:/etc/letsencrypt:ro
+      - ./docker-data/certbot/conf:/etc/letsencrypt
     environment:
       - DOMAIN=${DOMAIN}
     entrypoint: ["/docker-entrypoint.sh"]
@@ -36,7 +36,11 @@ services:
     volumes:
       - ./docker-data/certbot/www:/var/www/certbot
       - ./docker-data/certbot/conf:/etc/letsencrypt
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done'"
+      - ./services/certbot/entrypoint.sh:/entrypoint.sh:ro
+    entrypoint: ["/entrypoint.sh"]
+    environment:
+      - DOMAIN=${DOMAIN}
+      - CERTBOT_EMAIL=${CERTBOT_EMAIL}
     networks:
       - external
     depends_on:
