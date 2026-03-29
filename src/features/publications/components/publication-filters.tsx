@@ -112,8 +112,6 @@ export function Pagination({
 /* ------------------------------------------------------------------ */
 export function PublicationFilters({
   filters,
-  totalFiltered,
-  totalAll,
   activeType,
   activeYears,
   activeTags,
@@ -122,17 +120,12 @@ export function PublicationFilters({
   hasActiveFilters,
   sortOrder,
   onSortToggle,
-  currentPage,
-  totalPages,
   onTypeChange,
   onYearToggle,
   onTagToggle,
   onReset,
-  onPageChange,
 }: {
   filters: FiltersDictionary;
-  totalFiltered: number;
-  totalAll: number;
   activeType: PublicationType | "All";
   activeYears: Set<number>;
   activeTags: Set<string>;
@@ -141,21 +134,14 @@ export function PublicationFilters({
   hasActiveFilters: boolean;
   sortOrder: "newest" | "oldest";
   onSortToggle: () => void;
-  currentPage: number;
-  totalPages: number;
   onTypeChange: (type: PublicationType | "All") => void;
   onYearToggle: (year: number) => void;
   onTagToggle: (tag: string) => void;
   onReset: () => void;
-  onPageChange: (page: number) => void;
 }) {
   const shouldReduceMotion = useReducedMotion();
   const [openPanel, setOpenPanel] = useState<OpenPanel>(null);
   const [showAllTags, setShowAllTags] = useState(false);
-
-  const displayingText = filters.displaying
-    .replace("{count}", String(totalFiltered))
-    .replace("{total}", String(totalAll));
 
   const toggle = (panel: OpenPanel) =>
     setOpenPanel((prev) => (prev === panel ? null : panel));
@@ -182,7 +168,7 @@ export function PublicationFilters({
     }`;
 
   return (
-    <section className="sticky top-[77px] z-40 mb-4 border-b border-slate-100 bg-white/90 py-4 backdrop-blur">
+    <section className="mb-4 border-b border-slate-100 bg-white py-4">
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0 }}
         animate={shouldReduceMotion ? undefined : { opacity: 1 }}
@@ -346,24 +332,6 @@ export function PublicationFilters({
           )}
         </AnimatePresence>
 
-        {/* Row 2: Info line + pagination */}
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <motion.p
-            initial={shouldReduceMotion ? false : { opacity: 0, x: 18 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-sm italic text-slate-400"
-          >
-            {displayingText}
-          </motion.p>
-
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={onPageChange}
-            filters={filters}
-          />
-        </div>
       </motion.div>
     </section>
   );
