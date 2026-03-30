@@ -44,9 +44,9 @@ export default async function ContactPage({
       footer={messages.footer}
       mainClassName="flex-1 bg-stone-50"
     >
-      <div className="mx-auto flex w-full max-w-6xl flex-col px-6 py-12 lg:px-10 lg:py-20">
-        <ContactHero hero={messages.contact.hero} />
+      <ContactHero hero={messages.contact.hero} />
 
+      <div className="mx-auto flex w-full max-w-6xl flex-col px-6 pb-12 lg:px-10 lg:pb-20">
         <ContactContent dict={messages.contact} />
       </div>
     </PageShell>

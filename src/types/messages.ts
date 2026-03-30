@@ -67,7 +67,13 @@ export interface FooterData {
 }
 
 export interface ContactDict {
-  hero: { eyebrow: string; title: string; body: string };
+  hero: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+  };
   info: {
     title: string;
     address: { label: string; line1: string; line2: string };

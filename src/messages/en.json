@@ -342,7 +342,9 @@
     "hero": {
       "eyebrow": "Get in Touch",
       "title": "Contact Us",
-      "body": "We welcome inquiries about collaboration, graduate admissions, and research partnerships. Reach out and let's build something meaningful together."
+      "body": "We welcome inquiries about collaboration, graduate admissions, and research partnerships. Reach out and let's build something meaningful together.",
+      "ctaPrimary": "Start a Conversation",
+      "ctaSecondary": "View Our Research"
     },
     "info": {
       "title": "Contact Information",
