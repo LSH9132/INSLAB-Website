@@ -140,8 +140,6 @@ export function PublicationsContent({
     <div ref={containerRef}>
       <PublicationFilters
         filters={filters}
-        totalFiltered={filtered.length}
-        totalAll={publications.length}
         activeType={activeType}
         activeYears={activeYears}
         activeTags={activeTags}
@@ -150,14 +148,28 @@ export function PublicationsContent({
         hasActiveFilters={hasActiveFilters}
         sortOrder={sortOrder}
         onSortToggle={handleSortToggle}
-        currentPage={safePage}
-        totalPages={totalPages}
         onTypeChange={handleTypeChange}
         onYearToggle={handleYearToggle}
         onTagToggle={handleTagToggle}
         onReset={handleReset}
-        onPageChange={handlePageChange}
       />
+
+      {/* Sticky count + pagination bar */}
+      <div className="sticky top-[77px] z-40 border-b border-slate-100 bg-white/90 py-3 backdrop-blur">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="font-serif text-sm italic text-slate-400">
+            {filters.displaying
+              .replace("{count}", String(filtered.length))
+              .replace("{total}", String(publications.length))}
+          </p>
+          <Pagination
+            currentPage={safePage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            filters={filters}
+          />
+        </div>
+      </div>
 
       {paged.length > 0 ? (
         <PublicationList
