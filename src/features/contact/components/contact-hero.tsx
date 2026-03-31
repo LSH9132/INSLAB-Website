@@ -1,8 +1,9 @@
 "use client";
 
 import type { Variants } from "motion/react";
-import { motion, useReducedMotion, useTransform } from "motion/react";
+import { motion, useTransform } from "motion/react";
 import { useCallback, useRef } from "react";
+import { useLightMotion } from "@/lib/hooks/use-light-motion";
 
 import { Link } from "@/i18n/navigation";
 import { useMousePosition } from "@/lib/hooks/use-mouse-position";
@@ -65,7 +66,7 @@ const ctaVariants: Variants = {
 /* ── Component ── */
 
 export function ContactHero({ hero }: { hero: ContactHeroDictionary }) {
-  const rm = useReducedMotion();
+  const rm = useLightMotion();
   const { smoothX, smoothY, isActive, handleMouseMove, handleMouseLeave } =
     useMousePosition({ stiffness: 120, damping: 18 });
 

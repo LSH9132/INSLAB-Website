@@ -11,6 +11,7 @@ services:
       - ./services/nginx/docker-entrypoint.sh:/docker-entrypoint.sh:ro
       - ./docker-data/certbot/www:/var/www/certbot:ro
       - ./docker-data/certbot/conf:/etc/letsencrypt
+      - /home/kimdy/public_html:/data/userdir/kimdy:ro
     environment:
       - DOMAIN=${DOMAIN}
     entrypoint: ["/docker-entrypoint.sh"]

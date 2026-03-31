@@ -1,7 +1,8 @@
 "use client";
 
 import type { Variants } from "motion/react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useLightMotion } from "@/lib/hooks/use-light-motion";
 
 import { Link } from "@/i18n/navigation";
 import { staggerContainerVariants } from "@/lib/motion/fade-up";
@@ -118,7 +119,7 @@ function DataParticle({
 }
 
 export function HomeHero({ hero }: { hero: HeroDictionary }) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useLightMotion();
 
   return (
     <section className="relative isolate overflow-hidden">

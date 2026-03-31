@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useLightMotion } from "@/lib/hooks/use-light-motion";
 
 const shapes = [
   {
@@ -51,7 +52,7 @@ const shapes = [
 ];
 
 export function FloatingShapes() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useLightMotion();
 
   return (
     <div

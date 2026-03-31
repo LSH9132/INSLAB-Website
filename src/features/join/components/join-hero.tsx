@@ -1,7 +1,8 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useLightMotion } from "@/lib/hooks/use-light-motion";
 import {
   type FloatingShape,
   renderShape,
@@ -52,7 +53,7 @@ const ease = EASE_SMOOTH;
 /* ------------------------------------------------------------------ */
 
 export function JoinHero({ hero }: { hero: JoinHeroDictionary }) {
-  const rm = useReducedMotion();
+  const rm = useLightMotion();
   const locale = useLocale();
   const titleWords = hero.title.split(/\s+/);
 
