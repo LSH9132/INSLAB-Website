@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useLightMotion } from "@/lib/hooks/use-light-motion";
 import type { Member } from "@/lib/content";
 import {
   directorPhotoVariants,
@@ -53,7 +54,7 @@ export function DirectorSpotlight({
   roleLabel,
   viewProfileLabel,
 }: DirectorSpotlightProps) {
-  const rm = useReducedMotion();
+  const rm = useLightMotion();
   const primaryName = locale === "ko" ? member.name.ko : member.name.en;
   const secondaryName = locale === "ko" ? member.name.en : member.name.ko;
   const nameParts = primaryName.split(/(?<=^.)/); // split after first char

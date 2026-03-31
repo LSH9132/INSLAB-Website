@@ -1,7 +1,8 @@
 "use client";
 
 import type { Variants } from "motion/react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useLightMotion } from "@/lib/hooks/use-light-motion";
 
 import { staggerContainerVariants } from "@/lib/motion/fade-up";
 
@@ -136,7 +137,7 @@ const LINES: {
 ];
 
 export function NewsHero({ hero }: { hero: NewsHeroDictionary }) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useLightMotion();
 
   return (
     <section className="relative isolate mb-14 overflow-hidden">
