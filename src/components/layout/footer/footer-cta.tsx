@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useLightMotion } from "@/lib/hooks/use-light-motion";
 import { Link } from "@/i18n/navigation";
 
 type FooterCtaProps = {
@@ -29,7 +30,7 @@ const sparkles = [
 ];
 
 export function FooterCta({ title, description, linkText }: FooterCtaProps) {
-  const rm = useReducedMotion();
+  const rm = useLightMotion();
 
   return (
     <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-700 p-6">

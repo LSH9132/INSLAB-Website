@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { motion, useInView } from "motion/react";
+import { useLightMotion } from "@/lib/hooks/use-light-motion";
 
 type NetworkConstellationProps = {
   className?: string;
@@ -89,7 +90,7 @@ export function NetworkConstellation({
   className,
   showLogLines = false,
 }: NetworkConstellationProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useLightMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
