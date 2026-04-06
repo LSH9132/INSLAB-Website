@@ -1,6 +1,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { ZodError } from "zod";
 import { readYaml, writeYaml } from "@/lib/content-io";
 import { AnnouncementsSchema, AnnouncementSchema, type Announcement } from "@inslab/content-schemas";
 
@@ -17,23 +19,33 @@ export async function deleteAnnouncement(index: number) {
   revalidatePath("/announcements");
 }
 
-export async function saveAnnouncement(formData: FormData) {
-  const items = getAll();
-  const entry = {
-    ko: formData.get("ko") as string,
-    en: formData.get("en") as string,
-    href: (formData.get("href") as string) || undefined,
-  };
+export type FormState = { errors?: Record<string, string> };
 
-  AnnouncementSchema.parse(entry);
+export async function saveAnnouncement(_prev: FormState, formData: FormData): Promise<FormState> {
+  try {
+    const items = getAll();
+    const entry = {
+      ko: formData.get("ko") as string,
+      en: formData.get("en") as string,
+      href: (formData.get("href") as string) || undefined,
+    };
 
-  const idx = Number(formData.get("index"));
-  if (idx >= 0 && idx < items.length) {
-    items[idx] = entry;
-  } else {
-    items.push(entry);
+    AnnouncementSchema.parse(entry);
+
+    const idx = Number(formData.get("index"));
+    if (idx >= 0 && idx < items.length) {
+      items[idx] = entry;
+    } else {
+      items.push(entry);
+    }
+
+    writeYaml(FILE, items);
+    revalidatePath("/announcements");
+  } catch (err) {
+    if (err instanceof ZodError) {
+      return { errors: Object.fromEntries(err.issues.map((i) => [i.path.join("."), i.message])) };
+    }
+    return { errors: { _form: String(err) } };
   }
-
-  writeYaml(FILE, items);
-  revalidatePath("/announcements");
+  redirect("/announcements?toast=saved");
 }
