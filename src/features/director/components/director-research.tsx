@@ -46,7 +46,7 @@ export function DirectorResearch() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="relative w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md"
         >
-          <div className="relative aspect-[16/9] md:aspect-[21/9]">
+          <div className="relative aspect-[16/9] md:aspect-[16/10]">
             <Image
               src="/images/director/researchv2.jpg"
               alt="Research Areas Diagram"

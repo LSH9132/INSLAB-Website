@@ -18,7 +18,7 @@ export function DirectorProjects({ projects }: { projects: Project[] }) {
   const pastProjects = projects.filter((p) => p.status === "Past");
 
   return (
-    <section className="relative w-full overflow-hidden bg-slate-50/40 py-16">
+    <section id="projects" className="relative w-full overflow-hidden bg-slate-50/40 py-16">
       {/* Dot pattern background */}
       <div
         className="pointer-events-none absolute inset-0 -z-10"
@@ -94,7 +94,7 @@ export function DirectorProjects({ projects }: { projects: Project[] }) {
                   <motion.div
                     key={project.id}
                     variants={cardVariants}
-                    className="rounded-xl border border-slate-100 bg-white/70 p-5 opacity-90 shadow-sm transition-opacity hover:opacity-100"
+                    className="rounded-xl border border-slate-100 bg-slate-50/70 p-5 shadow-sm transition-shadow hover:shadow-md"
                   >
                     <div className="space-y-2">
                       <span className="inline-block rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700">

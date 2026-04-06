@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { AnimatePresence, motion } from "motion/react";
 
+import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./language-switcher";
 import { socialLinks } from "@/lib/social-links";
 
@@ -52,14 +53,23 @@ function AnnouncementTicker({
             className="absolute inset-0"
           >
             {current.href ? (
-              <a
-                href={current.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block truncate text-[10.5px] font-medium tracking-wide text-slate-600 transition-colors hover:text-slate-900"
-              >
-                {current.text}
-              </a>
+              current.href.startsWith("http") ? (
+                <a
+                  href={current.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block truncate text-[10.5px] font-medium tracking-wide text-slate-600 transition-colors hover:text-slate-900"
+                >
+                  {current.text}
+                </a>
+              ) : (
+                <Link
+                  href={current.href}
+                  className="block truncate text-[10.5px] font-medium tracking-wide text-slate-600 transition-colors hover:text-slate-900"
+                >
+                  {current.text}
+                </Link>
+              )
             ) : (
               <p className="truncate text-[10.5px] font-medium tracking-wide text-slate-600">
                 {current.text}
