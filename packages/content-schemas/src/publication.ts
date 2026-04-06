@@ -16,8 +16,8 @@ export const PublicationSchema = z.object({
   details: z.string(),
   date: z.string().optional(),
   tags: z.array(z.string()),
-  pdfUrl: z.string(),
-  doiUrl: z.string(),
+  pdfUrl: z.string().optional().default(""),
+  doiUrl: z.string().optional().default(""),
 });
 
 export const PublicationsSchema = z.array(PublicationSchema);
