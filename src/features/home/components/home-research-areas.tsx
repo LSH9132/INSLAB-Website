@@ -40,7 +40,7 @@ export function HomeResearchAreas({
             className="group hidden items-center text-sm font-semibold text-accent hover:text-blue-700 sm:inline-flex"
           >
             {dict.allResearch}
-            <span className="ml-1 transition-transform group-hover:translate-x-1">
+            <span aria-hidden className="ml-1 transition-transform group-hover:translate-x-1">
               →
             </span>
           </Link>

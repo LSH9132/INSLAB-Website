@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import { Playfair_Display, JetBrains_Mono } from "next/font/google";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://inslab.sch.ac.kr"),
+};
 
 const pretendard = localFont({
   src: "../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2",

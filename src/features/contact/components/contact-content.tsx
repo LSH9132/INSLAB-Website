@@ -160,7 +160,7 @@ export function ContactContent({ dict }: ContactContentProps) {
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
-            title="순천향대학교 멀티미디어관 위치"
+            title={dict.directions.mapTitle}
           />
         </motion.div>
         <motion.div

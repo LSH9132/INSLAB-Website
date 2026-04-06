@@ -24,6 +24,8 @@ export function HomeNews({
 }) {
   const recent = items.slice(0, 3);
 
+  if (recent.length === 0) return null;
+
   return (
     <section className="bg-slate-50/50 py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -37,7 +39,7 @@ export function HomeNews({
             className="group hidden items-center text-sm font-semibold text-accent hover:text-blue-700 sm:inline-flex"
           >
             {dict.viewAll}
-            <span className="ml-1 transition-transform group-hover:translate-x-1">
+            <span aria-hidden className="ml-1 transition-transform group-hover:translate-x-1">
               →
             </span>
           </Link>
@@ -82,7 +84,7 @@ export function HomeNews({
             className="inline-flex items-center text-sm font-semibold text-accent hover:text-blue-700"
           >
             {dict.viewAll}
-            <span className="ml-1">→</span>
+            <span aria-hidden className="ml-1">→</span>
           </Link>
         </div>
       </div>

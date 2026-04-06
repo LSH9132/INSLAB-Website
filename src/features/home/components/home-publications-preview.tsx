@@ -22,6 +22,9 @@ export function HomePublicationsPreview({
   publications: Publication[];
 }) {
   const recent = publications.slice(0, 5);
+
+  if (recent.length === 0) return null;
+
   const total = publications.length;
   const subtitle = dict.subtitle
     .replace("{count}", String(recent.length))
@@ -42,7 +45,7 @@ export function HomePublicationsPreview({
             className="group hidden items-center text-sm font-semibold text-accent hover:text-blue-700 sm:inline-flex"
           >
             {dict.viewAll}
-            <span className="ml-1 transition-transform group-hover:translate-x-1">
+            <span aria-hidden className="ml-1 transition-transform group-hover:translate-x-1">
               →
             </span>
           </Link>
@@ -84,7 +87,7 @@ export function HomePublicationsPreview({
             className="inline-flex items-center text-sm font-semibold text-accent hover:text-blue-700"
           >
             {dict.viewAll}
-            <span className="ml-1">→</span>
+            <span aria-hidden className="ml-1">→</span>
           </Link>
         </div>
       </div>

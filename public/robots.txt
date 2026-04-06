@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://inslab.sch.ac.kr/sitemap.xml

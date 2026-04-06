@@ -89,6 +89,7 @@ export interface ContactDict {
     placeholder: string;
     address: string;
     openInMap: string;
+    mapTitle: string;
   };
 }
 

@@ -103,6 +103,8 @@ export function NetworkConstellation({
         preserveAspectRatio="xMidYMid slice"
         className="absolute inset-0 h-full w-full"
         fill="none"
+        role="img"
+        aria-label="Network topology visualization showing DATA, SYSTEM, and SERVICE research pillars"
       >
         {/* Spoke edges: hub → pillars */}
         {spokeEdges.map((e) => (

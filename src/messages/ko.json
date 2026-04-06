@@ -209,6 +209,12 @@
         "Domestic": "국내"
       }
     },
+    "ongoingProjects": {
+      "title": "진행 중인 과제",
+      "subtitle": "현재 수행 중인 연구 과제입니다.",
+      "viewAll": "전체 과제 보기",
+      "agencyLabel": "지원기관:"
+    },
     "news": {
       "title": "뉴스 & 소식",
       "viewAll": "전체 뉴스 보기"
@@ -386,7 +392,8 @@
       "title": "찾아오는 길",
       "placeholder": "캠퍼스 약도가 여기에 표시됩니다",
       "address": "충청남도 아산시 신창면 순천향로 22 멀티미디어관 M511",
-      "openInMap": "Google Maps에서 보기"
+      "openInMap": "Google Maps에서 보기",
+      "mapTitle": "순천향대학교 멀티미디어관 위치"
     },
     "metadata": {
       "title": "연락처",
