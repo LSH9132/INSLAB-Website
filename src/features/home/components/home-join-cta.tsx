@@ -26,7 +26,7 @@ export function HomeJoinCta({ dict }: { dict: JoinCtaDictionary }) {
             className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/35 sm:w-auto"
           >
             {dict.ctaPrimary}
-            <span>→</span>
+            <span aria-hidden>→</span>
           </Link>
           <Link
             href="/contact"

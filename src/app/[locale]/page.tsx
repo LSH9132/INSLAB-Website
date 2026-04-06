@@ -7,9 +7,11 @@ import { PageShell } from "@/components/layout";
 import { HomeHero } from "@/features/home/components/home-hero";
 import { HomeJoinCta } from "@/features/home/components/home-join-cta";
 import { HomeNews } from "@/features/home/components/home-news";
+import { HomeOngoingProjects } from "@/features/home/components/home-ongoing-projects";
 import { HomePublicationsPreview } from "@/features/home/components/home-publications-preview";
 import { HomeResearchAreas } from "@/features/home/components/home-research-areas";
 import {
+  getDirectorProjects,
   getNewsItems,
   getPublications,
   getResearchAreas,
@@ -28,6 +30,10 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 
@@ -47,6 +53,7 @@ export default async function Home({
   const publications = getPublications();
   const newsItems = getNewsItems();
   const researchAreas = getResearchAreas();
+  const ongoingProjects = getDirectorProjects().filter((p) => p.status === "Ongoing");
 
   return (
     <PageShell currentPath="/" locale={locale} nav={messages.nav} footer={messages.footer}>
@@ -59,6 +66,10 @@ export default async function Home({
       <HomePublicationsPreview
         dict={messages.home.publications}
         publications={publications}
+      />
+      <HomeOngoingProjects
+        dict={messages.home.ongoingProjects}
+        projects={ongoingProjects}
       />
       <HomeNews
         dict={messages.home.news}

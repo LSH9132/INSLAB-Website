@@ -33,7 +33,7 @@ export function DirectorHero({ locale }: { locale: string }) {
         >
           {/* Photo */}
           <motion.div
-            className="group relative mx-auto w-full max-w-xs lg:max-w-sm"
+            className="group relative mx-auto w-full max-w-xs lg:w-96"
             variants={directorPhotoVariants}
           >
             <div className="relative aspect-square overflow-hidden rounded-3xl">

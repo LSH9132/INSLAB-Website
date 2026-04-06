@@ -7,6 +7,7 @@ interface FormFieldProps {
   required?: boolean;
   placeholder?: string;
   error?: string;
+  hint?: string;
 }
 
 export function FormField({
@@ -18,10 +19,12 @@ export function FormField({
   required = false,
   placeholder,
   error,
+  hint,
 }: FormFieldProps) {
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+      {hint && <p className="text-xs text-gray-400 mb-1">{hint}</p>}
       <input
         name={name}
         type={type}

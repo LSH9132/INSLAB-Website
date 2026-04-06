@@ -23,6 +23,10 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 
@@ -110,11 +114,7 @@ export default async function ResearchPage({
                 locale={locale}
                 index={index}
                 dict={research as { keywords: string; representativePapers: string }}
-                className={
-                  index < 2
-                    ? "md:col-span-6 lg:col-span-4"
-                    : "md:col-span-12 lg:col-span-5"
-                }
+                className="md:col-span-6 lg:col-span-4"
               />
             ))}
 

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://inslab.sch.ac.kr/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/ko</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/en/research</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/research" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/research" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/ko/research</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/research" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/research" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/en/publications</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/publications" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/publications" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/ko/publications</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/publications" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/publications" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/en/team</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/team" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/team" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/ko/team</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/team" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/team" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/en/director</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/director" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/director" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/ko/director</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/director" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/director" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/en/join</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/join" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/join" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/ko/join</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/join" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/join" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/en/news</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/news" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/news" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/ko/news</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/news" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/news" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/contact" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inslab.sch.ac.kr/ko/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inslab.sch.ac.kr/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://inslab.sch.ac.kr/ko/contact" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

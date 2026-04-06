@@ -7,6 +7,7 @@ interface FormTextareaProps {
   required?: boolean;
   placeholder?: string;
   error?: string;
+  hint?: string;
 }
 
 export function FormTextarea({
@@ -18,10 +19,12 @@ export function FormTextarea({
   required = false,
   placeholder,
   error,
+  hint,
 }: FormTextareaProps) {
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+      {hint && <p className="text-xs text-gray-400 mb-1">{hint}</p>}
       <textarea
         name={name}
         defaultValue={defaultValue}

@@ -1,6 +1,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { ZodError } from "zod";
 import { readYaml, writeYaml } from "@/lib/content-io";
 import { PublicationsSchema, PublicationSchema, type Publication } from "@inslab/content-schemas";
 
@@ -35,41 +37,50 @@ export async function bulkDeletePublications(ids: string[]) {
   revalidatePath("/publications");
 }
 
-export async function savePublication(formData: FormData) {
-  const entry = {
-    id: formData.get("id") as string,
-    year: Number(formData.get("year")),
-    type: formData.get("type") as Publication["type"],
-    title: formData.get("title") as string,
-    authors: (formData.get("authors") as string).split(",").map((s) => s.trim()).filter(Boolean),
-    venue: formData.get("venue") as string,
-    details: formData.get("details") as string,
-    date: (formData.get("date") as string) || undefined,
-    tags: (formData.get("tags") as string).split(",").map((s) => s.trim()).filter(Boolean),
-    pdfUrl: formData.get("pdfUrl") as string,
-    doiUrl: formData.get("doiUrl") as string,
-  };
+export type FormState = { errors?: Record<string, string> };
 
-  PublicationSchema.parse(entry);
+export async function savePublication(_prev: FormState, formData: FormData): Promise<FormState> {
+  try {
+    const entry = {
+      id: formData.get("id") as string,
+      year: Number(formData.get("year")),
+      type: formData.get("type") as Publication["type"],
+      title: formData.get("title") as string,
+      authors: (formData.get("authors") as string).split(",").map((s) => s.trim()).filter(Boolean),
+      venue: formData.get("venue") as string,
+      details: formData.get("details") as string,
+      date: (formData.get("date") as string) || undefined,
+      tags: (formData.get("tags") as string).split(",").map((s) => s.trim()).filter(Boolean),
+      pdfUrl: (formData.get("pdfUrl") as string) || "",
+      doiUrl: (formData.get("doiUrl") as string) || "",
+    };
 
-  const file = FILES[entry.type];
-  const pubs = getAll(entry.type);
-  const idx = pubs.findIndex((p) => p.id === entry.id);
+    PublicationSchema.parse(entry);
 
-  if (idx >= 0) {
-    pubs[idx] = entry;
-  } else {
-    // Remove from other type files if type changed
-    for (const [t, f] of Object.entries(FILES)) {
-      if (t !== entry.type) {
-        const others = getAll(t);
-        const filtered = others.filter((p) => p.id !== entry.id);
-        if (filtered.length < others.length) writeYaml(f, filtered);
+    const file = FILES[entry.type];
+    const pubs = getAll(entry.type);
+    const idx = pubs.findIndex((p) => p.id === entry.id);
+
+    if (idx >= 0) {
+      pubs[idx] = entry;
+    } else {
+      for (const [t, f] of Object.entries(FILES)) {
+        if (t !== entry.type) {
+          const others = getAll(t);
+          const filtered = others.filter((p) => p.id !== entry.id);
+          if (filtered.length < others.length) writeYaml(f, filtered);
+        }
       }
+      pubs.push(entry);
     }
-    pubs.push(entry);
-  }
 
-  writeYaml(file, pubs);
-  revalidatePath("/publications");
+    writeYaml(file, pubs);
+    revalidatePath("/publications");
+  } catch (err) {
+    if (err instanceof ZodError) {
+      return { errors: Object.fromEntries(err.issues.map((i) => [i.path.join("."), i.message])) };
+    }
+    return { errors: { _form: String(err) } };
+  }
+  redirect("/publications?toast=saved");
 }

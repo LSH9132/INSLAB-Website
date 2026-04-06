@@ -19,7 +19,7 @@ interface BuildRecord {
   durationMs: number;
 }
 
-type Tab = "status" | "history" | "info";
+type Tab = "status" | "history" | "info" | "errors";
 
 const SITE_URL = typeof window !== "undefined" ? window.location.origin.replace(":3000", "") : "";
 const PREVIEW_URL = SITE_URL ? SITE_URL.replace(/:\d+$/, "") + ":9980" : "";
@@ -153,9 +153,14 @@ export function FloatingPanel() {
       <button
         onClick={() => setOpen(true)}
         className="fixed bottom-5 right-5 z-50 w-12 h-12 rounded-full bg-gray-900 text-white shadow-lg flex items-center justify-center hover:bg-gray-800 transition-all hover:scale-105"
-        title="Open dashboard panel"
+        title={hasError ? `Open dashboard panel — ${failedCount} error(s)` : "Open dashboard panel"}
       >
         <span className={`absolute top-2 right-2 w-3 h-3 rounded-full ${dotColor} ring-2 ring-gray-900`} />
+        {failedCount > 0 && !isBuilding && (
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center ring-2 ring-white">
+            {failedCount > 9 ? "9+" : failedCount}
+          </span>
+        )}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <rect x="3" y="3" width="18" height="18" rx="2" />
           <path d="M3 9h18M9 21V9" />
@@ -168,6 +173,7 @@ export function FloatingPanel() {
   const tabs: { key: Tab; label: string }[] = [
     { key: "status", label: "Status" },
     { key: "history", label: "History" },
+    { key: "errors", label: "Errors" },
     { key: "info", label: "Site Info" },
   ];
 
@@ -334,6 +340,54 @@ export function FloatingPanel() {
                 </div>
               ))
             )}
+          </div>
+        )}
+
+        {/* ── Errors Tab ────────────────────────────────────────── */}
+        {tab === "errors" && (
+          <div className="p-4 space-y-3">
+            {/* Build errors */}
+            {builds.filter((b) => b.status === "failed").length > 0 ? (
+              <>
+                <span className="text-xs font-semibold text-gray-700">Build Errors</span>
+                <div className="space-y-2">
+                  {builds.filter((b) => b.status === "failed").slice(0, 5).map((b) => (
+                    <div key={b.id} className="bg-red-50 border border-red-100 rounded-md p-2">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-mono text-[10px] text-red-800">{b.id.replace("build-", "")}</span>
+                        <span className="text-[10px] text-red-500">{formatTime(b.startedAt)}</span>
+                      </div>
+                      <p className="text-xs text-red-600 break-words">{b.error}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-6">
+                <span className="text-2xl">&#10003;</span>
+                <p className="text-sm text-green-700 font-medium mt-1">No errors</p>
+                <p className="text-xs text-gray-400 mt-1">All recent builds succeeded</p>
+              </div>
+            )}
+
+            {/* Content validation tips */}
+            <div className="border-t border-gray-100 pt-3 mt-3">
+              <span className="text-xs font-semibold text-gray-700">Troubleshooting Guide</span>
+              <div className="mt-2 space-y-2 text-[11px] text-gray-500">
+                <div className="bg-gray-50 rounded p-2">
+                  <span className="font-medium text-gray-700">Build failed?</span>
+                  <p>YAML/JSON 문법 오류 또는 스키마 불일치. 최근 수정한 콘텐츠를 확인하세요.</p>
+                </div>
+                <div className="bg-gray-50 rounded p-2">
+                  <span className="font-medium text-gray-700">Page not updating?</span>
+                  <p>콘텐츠 저장 후 Deploy 버튼을 눌러 사이트를 다시 빌드하세요.</p>
+                </div>
+                <div className="bg-gray-50 rounded p-2">
+                  <span className="font-medium text-gray-700">i18n Messages?</span>
+                  <p>JSON 최상위에 nav, footer, home, publications, Director, team, research, contact, news, join 키가 모두 있어야 합니다.</p>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 

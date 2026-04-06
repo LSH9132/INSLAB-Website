@@ -7,7 +7,7 @@ import { PageShell } from "@/components/layout";
 import { TeamHero } from "@/features/team/components/team-hero";
 import { DirectorSpotlight } from "@/features/team/components/director-spotlight";
 import { TeamGrid } from "@/features/team/components/team-grid";
-import { getMembers } from "@/lib/content";
+import { getMembers, getResearchAreas, getDirectorProjects } from "@/lib/content";
 import { routing } from "@/i18n/routing";
 import type { Messages } from "@/types/messages";
 
@@ -22,6 +22,10 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+    },
   };
 }
 
@@ -43,6 +47,15 @@ export default async function TeamPage({
   const graduate = members.filter((m) => m.role === "PhD" || m.role === "MS");
   const undergraduate = members.filter((m) => m.role === "BS");
 
+  const memberCount = members.filter((m) => m.role !== "Professor").length;
+  const areaCount = getResearchAreas().length;
+  const projectCount = getDirectorProjects().filter((p) => p.status === "Ongoing").length;
+
+  const stats = messages.team.stats.map((s: { value: string; label: string }, i: number) => ({
+    ...s,
+    value: i === 0 ? String(memberCount) : i === 1 ? String(areaCount) : `${projectCount}+`,
+  }));
+
   return (
     <PageShell
       currentPath="/team"
@@ -51,7 +64,7 @@ export default async function TeamPage({
       footer={messages.footer}
       mainClassName="flex-1"
     >
-      <TeamHero hero={messages.team.hero} stats={messages.team.stats} />
+      <TeamHero hero={messages.team.hero} stats={stats} />
       <DirectorSpotlight
         member={professor}
         locale={locale}

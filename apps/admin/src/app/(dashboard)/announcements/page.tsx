@@ -12,8 +12,13 @@ export default function AnnouncementsPage() {
   async function handleAdd(formData: FormData) {
     "use server";
     formData.set("index", "-1");
-    await saveAnnouncement(formData);
-    redirect("/announcements?toast=saved");
+    const result = await saveAnnouncement({}, formData);
+    if (result.errors) return; // redirect happens inside saveAnnouncement on success
+  }
+
+  async function handleCardSave(formData: FormData) {
+    "use server";
+    await saveAnnouncement({}, formData);
   }
 
   async function handleDelete(formData: FormData) {
@@ -31,7 +36,7 @@ export default function AnnouncementsPage() {
             key={i}
             item={item}
             index={i}
-            saveAction={saveAnnouncement}
+            saveAction={handleCardSave}
             deleteAction={handleDelete}
           />
         ))}
@@ -42,15 +47,16 @@ export default function AnnouncementsPage() {
       <form action={handleAdd} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Korean</label>
-          <input name="ko" required className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" />
+          <input name="ko" required className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" placeholder="🏆 ICC 2024 최우수 논문상 수상" />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">English</label>
-          <input name="en" required className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" />
+          <input name="en" required className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" placeholder="🏆 ICC 2024 Best Paper Award" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Link (optional)</label>
-          <input name="href" className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" />
+          <label className="block text-sm font-medium text-gray-700 mb-1">Link</label>
+          <p className="text-xs text-gray-400 mb-1">선택 사항. 내부 경로 (/news) 또는 외부 URL (https://...)</p>
+          <input name="href" className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" placeholder="/news 또는 https://..." />
         </div>
         <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700">Add</button>
       </form>

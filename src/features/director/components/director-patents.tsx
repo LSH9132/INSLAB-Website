@@ -86,7 +86,7 @@ export function DirectorPatents({ patents }: { patents: Patent[] }) {
                   <motion.div
                     key={patent.id}
                     variants={cardVariants}
-                    className="rounded-xl border border-slate-100 bg-white/70 p-5 opacity-90 shadow-sm transition-opacity hover:opacity-100"
+                    className="rounded-xl border border-slate-100 bg-slate-50/70 p-5 shadow-sm transition-shadow hover:shadow-md"
                   >
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
